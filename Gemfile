@@ -56,6 +56,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # authentication
 gem 'devise'
 
+gem 'factory_bot_rails'
 gem 'faker'
 
 gem 'avo', source: 'https://rubygems.pkg.github.com/avo-hq'

@@ -34,39 +34,39 @@ demo_user = User.create(
   birthday: Faker::Date.birthday(min_age: 18, max_age: 65),
 )
 
-users = []
-38.times do
-  users.push(FactoryBot.create(:user, team_id: teams.sample.id))
-end
+# users = []
+# 38.times do
+#   users.push(FactoryBot.create(:user, team_id: teams.sample.id))
+# end
 
-25.times do
-  post = FactoryBot.create(:post, user_id: users.sample.id)
+# 25.times do
+#   post = FactoryBot.create(:post, user_id: users.sample.id)
 
-  post.cover_photo.attach(io: open("https://source.unsplash.com/random/#{[1000, 1100, 1200, 1300].sample}x#{[1000, 1100, 1200, 1300].sample}"), filename: 'cover.jpg')
-end
+#   post.cover_photo.attach(io: open("https://source.unsplash.com/random/#{[1000, 1100, 1200, 1300].sample}x#{[1000, 1100, 1200, 1300].sample}"), filename: 'cover.jpg')
+# end
 
-projects = []
-30.times do
-  projects.push(FactoryBot.create(:project))
-end
+# projects = []
+# 30.times do
+#   projects.push(FactoryBot.create(:project))
+# end
 
-# assign users to teams
-teams.each do |team|
-  users.shuffle[0..10].each_with_index do |user, index|
-    team.members << user
+# # assign users to teams
+# teams.each do |team|
+#   users.shuffle[0..10].each_with_index do |user, index|
+#     team.members << user
 
-    membership = team.memberships.find_by user_id: user.id
-    membership.update level: [:beginner, :intermediate, :advanced].sample
+#     membership = team.memberships.find_by user_id: user.id
+#     membership.update level: [:beginner, :intermediate, :advanced].sample
 
-    if index == 0
-      membership.update level: :admin
-    end
-  end
-end
+#     if index == 0
+#       membership.update level: :admin
+#     end
+#   end
+# end
 
-# assign users to projects
-projects.each do |project|
-  users.shuffle[0..10].each do |user|
-    project.users << user
-  end
-end
+# # assign users to projects
+# projects.each do |project|
+#   users.shuffle[0..10].each do |user|
+#     project.users << user
+#   end
+# end
