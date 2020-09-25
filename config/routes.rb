@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users
+  root to: redirect('/avo')
+
+  authenticate :user, -> user { user.admin? } do
+    mount Avo::Engine => Avo.configuration.root_path
+  end
 end
