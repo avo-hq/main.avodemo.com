@@ -12,6 +12,7 @@ module Avo
         id
         text :name, required: true
         trix :body, placeholder: 'Enter text', always_show: false
+        textarea :body, hide_on: [:show, :edit], format_using: -> (value) { ActionView::Base.full_sanitizer.sanitize(value).truncate 120 }
         file :cover_photo, is_image: true
         boolean :is_featured
         boolean :is_published do |model|

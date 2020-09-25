@@ -6,7 +6,6 @@ FactoryBot.define do
     password { Faker::Internet.password }
     roles { { admin: false, manager: [true, false].sample, writer: [true, false].sample } }
     birthday { Faker::Date.birthday(min_age: 18, max_age: 65) }
-    custom_css { ".header {\n  color: red;\n}" }
   end
 
   factory :team do
@@ -22,7 +21,7 @@ FactoryBot.define do
   end
 
   factory :project do
-    name { Faker::Hacker.say_something_smart }
+    name { Faker::App.name }
     status { [:closed, :rejected, :failed, :loading, :running, :waiting].sample }
     stage { [:discovery, :ideea, :done, 'on hold', :cancelled].sample }
     budget { Faker::Number.decimal(l_digits: 4) }

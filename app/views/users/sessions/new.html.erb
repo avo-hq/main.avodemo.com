@@ -19,7 +19,7 @@
               Email address
             </label>
             <div class="mt-1 rounded-md shadow-sm">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5', value: 'avo@cado.com' %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "off", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5', value: 'avo@cado.com' %>
             </div>
           </div>
 
@@ -28,7 +28,7 @@
               Password
             </label>
             <div class="mt-1 rounded-md shadow-sm">
-              <%= f.password_field :password, autocomplete: "email", class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5', value: 'secret' %>
+              <%= f.password_field :password, class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5', value: 'secret' %>
             </div>
           </div>
 
