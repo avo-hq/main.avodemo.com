@@ -4,7 +4,7 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     email { Faker::Internet.email }
     password { Faker::Internet.password }
-    roles { { admin: false, manager: [true, false].sample, writer: [true, false].sample } }
+    roles { { admin: false, manager: [true, false].sample, editor: [true, false].sample, writer: [true, false].sample } }
     birthday { Faker::Date.birthday(min_age: 18, max_age: 65) }
   end
 

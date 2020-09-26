@@ -4,6 +4,7 @@ module Avo
       def initialize
         @title = :id
         @search = :id
+        @includes = [:user, :team]
       end
 
       fields do

@@ -4,6 +4,7 @@ module Avo
       def initialize
         @title = :name
         @search = [:id, :name]
+        @includes = [:admin, :members]
       end
 
       fields do
@@ -12,7 +13,7 @@ module Avo
         textarea :description, rows: 5, readonly: false, hide_on: :index, format_using: -> (value) { value.to_s.truncate 30 }, default: 'This team is wonderful!', nullable: true, null_values: ['0', '', 'null', 'nil']
 
         number :members_count do |model|
-          model.members.count
+          model.members.length
         end
 
         has_one :admin
