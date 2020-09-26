@@ -18,6 +18,8 @@ module Avo
         boolean :is_published do |model|
           model.published_at.present?
         end
+
+        heading '<div class="text-gray-300 uppercase font-bold">DEV</div>', as_html: true
         code :custom_css, theme: 'dracula', language: 'css', help: "This enables you to edit the user's custom styles."
 
         belongs_to :user, searchable: false, placeholder: '—'

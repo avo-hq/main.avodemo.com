@@ -27,8 +27,6 @@ module Avo
         password :password, name: 'User Password', required: false, except_on: :forms, help: 'You may verify the password strength <a href="http://www.passwordmeter.com/">here</a>.'
         password :password_confirmation, name: 'Password confirmation', required: false
 
-        heading '<div class="text-gray-300 uppercase font-bold">DEV</div>', as_html: true
-
         hidden :team_id, default: 0 # For testing purposes
 
         has_and_belongs_to_many :projects
