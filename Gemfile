@@ -60,3 +60,6 @@ gem 'factory_bot_rails'
 gem 'faker'
 
 gem 'avo', source: 'https://rubygems.pkg.github.com/avo-hq'
+
+# File storage S3
+gem 'aws-sdk-s3', require: false
