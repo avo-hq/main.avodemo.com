@@ -12,4 +12,4 @@ jobs:
 
     steps:
     - name: Reset AvoDemo
-      run: "curl -X POST -H 'Content-type: application/json' --data '{}' https://avodemo.herokuapps.com/reset"
+      run: "curl -X POST -H 'Content-type: application/json' --data '{}' https://avodemo.herokuapp.com/reset"
