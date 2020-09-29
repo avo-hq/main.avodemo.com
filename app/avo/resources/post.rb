@@ -10,6 +10,7 @@ module Avo
 
       fields do
         id
+        text :cdn_cover_photo, is_image: true, hide_on: [:index, :show, :edit]
         text :name, required: true
         trix :body, placeholder: 'Enter text', always_show: false
         textarea :body, hide_on: [:show, :edit], format_using: -> (value) { ActionView::Base.full_sanitizer.sanitize(value).truncate 120 }
@@ -27,7 +28,7 @@ module Avo
 
       # These fields are a reference on the already configured fields above
       grid do
-        preview :cover_photo
+        preview :cdn_cover_photo
         title :name
         body :body
       end
