@@ -1,6 +1,6 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://rubygems.pkg.github.com/avo-hq/
+  remote: https://packager.avohq.io/avo-hq/
   specs:
     actioncable (6.0.3.3)
       actionpack (= 6.0.3.3)
@@ -59,7 +59,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    avo (0.1.16)
+    avo (0.1.17)
       countries
       inline_svg
       kaminari

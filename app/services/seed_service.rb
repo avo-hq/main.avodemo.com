@@ -8,6 +8,7 @@ class SeedService
     Post.delete_all
     Project.delete_all
     User.delete_all
+    ProjectUser.delete_all
     ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
 
     teams = []
