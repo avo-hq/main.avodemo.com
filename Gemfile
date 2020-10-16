@@ -61,9 +61,10 @@ gem 'faker'
 
 # gem 'avo', source: 'https://rubygems.pkg.github.com/avo-hq'
 # source "https://#{ENV['PACKAGER_TOKEN']}@gemserve.ngrok.io/avo-hq" do
-source "https://packager.avohq.io/avo-hq" do
-  gem 'avo'
-end
+# source "https://packager.avohq.io/avo-hq" do
+#   gem 'avo'
+# end
+gem 'avo'
 
 # gem 'avo', source: "https://gemserve.ngrok.io"
 

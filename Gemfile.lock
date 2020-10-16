@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://packager.avohq.io/avo-hq/
   specs:
     actioncable (6.0.3.4)
       actionpack (= 6.0.3.4)
@@ -59,7 +58,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    avo (0.2.0)
+    avo (0.2.1)
       countries
       inline_svg
       kaminari
@@ -269,7 +268,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  avo!
+  avo
   aws-sdk-s3
   bootsnap (>= 1.4.2)
   byebug
