@@ -59,19 +59,9 @@ gem 'devise'
 gem 'factory_bot_rails'
 gem 'faker'
 
-# gem 'avo', source: 'https://rubygems.pkg.github.com/avo-hq'
-# source "https://#{ENV['PACKAGER_TOKEN']}@gemserve.ngrok.io/avo-hq" do
-# source "https://packager.avohq.io/avo-hq" do
-#   gem 'avo'
-# end
-gem 'avo'
-
-# gem 'avo', source: "https://gemserve.ngrok.io"
-
-# gem 'avo', source: 'http://0.0.0.0:8808'
-# gem 'avo', source: 'http://127.0.0.1:4567/'
-
 # File storage S3
 gem 'aws-sdk-s3', require: false
 
 gem 'dotenv-rails', groups: [ :development, :test ]
+
+gem 'avo'
