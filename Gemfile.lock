@@ -58,11 +58,11 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    avo (0.2.1)
+    avo (0.2.5)
       countries
       inline_svg
       kaminari
-      rails (~> 6.0.2, >= 6.0.2.1)
+      rails (>= 6.0)
       webpacker
       zeitwerk
     aws-eventstream (1.1.0)
