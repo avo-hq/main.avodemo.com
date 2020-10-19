@@ -36,3 +36,7 @@ yarn-debug.log*
 .yarn-integrity
 
 .env
+
+latest-avo
+avo-*.gem
+latest-avo.gem

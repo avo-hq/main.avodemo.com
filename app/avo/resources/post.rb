@@ -14,6 +14,13 @@ module Avo
         text :name, required: true
         trix :body, placeholder: 'Enter text', always_show: false
         textarea :body, hide_on: [:show, :edit], format_using: -> (value) { ActionView::Base.full_sanitizer.sanitize(value).truncate 120 }
+        text :excerpt, hide_on: [:show, :edit, :index] do |model|
+          begin
+            ActionView::Base.full_sanitizer.sanitize(model.body).truncate 120
+          rescue => exception
+            ''
+          end
+        end
         file :cover_photo, is_image: true
         boolean :is_featured
         boolean :is_published do |model|
@@ -30,7 +37,7 @@ module Avo
       grid do
         preview :cdn_cover_photo
         title :name
-        body :body
+        body :excerpt
       end
 
       use_filter Avo::Filters::FeaturedFilter
