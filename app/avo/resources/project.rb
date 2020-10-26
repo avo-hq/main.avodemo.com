@@ -9,7 +9,7 @@ module Avo
 
       fields do
         id link_to_resource: true
-        text :name, required: true
+        text :name, required: true, link_to_resource: true
 
         status :status, failed_when: [:closed, :rejected, :failed], loading_when: [:loading, :running, :waiting], nullable: true
         select :stage, hide_on: [:show, :index], options: { discovery: 'Discovery', ideea: 'Ideea', done: 'Done', 'on hold': 'On hold', cancelled: 'Cancelled' }, placeholder: 'Choose the stage.'
