@@ -6,7 +6,6 @@ module Avo
         @search = [:id, :first_name, :last_name]
         @includes = :posts
         @has_devise_password = true
-        @translation_key = 'avo.resource_translations.user'
       end
 
       fields do

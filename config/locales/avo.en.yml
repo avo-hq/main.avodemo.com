@@ -58,9 +58,4 @@ en:
     next_page: 'Next page'
     prev_page: 'Previous page'
     list_is_empty: 'List is empty'
-    resource_translations:
-      user:
-        zero: utilizatori
-        one: utilizator
-        other: utilizatori
 
