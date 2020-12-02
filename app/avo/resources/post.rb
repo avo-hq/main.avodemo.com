@@ -13,7 +13,7 @@ module Avo
         text :cdn_cover_photo, is_image: true, hide_on: [:index, :show, :edit]
         text :name, required: true
         trix :body, placeholder: 'Enter text', always_show: false
-        textarea :body, hide_on: [:show, :edit], format_using: -> (value) { ActionView::Base.full_sanitizer.sanitize(value).truncate 120 }
+        textarea :body, hide_on: [:show, :edit]
         text :excerpt, hide_on: [:show, :edit, :index] do |model|
           begin
             ActionView::Base.full_sanitizer.sanitize(model.body).truncate 120
