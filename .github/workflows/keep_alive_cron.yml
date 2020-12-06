@@ -1,4 +1,4 @@
-name: Cron
+name: Keep Alive Cron
 
 on:
   pull_request:
