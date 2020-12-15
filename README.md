@@ -1,6 +1,6 @@
 # README
 
-**Visit the real app on [avodemo.herokuapp.com](https://avodemo.herokuapp.com/)**
+### Visit the live app on [avodemo.herokuapp.com](https://avodemo.herokuapp.com/)
 
 This is a demo app to show how simple it is to integrate [Avo](https://avohq.io) in your app.
 
