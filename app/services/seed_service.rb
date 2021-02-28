@@ -10,6 +10,9 @@ class SeedService
     User.delete_all
     ProjectUser.delete_all
     ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
+    ['active_storage_blobs', 'active_storage_attachments', 'posts', 'projects', 'projects_users', 'team_memberships', 'teams', 'users'].each do |table_name|
+      ActiveRecord::Base.connection.execute("TRUNCATE #{table_name} RESTART IDENTITY CASCADE")
+    end
 
     teams = []
     teams.push(FactoryBot.create(:team, name: 'Apple'))
@@ -49,9 +52,9 @@ class SeedService
         updated_at: post_payload['pubDate'],
       )
 
-      post.cover_photo.attach(io: open(post_payload['thumbnail']), filename: 'cover.jpg')
+      post.cover_photo.attach(io: URI.open(post_payload['thumbnail']), filename: 'cover.jpg')
     rescue => exception
-      # raise exception
+      puts exception.inspect
     end
 
     projects = []
