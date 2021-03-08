@@ -82,5 +82,20 @@ class SeedService
         project.users << user
       end
     end
+
+    # Create this last user so the grid view displays the gravatar image for an entry
+    User.create(
+      first_name: 'Avo',
+      last_name: 'Cado',
+      email: 'avo@avohq.io',
+      password: 'secret',
+      active: true,
+      roles: {
+        admin: true,
+        manager: true,
+        editor: true,
+      },
+      birthday: Faker::Date.birthday(min_age: 18, max_age: 65),
+    )
   end
 end
