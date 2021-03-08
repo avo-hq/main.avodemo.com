@@ -15,10 +15,10 @@ class SeedService
     end
 
     teams = []
-    teams.push(FactoryBot.create(:team, name: 'Apple'))
-    teams.push(FactoryBot.create(:team, name: 'Google'))
-    teams.push(FactoryBot.create(:team, name: 'Facebook'))
-    teams.push(FactoryBot.create(:team, name: 'Amazon'))
+    teams.push(FactoryBot.create(:team, name: 'Apple', url: 'https://apple.com'))
+    teams.push(FactoryBot.create(:team, name: 'Google', url: 'https://google.com'))
+    teams.push(FactoryBot.create(:team, name: 'Facebook', url: 'https://facebook.com'))
+    teams.push(FactoryBot.create(:team, name: 'Amazon', url: 'https://amazon.com'))
 
     demo_user = User.create(
       first_name: 'Avo',
