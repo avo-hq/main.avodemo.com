@@ -37,6 +37,6 @@ class UserResource < Avo::BaseResource
   end
 
   actions do |a|
-    a.use ToggleInactive
+    a.use ToggleActive
   end
 end
