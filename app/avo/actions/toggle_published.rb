@@ -14,6 +14,5 @@ class TogglePublished < Avo::BaseAction
     end
 
     succeed 'Perfect!'
-    redirect '/resources/posts'
   end
 end
