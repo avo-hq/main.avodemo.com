@@ -64,6 +64,6 @@ gem 'aws-sdk-s3', require: false
 
 gem 'dotenv-rails', groups: [ :development, :test ]
 
-gem 'avo', '~> 0.5.0.beta6'
+gem 'avo', '~> 0.5.0.beta10'
 
 gem 'newrelic_rpm'

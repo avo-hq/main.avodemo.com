@@ -1,7 +1,10 @@
 class ToggleActive < Avo::BaseAction
   self.name ='Toggle active'
 
-  def handle(request, models, fields)
+  field :notify_user, as: :boolean
+  field :message, as: :textarea, default: 'Your account has been marked as inactive.'
+
+  def handle(models:, fields:)
     models.each do |model|
       if model.active
         model.update active: false
@@ -13,10 +16,5 @@ class ToggleActive < Avo::BaseAction
     end
 
     succeed 'Perfect!'
-  end
-
-  fields do |f|
-    f.boolean :notify_user
-    f.textarea :message, default: 'Your account has been marked as inactive.'
   end
 end

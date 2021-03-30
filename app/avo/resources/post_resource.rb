@@ -4,42 +4,33 @@ class PostResource < Avo::BaseResource
   self.includes = :user
   self.default_view_type = :grid
 
-  fields do |f|
-    f.id
-    f.text :name, required: true
-    f.trix :body, placeholder: 'Enter text', always_show: false
-    f.textarea :body, hide_on: [:show, :edit]
-    f.file :cover_photo, is_image: true, hide_on: [:index]
-    f.external_image :cdn_cover_photo, name: 'Cover photo', required: true, only_on: [:index], link_to_resource: true
-    f.boolean :is_featured
-    f.boolean :is_published do |model|
-      model.published_at.present?
-    end
-
-    f.heading '<div class="text-gray-300 uppercase font-bold">DEV</div>', as_html: true
-    f.code :custom_css, theme: 'dracula', language: 'css', help: "This enables you to edit the user's custom styles."
-
-    f.belongs_to :user, searchable: false, placeholder: '—'
+  field :id, as: :id
+  field :name, as: :text, required: true
+  field :body, as: :trix, placeholder: 'Enter text', always_show: false
+  field :cover_photo, as: :file, is_image: true, hide_on: [:index]
+  field :cdn_cover_photo, as: :external_image, name: 'Cover photo', required: true, only_on: [:index], link_to_resource: true
+  field :is_featured, as: :boolean, visible: -> () { context[:user].admin? }
+  field :is_published, as: :boolean do |model|
+    model.published_at.present?
   end
+  heading '<div class="text-gray-300 uppercase font-bold">DEV</div>', as_html: true
+  field :user, as: :belongs_to, meta: { searchable: false }, placeholder: '—'
+  field :custom_css, as: :code, theme: 'dracula', language: 'css', help: "This enables you to edit the user's custom styles."
 
-  grid do |cover, title, body|
-    cover.external_image :cdn_cover_photo, required: true, link_to_resource: true
-    title.text :name, required: true, link_to_resource: true
-    body.text :excerpt do |model|
+  grid do
+    cover :cdn_cover_photo, as: :external_image, link_to_resource: true
+    title :name, as: :text, required: true, link_to_resource: true
+    body :excerpt, as: :text do |model|
       begin
-        ActionView::Base.full_sanitizer.sanitize(model.body).truncate 120
+        ActionView::Base.full_sanitizer.sanitize(model.body).truncate 130
       rescue => exception
         ''
       end
     end
   end
 
-  filters do |f|
-    f.use FeaturedFilter
-    f.use PublishedFilter
-  end
+  filter FeaturedFilter
+  filter PublishedFilter
 
-  actions do |a|
-    a.use TogglePublished
-  end
+  action TogglePublished
 end
