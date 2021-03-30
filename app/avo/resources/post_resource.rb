@@ -9,7 +9,7 @@ class PostResource < Avo::BaseResource
   field :body, as: :trix, placeholder: 'Enter text', always_show: false
   field :cover_photo, as: :file, is_image: true, hide_on: [:index]
   field :cdn_cover_photo, as: :external_image, name: 'Cover photo', required: true, only_on: [:index], link_to_resource: true
-  field :is_featured, as: :boolean, visible: -> () { context[:user].admin? }
+  field :is_featured, as: :boolean, visible: -> (resource:) { context[:user].admin? }
   field :is_published, as: :boolean do |model|
     model.published_at.present?
   end
