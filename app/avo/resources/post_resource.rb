@@ -6,7 +6,7 @@ class PostResource < Avo::BaseResource
 
   field :id, as: :id
   field :name, as: :text, required: true
-  field :body, as: :trix, placeholder: 'Enter text', always_show: false
+  field :body, as: :trix, placeholder: 'Enter text', always_show: false, attachment_key: :trix_attachments
   field :cover_photo, as: :file, is_image: true, hide_on: [:index]
   field :cdn_cover_photo, as: :external_image, name: 'Cover photo', required: true, only_on: [:index], link_to_resource: true
   field :is_featured, as: :boolean, visible: -> (resource:) { context[:user].admin? }
