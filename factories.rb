@@ -24,16 +24,18 @@ FactoryBot.define do
         nil
       end
     end
+    status { Post.statuses.values }
   end
 
   factory :project do
     name { Faker::App.name }
     status { [:closed, :rejected, :failed, :loading, :running, :waiting].sample }
-    stage { [:discovery, :idea, :done, 'on hold', :cancelled].sample }
+    stage { ['discovery', 'idea', 'done', 'on hold', 'cancelled'].sample }
     budget { Faker::Number.decimal(l_digits: 4) }
     country { Faker::Address.country_code }
     users_required { Faker::Number.between(from: 10, to: 100) }
     started_at { Time.now - rand(10...365).days }
     meta { [{ foo: 'bar', hey: 'hi' }, { bar: 'baz' }, { hoho: 'hohoho' }].sample }
+    progress { Faker::Number.between(from: 0, to: 100) }
   end
 end
