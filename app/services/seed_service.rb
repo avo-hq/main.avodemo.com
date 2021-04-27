@@ -39,6 +39,19 @@ class SeedService
       users.push(FactoryBot.create(:user, team_id: teams.sample.id))
     end
 
+    users.push User.create(
+      first_name: "Avo",
+      last_name: "Cado",
+      email: "avo@avohq.io",
+      birthday: "2020-03-28",
+      active: true,
+      roles: {
+        admin: true,
+        manager: false,
+        writer: false
+      }
+    )
+
     posts = JSON.parse(File.read(Rails.root.join('db', 'posts.json')))['posts']
     posts.each do |post_payload|
       post = Post.create(
