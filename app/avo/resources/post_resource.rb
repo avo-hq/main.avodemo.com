@@ -1,6 +1,8 @@
 class PostResource < Avo::BaseResource
   self.title = :name
-  self.search = [:name, :id]
+  self.search_query = ->(params:) do
+    scope.ransack(id_eq: params[:q], name_cont: params[:q], m: "or").result(distinct: false)
+  end
   self.includes = :user
   self.default_view_type = :grid
 
@@ -9,7 +11,7 @@ class PostResource < Avo::BaseResource
   field :status, as: :select, enum: ::Post.statuses
   field :body, as: :trix, placeholder: 'Enter text', always_show: false, attachment_key: :trix_attachments
   field :cover_photo, as: :file, is_image: true, hide_on: [:index]
-  field :cdn_cover_photo, as: :external_image, name: 'Cover photo', required: true, only_on: [:index], link_to_resource: true
+  field :cdn_cover_photo, as: :external_image, name: 'Cover photo', required: true, only_on: [:index], link_to_resource: true, as_avatar: :rounded
   field :is_featured, as: :boolean, visible: -> (resource:) { context[:user].admin? }
   field :is_published, as: :boolean do |model|
     model.published_at.present?

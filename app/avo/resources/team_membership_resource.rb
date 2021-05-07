@@ -1,6 +1,5 @@
 class TeamMembershipResource < Avo::BaseResource
   self.title = :id
-  self.search = :id
   self.includes = [:user, :team]
 
   field :id, as: :id

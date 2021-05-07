@@ -1,12 +1,14 @@
 class TeamResource < Avo::BaseResource
   self.title = :name
-  self.search = [:id, :name]
+  self.search_query = ->(params:) do
+    scope.ransack(id_eq: params[:q], name_cont: params[:q], url_cont: params[:q], m: "or").result(distinct: false)
+  end
   self.includes = [:admin]
 
   field :id, as: :id
   field :name, as: :text
-  field :url, as: :text
-  field :logo, as: :external_image do |model|
+  field :url, as: :text, as_description: true
+  field :logo, as: :external_image, as_avatar: :rounded do |model|
     if model.url
       "//logo.clearbit.com/#{URI.parse(model.url).host}?size=180"
     end
