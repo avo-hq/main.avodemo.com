@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  scope :avo do
+    get "dashboard", to: "avo/tools#dashboard"
+  end
   devise_for :users
   root to: redirect('/avo')
 
