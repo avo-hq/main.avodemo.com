@@ -21,7 +21,8 @@ class PostResource < Avo::BaseResource
   field :custom_css, as: :code, theme: 'dracula', language: 'css', help: "This enables you to edit the user's custom styles."
 
   grid do
-    cover :cdn_cover_photo, as: :external_image, link_to_resource: true
+    cover :cover_photo, as: :file, is_image: true, link_to_resource: true
+    # cover :cdn_cover_photo, as: :external_image, link_to_resource: true
     title :name, as: :text, required: true, link_to_resource: true
     body :excerpt, as: :text do |model|
       begin
