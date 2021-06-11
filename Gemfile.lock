@@ -61,7 +61,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    avo (1.7.3)
+    avo (1.8.1)
       active_link_to
       addressable
       breadcrumbs_on_rails
@@ -113,10 +113,9 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     concurrent-ruby (1.1.9)
-    countries (3.1.0)
-      i18n_data (~> 0.11.0)
+    countries (4.0.0)
+      i18n_data (~> 0.13.0)
       sixarm_ruby_unaccent (~> 1.1)
-      unicode_utils (~> 1.4)
     crass (1.0.6)
     devise (4.7.3)
       bcrypt (~> 3.0)
@@ -148,7 +147,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-    i18n_data (0.11.0)
+    i18n_data (0.13.0)
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
@@ -274,7 +273,6 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
-    unicode_utils (1.4.0)
     view_component (2.34.0)
       activesupport (>= 5.0.0, < 7.0)
     warden (1.2.9)
@@ -304,7 +302,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  avo
+  avo (~> 1.8.1)
   aws-sdk-s3
   bootsnap (>= 1.4.2)
   bugsnag
