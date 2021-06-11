@@ -99,6 +99,8 @@ GEM
       msgpack (~> 1.0)
     breadcrumbs_on_rails (4.1.0)
       railties (>= 5.0)
+    bugsnag (6.19.0)
+      concurrent-ruby (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
     capybara (3.33.0)
@@ -305,6 +307,7 @@ DEPENDENCIES
   avo
   aws-sdk-s3
   bootsnap (>= 1.4.2)
+  bugsnag
   byebug
   capybara (>= 2.15)
   devise

@@ -66,3 +66,5 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 gem 'avo'
 
 gem 'newrelic_rpm'
+
+gem 'bugsnag'
