@@ -302,7 +302,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  avo (~> 1.8.1)
+  avo
   aws-sdk-s3
   bootsnap (>= 1.4.2)
   bugsnag
@@ -318,6 +318,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 4.3)
   rails (~> 6.0.3, >= 6.0.3.3)
+  ransack
   sass-rails (>= 6)
   selenium-webdriver
   spring

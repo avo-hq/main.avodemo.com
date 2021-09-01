@@ -67,4 +67,6 @@ gem 'avo'
 
 gem 'newrelic_rpm'
 
+gem 'ransack'
+
 gem 'bugsnag'
