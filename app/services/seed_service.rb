@@ -5,6 +5,7 @@ class SeedService
     # abort JSON.parse(File.read(Rails.root.join('db', 'posts.json')))['posts'].inspect
     TeamMembership.delete_all
     Team.delete_all
+    Comment.delete_all
     Post.delete_all
     Project.delete_all
     User.delete_all
@@ -67,6 +68,10 @@ class SeedService
       )
 
       post.cover_photo.attach(io: URI.open(post_payload['thumbnail']), filename: 'cover.jpg')
+
+      rand(0..15).times do
+        post.comments << FactoryBot.create(:comment, user_id: users.sample.id)
+      end
     rescue => exception
       puts exception.inspect
     end
@@ -94,6 +99,10 @@ class SeedService
     projects.each do |project|
       users.shuffle[0..10].each do |user|
         project.users << user
+      end
+
+      rand(0..15).times do
+        project.comments << FactoryBot.create(:comment, user_id: users.sample.id)
       end
     end
 

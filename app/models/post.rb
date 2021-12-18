@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_many_attached :trix_attachments
 
   belongs_to :user, optional: true
+  has_many :comments, as: :commentable
 
   def cdn_cover_photo
     "#{ENV['CDN_URL']}#{cover_photo.key}" if cover_photo.attached?

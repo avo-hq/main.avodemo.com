@@ -27,6 +27,10 @@ FactoryBot.define do
     status { Post.statuses.values }
   end
 
+  factory :comment do
+    body { Faker::Lorem.paragraphs(number: rand(4...10)).join("\n") }
+  end
+
   factory :project do
     name { Faker::App.name }
     status { [:closed, :rejected, :failed, :loading, :running, :waiting, :done, :finalized, :archived, :finished].sample }

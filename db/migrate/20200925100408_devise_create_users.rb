@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :last_name
       t.json :roles
       t.date :birthday
-      t.belongs_to :team
+      t.references :team
       t.boolean :active, default: true
 
       ## Trackable

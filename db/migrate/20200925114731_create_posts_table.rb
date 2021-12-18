@@ -5,7 +5,7 @@ class CreatePostsTable < ActiveRecord::Migration[6.0]
       t.text :body
       t.boolean :is_featured
       t.timestamp :published_at
-      t.belongs_to :user
+      t.references :user, foreign_key: true
       t.text :custom_css
 
       t.timestamps null: false

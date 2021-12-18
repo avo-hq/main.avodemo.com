@@ -14,8 +14,8 @@ class CreateProjectsTable < ActiveRecord::Migration[6.0]
     end
 
     create_table :projects_users do |t|
-      t.belongs_to :project
-      t.belongs_to :user
+      t.references :project, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps null: false
     end
