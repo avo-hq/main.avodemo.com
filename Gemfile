@@ -89,3 +89,4 @@ gem 'newrelic_rpm'
 gem 'ransack'
 
 gem 'bugsnag'
+gem "tailwindcss-rails", "~> 2.0"
