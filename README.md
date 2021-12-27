@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Visit the live app on [avodemo.herokuapp.com](https://avodemo.herokuapp.com/)
 
-Things you may want to cover:
+This is a demo app to show how simple it is to integrate [Avo](https://avohq.io) in your app.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Have a look at the [/avo](/app/avo) directory to find the resources, filters and actions.
