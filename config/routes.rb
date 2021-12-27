@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  scope :avo do
+    get "dashboard", to: "avo/tools#dashboard"
+  end
+  devise_for :users
+  root to: redirect('/avo')
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  post '/reset', to: 'home#reset'
+  get '/reset', to: 'home#reset'
+
+  authenticate :user, -> user { user.admin? } do
+    mount Avo::Engine => Avo.configuration.root_path
+  end
 end
