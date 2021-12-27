@@ -1,0 +1,15 @@
+name: Cron
+
+on:
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: '0 */12 * * *'
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Reset AvoDemo
+      run: "curl -X POST -H 'Content-type: application/json' --data '{}' https://avodemo.herokuapp.com/reset"
