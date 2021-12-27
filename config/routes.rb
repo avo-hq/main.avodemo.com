@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   root to: redirect('/avo')
 
   post '/reset', to: 'home#reset'
-  get '/reset', to: 'home#reset'
 
   authenticate :user, -> user { user.admin? } do
     mount Avo::Engine => Avo.configuration.root_path
