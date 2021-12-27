@@ -312,6 +312,7 @@ DEPENDENCIES
   faker
   importmap-rails
   jbuilder
+  mini_magick
   newrelic_rpm
   pg (>= 0.18, < 2.0)
   puma (~> 5.0)

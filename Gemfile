@@ -90,3 +90,4 @@ gem 'ransack'
 
 gem 'bugsnag'
 gem "tailwindcss-rails", "~> 2.0"
+gem "mini_magick"
