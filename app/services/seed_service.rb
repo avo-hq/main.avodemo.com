@@ -3,6 +3,7 @@ require 'open-uri'
 class SeedService
   def self.seed
     # abort JSON.parse(File.read(Rails.root.join('db', 'posts.json')))['posts'].inspect
+    ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
     TeamMembership.delete_all
     Team.delete_all
     Comment.delete_all
@@ -10,7 +11,6 @@ class SeedService
     ProjectUser.delete_all
     Project.delete_all
     User.delete_all
-    ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
     ['active_storage_blobs', 'active_storage_attachments', 'posts', 'projects', 'projects_users', 'team_memberships', 'teams', 'users', 'comments'].each do |table_name|
       ActiveRecord::Base.connection.execute("TRUNCATE #{table_name} RESTART IDENTITY CASCADE")
     end
