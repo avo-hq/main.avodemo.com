@@ -71,7 +71,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    avo (1.19.0)
+    avo (1.19.1.pre.4)
       active_link_to
       addressable
       breadcrumbs_on_rails
@@ -79,7 +79,6 @@ GEM
       hotwire-rails
       httparty
       image_processing
-      manifester
       meta-tags
       pagy
       pundit
@@ -181,9 +180,6 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    manifester (0.1.8)
-      rails (>= 6.0)
-      zeitwerk
     marcel (1.0.2)
     matrix (0.4.2)
     meta-tags (2.16.0)
@@ -219,7 +215,7 @@ GEM
     nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (5.9.1)
+    pagy (5.9.3)
       activesupport
     pg (1.2.3)
     public_suffix (4.0.6)
@@ -326,7 +322,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  avo (= 1.19.0)
+  avo (= 1.19.1.pre.4)
   aws-sdk-s3
   bootsnap
   bugsnag
