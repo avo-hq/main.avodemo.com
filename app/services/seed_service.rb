@@ -55,7 +55,7 @@ class SeedService
     )
 
     posts = JSON.parse(File.read(Rails.root.join('db', 'posts.json')))['posts']
-    posts.each do |post_payload|
+    posts.reverse.each do |post_payload|
       post = Post.create(
         name: CGI::unescapeHTML(post_payload['title']),
         body: CGI::unescapeHTML(post_payload['content']),
