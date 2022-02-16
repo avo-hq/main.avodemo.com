@@ -9,7 +9,7 @@ FactoryBot.define do
   end
 
   factory :team do
-    name { Faker::Company.name }
+    name { Faker::Company.unique.name }
     description { Faker::Lorem.paragraph(sentence_count: 4) }
   end
 
@@ -24,7 +24,7 @@ FactoryBot.define do
         nil
       end
     end
-    status { Post.statuses.values }
+    status { Post.statuses.values.sample }
   end
 
   factory :comment do
@@ -32,7 +32,7 @@ FactoryBot.define do
   end
 
   factory :project do
-    name { Faker::App.name }
+    name { Faker::App.unique.name }
     status { [:closed, :rejected, :failed, :loading, :running, :waiting, :done, :finalized, :archived, :finished].sample }
     stage { ['discovery', 'idea', 'done', 'on hold', 'cancelled'].sample }
     budget { Faker::Number.decimal(l_digits: 4) }
@@ -41,5 +41,34 @@ FactoryBot.define do
     started_at { Time.now - rand(10...365).days }
     meta { [{ foo: 'bar', hey: 'hi' }, { bar: 'baz' }, { hoho: 'hohoho' }].sample }
     progress { Faker::Number.between(from: 0, to: 100) }
+  end
+
+  factory :review do
+    body { Faker::Lorem.paragraphs(number: rand(4...10)).join("\n") }
+  end
+
+  factory :person do
+    name { "#{Faker::Name.unique.first_name} #{Faker::Name.last_name}" }
+  end
+
+  factory :spouse do
+    name { "#{Faker::Name.unique.first_name} #{Faker::Name.last_name}" }
+    type { "Spouse" }
+  end
+
+  factory :link do
+    name { Faker::Internet.url }
+  end
+
+  factory :fish do
+    name { %w(Tilapia Salmon Trout Catfish Pangasius Carp).sample }
+  end
+
+  factory :course do
+    name { Faker::Educator.unique.course_name }
+  end
+
+  factory :course_link, class: 'Course::Link' do
+    link { Faker::Internet.url }
   end
 end

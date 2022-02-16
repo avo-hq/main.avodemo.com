@@ -1,6 +1,7 @@
 class CommentResource < Avo::BaseResource
   self.title = :tiny_name
   self.includes = []
+  self.description = 'Demo resource to illustrate Avo\'s Polymorphic BelongsTo support (Comment is commentable to Post and Project)'
   self.search_query = ->(params:) do
     scope.ransack(id_eq: params[:q], body_cont: params[:q], m: "or").result(distinct: false)
   end
@@ -14,6 +15,5 @@ class CommentResource < Avo::BaseResource
   end
 
   field :user, as: :belongs_to
-  # field :post, as: :belongs_to, polymorphic_as: :commentable, polymorphic_for: ::Post
-  # field :project, as: :belongs_to, polymorphic_as: :commentable, polymorphic_for: ::Project
+  field :commentable, as: :belongs_to, polymorphic_as: :commentable, types: [::Post, ::Project]
 end
