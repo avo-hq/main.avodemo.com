@@ -1,7 +1,7 @@
 class ReviewResource < Avo::BaseResource
   self.title = :id
   self.includes = []
-  self.description = 'Demo resource to illustrate searchable belongs_to associations'
+  self.description = 'Demo resource to illustrate searchable belongs_to associations. Visit a team and create a review for it.'
   # self.search_query = ->(params:) do
   #   scope.ransack(id_eq: params[:q], m: "or").result(distinct: false)
   # end
