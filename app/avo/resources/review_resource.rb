@@ -1,5 +1,5 @@
 class ReviewResource < Avo::BaseResource
-  self.title = :id
+  self.title = :tiny_name
   self.includes = []
   self.description = 'Demo resource to illustrate searchable belongs_to associations. Visit a team and create a review for it.'
   # self.search_query = ->(params:) do
