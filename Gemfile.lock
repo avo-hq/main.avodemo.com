@@ -71,6 +71,8 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    appsignal (3.0.24)
+      rack
     avo (1.22.0)
       active_link_to
       addressable
@@ -322,6 +324,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  appsignal
   avo
   aws-sdk-s3
   bootsnap
