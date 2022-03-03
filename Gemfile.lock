@@ -69,11 +69,13 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    acts_as_list (1.0.4)
+      activerecord (>= 4.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     appsignal (3.0.24)
       rack
-    avo (1.23.0)
+    avo (1.24.1)
       active_link_to
       addressable
       breadcrumbs_on_rails
@@ -163,7 +165,7 @@ GEM
       concurrent-ruby (~> 1.0)
     i18n_data (0.15.0)
       simple_po_parser (~> 1.1)
-    image_processing (1.12.1)
+    image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     importmap-rails (1.0.1)
@@ -298,7 +300,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    view_component (2.49.0)
+    view_component (2.49.1)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     warden (1.2.9)
@@ -324,6 +326,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  acts_as_list
   appsignal
   avo
   aws-sdk-s3

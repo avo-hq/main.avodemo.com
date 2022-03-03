@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_09_135535) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_03_163037) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_09_135535) do
     t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
     t.index ["course_id"], name: "index_course_links_on_course_id"
   end
 
@@ -70,18 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_09_135535) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "nc_evolutions", id: :serial, force: :cascade do |t|
-    t.string "title", limit: 255, null: false
-    t.string "titleDown", limit: 255
-    t.string "description", limit: 255
-    t.integer "batch"
-    t.string "checksum", limit: 255
-    t.integer "status"
-    t.timestamptz "created"
-    t.timestamptz "created_at"
-    t.timestamptz "updated_at"
   end
 
   create_table "people", force: :cascade do |t|

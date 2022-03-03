@@ -95,3 +95,5 @@ gem "tailwindcss-rails", "~> 2.0"
 gem "mini_magick"
 
 gem "appsignal"
+
+gem "acts_as_list"
