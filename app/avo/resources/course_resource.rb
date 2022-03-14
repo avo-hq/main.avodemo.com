@@ -8,5 +8,5 @@ class CourseResource < Avo::BaseResource
 
   field :id, as: :id
   field :name, as: :text
-  field :link, as: :has_many
+  field :link, as: :has_many, searchable: true
 end
