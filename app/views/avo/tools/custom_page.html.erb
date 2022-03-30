@@ -1,0 +1,19 @@
+<div class="flex flex-col">
+  <%= render Avo::PanelComponent.new title: 'This is a demo page 👋', description: 'Description of your custom page', display_breadcrumbs: true do |c| %>
+    <% c.tools do %>
+      <%= a_link('', icon: 'heroicons/outline/finger-print', style: :primary, is_link: true) do %>
+        Dummy button
+      <% end %>
+    <% end %>
+
+    <% c.body do %>
+      <div class="flex flex-col justify-between py-6 min-h-24">
+        <div class="px-6 space-y-4">
+          <p>
+            You can add all the custom functionality you need to your admin panel using regular Rails code using the <code class='p-1 rounded bg-gray-500 text-white text-sm'>ToolsController</code>, and HTML in this <code class='p-1 rounded bg-gray-500 text-white text-sm'>erb</code> file here <code class='p-1 rounded bg-gray-500 text-white text-sm'>app/views/avo/tools/dashboard.html.erb</code>.
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,6 +1,7 @@
 class Avo::ToolsController < Avo::ApplicationController
-  def dashboard
-    @page_title = "Dashboard"
-    add_breadcrumb "Dashboard"
+  def custom_page
+    @page_title = "Your custom page"
+
+    add_breadcrumb "Your custom page"
   end
 end
