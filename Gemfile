@@ -82,7 +82,7 @@ gem 'aws-sdk-s3', require: false
 
 gem 'dotenv-rails', groups: [ :development, :test ]
 
-gem 'avo'
+gem 'avo', '2.1.2.pre2'
 
 gem 'newrelic_rpm'
 
