@@ -32,7 +32,7 @@ FactoryBot.define do
   end
 
   factory :project do
-    name { Faker::App.unique.name }
+    name { Faker::App.name }
     status { [:closed, :rejected, :failed, :loading, :running, :waiting, :done, :finalized, :archived, :finished].sample }
     stage { ['discovery', 'idea', 'done', 'on hold', 'cancelled'].sample }
     budget { Faker::Number.decimal(l_digits: 4) }
@@ -48,11 +48,11 @@ FactoryBot.define do
   end
 
   factory :person do
-    name { "#{Faker::Name.unique.first_name} #{Faker::Name.last_name}" }
+    name { "#{Faker::Name.first_name} #{Faker::Name.last_name}" }
   end
 
   factory :spouse do
-    name { "#{Faker::Name.unique.first_name} #{Faker::Name.last_name}" }
+    name { "#{Faker::Name.first_name} #{Faker::Name.last_name}" }
     type { "Spouse" }
   end
 
@@ -65,7 +65,7 @@ FactoryBot.define do
   end
 
   factory :course do
-    name { Faker::Educator.unique.course_name }
+    name { Faker::Educator.course_name }
   end
 
   factory :course_link, class: 'Course::Link' do

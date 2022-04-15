@@ -330,7 +330,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   appsignal
-  avo (= 2.1.2.pre2)
+  avo
   aws-sdk-s3
   bootsnap
   bugsnag
