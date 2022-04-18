@@ -75,12 +75,13 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     appsignal (3.0.24)
       rack
-    avo (2.1.2.pre2)
+    avo (2.3.0)
       active_link_to
       addressable
       breadcrumbs_on_rails
       chartkick
       countries
+      docile
       dry-initializer
       hotwire-rails
       httparty
@@ -142,6 +143,7 @@ GEM
       responders
       warden (~> 1.2.3)
     digest (3.1.0)
+    docile (1.4.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
@@ -216,15 +218,15 @@ GEM
       timeout
     newrelic_rpm (8.2.0)
     nio4r (2.5.8)
-    nokogiri (1.13.3-x86_64-darwin)
+    nokogiri (1.13.4-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.3-x86_64-linux)
+    nokogiri (1.13.4-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pagy (5.10.1)
       activesupport
     pg (1.2.3)
-    public_suffix (4.0.6)
+    public_suffix (4.0.7)
     puma (5.5.2)
       nio4r (~> 2.0)
     pundit (2.2.0)
