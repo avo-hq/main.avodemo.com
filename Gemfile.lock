@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/avo-hq/avo
-  revision: ca1da341717b4a834e737c65a32e6ad137745987
+  revision: 511cc5ec387776f11f016d84fc72d3e706646b31
   branch: chore/debug-tools
   specs:
     avo (2.3.0)
@@ -98,6 +98,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     appsignal (3.0.24)
       rack
+    awesome_print (1.9.2)
     aws-eventstream (1.2.0)
     aws-partitions (1.543.0)
     aws-sdk-core (3.125.0)
@@ -339,6 +340,7 @@ DEPENDENCIES
   acts_as_list
   appsignal
   avo!
+  awesome_print
   aws-sdk-s3
   bootsnap
   bugsnag
