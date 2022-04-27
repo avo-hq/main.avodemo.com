@@ -20,10 +20,8 @@ task 'avo:install' do
     puts "Starting avo:install"
     path = locate_gem 'avo'
 
-    Dir.chdir(path) do
-      system 'yarn'
-      system 'yarn build:prod'
-    end
+    system "cd #{path} && yarn"
+    system "cd #{path} && yarn build:prod"
 
     puts "Done"
   else
