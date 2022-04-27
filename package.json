@@ -1,0 +1,25 @@
+{
+  "name": "avodemo",
+  "version": "1.0.0",
+  "description": "### Visit the live app on [avodemo.herokuapp.com](https://avodemo.herokuapp.com/)",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avo-hq/avodemo.git"
+  },
+  "author": "Adrian Marin <adrian@adrianthedev.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avo-hq/avodemo/issues"
+  },
+  "homepage": "https://github.com/avo-hq/avodemo#readme"
+}
