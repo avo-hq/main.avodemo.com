@@ -84,7 +84,8 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem 'avo', git: 'https://github.com/avo-hq/avo', branch: 'chore/debug-tools'
+gem 'avo'
+# gem 'avo', git: 'https://github.com/avo-hq/avo', branch: 'chore/debug-tools'
 # gem 'avo', path: '.'
 
 gem 'newrelic_rpm'
