@@ -22,15 +22,6 @@ task 'avo:install' do
 
     system "sh scripts/avo_install.sh #{path}"
 
-    # Dir.chdir(path) do
-    #   puts "Change dir in #{path}"
-    #   sh `pwd`
-    #   sh `ls -la`
-    #   sh `which yarn`
-    #   sh `yarn`
-    #   sh `yarn prod:build`
-    # end
-
     puts "Done"
   else
     puts "Not starting avo:install"
