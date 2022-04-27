@@ -333,7 +333,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   appsignal
-  avo (= 2.4.0)
+  avo
   awesome_print
   aws-sdk-s3
   bootsnap
