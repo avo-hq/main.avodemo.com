@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/avo-hq/avo
-  revision: 511cc5ec387776f11f016d84fc72d3e706646b31
+  revision: 28dd0d94753d14ccd6696c54c4259c65cf99ef35
   branch: chore/debug-tools
   specs:
     avo (2.3.0)
