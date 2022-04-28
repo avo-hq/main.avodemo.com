@@ -75,7 +75,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     appsignal (3.0.26)
       rack
-    avo (2.4.0)
+    avo (2.4.1)
       active_link_to
       addressable
       breadcrumbs_on_rails
