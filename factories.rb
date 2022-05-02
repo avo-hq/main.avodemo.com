@@ -66,6 +66,8 @@ FactoryBot.define do
 
   factory :course do
     name { Faker::Educator.course_name }
+    country { Course.countries.sample }
+    city { Course.cities.stringify_keys[country].sample }
   end
 
   factory :course_link, class: 'Course::Link' do

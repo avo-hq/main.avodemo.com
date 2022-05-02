@@ -101,3 +101,5 @@ gem "mini_magick"
 gem "appsignal"
 
 gem "acts_as_list"
+
+gem 'friendly_id', '~> 5.4.0'

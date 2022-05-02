@@ -1,6 +1,7 @@
 en:
   avo:
     dashboard: 'Dashboard'
+    dashboards: 'Dashboards'
     choose_a_country: 'Choose a country'
     choose_an_option: 'Choose an option'
     are_you_sure_you_want_to_run_this_option: 'Are you sure you want to run this action?'
@@ -8,8 +9,7 @@ en:
     run: 'Run'
     cancel: 'Cancel'
     action_ran_successfully: 'Action ran successfully!'
-    resource_details: "%{item} details: %{title}"
-    update_item: 'update %{item}: %{title}'
+    details: "details"
     unauthorized: 'Unauthorized'
     attachment_class_attached: '%{attachment_class} attached.'
     attachment_class_detached: '%{attachment_class} detached.'
@@ -23,6 +23,7 @@ en:
     you_missed_something_check_form: 'You might have missed something. Please check the form.'
     remove_selection: 'Remove selection'
     select_item: 'Select item'
+    select_all: 'Select all on page'
     delete_file: 'Delete file'
     delete: 'delete'
     delete_item: 'Delete %{item}'
@@ -59,6 +60,7 @@ en:
     and_x_other_resources: 'and %{count} other resources'
     go_back: 'Go back'
     home: 'Home'
+    new: 'new'
     attach_item: 'Attach %{item}'
     choose_item: 'Choose %{item}'
     create_new_item: 'Create new %{item}'
@@ -72,6 +74,10 @@ en:
         zero: 'files'
         one: 'file'
         other: 'files'
+      people:
+        zero: 'peeps'
+        one: 'peep'
+        other: 'peeps'
     resource_translations:
       user:
         zero: 'users'
@@ -79,3 +85,27 @@ en:
         other: 'users'
     reset_filters: 'Reset filters'
     not_authorized: 'You are not authorized to perform this action.'
+    search:
+      placeholder: 'Search'
+      cancel_button: 'Cancel'
+    sign_out: 'Sign out'
+    failed: 'Failed'
+    failed_to_load: 'Failed to load'
+    key_value_field:
+      key: 'Key'
+      value: 'Value'
+      add_row: 'Add row'
+      delete_row: 'Delete row'
+    was_successfully_created: 'was successfully created'
+    was_successfully_updated: 'was successfully updated'
+    clear_value: "Clear value"
+    tools: Tools
+    order:
+      reorder_record: Reorder record
+      higher: Move record higher
+      lower: Move record lower
+      to_top: Move record to top
+      to_bottom: Move record to bottom
+    empty_dashboard_message: Add cards to this dashboard
+    no_cards_present: 'No cards present'
+    no_options_available: "No options available"

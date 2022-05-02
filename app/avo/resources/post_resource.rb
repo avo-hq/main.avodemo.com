@@ -3,7 +3,7 @@ class PostResource < Avo::BaseResource
   self.search_query = ->(params:) do
     scope.ransack(id_eq: params[:q], name_cont: params[:q], m: "or").result(distinct: false)
   end
-  self.includes = :user
+  self.includes = [:user, cover_photo_attachment: :blob, audio_attachment: :blob]
   self.default_view_type = :grid
 
   field :id, as: :id
