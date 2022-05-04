@@ -34,6 +34,7 @@ class UserResource < Avo::BaseResource
   field :custom_css, as: :code, theme: 'dracula', language: 'css', help: "This enables you to edit the user's custom styles.", height: '250px'
   field :team_id, as: :hidden, default: 0 # For testing purposes
 
+  field :post,    as: :has_one
   field :posts,    as: :has_many
   field :projects, as: :has_and_belongs_to_many
   field :teams,    as: :has_and_belongs_to_many
@@ -41,6 +42,8 @@ class UserResource < Avo::BaseResource
     as: :has_many,
     scope: -> { query.starts_with parent.first_name[0].downcase },
     description: "The comments listed in the attach modal all start with the name of the parent user."
+  field :people,    as: :has_many
+  field :spouses,    as: :has_many
 
   grid do
     cover :email, as: :gravatar, link_to_resource: true

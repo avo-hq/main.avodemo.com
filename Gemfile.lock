@@ -73,6 +73,9 @@ GEM
       activerecord (>= 4.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     appsignal (3.0.26)
       rack
     avo (2.5.1)
@@ -334,6 +337,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
+  annotate
   appsignal
   avo
   awesome_print
