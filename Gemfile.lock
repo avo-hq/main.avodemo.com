@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/avo-hq/avo
-  revision: ffb42a725846043dae2ebdd6f3120f8a3c500b90
+  revision: cab984a238986ede44fc259aac165c8ee6bb585d
   branch: refactor/clean-design
   specs:
     avo (2.5.1)
