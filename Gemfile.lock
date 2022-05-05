@@ -1,3 +1,26 @@
+GIT
+  remote: https://github.com/avo-hq/avo
+  revision: edbd6ff888b7d65113c1a2ab23d2d55759310f50
+  branch: refactor/clean-design
+  specs:
+    avo (2.5.1)
+      active_link_to
+      addressable
+      breadcrumbs_on_rails
+      chartkick
+      countries
+      docile
+      dry-initializer
+      hotwire-rails
+      httparty
+      image_processing
+      meta-tags
+      pagy
+      pundit
+      rails (>= 6.0)
+      view_component
+      zeitwerk
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -78,23 +101,6 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.0.26)
       rack
-    avo (2.5.1)
-      active_link_to
-      addressable
-      breadcrumbs_on_rails
-      chartkick
-      countries
-      docile
-      dry-initializer
-      hotwire-rails
-      httparty
-      image_processing
-      meta-tags
-      pagy
-      pundit
-      rails (>= 6.0)
-      view_component
-      zeitwerk
     awesome_print (1.9.2)
     aws-eventstream (1.2.0)
     aws-partitions (1.580.0)
@@ -339,7 +345,7 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo
+  avo!
   awesome_print
   aws-sdk-s3
   bootsnap
