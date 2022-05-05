@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/avo-hq/avo
-  revision: edbd6ff888b7d65113c1a2ab23d2d55759310f50
+  revision: c5d85ad04a435e0d997464aa2c7d2eea595482ea
   branch: refactor/clean-design
   specs:
     avo (2.5.1)
@@ -230,9 +230,9 @@ GEM
       timeout
     newrelic_rpm (8.6.0)
     nio4r (2.5.8)
-    nokogiri (1.13.4-x86_64-darwin)
+    nokogiri (1.13.5-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.4-x86_64-linux)
+    nokogiri (1.13.5-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pagy (5.10.1)
