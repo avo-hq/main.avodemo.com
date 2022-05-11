@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require_relative "../lib/middleware/account_middleware.rb"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -20,5 +21,6 @@ module Avodemo7
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.active_storage.variant_processor = :mini_magick
+    config.middleware.use AccountMiddleware
   end
 end
