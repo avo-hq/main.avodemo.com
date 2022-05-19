@@ -85,7 +85,7 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem 'avo', '2.6.0'
+gem 'avo'
 # gem 'avo', git: 'https://github.com/avo-hq/avo', branch: 'refactor/clean-design'
 # gem 'avo', path: '.'
 
