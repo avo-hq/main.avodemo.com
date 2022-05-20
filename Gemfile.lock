@@ -339,7 +339,7 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo
+  avo (= 2.7.0)
   awesome_print
   aws-sdk-s3
   bootsnap

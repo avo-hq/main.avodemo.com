@@ -3,12 +3,13 @@ Avo.configure do |config|
   config.license = 'pro'
   config.license_key = ENV['AVO_LICENSE_KEY']
   config.id_links_to_resource = true
-  config.home_path = '/avo/dashboards/dashy'
+  config.home_path = -> () { avo.dashboard_path('dashy') }
   config.set_context do
     {
       foo: 'bar',
       user: current_user,
       params: request.params,
+      account: Current.account
     }
   end
   config.current_user_method = :current_user
@@ -50,7 +51,7 @@ Avo.configure do |config|
       end
     end
 
-    section "Tools", icon: "heroicons/outline/finger-print", collapsable: true, collapsed: true do
+    section "Tools", icon: "heroicons/outline/finger-print", collapsable: true, collapsed: false do
       all_tools
     end
 
