@@ -6,7 +6,7 @@ class UserResource < Avo::BaseResource
   self.search_query = ->(params:) do
     scope.ransack(id_eq: params[:q], first_name_cont: params[:q], last_name_cont: params[:q], m: "or").result(distinct: false)
   end
-  self.includes = :posts
+  self.includes = [:post, :posts]
   self.resolve_find_scope = ->(model_class:) do
     model_class.friendly
   end
@@ -37,7 +37,7 @@ class UserResource < Avo::BaseResource
   field :custom_css, as: :code, theme: 'dracula', language: 'css', help: "This enables you to edit the user's custom styles.", height: '250px'
   field :team_id, as: :hidden, default: 0 # For testing purposes
 
-  field :post,    as: :has_one
+  field :post,     as: :has_one
   field :posts,    as: :has_many
   field :projects, as: :has_and_belongs_to_many
   field :teams,    as: :has_and_belongs_to_many

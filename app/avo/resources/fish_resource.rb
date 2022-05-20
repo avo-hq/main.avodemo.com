@@ -10,4 +10,6 @@ class FishResource < Avo::BaseResource
   field :name, as: :text
 
   action DummyAction
+
+  tool FishInformation, show_on: :edit
 end

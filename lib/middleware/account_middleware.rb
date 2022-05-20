@@ -4,7 +4,7 @@
 #
 # Used for setting the Account by the first ID in the URL like Basecamp 3.
 # This means we don't have to include the Account ID in every URL helper.
-# Cloned from JumpstartRails
+# From JumpstartRails AccountMiddleware
 
 class AccountMiddleware
   def initialize(app)
@@ -15,8 +15,6 @@ class AccountMiddleware
   def call(env)
     request = ActionDispatch::Request.new env
     _, account_id, request_path = request.path.split("/", 3)
-
-    puts ['->', _, account_id, request_path].inspect
 
     if /\d+/.match?(account_id)
       # We'll use the User model instead of an Account model

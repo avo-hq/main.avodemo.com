@@ -3,5 +3,11 @@
     Dashboard ID: <%= @dashboard.id %>
     <br>
     Current user ID: <%= current_user.id %>
+    <% if Current.account.present? %>
+      <br>
+      Current account ID: <%= Current.account.id %>
+    <% end %>
+    <br>
+    Avo context account ID: <%= Avo::App.context[:account]&.email %>
   </div>
 </div>
