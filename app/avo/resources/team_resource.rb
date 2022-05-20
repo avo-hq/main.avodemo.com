@@ -32,4 +32,6 @@ class TeamResource < Avo::BaseResource
     title :name, as: :text, link_to_resource: true
     body :url, as: :text
   end
+
+  filter NameFilter
 end
