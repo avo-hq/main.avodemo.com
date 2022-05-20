@@ -3,7 +3,8 @@ Avo.configure do |config|
   config.license = 'pro'
   config.license_key = ENV['AVO_LICENSE_KEY']
   config.id_links_to_resource = true
-  config.home_path = -> () { avo.dashboard_path('dashy') }
+  # config.home_path = -> () { avo.dashboard_path('dashy') }
+  config.home_path = -> (controller) { avo.dashboard_path('dashy') }
   config.set_context do
     {
       foo: 'bar',
