@@ -10,6 +10,8 @@
 #  updated_at :datetime         not null
 #
 class TeamMembership < ApplicationRecord
+  encrypts :level
+
   belongs_to :team
   belongs_to :user
 end

@@ -1,6 +1,6 @@
 class TeamMembershipPolicy < ApplicationPolicy
   def index?
-    false
+    true
   end
 
   def show?

@@ -6,4 +6,4 @@ then
   gem install overmind
 fi
 
-overmind start -f Procfile.dev
+overmind start -f Procfile.dev "$@"
