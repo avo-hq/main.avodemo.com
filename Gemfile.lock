@@ -1,3 +1,26 @@
+GIT
+  remote: https://github.com/avo-hq/avo
+  revision: 1e9c8abc60e9e4a3a091004044b81dfbda36d358
+  branch: fix/force-locale
+  specs:
+    avo (2.9.0)
+      active_link_to
+      addressable
+      breadcrumbs_on_rails
+      chartkick
+      countries
+      docile
+      dry-initializer
+      hotwire-rails
+      httparty
+      image_processing
+      meta-tags
+      pagy
+      pundit
+      rails (>= 6.0)
+      view_component
+      zeitwerk
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -78,23 +101,6 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.0.26)
       rack
-    avo (2.9.1.pre1)
-      active_link_to
-      addressable
-      breadcrumbs_on_rails
-      chartkick
-      countries
-      docile
-      dry-initializer
-      hotwire-rails
-      httparty
-      image_processing
-      meta-tags
-      pagy
-      pundit
-      rails (>= 6.0)
-      view_component
-      zeitwerk
     awesome_print (1.9.2)
     aws-eventstream (1.2.0)
     aws-partitions (1.580.0)
@@ -133,8 +139,7 @@ GEM
     chartkick (4.2.0)
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
-    countries (5.0.2)
-      i18n_data (~> 0.16.0)
+    countries (5.1.0)
       sixarm_ruby_unaccent (~> 1.1)
     crass (1.0.6)
     debug (1.5.0)
@@ -175,8 +180,6 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
-    i18n_data (0.16.0)
-      simple_po_parser (~> 1.1)
     image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
@@ -287,7 +290,6 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
-    simple_po_parser (1.1.6)
     sixarm_ruby_unaccent (1.2.0)
     sprockets (4.0.3)
       concurrent-ruby (~> 1.0)
@@ -340,7 +342,7 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo (= 2.9.1.pre.1)
+  avo!
   awesome_print
   aws-sdk-s3
   bootsnap

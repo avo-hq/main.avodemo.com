@@ -85,8 +85,8 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem 'avo', '2.9.1.pre.1'
-# gem 'avo', git: 'https://github.com/avo-hq/avo', branch: 'refactor/clean-design'
+# gem 'avo', '2.9.1.pre.1'
+gem 'avo', git: 'https://github.com/avo-hq/avo', branch: 'fix/force-locale'
 # gem 'avo', path: '.'
 
 gem 'newrelic_rpm'
