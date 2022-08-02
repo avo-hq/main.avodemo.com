@@ -85,8 +85,9 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
+gem 'avo'
 # gem 'avo', '2.9.1.pre.1'
-gem 'avo', git: 'https://github.com/avo-hq/avo', branch: 'fix/force-locale'
+# gem 'avo', git: 'https://github.com/avo-hq/avo', branch: 'fix/force-locale'
 # gem 'avo', path: '.'
 
 gem 'newrelic_rpm'
@@ -104,3 +105,5 @@ gem "appsignal"
 gem "acts_as_list"
 
 gem 'friendly_id', '~> 5.4.0'
+
+gem 'acts-as-taggable-on', '~> 9.0'

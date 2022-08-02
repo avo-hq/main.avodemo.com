@@ -6,21 +6,37 @@ class TeamResource < Avo::BaseResource
   self.includes = [:admin]
 
   field :id, as: :id
-  field :name, as: :text
-  field :url, as: :text, as_description: true
+  field :name, as: :text, sortable: true
+  field :url, as: :text
   field :logo, as: :external_image, as_avatar: :rounded do |model|
     if model.url
       "//logo.clearbit.com/#{URI.parse(model.url).host}?size=180"
     end
   end
-  field :description, as: :textarea, rows: 5, readonly: false, hide_on: :index, format_using: -> (value) { value.to_s.truncate 30 }, default: 'This is a wonderful team!', nullable: true, null_values: ['0', '', 'null', 'nil']
+  field :description,
+    as_description: true,
+    as: :textarea,
+    rows: 5,
+    readonly: false,
+    hide_on: :index,
+    format_using: ->(value) { value.to_s.truncate 30 },
+    default: "This is a wonderful team!",
+    nullable: true,
+    null_values: ["0", "", "null", "nil"]
 
   field :members_count, as: :number do |model|
-    model.members.length
+    model.team_members.length
   end
 
+  field :memberships,
+    as: :has_many,
+    searchable: true,
+    attach_scope: -> do
+      query.where.not(user_id: parent.id).or(query.where(user_id: nil))
+    end
+
   field :admin, as: :has_one
-  field :members, as: :has_many, through: :memberships
+  field :team_members, as: :has_many, through: :memberships
   field :reviews, as: :has_many
 
   grid do

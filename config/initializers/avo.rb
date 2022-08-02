@@ -6,6 +6,7 @@ Avo.configure do |config|
   # config.home_path = -> () { avo.dashboard_path('dashy') }
   # config.home_path = -> (controller) { avo.dashboard_path('dashy') }
   config.home_path = '/avo/dashboards/dashy'
+  config.resource_controls_placement = :left
   config.set_context do
     {
       foo: 'bar',
@@ -26,7 +27,28 @@ Avo.configure do |config|
     end
 
     section "Resources", icon: "heroicons/outline/academic-cap", collapsable: true, collapsed: false do
-      group "Academia", collapsable: true do
+      group "Company", collapsable: true do
+        resource :projects
+        resource :team, visible: -> {
+          authorize current_user, Team, "index?", raise_exception: false
+        }
+        resource :team_membership, visible: -> {
+          authorize current_user, TeamMembership, "index?", raise_exception: false
+
+          false
+        }
+        resource :reviews
+      end
+
+      group "People", collapsable: true do
+        resource "UserResource", visible: -> do
+          authorize current_user, User, "index?", raise_exception: false
+        end
+        resource :people
+        resource :spouses
+      end
+
+      group "Education", collapsable: true do
         resource :course
         resource :course_link
       end
@@ -36,20 +58,8 @@ Avo.configure do |config|
         resource :comments
       end
 
-      group "Company" do
-        resource :projects
-        resource :team
-        resource :reviews
-      end
-
-      group "People", collapsable: true do
-        resource "UserResource"
-        resource :people
-        resource :spouses
-      end
-
       group "Other", collapsable: true, collapsed: true do
-        resource :fish
+        resource :fish, label: "Fishies"
       end
     end
 

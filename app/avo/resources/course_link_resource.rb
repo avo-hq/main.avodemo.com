@@ -9,16 +9,26 @@ class CourseLinkResource < Avo::BaseResource
 
   self.ordering = {
     display_inline: true,
-    visible_on: :index,
+    visible_on: :index, # :index or :association
     actions: {
-      higher: -> { record.move_higher },
+      higher: -> { record.move_higher }, # has access to record, resource, options, params
       lower: -> { record.move_lower },
       to_top: -> { record.move_to_top },
-      to_bottom: -> { record.move_to_bottom },
+      to_bottom: -> { record.move_to_bottom }
     }
   }
 
   field :id, as: :id
-  field :link, as: :text
-  field :course, as: :belongs_to
+  field :link, as: :text, help: "Hehe. Something helpful."
+  field :enable_course, as: :boolean, only_on: :forms, html: {
+    edit: {
+      input: {
+        data: {
+          action: "resource-edit#disable",
+          resource_edit_disable_target_param: "courseBelongsToWrapper"
+        }
+      }
+    }
+  }
+  field :course, as: :belongs_to, searchable: true
 end
