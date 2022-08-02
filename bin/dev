@@ -3,7 +3,7 @@
 if ! command -v overmind &> /dev/null
 then
   echo "Installing overmind..."
-  gem install overmind
+  brew install overmind
 fi
 
 overmind start -f Procfile.dev "$@"
