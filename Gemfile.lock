@@ -80,7 +80,7 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.0.26)
       rack
-    avo (2.13.3.pre.1)
+    avo (2.13.3.pre.2)
       active_link_to
       addressable
       breadcrumbs_on_rails
@@ -348,7 +348,7 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo (= 2.13.3.pre.1)
+  avo (= 2.13.3.pre.2)
   awesome_print
   aws-sdk-s3
   bootsnap

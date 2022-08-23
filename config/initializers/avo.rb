@@ -50,7 +50,7 @@ Avo.configure do |config|
   config.current_user_method = :current_user
 
   config.main_menu = -> {
-    section I18n.t("avo.dashboards"), icon: "app/assets/images/adjustments.svg" do
+    section I18n.t("avo.dashboards"), icon: "adjustments.svg" do
       dashboard :dashy, visible: -> { true }
 
       group "All dashboards", visible: false, collapsable: true do
@@ -58,7 +58,7 @@ Avo.configure do |config|
       end
     end
 
-    section "Resources", icon: "heroicons/outline/academic-cap", collapsable: true, collapsed: false do
+    section "Resources", icon: "academic-cap", collapsable: true, collapsed: false do
       group "Company", collapsable: true do
         resource :projects
         resource :team, visible: -> {
