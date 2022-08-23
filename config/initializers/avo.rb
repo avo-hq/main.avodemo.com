@@ -7,37 +7,37 @@ Avo.configure do |config|
   # config.home_path = -> (controller) { avo.dashboard_path('dashy') }
   config.home_path = '/avo/dashboards/dashy'
   config.resource_controls_placement = :left
-  config.branding = {
-    colors: {
-      # BLUE
-      100 => "#CEE7F8",
-      400 => "#399EE5",
-      500 => "#0886DE",
-      600 => "#066BB2",
-      # RED
-      100 => "#FACDD4",
-      400 => "#F06A7D",
-      500 => "#EB3851",
-      600 => "#E60626",
-      # GREEN
-      100 => "#C5F1D4",
-      400 => "#3CD070",
-      500 => "#30A65A",
-      600 => "#247D43",
-      # PURPLE
-      100 => "#e9d5ff",
-      400 => "#c084fc",
-      500 => "#a855f7",
-      600 => "#9333ea",
-      # ORANGE
-      100 => "#FFECCC",
-      400 => "#FFB435",
-      500 => "#FFA102",
-      600 => "#CC8102",
-    },
-    logo: "/avo-assets/logo.png",
-    logomark: "/avo-assets/logomark.png"
-  }
+  # config.branding = {
+  #   colors: {
+  #     # BLUE
+  #     100 => "#CEE7F8",
+  #     400 => "#399EE5",
+  #     500 => "#0886DE",
+  #     600 => "#066BB2",
+  #     # RED
+  #     100 => "#FACDD4",
+  #     400 => "#F06A7D",
+  #     500 => "#EB3851",
+  #     600 => "#E60626",
+  #     # GREEN
+  #     100 => "#C5F1D4",
+  #     400 => "#3CD070",
+  #     500 => "#30A65A",
+  #     600 => "#247D43",
+  #     # PURPLE
+  #     100 => "#e9d5ff",
+  #     400 => "#c084fc",
+  #     500 => "#a855f7",
+  #     600 => "#9333ea",
+  #     # ORANGE
+  #     100 => "#FFECCC",
+  #     400 => "#FFB435",
+  #     500 => "#FFA102",
+  #     600 => "#CC8102",
+  #   },
+  #   logo: "/avo-assets/logo.png",
+  #   logomark: "/avo-assets/logomark.png"
+  # }
 
   config.set_context do
     {
@@ -50,7 +50,7 @@ Avo.configure do |config|
   config.current_user_method = :current_user
 
   config.main_menu = -> {
-    section I18n.t("avo.dashboards"), icon: "dashboards" do
+    section I18n.t("avo.dashboards"), icon: "app/assets/images/adjustments.svg" do
       dashboard :dashy, visible: -> { true }
 
       group "All dashboards", visible: false, collapsable: true do
