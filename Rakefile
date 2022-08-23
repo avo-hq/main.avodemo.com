@@ -9,6 +9,6 @@ Rake::Task["assets:precompile"].enhance do
   Rake::Task["db:migrate"].execute
 end
 
-Rake::Task["db:migrate"].enhance do
-  Rake::Task["avo:build-assets"].execute
-end
+# Rake::Task["db:migrate"].enhance do
+#   Rake::Task["avo:build-assets"].execute
+# end
