@@ -86,7 +86,7 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 gem "awesome_print"
 
 # gem 'avo'
-gem 'avo', '2.13.3.pre.3'
+gem 'avo', '2.13.3.pre.4'
 # gem 'avo', git: 'https://github.com/avo-hq/avo', branch: 'feature/color-branding'
 # gem 'avo', path: '.'
 
