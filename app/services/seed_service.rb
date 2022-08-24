@@ -174,7 +174,7 @@ class SeedService
     # assign users to teams
     teams.each do |team|
       users.shuffle[0..rand(5...15)].each_with_index do |user, index|
-        team.members << user
+        team.team_members << user
 
         membership = team.memberships.find_by user_id: user.id
         membership.update level: [:beginner, :intermediate, :advanced].sample
