@@ -12,7 +12,7 @@ class FishResource < Avo::BaseResource
   field :type, as: :text, hide_on: :forms
   tool FishInformation, show_on: :forms
 
-  tabs do
+  tabs style: :big_pills do
     tab "big useless tab here" do
       panel do
         field :id, as: :id
