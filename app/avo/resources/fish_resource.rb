@@ -62,5 +62,6 @@ class FishResource < Avo::BaseResource
     end
   end
 
+  action ReleaseFish
   action DummyAction
 end
