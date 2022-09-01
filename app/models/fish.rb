@@ -11,6 +11,10 @@ class Fish < ApplicationRecord
   has_many :reviews, as: :reviewable
   self.inheritance_column = nil
 
+  def release
+    # Dummy method
+  end
+
   def fish_type
     type
   end
