@@ -85,9 +85,9 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem 'avo'
-# gem 'avo', '2.14.1'
-# gem 'avo', git: 'https://github.com/avo-hq/avo', branch: 'fix/collapsible-tab-selector'
+# gem 'avo'
+gem 'avo', '2.15.1'
+# gem 'avo', git: 'https://github.com/Paul-Bob/avo', branch: 'fix/secret_key_base'
 # gem 'avo', path: '.'
 
 gem 'newrelic_rpm'
