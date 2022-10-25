@@ -4,7 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.0"
+# gem "rails", "~> 7.0.0"
+gem "actionmailer"
+gem "actioncable"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -85,8 +87,8 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-# gem 'avo'
-gem 'avo', '2.15.1'
+gem 'avo'
+# gem 'avo', '2.15.1'
 # gem 'avo', git: 'https://github.com/Paul-Bob/avo', branch: 'fix/secret_key_base'
 # gem 'avo', path: '.'
 
@@ -107,3 +109,9 @@ gem "acts_as_list"
 gem 'friendly_id', '~> 5.4.0'
 
 gem 'acts-as-taggable-on', '~> 9.0'
+
+gem 'pundit'
+gem 'chartkick'
+gem 'countries'
+gem 'propshaft'
+gem 'activestorage'
