@@ -1,0 +1,37 @@
+{
+  "name": "Avo demo",
+  "description": "Avo demo app",
+  "website": "https://avodemo.avohq.io",
+  "scripts": {
+    "postdeploy": "bundle exec rails db:migrate"
+  },
+  "env": {
+    "RAILS_MASTER_KEY": {
+      "description": "Secret key for decrypting Rails credentials. You can find it at: config/credentials/production.key"
+    },
+    "RAILS_ENV": {
+      "description": "The Rails environment to run: production or staging",
+      "value": "production"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "image": "heroku/ruby",
+  "addons": [
+    "heroku-postgresql:hobby-dev",
+    "heroku-redis:hobby-dev",
+    "scheduler:standard"
+  ],
+  "buildpacks": [
+    { "url": "https://github.com/heroku/heroku-buildpack-apt.git" },
+    { "url": "https://github.com/brandoncc/heroku-buildpack-vips" },
+    { "url": "heroku/nodejs" },
+    { "url": "heroku/ruby" }
+  ],
+  "cron": []
+}
+
