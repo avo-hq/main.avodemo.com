@@ -27,6 +27,11 @@ class SeedService
     teams.push(FactoryBot.create(:team, name: 'Facebook', url: 'https://facebook.com'))
     teams.push(FactoryBot.create(:team, name: 'Amazon', url: 'https://amazon.com'))
 
+    users = []
+    38.times do
+      users.push(FactoryBot.create(:user, team_id: teams.sample.id))
+    end
+
     demo_user = User.create(
       first_name: 'Avo',
       last_name: 'Cado',
@@ -40,11 +45,6 @@ class SeedService
       },
       birthday: Faker::Date.birthday(min_age: 18, max_age: 65),
     )
-
-    users = [demo_user]
-    38.times do
-      users.push(FactoryBot.create(:user, team_id: teams.sample.id))
-    end
 
     famous_users = [
       {
@@ -118,7 +118,7 @@ class SeedService
       last_name: "Cado",
       email: "avo@avohq.io",
       birthday: "2020-03-28",
-      password: SecureRandom.hex,
+      password: "secret",
       active: true,
       roles: {
         admin: true,

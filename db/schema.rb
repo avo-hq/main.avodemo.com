@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_02_103437) do
 
   create_table "course_links", force: :cascade do |t|
     t.string "link"
-    t.integer "course_id"
+    t.bigint "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position"
@@ -94,10 +94,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_02_103437) do
     t.boolean "is_featured"
     t.datetime "published_at", precision: nil
     t.bigint "user_id"
-    t.text "custom_css"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
+    t.integer "status", default: 0
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -114,7 +113,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_02_103437) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.integer "progress"
-    t.text "att"
   end
 
   create_table "projects_users", force: :cascade do |t|
@@ -130,7 +128,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_02_103437) do
     t.string "reviewable_type"
     t.integer "reviewable_id"
     t.text "body"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"
@@ -170,9 +168,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_02_103437) do
   create_table "team_memberships", force: :cascade do |t|
     t.bigint "team_id", null: false
     t.bigint "user_id", null: false
+    t.string "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "level"
     t.index ["team_id"], name: "index_team_memberships_on_team_id"
     t.index ["user_id"], name: "index_team_memberships_on_user_id"
   end
@@ -183,6 +181,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_02_103437) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "url"
+    t.string "color"
   end
 
   create_table "users", force: :cascade do |t|
@@ -191,14 +190,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_02_103437) do
     t.string "last_name"
     t.json "roles"
     t.date "birthday"
+    t.text "custom_css"
     t.bigint "team_id"
-    t.boolean "active", default: true
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at", precision: nil
     t.datetime "remember_created_at", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: true
     t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -211,9 +211,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_02_103437) do
   add_foreign_key "comments", "users"
   add_foreign_key "people", "people"
   add_foreign_key "people", "users"
-  add_foreign_key "posts", "users", name: "posts_user_id_fkey"
-  add_foreign_key "projects_users", "projects", name: "projects_users_project_id_fkey"
-  add_foreign_key "projects_users", "users", name: "projects_users_user_id_fkey"
   add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "tags"
   add_foreign_key "team_memberships", "teams"

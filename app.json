@@ -1,7 +1,7 @@
 {
   "name": "Avo demo",
   "description": "Avo demo app",
-  "website": "https://avodemo.avohq.io",
+  "website": "https://main.avodemo.com",
   "scripts": {
     "postdeploy": "bundle exec rails db:migrate"
   },
@@ -32,6 +32,11 @@
     { "url": "heroku/nodejs" },
     { "url": "heroku/ruby" }
   ],
-  "cron": []
+  "cron": [
+    {
+      "command": "rake avodemo:reset",
+      "schedule": "0 */12 * * *"
+    }
+  ]
 }
 
