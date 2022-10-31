@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   authenticate :user, -> user { user.admin? } do
     mount Avo::Engine => Avo.configuration.root_path
   end
+
+  get :checkcheckcheck, to: 'home#check'
 end
 
 if defined? ::Avo
