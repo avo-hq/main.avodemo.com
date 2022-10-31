@@ -149,7 +149,7 @@ class SeedService
         name: CGI::unescapeHTML(post_payload['title']),
         body: CGI::unescapeHTML(post_payload['content']),
         is_featured: [true, false].sample,
-        custom_css: ".header {\n  color: red;\n}",
+        # custom_css: ".header {\n  color: red;\n}",
         user_id: users.sample.id,
         published_at: post_payload['pubDate'],
         updated_at: post_payload['pubDate'],

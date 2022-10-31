@@ -41,7 +41,6 @@ class PostResource < Avo::BaseResource
   end
   heading '<div class="text-gray-300 uppercase font-bold">DEV</div>', as_html: true
   field :user, as: :belongs_to, meta: { searchable: false }, placeholder: '—'
-  field :custom_css, as: :code, theme: 'dracula', language: 'css', help: "This enables you to edit the user's custom styles."
 
   field :status, as: :select, enum: ::Post.statuses
 
