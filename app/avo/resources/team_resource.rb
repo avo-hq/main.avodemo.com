@@ -1,14 +1,13 @@
 class TeamResource < Avo::BaseResource
   self.title = :name
+  self.includes = [:admin, :team_members]
   self.search_query = -> do
-    scope.ransack(id_eq: params[:q], name_cont: params[:q], url_cont: params[:q], m: "or").result(distinct: false)
+    scope.ransack(id_eq: params[:q], name_cont: params[:q], m: "or").result(distinct: false)
   end
-  self.includes = [:admin]
 
   field :id, as: :id
   field :name, as: :text, sortable: true
-  field :url, as: :text
-  field :logo, as: :external_image, as_avatar: :rounded do |model|
+  field :logo, as: :external_image,hide_on: :show, as_avatar: :rounded do |model|
     if model.url
       "//logo.clearbit.com/#{URI.parse(model.url).host}?size=180"
     end
@@ -49,5 +48,17 @@ class TeamResource < Avo::BaseResource
     body :url, as: :text
   end
 
+  sidebar do
+    field :url, as: :text
+    field :created_at, as: :date_time, hide_on: :forms
+    field :logo, as: :external_image, as_avatar: :rounded do |model|
+      if model.url
+        "//logo.clearbit.com/#{URI.parse(model.url).host}?size=180"
+      end
+    end
+  end
+
   filter NameFilter
+
+  action DummyAction
 end
