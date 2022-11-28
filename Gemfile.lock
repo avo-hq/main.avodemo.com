@@ -63,12 +63,11 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.0.26)
       rack
-    avo (2.19.0)
+    avo (2.20.0)
       actionview (>= 6.0)
       active_link_to
       activerecord (>= 6.0)
       addressable
-      breadcrumbs_on_rails
       docile
       dry-initializer
       httparty
@@ -99,8 +98,6 @@ GEM
     bindex (0.8.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
-    breadcrumbs_on_rails (4.1.0)
-      railties (>= 5.0)
     bugsnag (6.24.2)
       concurrent-ruby (~> 1.0)
     builder (3.2.4)
@@ -271,7 +268,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
-    view_component (2.75.0)
+    view_component (2.77.0)
       activesupport (>= 5.0.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
