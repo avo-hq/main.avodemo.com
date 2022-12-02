@@ -63,7 +63,7 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.0.26)
       rack
-    avo (2.20.0)
+    avo (2.21.1.pre.pr1476)
       actionview (>= 6.0)
       active_link_to
       activerecord (>= 6.0)
@@ -268,7 +268,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
-    view_component (2.77.0)
+    view_component (2.78.0)
       activesupport (>= 5.0.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -303,7 +303,7 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo
+  avo (= 2.21.1.pre.pr1476)
   awesome_print
   aws-sdk-s3
   bootsnap

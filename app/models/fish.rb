@@ -9,6 +9,9 @@
 #
 class Fish < ApplicationRecord
   has_many :reviews, as: :reviewable
+
+  accepts_nested_attributes_for :reviews
+
   self.inheritance_column = nil
 
   def release
