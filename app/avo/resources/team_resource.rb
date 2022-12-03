@@ -48,7 +48,7 @@ class TeamResource < Avo::BaseResource
   end
 
   sidebar do
-    field :url, as: :text
+    field :url, as: :text, translation_key: "avo.field_translations.team_url"
     field :created_at, as: :date_time, hide_on: :forms
     field :logo, as: :external_image, as_avatar: :rounded do |model|
       if model.url

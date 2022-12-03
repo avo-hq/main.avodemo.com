@@ -84,6 +84,7 @@ en:
         zero: 'peeps'
         one: 'peep'
         other: 'peeps'
+      team_url: 'Team URL'
     resource_translations:
       user:
         zero: 'users'
