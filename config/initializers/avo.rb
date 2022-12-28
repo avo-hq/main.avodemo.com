@@ -47,7 +47,8 @@ Avo.configure do |config|
       account: Current.account
     }
   end
-  config.current_user_method = :current_user
+  # config.current_user_method = :current_user
+  config.current_user_method { Current.user }
 
   config.main_menu = -> {
     section I18n.t("avo.dashboards"), icon: "app/assets/images/demo-adjustments.svg" do
