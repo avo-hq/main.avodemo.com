@@ -22,5 +22,7 @@ module Avodemo7
 
     config.active_storage.variant_processor = :mini_magick
     config.middleware.use AccountMiddleware
+
+    config.autoload_paths << Rails.root.join("lib")
   end
 end

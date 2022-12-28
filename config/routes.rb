@@ -4,13 +4,13 @@ Rails.application.routes.draw do
 
   get "hey", to: "home#hey"
 
-  post '/reset', to: 'home#reset'
+  post "/reset", to: "home#reset"
 
-  authenticate :user, -> user { user.admin? } do
-    mount Avo::Engine => Avo.configuration.root_path
-  end
+  mount Avo::Engine => Avo.configuration.root_path, :constraints => UserConstraint.new
+  # authenticate :user, -> user { user.admin? } do
+  # end
 
-  get :checkcheckcheck, to: 'home#check'
+  get :checkcheckcheck, to: "home#check"
 end
 
 if defined? ::Avo

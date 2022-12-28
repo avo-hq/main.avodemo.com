@@ -5,4 +5,5 @@
 
 class Current < ActiveSupport::CurrentAttributes
   attribute :account
+  attribute :user
 end

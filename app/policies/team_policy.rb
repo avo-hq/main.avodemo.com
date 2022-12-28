@@ -1,5 +1,6 @@
 class TeamPolicy < ApplicationPolicy
   def index?
+    puts ["policy user->", user].inspect
     true
   end
 
