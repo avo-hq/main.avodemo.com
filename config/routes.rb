@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   get "hey", to: "home#hey"
 
+  resources :posts
+
+  mount RailsComments::Engine => "/rails_comments"
+
   post '/reset', to: 'home#reset'
 
   authenticate :user, -> user { user.admin? } do

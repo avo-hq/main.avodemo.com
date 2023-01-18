@@ -14,6 +14,8 @@
 #  status       :integer
 #
 class Post < ApplicationRecord
+  include RailsComments::Commentable
+
   enum status: [:draft, :published, :archived]
 
   validates :name, presence: true
