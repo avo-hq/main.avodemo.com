@@ -1,4 +1,4 @@
-import CourseResourceController from './controllers/course_controller'
+import CourseResourceController from 'controllers/course_controller'
 import NestedForm from 'stimulus-rails-nested-form'
 
 // Hook into the stimulus instance provided by Avo
