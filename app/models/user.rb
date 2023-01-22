@@ -34,7 +34,8 @@ class User < ApplicationRecord
   has_many :spouses
   has_many :comments
   has_and_belongs_to_many :projects
-  has_and_belongs_to_many :teams, join_table: :team_memberships
+  has_many :memberships, class_name: 'TeamMembership', foreign_key: :user_id, inverse_of: :user
+  has_many :teams, through: :memberships, source: :team
 
   has_one_attached :cv
 

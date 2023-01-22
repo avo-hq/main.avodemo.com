@@ -13,6 +13,6 @@ class TeamMembership < ApplicationRecord
   # removed this because it breaks team admin
   # encrypts :level
 
-  belongs_to :team
-  belongs_to :user
+  belongs_to :team, inverse_of: :memberships
+  belongs_to :user, inverse_of: :memberships
 end
