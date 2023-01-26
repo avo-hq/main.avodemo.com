@@ -9,6 +9,7 @@
 #
 class Fish < ApplicationRecord
   has_many :reviews, as: :reviewable
+  belongs_to :user, optional: true
 
   accepts_nested_attributes_for :reviews
 

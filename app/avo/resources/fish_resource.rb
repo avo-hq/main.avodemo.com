@@ -7,13 +7,29 @@ class FishResource < Avo::BaseResource
   end
   self.extra_params = [:fish_type, :something_else, properties: [], information: [:name, :history], reviews_attributes: [:body, :user_id]]
 
+  self.show_controls = -> do
+    back_button label: "", title: "Go back now"
+    link_to "Fish.com", "https://fish.com", icon: "heroicons/outline/academic-cap", target: :_blank
+    link_to "Turbo demo", "/avo/resources/fish/#{params[:id]}?change_to=🚀🚀🚀 I told you it will change 🚀🚀🚀",
+      class: ".custom-class",
+      data: {
+        turbo_frame: "fish_custom_action_demo"
+      }
+    delete_button label: "", title: "something"
+    detach_button label: "", title: "something"
+    actions_list exclude: [ReleaseFish], style: :primary, color: :slate, label: "Runnables"
+    action ReleaseFish, style: :primary, color: :fuchsia, icon: "heroicons/outline/globe"
+    edit_button label: ""
+  end
+
   field :id, as: :id
   field :name, as: :text
   field :type, as: :text, hide_on: :forms
-  field :reviews, as: :has_many
 
   tool NestedFishReviews, only_on: :new
   tool FishInformation, show_on: :forms
+
+  field :reviews, as: :has_many
 
   tabs style: :big_pills do
     tab "big useless tab here" do
