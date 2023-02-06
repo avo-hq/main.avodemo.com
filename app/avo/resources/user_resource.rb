@@ -85,7 +85,8 @@ class UserResource < Avo::BaseResource
           picker_format: "F J Y",
           format: "DDDD",
           placeholder: "Feb 24th 1955",
-          required: true
+          required: true,
+          default: Date.current
       end
     end
 
