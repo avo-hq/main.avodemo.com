@@ -1,4 +1,4 @@
-class PostResource < Avo::BaseResource
+class Avo::Resources::Post < Avo::BaseResource
   self.title = :name
   self.search_query = -> do
     scope.ransack(id_eq: params[:q], name_cont: params[:q], body_cont: params[:q], m: "or").result(distinct: false)
@@ -35,7 +35,7 @@ class PostResource < Avo::BaseResource
     ""
   end
 
-  field :is_featured, as: :boolean, visible: -> (resource:) { context[:user].admin? }
+  field :is_featured, as: :boolean, visible: -> { context[:user].admin? }
   field :is_published, as: :boolean do |model|
     model.published_at.present?
   end
@@ -59,8 +59,8 @@ class PostResource < Avo::BaseResource
     end
   end
 
-  filter FeaturedFilter
-  filter PublishedFilter
+  filter Avo::Filters::Featured
+  filter Avo::Filters::Published
 
-  action TogglePublished
+  action Avo::Actions::TogglePublished
 end

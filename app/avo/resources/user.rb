@@ -1,4 +1,4 @@
-class UserResource < Avo::BaseResource
+class Avo::Resources::User < Avo::BaseResource
   self.title = :name
   self.description = -> {
     "Users of the app. view: #{view}"
@@ -7,9 +7,9 @@ class UserResource < Avo::BaseResource
   self.search_query = -> do
     scope.order(created_at: :desc).ransack(id_eq: params[:q], first_name_cont: params[:q], last_name_cont: params[:q], m: "or").result(distinct: false)
   end
-  self.resolve_query_scope = ->(model_class:) do
-    model_class.order(last_name: :asc)
-  end
+  # self.resolve_query_scope = ->(model_class:) do
+  #   model_class.order(last_name: :asc)
+  # end
   self.resolve_find_scope = ->(model_class:) do
     model_class.friendly
   end
@@ -19,7 +19,7 @@ class UserResource < Avo::BaseResource
   field :id, as: :id, link_to_resource: true
   field :email, as: :gravatar, link_to_resource: true, as_avatar: :circle, only_on: :index
   heading "User Information"
-  field :first_name, as: :text, placeholder: "John", stacked: true
+  field :first_name, as: :text, placeholder: "John", stacked: true, filterable: true
   field :last_name, as: :text, placeholder: "Doe"
   field :email, as: :text, name: "User Email", required: true, protocol: :mailto
   field :active, as: :boolean, name: "Is active", only_on: :index
@@ -121,11 +121,11 @@ class UserResource < Avo::BaseResource
     body :url, as: :text
   end
 
-  action DummyAction
+  action Avo::Actions::Dummy
 
-  filter UserNamesFilter
-  filter IsAdmin
-  filter DummyMultipleSelectFilter
+  filter Avo::Filters::UserNames
+  filter Avo::Filters::IsAdmin
+  filter Avo::Filters::DummyMultipleSelect
 
-  tool UserTool
+  tool Avo::ResourceTools::UserTool
 end

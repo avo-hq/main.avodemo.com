@@ -1,4 +1,4 @@
-class ReleaseFish < Avo::BaseAction
+class Avo::Actions::ReleaseFish < Avo::BaseAction
   self.name = "Release fish"
   self.message = "Are you sure you want to release this fish?"
 

@@ -1,4 +1,4 @@
-class PublishedFilter < Avo::Filters::SelectFilter
+class Avo::Filters::Published < Avo::Filters::SelectFilter
   self.name = 'Published status'
 
   def apply(request, query, value)

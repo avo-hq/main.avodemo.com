@@ -1,4 +1,4 @@
-class ToggleActive < Avo::BaseAction
+class Avo::Actions::ToggleActive < Avo::BaseAction
   self.name ='Toggle active'
 
   field :notify_user, as: :boolean

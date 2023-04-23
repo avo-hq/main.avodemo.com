@@ -1,4 +1,4 @@
-class CommentResource < Avo::BaseResource
+class Avo::Resources::Comment < Avo::BaseResource
   self.title = :tiny_name
   self.includes = []
   self.description = 'Demo resource to illustrate Avo\'s Polymorphic BelongsTo support (Comment is commentable to Post and Project)'

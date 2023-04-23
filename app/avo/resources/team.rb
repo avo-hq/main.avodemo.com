@@ -1,4 +1,4 @@
-class TeamResource < Avo::BaseResource
+class Avo::Resources::Team < Avo::BaseResource
   self.title = :name
   self.includes = [:admin, :team_members]
   self.search_query = -> do
@@ -57,7 +57,7 @@ class TeamResource < Avo::BaseResource
     end
   end
 
-  filter NameFilter
+  filter Avo::Filters::Name
 
-  action DummyAction
+  action Avo::Actions::Dummy
 end

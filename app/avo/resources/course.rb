@@ -1,4 +1,4 @@
-class CourseResource < Avo::BaseResource
+class Avo::Resources::Course < Avo::BaseResource
   self.title = :name
   self.includes = []
   self.description = 'Demo resource to illustrate Avo\'s nested (namespaced) model support (Course has_many Course::Link)'
@@ -67,6 +67,6 @@ class CourseResource < Avo::BaseResource
   field :links, as: :has_many, searchable: true, placeholder: "Click to choose a link",
     discreet_pagination: true
 
-  filter CourseCountryFilter
-  filter CourseCityFilter
+  filter Avo::Filters::CourseCountry
+  filter Avo::Filters::CourseCity
 end

@@ -87,10 +87,28 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem 'avo'
-# gem 'avo', '2.21.1.pre.pr1476'
+# gem 'avo'
+# gem 'avo', '2.30'
 # gem 'avo', git: 'https://github.com/Paul-Bob/avo', branch: 'fix/secret_key_base'
-# gem 'avo', path: '.'
+# gem 'avo', path: '/Users/adrian/work/avocado/gems/avo'
+# gem 'avo_pro', path: '/Users/adrian/work/avocado/gems/avo_pro'
+# gem 'avo', '2.28.2.pre.pr1642'
+# source "https://rubygems.pkg.github.com/avo-hq" do
+#   gem "avo", "3.0.0.pre3"
+#   gem "avo_pro"
+#   gem "avo_advanced"
+#   gem "avo_filters"
+#   gem "avo_menu"
+#   gem "avo_dashboards"
+# end
+
+# gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
+gem "avo", path: "./avo"
+gem "avo_pro", path: "/Users/adrian/work/avocado/gems/avo_pro"
+gem "avo_advanced", path: "/Users/adrian/work/avocado/gems/avo_advanced"
+gem "avo_filters", path: "/Users/adrian/work/avocado/gems/avo_filters"
+gem "avo_menu", path: "/Users/adrian/work/avocado/gems/avo_menu"
+gem "avo_dashboards", path: "/Users/adrian/work/avocado/gems/avo_dashboards"
 
 gem 'newrelic_rpm'
 
@@ -115,3 +133,4 @@ gem 'chartkick'
 gem 'countries'
 gem 'sprockets'
 gem 'activestorage'
+gem 'mapkick-rb'

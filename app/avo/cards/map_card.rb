@@ -1,4 +1,4 @@
-class MapCard < Avo::Dashboards::PartialCard
+class Avo::Cards::MapCard < AvoDashboards::PartialCard
   self.id = "map_card"
   self.label = "Map card"
   self.partial = "avo/cards/map_card"

@@ -1,4 +1,4 @@
-class FishResource < Avo::BaseResource
+class Avo::Resources::Fish < Avo::BaseResource
   self.title = :name
   self.includes = []
   self.description = 'Demo resource to illustrate Avo\'s support for uncountable models (the model represented here is Fish) and nested records on new view'
@@ -17,8 +17,8 @@ class FishResource < Avo::BaseResource
       }
     delete_button label: "", title: "something"
     detach_button label: "", title: "something"
-    actions_list exclude: [ReleaseFish], style: :primary, color: :slate, label: "Runnables"
-    action ReleaseFish, style: :primary, color: :fuchsia, icon: "heroicons/outline/globe"
+    actions_list exclude: [Avo::Actions::ReleaseFish], style: :primary, color: :slate, label: "Runnables"
+    action Avo::Actions::ReleaseFish, style: :primary, color: :fuchsia, icon: "heroicons/outline/globe"
     edit_button label: ""
   end
 
@@ -26,8 +26,8 @@ class FishResource < Avo::BaseResource
   field :name, as: :text
   field :type, as: :text, hide_on: :forms
 
-  tool NestedFishReviews, only_on: :new
-  tool FishInformation, show_on: :forms
+  tool Avo::ResourceTools::NestedFishReviews, only_on: :new
+  tool Avo::ResourceTools::FishInformation, show_on: :forms
 
   field :reviews, as: :has_many
 
@@ -81,6 +81,6 @@ class FishResource < Avo::BaseResource
     end
   end
 
-  action ReleaseFish
-  action DummyAction
+  action Avo::Actions::ReleaseFish
+  action Avo::Actions::Dummy
 end
