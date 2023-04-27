@@ -115,3 +115,4 @@ gem 'chartkick'
 gem 'countries'
 gem 'sprockets'
 gem 'activestorage'
+gem 'avo_upgrade', path: "/Users/adrian/work/avocado/gems/avo_upgrade"
