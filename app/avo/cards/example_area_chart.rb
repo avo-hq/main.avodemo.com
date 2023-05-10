@@ -1,4 +1,4 @@
-class ExampleAreaChart < Avo::Dashboards::ChartkickCard
+class Avo::Cards::ExampleAreaChart < AvoDashboards::ChartkickCard
   self.id = "user_signups"
   self.label = "User signups"
   self.chart_type = :area_chart
@@ -14,7 +14,7 @@ class ExampleAreaChart < Avo::Dashboards::ChartkickCard
   # self.scale = false
   # self.legend_on_left = true
 
-  query do
+  def query
     data = 3.times.map do |index|
       {
         name: "Batch #{index}",

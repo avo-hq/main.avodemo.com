@@ -1,4 +1,4 @@
-class CourseLinkResource < Avo::BaseResource
+class Avo::Resources::CourseLink < Avo::BaseResource
   self.title = :link
   self.includes = [:course]
   self.description = 'Demo resource to illustrate Avo\'s nested (namespaced) model support (the model represented here is Course::Link)'
@@ -18,17 +18,19 @@ class CourseLinkResource < Avo::BaseResource
     }
   }
 
-  field :id, as: :id
-  field :link, as: :text, help: "Hehe. Something helpful."
-  field :enable_course, as: :boolean, only_on: :forms, html: {
-    edit: {
-      input: {
-        data: {
-          action: "resource-edit#disable",
-          resource_edit_disable_target_param: "courseBelongsToWrapper"
+  def fields
+    field :id, as: :id
+    field :link, as: :text, help: "Hehe. Something helpful."
+    field :enable_course, as: :boolean, only_on: :forms, html: {
+      edit: {
+        input: {
+          data: {
+            action: "resource-edit#disable",
+            resource_edit_disable_target_param: "courseBelongsToWrapper"
+          }
         }
       }
     }
-  }
-  field :course, as: :belongs_to, searchable: true
+    field :course, as: :belongs_to, searchable: true
+  end
 end
