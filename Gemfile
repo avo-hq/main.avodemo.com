@@ -94,21 +94,23 @@ gem "awesome_print"
 # gem 'avo_pro', path: '/Users/adrian/work/avocado/gems/avo_pro'
 # gem 'avo', '2.28.2.pre.pr1642'
 # source "https://rubygems.pkg.github.com/avo-hq" do
-#   gem "avo", "3.0.0.pre3"
-#   gem "avo_pro"
-#   gem "avo_advanced"
-#   gem "avo_filters"
-#   gem "avo_menu"
-#   gem "avo_dashboards"
-# end
+# source "https://heheheh@packager.dev/avo" do
+# gem "avo", path: "./avo"
+source "https://#{ENV['AVO_GEM_TOKEN']}@packager.fly.dev/avo-hq-beta/" do
+  gem "avo", "3.0.0.pre.6"
+  gem "avo_pro"
+  gem "avo_advanced"
+  gem "avo_filters"
+  gem "avo_menu"
+  gem "avo_dashboards"
+end
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
-gem "avo", path: "./avo"
-gem "avo_pro", path: "/Users/adrian/work/avocado/gems/avo_pro"
-gem "avo_advanced", path: "/Users/adrian/work/avocado/gems/avo_advanced"
-gem "avo_filters", path: "/Users/adrian/work/avocado/gems/avo_filters"
-gem "avo_menu", path: "/Users/adrian/work/avocado/gems/avo_menu"
-gem "avo_dashboards", path: "/Users/adrian/work/avocado/gems/avo_dashboards"
+# gem "avo_pro", path: "/Users/adrian/work/avocado/gems/avo_pro"
+# gem "avo_advanced", path: "/Users/adrian/work/avocado/gems/avo_advanced"
+# gem "avo_filters", path: "/Users/adrian/work/avocado/gems/avo_filters"
+# gem "avo_menu", path: "/Users/adrian/work/avocado/gems/avo_menu"
+# gem "avo_dashboards", path: "/Users/adrian/work/avocado/gems/avo_dashboards"
 
 gem 'newrelic_rpm'
 

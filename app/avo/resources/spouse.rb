@@ -7,6 +7,8 @@ class Avo::Resources::Spouse < Avo::BaseResource
     scope.ransack(id_eq: params[:q], name_cont: params[:q], m: "or").result(distinct: false)
   end
 
-  field :id, as: :id
-  field :name, as: :text
+  def fields
+    field :id, as: :id
+    field :name, as: :text
+  end
 end

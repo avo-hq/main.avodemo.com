@@ -6,14 +6,16 @@ class Avo::Resources::Comment < Avo::BaseResource
     scope.ransack(id_eq: params[:q], body_cont: params[:q], m: "or").result(distinct: false)
   end
 
-  field :id, as: :id
-  field :body, as: :textarea
-  field :excerpt, as: :text, show_on: :index, as_description: true do |model|
-    ActionView::Base.full_sanitizer.sanitize(model.body).truncate 60
-  rescue
-    ""
-  end
+  def fields
+    field :id, as: :id
+    field :body, as: :textarea
+    field :excerpt, as: :text, show_on: :index, as_description: true do |model|
+      ActionView::Base.full_sanitizer.sanitize(model.body).truncate 60
+    rescue
+      ""
+    end
 
-  field :user, as: :belongs_to
-  field :commentable, as: :belongs_to, polymorphic_as: :commentable, types: [::Post, ::Project]
+    field :user, as: :belongs_to
+    field :commentable, as: :belongs_to, polymorphic_as: :commentable, types: [::Post, ::Project]
+  end
 end
