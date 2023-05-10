@@ -1,4 +1,4 @@
-class NameFilter < Avo::Filters::TextFilter
+class Avo::Filters::Name < Avo::Filters::TextFilter
   self.name = "Name filter"
   self.button_label = "Filter by name"
 

@@ -1,4 +1,4 @@
-class ExampleCustomPartial < Avo::Dashboards::PartialCard
+class Avo::Cards::ExampleCustomPartial < AvoDashboards::PartialCard
   self.id = "users_custom_card"
   self.cols = 1
   self.rows = 4

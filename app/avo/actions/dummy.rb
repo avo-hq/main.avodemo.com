@@ -1,4 +1,4 @@
-class DummyAction < Avo::BaseAction
+class Avo::Actions::Dummy < Avo::BaseAction
   self.name = "Dummy action"
   self.standalone = true
   self.visible = -> { view == :index }

@@ -1,4 +1,4 @@
-class ExampleBarChart < Avo::Dashboards::ChartkickCard
+class Avo::Cards::ExampleBarChart < AvoDashboards::ChartkickCard
   self.id = "example_bar_chart"
   self.label = "Example bar chart"
   self.chart_type = :bar_chart
@@ -8,7 +8,7 @@ class ExampleBarChart < Avo::Dashboards::ChartkickCard
   self.scale = true
   self.legend_on_left = true
 
-  query do
+  def query
     data = 2.times.map do |index|
       {
         name: "Batch #{index}",
