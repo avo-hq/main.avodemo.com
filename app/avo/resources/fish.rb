@@ -10,7 +10,7 @@ class Avo::Resources::Fish < Avo::BaseResource
   self.show_controls = -> do
     back_button label: "", title: "Go back now"
     link_to "Fish.com", "https://fish.com", icon: "heroicons/outline/academic-cap", target: :_blank
-    link_to "Turbo demo", "/admin/resources/fish/#{params[:id]}?change_to=🚀🚀🚀 I told you it will change 🚀🚀🚀",
+    link_to "Turbo demo", "/avo/resources/fish/#{params[:id]}?change_to=🚀🚀🚀 I told you it will change 🚀🚀🚀",
       class: ".custom-class",
       data: {
         turbo_frame: "fish_custom_action_demo"
