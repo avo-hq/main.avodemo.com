@@ -5,13 +5,10 @@ class Avo::Resources::User < Avo::BaseResource
   }
   self.translation_key = "avo.resource_translations.user"
   self.search_query = -> do
-    scope.order(created_at: :desc).ransack(id_eq: params[:q], first_name_cont: params[:q], last_name_cont: params[:q], m: "or").result(distinct: false)
+    query.order(created_at: :desc).ransack(id_eq: params[:q], first_name_cont: params[:q], last_name_cont: params[:q], m: "or").result(distinct: false)
   end
-  # self.resolve_query_scope = ->(model_class:) do
-  #   model_class.order(last_name: :asc)
-  # end
-  self.resolve_find_scope = -> do
-    model_class.friendly
+  self.find_record_method = -> do
+    query.friendly.find id
   end
   self.includes = [:posts, :post]
   self.devise_password_optional = true
@@ -27,8 +24,8 @@ class Avo::Resources::User < Avo::BaseResource
     field :cv, as: :file, name: "CV"
     field :is_admin?, as: :boolean, name: "Is admin", only_on: :index
     field :roles, as: :boolean_group, options: {admin: "Administrator", manager: "Manager", writer: "Writer"}
-    field :roles, as: :text, hide_on: :all, as_description: true do |model, resource, view, field|
-      "This user has the following roles: #{model.roles.select { |key, value| value }.keys.join(", ")}"
+    field :roles, as: :text, hide_on: :all do
+      "This user has the following roles: #{record.roles.select { |key, value| value }.keys.join(", ")}"
     end
     field :birthday,
       as: :date,
@@ -44,8 +41,8 @@ class Avo::Resources::User < Avo::BaseResource
         # Order by something else completely, just to make a test case that clearly and reliably does what we want.
         query.order(id: direction)
       },
-      hide_on: :edit do |model, resource, view, field|
-        model.posts.to_a.size > 0 ? "yes" : "no"
+      hide_on: :edit do
+        (record.posts.to_a.size > 0) ? "yes" : "no"
       end
 
     field :password, as: :password, name: "User Password", required: false, except_on: :forms, help: 'You may verify the password strength <a href="http://www.passwordmeter.com/" target="_blank">here</a>.'
@@ -68,10 +65,10 @@ class Avo::Resources::User < Avo::BaseResource
         required: true,
         only_on: [:show]
       field :is_writer, as: :text,
-        hide_on: :edit do |model, resource, view, field|
-          model.posts.to_a.size > 0 ? "yes" : "no"
+        hide_on: :edit do
+          (record.posts.to_a.size > 0) ? "yes" : "no"
         end
-      field :outside_link, as: :text, only_on: [:show], format_using: ->(url) { link_to("hey", url, target: "_blank") } do |model, *args|
+      field :outside_link, as: :text, only_on: [:show], format_using: -> { link_to("hey", value, target: "_blank") } do
         main_app.hey_url
       end
       field :custom_css, as: :code, theme: "dracula", language: "css", help: "This enables you to edit the user's custom styles.", height: "250px"
@@ -130,4 +127,6 @@ class Avo::Resources::User < Avo::BaseResource
   filter Avo::Filters::UserNames
   filter Avo::Filters::IsAdmin
   filter Avo::Filters::DummyMultipleSelect
+
+  scopes Avo::Scopes::OddId, Avo::Scopes::EvenId, Avo::Scopes::Admins, Avo::Scopes::NonAdmins, Avo::Scopes::Active
 end

@@ -97,7 +97,7 @@ gem "awesome_print"
 # source "https://heheheh@packager.dev/avo" do
 # gem "avo", path: "./avo"
 source "https://#{ENV['AVO_GEM_TOKEN']}@packager.fly.dev/avo-hq-beta/" do
-  gem "avo", "3.0.0.pre.6"
+  gem "avo", "3.0.0.pre.11"
   gem "avo_pro"
   gem "avo_advanced"
   gem "avo_filters"
@@ -111,6 +111,10 @@ end
 # gem "avo_filters", path: "/Users/adrian/work/avocado/gems/avo_filters"
 # gem "avo_menu", path: "/Users/adrian/work/avocado/gems/avo_menu"
 # gem "avo_dashboards", path: "/Users/adrian/work/avocado/gems/avo_dashboards"
+
+group :development do
+  gem "avo_upgrade", path: "/Users/adrian/work/avocado/gems/avo_upgrade"
+end
 
 gem 'newrelic_rpm'
 

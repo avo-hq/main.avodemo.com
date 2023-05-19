@@ -3,14 +3,14 @@ class Avo::Resources::Comment < Avo::BaseResource
   self.includes = []
   self.description = 'Demo resource to illustrate Avo\'s Polymorphic BelongsTo support (Comment is commentable to Post and Project)'
   self.search_query = -> do
-    scope.ransack(id_eq: params[:q], body_cont: params[:q], m: "or").result(distinct: false)
+    query.ransack(id_eq: params[:q], body_cont: params[:q], m: "or").result(distinct: false)
   end
 
   def fields
     field :id, as: :id
     field :body, as: :textarea
-    field :excerpt, as: :text, show_on: :index, as_description: true do |model|
-      ActionView::Base.full_sanitizer.sanitize(model.body).truncate 60
+    field :excerpt, as: :text, show_on: :index, as_description: true do
+      ActionView::Base.full_sanitizer.sanitize(record.body).truncate 60
     rescue
       ""
     end

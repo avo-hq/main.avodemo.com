@@ -3,7 +3,7 @@ class Avo::Resources::Fish < Avo::BaseResource
   self.includes = []
   self.description = 'Demo resource to illustrate Avo\'s support for uncountable models (the model represented here is Fish) and nested records on new view'
   self.search_query = -> do
-    scope.ransack(id_eq: params[:q], name_cont: params[:q], m: "or").result(distinct: false)
+    query.ransack(id_eq: params[:q], name_cont: params[:q], m: "or").result(distinct: false)
   end
   self.extra_params = [:fish_type, :something_else, properties: [], information: [:name, :history], reviews_attributes: [:body, :user_id]]
 
@@ -41,8 +41,7 @@ class Avo::Resources::Fish < Avo::BaseResource
   end
 
   self.row_controls = -> do
-    action Avo::Actions::ReleaseFish, label: "Release #{record.name}", style: :primary, color: :blue,
-      icon: "heroicons/outline/hand-raised" unless params[:view_type] == "grid"
+    action Avo::Actions::ReleaseFish, label: "Release #{record.name}", style: :primary, color: :blue, icon: "heroicons/outline/hand-raised" unless params[:view_type] == "grid"
     edit_button title: "Edit this Fish now!"
     show_button title: "Show this Fish now!"
     delete_button title: "Delete this Fish now!", confirmation_message: "Are you sure you want to delete this Fish?"

@@ -19,4 +19,8 @@ class Comment < ApplicationRecord
   def tiny_name
     ActionView::Base.full_sanitizer.sanitize(body).truncate 30
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["body", "commentable_id", "commentable_type", "created_at", "id", "updated_at", "user_id"]
+  end
 end

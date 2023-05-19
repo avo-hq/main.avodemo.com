@@ -40,4 +40,8 @@ class Course < ApplicationRecord
       Thailand: ["Chiang Mai", "Bangkok", "Phuket"]
     }
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["city", "country", "created_at", "id", "name", "skills", "updated_at"]
+  end
 end

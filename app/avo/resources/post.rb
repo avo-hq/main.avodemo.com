@@ -1,7 +1,7 @@
 class Avo::Resources::Post < Avo::BaseResource
   self.title = :name
   self.search_query = -> do
-    scope.ransack(id_eq: params[:q], name_cont: params[:q], body_cont: params[:q], m: "or").result(distinct: false)
+    query.ransack(id_eq: params[:q], name_cont: params[:q], body_cont: params[:q], m: "or").result(distinct: false)
   end
   self.search_query_help = "- search by id, name or body"
   self.includes = [:user]
@@ -30,15 +30,15 @@ class Avo::Resources::Post < Avo::BaseResource
     field :cover_photo, as: :file, is_image: true, as_avatar: :rounded, hide_on: [:index], full_width: true, accept: "image/*"
     field :cdn_cover_photo, as: :external_image, name: 'Cover photo', required: true, only_on: [:index], link_to_resource: true, as_avatar: :rounded
     field :audio, as: :file, is_audio: true, accept: "audio/*"
-    field :excerpt, as: :text, hide_on: :all, as_description: true do |model|
-      ActionView::Base.full_sanitizer.sanitize(model.body).truncate 130
+    field :excerpt, as: :text, hide_on: :all, as_description: true do
+      ActionView::Base.full_sanitizer.sanitize(record.body).truncate 130
     rescue
       ""
     end
 
     field :is_featured, as: :boolean, visible: -> { context[:user].admin? }
-    field :is_published, as: :boolean do |model|
-      model.published_at.present?
+    field :is_published, as: :boolean do
+      record.published_at.present?
     end
     heading '<div class="text-gray-300 uppercase font-bold">DEV</div>', as_html: true
     field :user, as: :belongs_to, meta: { searchable: false }, placeholder: '—'
@@ -52,9 +52,9 @@ class Avo::Resources::Post < Avo::BaseResource
     cover :cover_photo, as: :file, is_image: true, link_to_resource: true
     # cover :cdn_cover_photo, as: :external_image, link_to_resource: true
     title :name, as: :text, required: true, link_to_resource: true
-    body :excerpt, as: :text do |model|
+    body :excerpt, as: :text do
       begin
-        ActionView::Base.full_sanitizer.sanitize(model.body).truncate 130
+        ActionView::Base.full_sanitizer.sanitize(record.body).truncate 130
       rescue => exception
         ''
       end

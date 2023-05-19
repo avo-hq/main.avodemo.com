@@ -110,3 +110,10 @@ Avo.configure do |config|
     link "Dashboard", path: "/avo/dashboards/dashy", icon: "user-circle"
   }
 end
+
+if defined?(AvoFilters)
+  AvoFilters.configure do |config|
+    config.button_label = "Advanced filters"
+    config.always_expanded = true
+  end
+end

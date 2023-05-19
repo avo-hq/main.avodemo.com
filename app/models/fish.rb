@@ -36,4 +36,8 @@ class Fish < ApplicationRecord
     # properties should be a hash
     puts ["information in the Fish model->", value].inspect
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "id", "name", "type", "updated_at", "user_id"]
+  end
 end
