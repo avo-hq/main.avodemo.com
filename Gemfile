@@ -105,6 +105,7 @@ source "https://#{ENV['AVO_GEM_TOKEN']}@packager.fly.dev/avo-hq-beta/" do
   gem "avo_dashboards"
 end
 
+
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo_pro", path: "/Users/adrian/work/avocado/gems/avo_pro"
 # gem "avo_advanced", path: "/Users/adrian/work/avocado/gems/avo_advanced"
@@ -140,3 +141,5 @@ gem 'countries'
 gem 'sprockets'
 gem 'activestorage'
 gem 'mapkick-rb'
+
+gem "dockerfile-rails", ">= 1.3", :group => :development
