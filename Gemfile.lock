@@ -1,14 +1,7 @@
-PATH
-  remote: /Users/adrian/work/avocado/gems/avo_upgrade
-  specs:
-    avo_upgrade (0.1.0)
-      rails (>= 6.0.0)
-      zeitwerk
-
 GEM
-  remote: https://a1c254a4-6687-4523-bcf2-cd3dfca2b1cf@packager.fly.dev/avo-hq-beta/
+  remote: https://packager.fly.dev/avo-hq-beta/
   specs:
-    avo (3.0.0.pre11)
+    avo (3.0.0.pre12)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -252,13 +245,13 @@ GEM
       net-protocol
     newrelic_rpm (8.6.0)
     nio4r (2.5.9)
-    nokogiri (1.15.0-aarch64-linux)
+    nokogiri (1.15.1-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.15.0-arm64-darwin)
+    nokogiri (1.15.1-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.0-x86_64-darwin)
+    nokogiri (1.15.1-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.0-x86_64-linux)
+    nokogiri (1.15.1-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pagy (6.0.4)
@@ -380,13 +373,12 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo (= 3.0.0.pre.11)!
+  avo (= 3.0.0.pre.12)!
   avo_advanced!
   avo_dashboards!
   avo_filters!
   avo_menu!
   avo_pro!
-  avo_upgrade!
   awesome_print
   aws-sdk-s3
   bootsnap
