@@ -13,6 +13,9 @@
     "RAILS_MASTER_KEY": {
       "description": "Secret key for decrypting Rails credentials. You can find it at: config/credentials/production.key"
     },
+    "BUNDLE_PACKAGER__DEV": {
+      "description": "Secret key for decrypting Rails credentials. You can find it at: config/credentials/production.key"
+    },
     "RAILS_ENV": {
       "description": "The Rails environment to run: production or staging",
       "value": "production"
