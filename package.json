@@ -12,10 +12,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/avo-hq/avodemo.git"
-  },
+  "repository": "git+https://github.com/avo-hq/avodemo.git",
   "author": "Adrian Marin <adrian@adrianthedev.com>",
   "license": "ISC",
   "bugs": {
@@ -24,7 +21,7 @@
   "homepage": "https://github.com/avo-hq/avodemo#readme",
   "private": true,
   "engines": {
-    "node": "12.x",
+    "node": "14.x",
     "npm": "6.x",
     "yarn": "1.x"
   }

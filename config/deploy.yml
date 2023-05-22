@@ -1,0 +1,98 @@
+# Name of your application. Used to uniquely configure containers.
+service: main.avodemo.com
+
+# Name of the container image.
+image: adrianthedev/avodemo
+
+# Deploy to these servers.
+servers:
+  # - 67.205.183.129
+  - 64.226.113.85
+
+# Credentials for your image host.
+registry:
+  # Specify the registry server, if you're not using Docker Hub
+  # server: registry.digitalocean.com / ghcr.io / ...
+  username: adrianthedev
+
+  # Always use an access token rather than real password when possible.
+  password:
+    - MRSK_REGISTRY_PASSWORD
+
+# Inject ENV variables into containers (secrets come from .env).
+env:
+  # clear:
+  #   DB_HOST: 192.168.0.2
+  secret:
+    - APPSIGNAL_PUSH_API_KEY
+    - AVO_LICENSE_KEY
+    - AWS_ACCESS_KEY_ID
+    - AWS_REGION
+    - AWS_S3_BUCKET
+    - AWS_SECRET_ACCESS_KEY
+    - BUGSNAG_API_KEY
+    - CDN_URL
+    - DATABASE_URL
+    - NEW_RELIC_LICENSE_KEY
+    - NEW_RELIC_LOG
+    - RACK_ENV
+    - RAILS_ENV
+    - RAILS_LOG_TO_STDOUT
+    - RAILS_MASTER_KEY
+    - RAILS_SERVE_STATIC_FILES
+    - REDIS_TLS_URL
+    - REDIS_URL
+    - SECRET_KEY_BASE
+
+# Call a broadcast command on deploys.
+# audit_broadcast_cmd:
+#   bin/broadcast_to_bc
+
+# Use a different ssh user than root
+# ssh:
+#   user: app
+
+# Configure builder setup.
+builder:
+#   args:
+#     RUBY_VERSION: 3.2.0
+  secrets:
+    - RAILS_MASTER_KEY
+    - AVO_GEM_TOKEN
+#   remote:
+#     arch: amd64
+#     host: ssh://app@192.168.0.1
+
+# Use accessory services (secrets come from .env).
+# accessories:
+#   db:
+#     image: mysql:8.0
+#     host: 192.168.0.2
+#     port: 3306
+#     env:
+#       clear:
+#         MYSQL_ROOT_HOST: '%'
+#       secret:
+#         - MYSQL_ROOT_PASSWORD
+#     files:
+#       - config/mysql/production.cnf:/etc/mysql/my.cnf
+#       - db/production.sql.erb:/docker-entrypoint-initdb.d/setup.sql
+#     directories:
+#       - data:/var/lib/mysql
+#   redis:
+#     image: redis:7.0
+#     host: 192.168.0.2
+#     port: 6379
+#     directories:
+#       - data:/data
+
+# Configure custom arguments for Traefik
+# traefik:
+#   args:
+#     accesslog: true
+#     accesslog.format: json
+
+# Configure a custom healthcheck (default is /up on port 3000)
+# healthcheck:
+#   path: /checkcheckcheck
+#   port: 3000
