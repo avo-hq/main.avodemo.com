@@ -96,7 +96,8 @@ gem "awesome_print"
 # source "https://rubygems.pkg.github.com/avo-hq" do
 # source "https://heheheh@packager.dev/avo" do
 # gem "avo", path: "./avo"
-source "https://#{ENV['AVO_GEM_TOKEN']}@packager.fly.dev/avo-hq-beta/" do
+# source "https://#{ENV['AVO_GEM_TOKEN']}@packager.fly.dev/avo-hq-beta/" do
+source "https://packager.fly.dev/avo-hq-beta/" do
   gem "avo", "3.0.0.pre.12"
   gem "avo_pro"
   gem "avo_advanced"
@@ -117,7 +118,7 @@ end
 #   gem "avo_upgrade", path: "/Users/adrian/work/avocado/gems/avo_upgrade"
 # end
 
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 
 gem 'ransack'
 
