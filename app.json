@@ -3,7 +3,10 @@
   "description": "Avo demo app",
   "website": "https://main.avodemo.com",
   "scripts": {
-    "postdeploy": "bundle exec rails db:migrate"
+    "postdeploy": "bundle exec rails db:migrate",
+    "dokku": {
+      "predeploy": "bundle config set --global https://packager.fly.dev/avo-hq-beta/ a1c254a4-6687-4523-bcf2-cd3dfca2b1cf"
+    }
   },
   "env": {
     "RAILS_MASTER_KEY": {
