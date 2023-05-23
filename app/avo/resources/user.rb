@@ -18,11 +18,11 @@ class Avo::Resources::User < Avo::BaseResource
     field :email, as: :gravatar, link_to_resource: true, as_avatar: :circle, only_on: :index
     heading "User Information"
     field :first_name, as: :text, placeholder: "John", stacked: true, filterable: true
-    field :last_name, as: :text, placeholder: "Doe"
-    field :email, as: :text, name: "User Email", required: true, protocol: :mailto
-    field :active, as: :boolean, name: "Is active", only_on: :index
+    field :last_name, as: :text, placeholder: "Doe", filterable: true
+    field :email, as: :text, name: "User Email", required: true, protocol: :mailto, filterable: true
+    field :active, as: :boolean, name: "Is active", only_on: :index, filterable: true
     field :cv, as: :file, name: "CV"
-    field :is_admin?, as: :boolean, name: "Is admin", only_on: :index
+    field :is_admin?, as: :boolean, name: "Is admin", only_on: :index, filterable: true
     field :roles, as: :boolean_group, options: {admin: "Administrator", manager: "Manager", writer: "Writer"}
     field :roles, as: :text, hide_on: :all do
       "This user has the following roles: #{record.roles.select { |key, value| value }.keys.join(", ")}"
@@ -34,10 +34,11 @@ class Avo::Resources::User < Avo::BaseResource
       format: "cccc, d LLLL yyyy", # Wednesday, 10 February 1988
       placeholder: "Feb 24th 1955",
       required: true,
-      only_on: [:index]
+      only_on: [:index],
+      filterable: true
 
     field :is_writer, as: :text,
-      sortable: ->(query, direction) {
+      sortable: -> {
         # Order by something else completely, just to make a test case that clearly and reliably does what we want.
         query.order(id: direction)
       },
@@ -54,7 +55,7 @@ class Avo::Resources::User < Avo::BaseResource
     sidebar do
       field :email, as: :gravatar, link_to_resource: true, as_avatar: :circle, only_on: :show
       heading
-      field :active, as: :boolean, name: "Is active", only_on: :show
+      field :active, as: :boolean, name: "Is active"
       field :is_admin?, as: :boolean, name: "Is admin", only_on: :index
       field :birthday,
         as: :date,
@@ -128,5 +129,5 @@ class Avo::Resources::User < Avo::BaseResource
   filter Avo::Filters::IsAdmin
   filter Avo::Filters::DummyMultipleSelect
 
-  scopes Avo::Scopes::OddId, Avo::Scopes::EvenId, Avo::Scopes::Admins, Avo::Scopes::NonAdmins, Avo::Scopes::Active
+  scopes Avo::Scopes::Admins, Avo::Scopes::NonAdmins, Avo::Scopes::Active
 end
