@@ -1,11 +1,29 @@
 class Avo::Resources::Post < Avo::BaseResource
   self.title = :name
-  self.search_query = -> do
-    query.ransack(id_eq: params[:q], name_cont: params[:q], body_cont: params[:q], m: "or").result(distinct: false)
-  end
-  self.search_query_help = "- search by id, name or body"
+  self.search = {
+    query: -> do
+      query.ransack(id_eq: params[:q], name_cont: params[:q], body_cont: params[:q], m: "or").result(distinct: false)
+    end,
+    search_query_help: "- search by id, name or body"
+  }
   self.includes = [:user]
   self.default_view_type = :grid
+
+  self.grid_view = {
+    card: -> do
+      body = begin
+        ActionView::Base.full_sanitizer.sanitize(record.body).truncate 130
+      rescue
+        ''
+      end
+      # abort main_app.url_for(record.cover_photo).inspect
+      {
+        cover_url: main_app.url_for(record.cover_photo),
+        title: record.name,
+        body:
+      }
+    end
+  }
 
   def fields
     field :id, as: :id
@@ -46,19 +64,6 @@ class Avo::Resources::Post < Avo::BaseResource
     field :status, as: :select, enum: ::Post.statuses
 
     field :comments, as: :has_many
-  end
-
-  grid do
-    cover :cover_photo, as: :file, is_image: true, link_to_resource: true
-    # cover :cdn_cover_photo, as: :external_image, link_to_resource: true
-    title :name, as: :text, required: true, link_to_resource: true
-    body :excerpt, as: :text do
-      begin
-        ActionView::Base.full_sanitizer.sanitize(record.body).truncate 130
-      rescue => exception
-        ''
-      end
-    end
   end
 
   filter Avo::Filters::Featured

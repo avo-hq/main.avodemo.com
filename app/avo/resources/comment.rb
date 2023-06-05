@@ -2,9 +2,11 @@ class Avo::Resources::Comment < Avo::BaseResource
   self.title = :tiny_name
   self.includes = []
   self.description = 'Demo resource to illustrate Avo\'s Polymorphic BelongsTo support (Comment is commentable to Post and Project)'
-  self.search_query = -> do
-    query.ransack(id_eq: params[:q], body_cont: params[:q], m: "or").result(distinct: false)
-  end
+  self.search = {
+    query: -> do
+      query.ransack(id_eq: params[:q], body_cont: params[:q], m: "or").result(distinct: false)
+    end
+  }
 
   def fields
     field :id, as: :id

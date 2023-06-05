@@ -2,9 +2,11 @@ class Avo::Resources::Fish < Avo::BaseResource
   self.title = :name
   self.includes = []
   self.description = 'Demo resource to illustrate Avo\'s support for uncountable models (the model represented here is Fish) and nested records on new view'
-  self.search_query = -> do
-    query.ransack(id_eq: params[:q], name_cont: params[:q], m: "or").result(distinct: false)
-  end
+  self.search = {
+    query: -> do
+      query.ransack(id_eq: params[:q], name_cont: params[:q], m: "or").result(distinct: false)
+    end
+  }
   self.extra_params = [:fish_type, :something_else, properties: [], information: [:name, :history], reviews_attributes: [:body, :user_id]]
 
   self.show_controls = -> do

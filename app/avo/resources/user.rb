@@ -4,14 +4,36 @@ class Avo::Resources::User < Avo::BaseResource
     "Users of the app. view: #{view}"
   }
   self.translation_key = "avo.resource_translations.user"
-  self.search_query = -> do
-    query.order(created_at: :desc).ransack(id_eq: params[:q], first_name_cont: params[:q], last_name_cont: params[:q], m: "or").result(distinct: false)
-  end
+  self.search = {
+    query: -> do
+      query.order(created_at: :desc).ransack(id_eq: params[:q], first_name_cont: params[:q], last_name_cont: params[:q], m: "or").result(distinct: false)
+    end
+  }
   self.find_record_method = -> do
     query.friendly.find id
   end
   self.includes = [:posts, :post]
   self.devise_password_optional = true
+
+  self.grid_view = {
+    card: -> do
+      md5 = Digest::MD5.hexdigest(record.email.strip.downcase)
+
+      options = {
+        default: "",
+        size: 340
+      }
+
+      query = options.map { |key, value| "#{key}=#{value}" }.join("&")
+
+      cover_url = URI::HTTPS.build(host: "www.gravatar.com", path: "/avatar/#{md5}", query: query).to_s
+
+      {
+        cover_url:,
+        title: record.name,
+      }
+    end
+  }
 
   def fields
     field :id, as: :id, link_to_resource: true
@@ -115,12 +137,6 @@ class Avo::Resources::User < Avo::BaseResource
     end
 
     tool Avo::ResourceTools::UserTool
-  end
-
-  grid do
-    cover :email, as: :gravatar, link_to_resource: true
-    title :name, as: :text, link_to_resource: true
-    body :url, as: :text
   end
 
   action Avo::Actions::Dummy
