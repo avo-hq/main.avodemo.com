@@ -87,7 +87,7 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem 'avo'
+gem 'avo', '2.33.3.pre.1'
 # gem 'avo', '2.21.1.pre.pr1476'
 # gem 'avo', git: 'https://github.com/Paul-Bob/avo', branch: 'fix/secret_key_base'
 # gem 'avo', path: '.'
