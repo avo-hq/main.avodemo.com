@@ -12,8 +12,4 @@
 #
 class Spouse < Person
   belongs_to :person, optional: true, inverse_of: :spouse
-
-  def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "id", "name", "person_id", "type", "updated_at", "user_id"]
-  end
 end

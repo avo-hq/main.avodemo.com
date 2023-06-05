@@ -28,9 +28,4 @@ class Project < ApplicationRecord
   has_many :comments, as: :commentable
   has_many :reviews, as: :reviewable
   has_and_belongs_to_many :users
-
-  def self.ransackable_attributes(auth_object = nil)
-    ["budget", "country", "created_at", "description", "id", "meta", "name", "progress", "stage", "started_at", "status", "updated_at", "users_required"]
-  end
-
 end

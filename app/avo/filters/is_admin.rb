@@ -1,4 +1,4 @@
-class Avo::Filters::IsAdmin < Avo::Filters::MultipleSelectFilter
+class IsAdmin < Avo::Filters::MultipleSelectFilter
   self.name = "Is admin"
 
   def apply(request, query, value)

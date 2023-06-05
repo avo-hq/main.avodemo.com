@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   # end
 
   get :checkcheckcheck, to: "home#check"
-  get "up" => "health#show", as: :rails_health_check
 end
 
 if defined? ::Avo

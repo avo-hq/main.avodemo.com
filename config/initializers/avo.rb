@@ -73,11 +73,9 @@ Avo.configure do |config|
       end
 
       group "People", collapsable: true do
-        # resource "UserResource", visible: -> do
-
-        # end
-        # authorize current_user, User, "index?", raise_exception: false
-        resource "User"
+        resource "UserResource", visible: -> do
+          authorize current_user, User, "index?", raise_exception: false
+        end
         resource :people
         resource :spouses
       end
@@ -109,11 +107,4 @@ Avo.configure do |config|
   config.profile_menu = -> {
     link "Dashboard", path: "/avo/dashboards/dashy", icon: "user-circle"
   }
-end
-
-if defined?(AvoFilters)
-  AvoFilters.configure do |config|
-    config.button_label = "Advanced filters"
-    config.always_expanded = true
-  end
 end

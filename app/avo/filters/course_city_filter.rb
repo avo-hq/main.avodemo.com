@@ -1,4 +1,4 @@
-class Avo::Filters::CourseCity < Avo::Filters::BooleanFilter
+class CourseCityFilter < Avo::Filters::BooleanFilter
   self.name = "Course city filter"
   # self.empty_message = "Please select a country to view options."
 

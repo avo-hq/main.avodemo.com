@@ -1,4 +1,4 @@
-class Avo::Cards::ExampleScatterChart < AvoDashboards::ChartkickCard
+class ExampleScatterChart < Avo::Dashboards::ChartkickCard
   self.id = "scatter"
   self.label = "Scatter"
   self.chart_type = :scatter_chart
@@ -9,7 +9,7 @@ class Avo::Cards::ExampleScatterChart < AvoDashboards::ChartkickCard
   self.scale = true
   self.legend_on_left = true
 
-  def query
+  query do
     result [
       {
         name: "batch 1",

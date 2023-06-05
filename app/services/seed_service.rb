@@ -9,6 +9,7 @@ class SeedService
     Fish.delete_all
     Course.delete_all
     Course::Link.delete_all
+    Fish.delete_all
     TeamMembership.delete_all
     Team.delete_all
     Comment.delete_all

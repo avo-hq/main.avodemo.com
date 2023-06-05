@@ -16,11 +16,7 @@ class Team < ApplicationRecord
   has_many :team_members, through: :memberships, source: :user
 
   has_one :admin_membership, -> { where 'team_memberships.level' => :admin }, class_name: 'TeamMembership', dependent: :destroy
-  has_one :admin, through: :admin_membership, source: :user, inverse_of: :teams
+  has_one :admin, through: :admin_membership, source: :user
 
   has_many :reviews, as: :reviewable
-
-  def self.ransackable_attributes(auth_object = nil)
-    ["color", "created_at", "description", "id", "name", "updated_at", "url"]
-  end
 end

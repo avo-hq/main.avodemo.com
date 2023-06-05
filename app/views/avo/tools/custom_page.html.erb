@@ -1,12 +1,12 @@
 <div class="flex flex-col">
   <%= render Avo::PanelComponent.new title: 'This is a demo page 👋', description: 'Description of your custom page', display_breadcrumbs: true do |c| %>
-    <% c.with_tools do %>
+    <% c.tools do %>
       <%= a_link('', icon: 'heroicons/outline/finger-print', style: :primary, is_link: true) do %>
         Dummy button
       <% end %>
     <% end %>
 
-    <% c.with_body do %>
+    <% c.body do %>
       <div class="flex flex-col justify-between py-6 min-h-24">
         <div class="px-6 space-y-4">
           <p>

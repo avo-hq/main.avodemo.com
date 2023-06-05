@@ -1,4 +1,4 @@
-class Avo::Filters::DummyMultipleSelect < Avo::Filters::MultipleSelectFilter
+class DummyMultipleSelectFilter < Avo::Filters::MultipleSelectFilter
   self.name = "Dummy multiple select filter"
 
   def apply(request, query, value)

@@ -1,4 +1,4 @@
-class Avo::Cards::AmountRaised < AvoDashboards::MetricCard
+class AmountRaised < Avo::Dashboards::MetricCard
   self.id = "amount_raised"
   self.label = "Amount raised"
   # self.description = "Some description"
@@ -8,7 +8,7 @@ class Avo::Cards::AmountRaised < AvoDashboards::MetricCard
   self.prefix = "$"
   # self.suffix = ""
 
-  def query
+  query do
     result 9001
   end
 end
