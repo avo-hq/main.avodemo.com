@@ -58,11 +58,23 @@ class User < ApplicationRecord
   end
 
   def avatar
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+  end
+
+  def gravatar
+    options = {
+      default: "",
+      size: 100
+    }
+
+    query = options.map { |key, value| "#{key}=#{value}" }.join("&")
+    md5 = Digest::MD5.hexdigest(email.strip.downcase)
+
+    URI::HTTPS.build(host: "www.gravatar.com", path: "/avatar/#{md5}", query: query).to_s
   end
 
   def avo_title
-    'Admin'
+    "Admin"
   end
 
   def self.ransackable_attributes(auth_object = nil)

@@ -1,10 +1,12 @@
 class Avo::Resources::Review < Avo::BaseResource
   self.title = :tiny_name
   self.includes = [:user, :reviewable]
-  self.description = 'Demo resource to illustrate searchable belongs_to associations. Visit a team and create a review for it.'
-  # self.search_query = -> do
-  #   query.ransack(id_eq: params[:q], m: "or").result(distinct: false)
-  # end
+  self.description = "Demo resource to illustrate searchable belongs_to associations. Visit a team and create a review for it."
+  # self.search = {
+  #   query: -> do
+  #     query.ransack(id_eq: params[:q], m: "or").result(distinct: false)
+  #   end
+  # }
 
   def fields
     field :id, as: :id

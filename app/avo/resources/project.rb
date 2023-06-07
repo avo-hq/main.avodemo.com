@@ -1,8 +1,10 @@
 class Avo::Resources::Project < Avo::BaseResource
   self.title = :name
-  self.search_query = -> do
-    query.ransack(id_eq: params[:q], name_cont: params[:q], country_cont: params[:q], m: "or").result(distinct: false)
-  end
+  self.search = {
+    query: -> do
+      query.ransack(id_eq: params[:q], name_cont: params[:q], country_cont: params[:q], m: "or").result(distinct: false)
+    end
+  }
   self.includes = :users
 
   def fields
@@ -33,5 +35,7 @@ class Avo::Resources::Project < Avo::BaseResource
     field :reviews, as: :has_many
   end
 
-  action Avo::Actions::ExportCsv
+  def actions
+    action Avo::Actions::ExportCsv
+  end
 end

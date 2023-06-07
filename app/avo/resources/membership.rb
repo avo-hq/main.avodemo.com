@@ -2,10 +2,12 @@ class Avo::Resources::Membership < Avo::BaseResource
   self.title = :name
   self.includes = [:user, :team]
   self.visible_on_sidebar = false
-  self.search_query = -> do
-    query.ransack(id_eq: params[:q], m: "or").result(distinct: false)
-  end
-  self.hide_from_global_search = true
+  self.search = {
+    query: -> do
+      query.ransack(id_eq: params[:q], m: "or").result(distinct: false)
+    end,
+    hide_on_global: true
+  }
   self.model_class = "TeamMembership"
 
   def fields

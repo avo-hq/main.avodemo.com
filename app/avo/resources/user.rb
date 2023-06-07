@@ -4,14 +4,26 @@ class Avo::Resources::User < Avo::BaseResource
     "Users of the app. view: #{view}"
   }
   self.translation_key = "avo.resource_translations.user"
-  self.search_query = -> do
-    query.order(created_at: :desc).ransack(id_eq: params[:q], first_name_cont: params[:q], last_name_cont: params[:q], m: "or").result(distinct: false)
-  end
+  self.search = {
+    query: -> do
+      query.order(created_at: :desc).ransack(id_eq: params[:q], first_name_cont: params[:q], last_name_cont: params[:q], m: "or").result(distinct: false)
+    end
+  }
   self.find_record_method = -> do
     query.friendly.find id
   end
   self.includes = [:posts, :post]
   self.devise_password_optional = true
+
+  self.grid_view = {
+    card: -> {
+      {
+        title: record.name,
+        cover_url: record.gravatar,
+        body: record.url
+      }
+    }
+  }
 
   def fields
     field :id, as: :id, link_to_resource: true
@@ -117,17 +129,19 @@ class Avo::Resources::User < Avo::BaseResource
     tool Avo::ResourceTools::UserTool
   end
 
-  grid do
-    cover :email, as: :gravatar, link_to_resource: true
-    title :name, as: :text, link_to_resource: true
-    body :url, as: :text
+  def actions
+    action Avo::Actions::Dummy
   end
 
-  action Avo::Actions::Dummy
+  def filters
+    filter Avo::Filters::UserNames
+    filter Avo::Filters::IsAdmin
+    filter Avo::Filters::DummyMultipleSelect
+  end
 
-  filter Avo::Filters::UserNames
-  filter Avo::Filters::IsAdmin
-  filter Avo::Filters::DummyMultipleSelect
-
-  scopes Avo::Scopes::Admins, Avo::Scopes::NonAdmins, Avo::Scopes::Active
+  def scopes
+    scope Avo::Scopes::Admins
+    scope Avo::Scopes::NonAdmins
+    scope Avo::Scopes::Active
+  end
 end
