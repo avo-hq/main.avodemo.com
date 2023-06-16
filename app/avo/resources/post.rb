@@ -16,10 +16,9 @@ class Avo::Resources::Post < Avo::BaseResource
       rescue
         ""
       end
-      cover_url = main_app.url_for(record.cover_photo.url) if record.cover_photo.attached?
       {
         title: record.name,
-        cover_url:,
+        cover_url: cdn_cover_photo,
         body:
       }
     }
