@@ -18,7 +18,7 @@ class Avo::Resources::Post < Avo::BaseResource
       end
       {
         title: record.name,
-        cover_url: cdn_cover_photo,
+        cover_url: record.cdn_cover_photo,
         body:
       }
     }
