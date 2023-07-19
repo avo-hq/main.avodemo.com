@@ -145,3 +145,5 @@ gem 'activestorage'
 gem 'mapkick-rb'
 
 gem "dockerfile-rails", ">= 1.3", :group => :development
+
+gem "whenever"
