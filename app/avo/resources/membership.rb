@@ -1,5 +1,5 @@
 class Avo::Resources::Membership < Avo::BaseResource
-  self.title = :name
+  self.title = :id
   self.includes = [:user, :team]
   self.visible_on_sidebar = false
   self.search = {
