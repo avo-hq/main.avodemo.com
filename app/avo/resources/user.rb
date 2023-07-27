@@ -20,7 +20,7 @@ class Avo::Resources::User < Avo::BaseResource
       {
         title: record.name,
         cover_url: record.gravatar,
-        body: record.url
+        body: record.email
       }
     }
   }
