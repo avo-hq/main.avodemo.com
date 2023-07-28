@@ -1,4 +1,4 @@
-class Avo::Cards::ExampleMetric < AvoDashboards::MetricCard
+class Avo::Cards::ExampleMetric < Avo::Dashboards::MetricCard
   self.id = "users_metric"
   self.label = "Users count"
   self.description = "Users description"

@@ -1,4 +1,4 @@
-class Avo::Cards::ExampleAreaChart < AvoDashboards::ChartkickCard
+class Avo::Cards::ExampleAreaChart < Avo::Dashboards::ChartkickCard
   self.id = "user_signups"
   self.label = "User signups"
   self.chart_type = :area_chart

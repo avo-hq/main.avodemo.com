@@ -1,4 +1,4 @@
-class Avo::Dashboards::Dashy < AvoDashboards::BaseDashboard
+class Avo::Dashboards::Dashy < Avo::Dashboards::BaseDashboard
   self.id = "dashy"
   self.name = "Dashy"
   self.description = "The first dashbaord"

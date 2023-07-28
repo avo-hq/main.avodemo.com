@@ -98,13 +98,18 @@ gem "awesome_print"
 # gem "avo", path: "./avo"
 # source "https://#{ENV['AVO_GEM_TOKEN']}@packager.fly.dev/avo-hq-beta/" do
 # source "https://packager.fly.dev/avo-hq-beta/" do
+# gem "avo-advanced", "0.1.55", source: "https://packager.dev/avo-hq-beta/"
+# gem "avo-advanced", "0.1.55", source: "http://localhost:4567/avo-hq-beta/"
+
 source "https://packager.dev/avo-hq-beta/" do
-  gem "avo"
-  gem "avo_pro"
-  gem "avo_advanced"
-  gem "avo_filters"
-  gem "avo_menu"
-  gem "avo_dashboards"
+# source "http://localhost:4567/avo-hq-beta/" do
+  gem "avo", "3.0.0.pre14"
+  gem "avo-pro"
+  gem "avo-menu"
+  # gem "avo-dashboards", path: "/Users/adrian/work/avocado/gems/avo-dashboards"
+  gem "avo-dashboards"
+  gem "avo-dynamic_filters"
+  gem "avo-advanced"
 end
 
 

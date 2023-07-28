@@ -1,10 +1,11 @@
 GEM
   remote: https://packager.dev/avo-hq-beta/
   specs:
-    avo (3.0.0.pre13)
+    avo (3.0.0.pre14)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
+      activesupport (>= 6.1)
       addressable
       docile
       dry-initializer
@@ -15,30 +16,33 @@ GEM
       turbo-rails
       view_component (>= 3.0.0)
       zeitwerk (>= 2.6.2)
-    avo_advanced (0.1.53)
-      avo
+    avo-advanced (0.1.55)
+      avo-dynamic_filters (>= 0.5.9)
+      avo-pro (>= 0.1.57)
       rails (>= 6.1.0)
       zeitwerk
-    avo_dashboards (0.1.5)
+    avo-dashboards (0.1.6)
       avo
       rails (>= 6.1.0)
       turbo-rails
       view_component
       zeitwerk
-    avo_filters (0.5.8)
+    avo-dynamic_filters (0.5.9)
       avo
       rails (>= 6.1.0)
       ransack
       view_component
       zeitwerk
-    avo_menu (0.1.10)
+    avo-menu (0.1.11)
       avo
       docile
       dry-initializer
       rails (>= 6.1.0)
       zeitwerk
-    avo_pro (0.1.53)
-      avo
+    avo-pro (0.1.57)
+      avo (>= 3.0.0.pre.14)
+      avo-dashboards (>= 0.1.6)
+      avo-menu (>= 0.1.11)
       rails (>= 6.1.0)
       zeitwerk
 
@@ -231,10 +235,10 @@ GEM
     method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
-    minitest (5.18.1)
+    minitest (5.19.0)
     msgpack (1.7.1)
     multi_xml (0.6.0)
-    net-imap (0.3.6)
+    net-imap (0.3.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -334,7 +338,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unaccent (0.4.0)
-    view_component (3.4.0)
+    view_component (3.5.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -350,14 +354,14 @@ GEM
       rubyzip (>= 1.3.0)
       selenium-webdriver (~> 4.0)
     websocket (1.2.9)
-    websocket-driver (0.7.5)
+    websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     whenever (1.0.0)
       chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.8)
+    zeitwerk (2.6.9)
 
 PLATFORMS
   aarch64-linux
@@ -372,12 +376,12 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo!
-  avo_advanced!
-  avo_dashboards!
-  avo_filters!
-  avo_menu!
-  avo_pro!
+  avo (= 3.0.0.pre14)!
+  avo-advanced!
+  avo-dashboards!
+  avo-dynamic_filters!
+  avo-menu!
+  avo-pro!
   awesome_print
   aws-sdk-s3
   bootsnap
