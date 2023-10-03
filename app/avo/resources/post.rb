@@ -57,7 +57,7 @@ class Avo::Resources::Post < Avo::BaseResource
     field :is_published, as: :boolean do
       record.published_at.present?
     end
-    heading '<div class="text-gray-300 uppercase font-bold">DEV</div>', as_html: true
+    field :dev, as: :heading, label: '<div class="text-gray-300 uppercase font-bold">DEV</div>', as_html: true
     field :user, as: :belongs_to, meta: { searchable: false }, placeholder: '—'
 
     field :status, as: :select, enum: ::Post.statuses

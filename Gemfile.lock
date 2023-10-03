@@ -1,7 +1,7 @@
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo (3.0.1.beta7)
+    avo (3.0.1.beta9)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -16,18 +16,18 @@ GEM
       turbo-rails
       view_component (>= 3.0.0)
       zeitwerk (>= 2.6.2)
-    avo-advanced (0.1.62)
-      avo-dynamic_filters (>= 0.5.13)
-      avo-pro (>= 0.1.63)
+    avo-advanced (0.1.64)
+      avo-dynamic_filters (>= 0.5.14)
+      avo-pro (>= 0.1.64)
       rails (>= 6.1.0)
       zeitwerk
-    avo-dashboards (0.1.10)
+    avo-dashboards (0.1.11)
       avo
       rails (>= 6.1.0)
       turbo-rails
       view_component
       zeitwerk
-    avo-dynamic_filters (0.5.13)
+    avo-dynamic_filters (0.5.16)
       avo
       rails (>= 6.1.0)
       ransack
@@ -39,8 +39,8 @@ GEM
       dry-initializer
       rails (>= 6.1.0)
       zeitwerk
-    avo-pro (0.1.63)
-      avo (>= 3.0.1.beta1)
+    avo-pro (0.1.66)
+      avo (>= 3.0.1.beta8)
       avo-dashboards (>= 0.1.10)
       avo-menu (>= 0.1.15)
       rails (>= 6.1.0)
@@ -255,7 +255,7 @@ GEM
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (6.0.4)
+    pagy (6.1.0)
     pg (1.5.3)
     public_suffix (5.0.3)
     puma (5.6.5)
@@ -338,7 +338,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unaccent (0.4.0)
-    view_component (3.5.0)
+    view_component (3.6.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -376,7 +376,8 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo-advanced (= 0.1.62)!
+  avo (= 3.0.1.beta9)!
+  avo-advanced!
   awesome_print
   aws-sdk-s3
   bootsnap
