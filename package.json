@@ -1,7 +1,7 @@
 {
   "name": "avodemo",
   "version": "1.0.0",
-  "description": "### Visit the live app on [avodemo.herokuapp.com](https://avodemo.herokuapp.com/)",
+  "description": "### Visit the live app on [avodemo.com](https://avodemo.com/)",
   "main": "index.js",
   "directories": {
     "lib": "lib",
