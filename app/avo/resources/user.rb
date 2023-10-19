@@ -28,7 +28,7 @@ class Avo::Resources::User < Avo::BaseResource
   def fields
     field :id, as: :id, link_to_resource: true
     field :email, as: :gravatar, link_to_resource: true, as_avatar: :circle, only_on: :index
-    heading "User Information"
+    field :user_information, as: :heading
     field :first_name, as: :text, placeholder: "John", stacked: true, filterable: true
     field :last_name, as: :text, placeholder: "Doe", filterable: true
     field :email, as: :text, name: "User Email", required: true, protocol: :mailto, filterable: true
@@ -61,12 +61,12 @@ class Avo::Resources::User < Avo::BaseResource
     field :password, as: :password, name: "User Password", required: false, except_on: :forms, help: 'You may verify the password strength <a href="http://www.passwordmeter.com/" target="_blank">here</a>.'
     field :password_confirmation, as: :password, name: "Password confirmation", required: false, only_on: :new
 
-    heading '<div class="underline uppercase font-bold">DEV</div>', as_html: true
+    field :dev, as: :heading, label: '<div class="underline uppercase font-bold">DEV</div>', as_html: true
     field :team_id, as: :hidden, default: 0 # For testing purposes
 
     sidebar do
       field :email, as: :gravatar, link_to_resource: true, as_avatar: :circle, only_on: :show
-      heading
+      field :heading, as: :heading, label: ""
       field :active, as: :boolean, name: "Is active"
       field :is_admin?, as: :boolean, name: "Is admin", only_on: :index
       field :birthday,
