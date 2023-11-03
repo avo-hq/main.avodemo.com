@@ -1,4 +1,4 @@
-class Avo::Cards::ExampleColumnChart < Avo::Dashboards::ChartkickCard
+class Avo::Cards::ExampleColumnChart < Avo::Cards::ChartkickCard
   self.id = "example_column_chart"
   self.label = "Example column chart"
   self.chart_type = :column_chart

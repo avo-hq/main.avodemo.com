@@ -1,4 +1,4 @@
-class Avo::Cards::AmountRaised < Avo::Dashboards::MetricCard
+class Avo::Cards::AmountRaised < Avo::Cards::MetricCard
   self.id = "amount_raised"
   self.label = "Amount raised"
   # self.description = "Some description"

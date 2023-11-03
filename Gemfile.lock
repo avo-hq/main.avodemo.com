@@ -1,7 +1,7 @@
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo (3.0.1.beta22)
+    avo (3.0.1.beta24)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -14,37 +14,39 @@ GEM
       meta-tags
       pagy
       turbo-rails
-      view_component (>= 3.0.0)
-      zeitwerk (>= 2.6.2)
-    avo-advanced (0.1.64)
-      avo-dynamic_filters (>= 0.5.14)
-      avo-pro (>= 0.1.64)
+      turbo_power (~> 0.5.0)
+      view_component (>= 3.7.0)
+      zeitwerk (>= 2.6.12)
+    avo-advanced (0.1.65)
+      avo-dynamic_filters (>= 0.5.19)
+      avo-pro (>= 0.1.68)
       rails (>= 6.1.0)
-      zeitwerk
-    avo-dashboards (0.1.11)
-      avo
+      zeitwerk (>= 2.6.12)
+    avo-dashboards (0.1.12)
+      avo (>= 3.0.1.beta23)
       rails (>= 6.1.0)
       turbo-rails
-      view_component
-      zeitwerk
-    avo-dynamic_filters (0.5.18)
-      avo
+      view_component (>= 3.7.0)
+      zeitwerk (>= 2.6.12)
+    avo-dynamic_filters (0.5.20)
+      active_record_extended
+      avo (>= 3.0.1.beta23)
       rails (>= 6.1.0)
-      ransack
-      view_component
-      zeitwerk
-    avo-menu (0.1.16)
-      avo
+      ransack (>= 4.1.1)
+      view_component (>= 3.7.0)
+      zeitwerk (>= 2.6.12)
+    avo-menu (0.1.17)
+      avo (>= 3.0.1.beta23)
       docile
       dry-initializer
       rails (>= 6.1.0)
-      zeitwerk
-    avo-pro (0.1.68)
-      avo (>= 3.0.1.beta8)
-      avo-dashboards (>= 0.1.10)
-      avo-menu (>= 0.1.15)
+      zeitwerk (>= 2.6.12)
+    avo-pro (0.1.69)
+      avo (>= 3.0.1.beta23)
+      avo-dashboards (>= 0.1.11)
+      avo-menu (>= 0.1.16)
       rails (>= 6.1.0)
-      zeitwerk
+      zeitwerk (>= 2.6.12)
 
 GEM
   remote: https://rubygems.org/
@@ -97,6 +99,9 @@ GEM
     active_link_to (1.0.5)
       actionpack
       addressable
+    active_record_extended (3.2.1)
+      activerecord (>= 5.2, < 7.2.0)
+      pg (< 3.0)
     activejob (7.0.8)
       activesupport (= 7.0.8)
       globalid (>= 0.3.6)
@@ -238,7 +243,7 @@ GEM
     minitest (5.20.0)
     msgpack (1.7.1)
     multi_xml (0.6.0)
-    net-imap (0.4.1)
+    net-imap (0.4.3)
       date
       net-protocol
     net-pop (0.1.2)
@@ -262,7 +267,7 @@ GEM
       nio4r (~> 2.0)
     pundit (2.3.0)
       activesupport (>= 3.0.0)
-    racc (1.7.1)
+    racc (1.7.2)
     rack (2.2.8)
     rack-test (2.1.0)
       rack (>= 1.3)
@@ -294,8 +299,8 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
-    rake (13.0.6)
-    ransack (4.0.0)
+    rake (13.1.0)
+    ransack (4.1.1)
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
@@ -329,16 +334,18 @@ GEM
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.29-x86_64-linux)
       railties (>= 6.0.0)
-    thor (1.2.2)
+    thor (1.3.0)
     timeout (0.4.0)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
+    turbo_power (0.5.0)
+      turbo-rails (~> 1.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unaccent (0.4.0)
-    view_component (3.6.0)
+    view_component (3.7.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
