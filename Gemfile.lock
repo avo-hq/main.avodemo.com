@@ -22,7 +22,7 @@ GEM
       avo-pro (>= 0.1.68)
       rails (>= 6.1.0)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (0.1.12)
+    avo-dashboards (0.1.13)
       avo (>= 3.0.1.beta23)
       rails (>= 6.1.0)
       turbo-rails
