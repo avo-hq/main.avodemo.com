@@ -1,4 +1,4 @@
-class Avo::Cards::ExampleScatterChart < Avo::Dashboards::ChartkickCard
+class Avo::Cards::ExampleScatterChart < Avo::Cards::ChartkickCard
   self.id = "scatter"
   self.label = "Scatter"
   self.chart_type = :scatter_chart

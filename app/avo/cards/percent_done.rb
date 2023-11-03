@@ -1,4 +1,4 @@
-class Avo::Cards::PercentDone < Avo::Dashboards::MetricCard
+class Avo::Cards::PercentDone < Avo::Cards::MetricCard
   self.id = "percent_done"
   self.label = "Percent done"
   self.description = "This is the progress we made so far..."

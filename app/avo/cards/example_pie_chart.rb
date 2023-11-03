@@ -1,4 +1,4 @@
-class Avo::Cards::ExamplePieChart < Avo::Dashboards::ChartkickCard
+class Avo::Cards::ExamplePieChart < Avo::Cards::ChartkickCard
   self.id = "example_pie_chart"
   self.label = "Example pie chart"
   self.chart_type = :pie_chart

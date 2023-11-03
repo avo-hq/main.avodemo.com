@@ -1,4 +1,4 @@
-class Avo::Cards::ExampleLineChart < Avo::Dashboards::ChartkickCard
+class Avo::Cards::ExampleLineChart < Avo::Cards::ChartkickCard
   self.id = "line_chart"
   self.label = "Line chart"
   self.chart_type = :line_chart
