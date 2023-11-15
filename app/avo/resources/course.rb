@@ -25,7 +25,7 @@ class Avo::Resources::Course < Avo::BaseResource
         }
       }
     }
-    field :has_skills, as: :boolean, html: -> do
+    field :has_skills, as: :boolean, filterable: true, html: -> do
       edit do
         input do
           # classes('block')

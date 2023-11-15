@@ -17,11 +17,13 @@ class Avo::Resources::Project < Avo::BaseResource
       enum: ::Project.stages,
       placeholder: "Choose the stage",
       display_value: true,
-      include_blank: false
+      include_blank: false,
+      filterable: true
     field :stage, as: :badge, options: {info: ["Discovery", "Idea"], success: "Done", warning: "On hold", danger: "Cancelled"}
-    field :status, as: :status, failed_when: [:closed, :rejected, :failed], loading_when: [:loading, :running, :waiting], nullable: true
+    field :status, as: :status, failed_when: [:closed, :rejected, :failed], loading_when: [:loading, :running, :waiting], nullable: true, filterable: true
     field :country,
       as: :country,
+      filterable: true,
       index_text_align: :left,
       include_blank: "No country"
     field :users_required, as: :number, min: 10, max: 1000000, step: 1, index_text_align: :right

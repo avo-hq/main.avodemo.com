@@ -23,8 +23,8 @@ class Avo::Resources::Team < Avo::BaseResource
 
   def fields
     field :preview, as: :preview
-    field :id, as: :id
-    field :name, as: :text, sortable: true, show_on: :preview
+    field :id, as: :id, filterable: true
+    field :name, as: :text, sortable: true, show_on: :preview, filterable: true
     field :logo, as: :external_image,hide_on: :show, as_avatar: :rounded do
       if record.url
         "//logo.clearbit.com/#{URI.parse(record.url).host}?size=180"
@@ -36,12 +36,14 @@ class Avo::Resources::Team < Avo::BaseResource
       rows: 5,
       readonly: false,
       hide_on: :index,
+      filterable: true,
       format_using: -> { value.to_s.truncate 30 },
       default: "This is a wonderful team!",
       nullable: true,
       null_values: ["0", "", "null", "nil"],
       show_on: :preview
 
+    field :created_at, as: :date_time, filterable: true
     field :members_count, as: :number do
       record.team_members.length
     end
@@ -51,6 +53,7 @@ class Avo::Resources::Team < Avo::BaseResource
     field :memberships,
       as: :has_many,
       searchable: true,
+      filterable: true,
       attach_scope: -> do
         query.where.not(user_id: parent.id).or(query.where(user_id: nil))
       end

@@ -13,7 +13,7 @@ class Avo::Resources::Person < Avo::BaseResource
 
   def fields
     field :name, as: :text, link_to_resource: true,sortable: true
-    field :type, as: :select, name: "Type", options: { Spouse: "Spouse" }, include_blank: true
+    field :type, as: :select, name: "Type", options: { Spouse: "Spouse" }, include_blank: true, filterable: true
     field :link, as: :text, as_html: true do
       "<a href='https://avohq.io'>#{record.name}</a>"
     end
