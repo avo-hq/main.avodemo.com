@@ -103,6 +103,7 @@ source "https://packager.dev/avo-hq/" do
   # gem "avo", "3.0.1.beta9"
   gem "avo-advanced"
 end
+gem 'avo', '~> 3.0', '>= 3.0.2'
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo_pro", path: "/Users/adrian/work/avocado/gems/avo_pro"
