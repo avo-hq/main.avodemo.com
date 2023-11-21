@@ -1,35 +1,30 @@
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (0.1.65)
-      avo-dynamic_filters (>= 0.5.19)
-      avo-pro (>= 0.1.68)
-      rails (>= 6.1.0)
+    avo-advanced (0.1.66)
+      avo-dynamic_filters (>= 0.5.21)
+      avo-pro (>= 0.1.70)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (0.1.13)
-      avo (>= 3.0.1.beta23)
-      rails (>= 6.1.0)
+    avo-dashboards (0.1.14)
+      avo (>= 3.0.2)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (0.5.20)
+    avo-dynamic_filters (0.5.21)
       active_record_extended
-      avo (>= 3.0.1.beta23)
-      rails (>= 6.1.0)
+      avo (>= 3.0.2)
       ransack (>= 4.1.1)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-menu (0.1.17)
-      avo (>= 3.0.1.beta23)
+    avo-menu (0.1.19)
+      avo (>= 3.0.2)
       docile
       dry-initializer
-      rails (>= 6.1.0)
       zeitwerk (>= 2.6.12)
-    avo-pro (0.1.69)
-      avo (>= 3.0.1.beta23)
+    avo-pro (0.1.70)
+      avo (>= 3.0.2)
       avo-dashboards (>= 0.1.11)
       avo-menu (>= 0.1.16)
-      rails (>= 6.1.0)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -383,7 +378,6 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo (~> 3.0, >= 3.0.2)
   avo-advanced!
   awesome_print
   aws-sdk-s3
