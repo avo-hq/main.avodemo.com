@@ -378,7 +378,6 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo (= 3.0.5)
   avo-advanced (~> 1.0.0, >= 1.0.0)!
   awesome_print
   aws-sdk-s3
@@ -419,4 +418,4 @@ RUBY VERSION
    ruby 3.1.0p0
 
 BUNDLED WITH
-   2.4.9
+   2.4.22
