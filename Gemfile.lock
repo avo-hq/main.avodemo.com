@@ -378,6 +378,7 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
+  avo (= 3.0.5)
   avo-advanced (~> 1.0.0, >= 1.0.0)!
   awesome_print
   aws-sdk-s3
