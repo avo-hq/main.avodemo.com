@@ -99,10 +99,8 @@ gem "awesome_print"
 # source "https://#{ENV['AVO_GEM_TOKEN']}@packager.fly.dev/avo-hq-beta/" do
 # source "https://packager.fly.dev/avo-hq-beta/" do
 
-source "https://packager.dev/avo-hq/" do
-  # gem "avo", "3.0.1.beta9"
-  gem "avo-advanced"
-end
+gem "avo", "3.0.5"
+gem "avo-advanced", "~> 1.0.0", ">= 1.0.0", source: "https://packager.dev/avo-hq/"
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo_pro", path: "/Users/adrian/work/avocado/gems/avo_pro"
