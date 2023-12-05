@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.0"
+ruby "3.2.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 # gem "rails", "~> 7.0.0"
@@ -99,10 +99,39 @@ gem "awesome_print"
 # source "https://#{ENV['AVO_GEM_TOKEN']}@packager.fly.dev/avo-hq-beta/" do
 # source "https://packager.fly.dev/avo-hq-beta/" do
 
-source "https://packager.dev/avo-hq/" do
-  # gem "avo", "3.0.1.beta9"
-  gem "avo-advanced"
-end
+gem "avo-advanced", ">= 3.1.0", source: "https://packager.dev/avo-hq/"
+gem "avo", ">= 3.1.0"
+
+# gem "avo", ">= 3.0.7"
+# gem "avo-advanced", ">= 1", source: "https://packager.dev/avo-hq/"
+
+# gem "avo-advanced", "0.1.62", source: "http://localhost:4567/avo-hq/"
+
+
+# gem "avo", "3.0.0.pre16", source: "http://localhost:4567/avo-hq/"
+# gem "avo", "3.0.0.pre18", source: "https://42d81f08-b460-42c8-89f3-771fac14174d@packager.dev/avo-hq/"
+# gem "avo_pro", source: "https://42d81f08-b460-42c8-89f3-771fac14174d@packager.dev/avo-hq/"
+# gem "avo", source: "https://42d81f08-b460-42c8-89f3-771fac14174d@y8zr0.hatchboxapp.com/avo-hq/"
+# gem "avo-advanced", source: "https://42d81f08-b460-42c8-89f3-771fac14174d@packager.dev/avo-hq/"
+# gem "avo", source: "https://y8zr0.hatchboxapp.com/avo-hq/"
+# gem "avo-pro", source: "http://34c02ef3-5ff7-4739-8973-0c80578d9567@localhost:4567/avo-hq/"
+# gem "avo", "3.0.0.pre17", source: "http://localhost:4567/avo-hq/"
+
+
+
+# gem "avo-pro", path: "/Users/adrian/work/avocado/avodemo/avo-pro"
+# gem "avo-advanced", "0.1.55", path: "/Users/adrian/work/avocado/avodemo/avo-advanced"
+
+# source "https://packager.dev/avo-hq-beta/" do
+# # source "http://localhost:4567/avo-hq-beta/" do
+#   gem "avo", "3.0.0.pre14"
+#   gem "avo-pro"
+#   gem "avo-menu"
+#   # gem "avo-dashboards", path: "/Users/adrian/work/avocado/gems/avo-dashboards"
+#   gem "avo-dashboards"
+#   gem "avo-dynamic_filters"
+#   gem "avo-advanced"
+# end
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo_pro", path: "/Users/adrian/work/avocado/gems/avo_pro"

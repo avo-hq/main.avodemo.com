@@ -1,51 +1,31 @@
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo (3.0.1.beta24)
-      actionview (>= 6.1)
-      active_link_to
-      activerecord (>= 6.1)
-      activesupport (>= 6.1)
-      addressable
-      docile
-      dry-initializer
-      httparty
-      inline_svg
-      meta-tags
-      pagy
-      turbo-rails
-      turbo_power (~> 0.5.0)
-      view_component (>= 3.7.0)
+    avo-advanced (3.1.0)
+      avo (>= 3.1.0)
+      avo-dynamic_filters (>= 3.1.0)
+      avo-pro (>= 3.1.0)
       zeitwerk (>= 2.6.12)
-    avo-advanced (0.1.65)
-      avo-dynamic_filters (>= 0.5.19)
-      avo-pro (>= 0.1.68)
-      rails (>= 6.1.0)
-      zeitwerk (>= 2.6.12)
-    avo-dashboards (0.1.13)
-      avo (>= 3.0.1.beta23)
-      rails (>= 6.1.0)
+    avo-dashboards (3.1.0)
+      avo (>= 3.1.0)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (0.5.20)
+    avo-dynamic_filters (3.1.0)
       active_record_extended
-      avo (>= 3.0.1.beta23)
-      rails (>= 6.1.0)
+      avo (>= 3.1.0)
       ransack (>= 4.1.1)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-menu (0.1.17)
-      avo (>= 3.0.1.beta23)
+    avo-menu (3.1.0)
+      avo (>= 3.1.0)
       docile
       dry-initializer
-      rails (>= 6.1.0)
       zeitwerk (>= 2.6.12)
-    avo-pro (0.1.69)
-      avo (>= 3.0.1.beta23)
-      avo-dashboards (>= 0.1.11)
-      avo-menu (>= 0.1.16)
-      rails (>= 6.1.0)
+    avo-pro (3.1.0)
+      avo (>= 3.1.0)
+      avo-dashboards (>= 3.1.0)
+      avo-menu (>= 3.1.0)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -133,6 +113,22 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.4.2)
       rack
+    avo (3.1.0)
+      actionview (>= 6.1)
+      active_link_to
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
+      addressable
+      docile
+      dry-initializer
+      httparty
+      inline_svg
+      meta-tags
+      pagy
+      turbo-rails
+      turbo_power (~> 0.5.0)
+      view_component (>= 3.7.0)
+      zeitwerk (>= 2.6.12)
     awesome_print (1.9.2)
     aws-eventstream (1.2.0)
     aws-partitions (1.767.0)
@@ -224,7 +220,7 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jmespath (1.6.2)
-    loofah (2.21.4)
+    loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -253,21 +249,21 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.4-aarch64-linux)
+    nokogiri (1.15.5-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.15.4-arm64-darwin)
+    nokogiri (1.15.5-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-linux)
+    nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (6.1.0)
-    pg (1.5.3)
-    public_suffix (5.0.3)
+    pagy (6.2.0)
+    pg (1.5.4)
+    public_suffix (5.0.4)
     puma (5.6.5)
       nio4r (~> 2.0)
     pundit (2.3.0)
       activesupport (>= 3.0.0)
-    racc (1.7.2)
+    racc (1.7.3)
     rack (2.2.8)
     rack-test (2.1.0)
       rack (>= 1.3)
@@ -345,7 +341,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unaccent (0.4.0)
-    view_component (3.7.0)
+    view_component (3.8.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -373,6 +369,7 @@ GEM
 PLATFORMS
   aarch64-linux
   arm64-darwin-21
+  arm64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
@@ -383,7 +380,8 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo-advanced!
+  avo (>= 3.1.0)
+  avo-advanced (>= 3.1.0)!
   awesome_print
   aws-sdk-s3
   bootsnap
@@ -420,7 +418,7 @@ DEPENDENCIES
   whenever
 
 RUBY VERSION
-   ruby 3.1.0p0
+   ruby 3.2.1p31
 
 BUNDLED WITH
    2.4.9
