@@ -22,30 +22,42 @@ class Avo::Resources::Team < Avo::BaseResource
   }
 
   def fields
-    field :preview, as: :preview
-    field :id, as: :id, filterable: true
-    field :name, as: :text, sortable: true, show_on: :preview, filterable: true
-    field :logo, as: :external_image,hide_on: :show, as_avatar: :rounded do
-      if record.url
-        "//logo.clearbit.com/#{URI.parse(record.url).host}?size=180"
+    main_panel do
+      field :preview, as: :preview
+      field :id, as: :id, filterable: true
+      field :name, as: :text, sortable: true, show_on: :preview, filterable: true
+      field :logo, as: :external_image,hide_on: :show, as_avatar: :rounded do
+        if record.url
+          "//logo.clearbit.com/#{URI.parse(record.url).host}?size=180"
+        end
       end
-    end
-    field :description,
-      as_description: true,
-      as: :textarea,
-      rows: 5,
-      readonly: false,
-      hide_on: :index,
-      filterable: true,
-      format_using: -> { value.to_s.truncate 30 },
-      default: "This is a wonderful team!",
-      nullable: true,
-      null_values: ["0", "", "null", "nil"],
-      show_on: :preview
+      field :description,
+        as_description: true,
+        as: :textarea,
+        rows: 5,
+        readonly: false,
+        hide_on: :index,
+        filterable: true,
+        format_using: -> { value.to_s.truncate 30 },
+        default: "This is a wonderful team!",
+        nullable: true,
+        null_values: ["0", "", "null", "nil"],
+        show_on: :preview
 
-    field :created_at, as: :date_time, filterable: true
-    field :members_count, as: :number do
-      record.team_members.length
+      field :created_at, as: :date_time, filterable: true
+      field :members_count, as: :number do
+        record.team_members.length
+      end
+
+      sidebar do
+        field :url, as: :text, translation_key: "avo.field_translations.team_url"
+        field :created_at, as: :date_time, hide_on: :forms
+        field :logo, as: :external_image, as_avatar: :rounded do
+          if record.url
+            "//logo.clearbit.com/#{URI.parse(record.url).host}?size=180"
+          end
+        end
+      end
     end
 
     field :admin, as: :has_one
@@ -58,16 +70,6 @@ class Avo::Resources::Team < Avo::BaseResource
         query.where.not(user_id: parent.id).or(query.where(user_id: nil))
       end
     field :reviews, as: :has_many
-
-    sidebar do
-      field :url, as: :text, translation_key: "avo.field_translations.team_url"
-      field :created_at, as: :date_time, hide_on: :forms
-      field :logo, as: :external_image, as_avatar: :rounded do
-        if record.url
-          "//logo.clearbit.com/#{URI.parse(record.url).host}?size=180"
-        end
-      end
-    end
   end
 
   def filters
