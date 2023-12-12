@@ -100,7 +100,7 @@ gem "awesome_print"
 # source "https://packager.fly.dev/avo-hq-beta/" do
 
 gem "avo-advanced", ">= 1.0.0", source: "https://packager.dev/avo-hq/"
-gem "avo", "3.0.7"
+gem "avo"
 
 # gem "avo", ">= 3.0.7"
 # gem "avo-advanced", ">= 1", source: "https://packager.dev/avo-hq/"
