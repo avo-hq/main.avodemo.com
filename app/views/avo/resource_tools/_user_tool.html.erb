@@ -19,6 +19,14 @@
             The resource tool configuration file should be here <code class='p-1 rounded bg-gray-500 text-white text-sm'>app/avo/resource_tools/user_tool.rb</code>.
           </p>
 
+          <p>
+            This variable was declared in the initializer: <%= tool.foo %>
+          </p>
+
+          <p>
+            This is a method called on the tool: <%= tool.custom_method_call %>
+          </p>
+
           <%
             # In this partial you have access to the following variables:
             # tool
