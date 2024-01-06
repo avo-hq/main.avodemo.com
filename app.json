@@ -37,7 +37,7 @@
   ],
   "cron": [
     {
-      "command": "rake avodemo:reset",
+      "command": "rails avodemo:reset",
       "schedule": "0 */12 * * *"
     }
   ]

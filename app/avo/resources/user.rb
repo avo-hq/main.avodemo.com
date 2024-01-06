@@ -89,7 +89,7 @@ class Avo::Resources::User < Avo::BaseResource
       end
     end
 
-    tabs do
+    tabs id: :tabs do
       tab "Birthday", description: "hey you", hide_on: :show do
         panel do
           field :birthday,
@@ -112,7 +112,7 @@ class Avo::Resources::User < Avo::BaseResource
       field :projects, as: :has_and_belongs_to_many
     end
 
-    tabs style: :pills do
+    tabs id: :tabs_2, style: :pills do
       field :post,
         as: :has_one,
         name: "Main post",
