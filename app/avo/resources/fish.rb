@@ -63,7 +63,7 @@ class Avo::Resources::Fish < Avo::BaseResource
 
     field :reviews, as: :has_many
 
-    tabs style: :big_pills do
+    tabs do
       tab "big useless tab here" do
         panel do
           field :id, as: :id

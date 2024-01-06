@@ -112,7 +112,7 @@ class Avo::Resources::User < Avo::BaseResource
       field :projects, as: :has_and_belongs_to_many
     end
 
-    tabs id: :tabs_2, style: :pills do
+    tabs id: :tabs_2 do
       field :post,
         as: :has_one,
         name: "Main post",
