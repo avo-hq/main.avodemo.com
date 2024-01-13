@@ -1,7 +1,7 @@
 class Avo::Actions::Dummy < Avo::BaseAction
   self.name = "Dummy action"
   self.standalone = true
-  self.visible = -> { view == :index }
+  self.visible = -> { view.index? }
 
   def handle(**args)
     # Do something here

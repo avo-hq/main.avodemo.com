@@ -47,24 +47,29 @@ class SeedService
 
     famous_users = [
       {
-        first_name: 'David Heinemeier',
-        last_name: 'Hansson',
-        email: 'david@hey.com'
-      },
-      {
-        first_name: 'Chris',
-        last_name: 'Oliver',
-        email: 'chris@gorails.com'
-      },
-      {
         first_name: 'Jason',
         last_name: 'Charnes',
         email: 'jason@jasoncharnes.com'
       },
       {
+        first_name: 'Yaroslav',
+        last_name: 'Shmarov',
+        email: 'yashm@outlook.com'
+      },
+      {
+        first_name: 'Lucian',
+        last_name: 'Ghinda',
+        email: 'lucian@ghinda.com'
+      },
+      {
         first_name: 'Jason',
         last_name: 'Swett',
         email: 'jason@benfranklinlabs.com'
+      },
+      {
+        first_name: 'Jeremy',
+        last_name: 'Smith',
+        email: 'jeremy@jeremysmith.co'
       },
       {
         first_name: 'Yukihiro "Matz"',
@@ -75,11 +80,6 @@ class SeedService
         first_name: 'Joe',
         last_name: 'Masilotti',
         email: 'joe@masilotti.com'
-      },
-      {
-        first_name: 'Lucian',
-        last_name: 'Ghinda',
-        email: 'lucian@ghinda.com'
       },
       {
         first_name: 'Mike',
