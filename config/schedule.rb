@@ -20,5 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every 1.day, at: "2:14am" do
-  command "rails avodemo:reset"
+  command "cd /home/deploy/main_avodemo_com/current && bundle exec rails avodemo:reset"
 end
