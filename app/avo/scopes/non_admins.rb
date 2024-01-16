@@ -1,4 +1,4 @@
-class Avo::Scopes::NonAdmins < Avo::Pro::Scopes::BaseScope
+class Avo::Scopes::NonAdmins < Avo::Advanced::Scopes::BaseScope
   self.name = "Non admins"
   self.description = "Non admins"
   self.scope = :non_admins
