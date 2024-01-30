@@ -2,9 +2,7 @@ Avo.configure do |config|
   config.root_path = '/avo'
   config.license_key = ENV['AVO_LICENSE_KEY']
   config.id_links_to_resource = true
-  # config.home_path = -> () { avo.dashboard_path('dashy') }
-  # config.home_path = -> (controller) { avo.dashboard_path('dashy') }
-  config.home_path = '/avo/dashboards/dashy'
+  config.home_path = -> { avo_dashboards.dashboard_path :dashy }
   config.resource_controls_placement = :right
   # config.branding = {
   #   colors: {
