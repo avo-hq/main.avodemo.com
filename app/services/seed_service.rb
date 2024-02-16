@@ -47,9 +47,29 @@ class SeedService
 
     famous_users = [
       {
+        first_name: 'Eric',
+        last_name: 'Berry',
+        email: 'eric@berry.sh'
+      },
+      {
+        first_name: 'Vladimir',
+        last_name: 'Dementyev',
+        email: 'palkan@evilmartians.com'
+      },
+      {
         first_name: 'Jason',
         last_name: 'Charnes',
         email: 'jason@jasoncharnes.com'
+      },
+      {
+        first_name: 'Andrew',
+        last_name: 'Culver',
+        email: 'andrew.culver@gmail.com'
+      },
+      {
+        first_name: 'Yaroslav',
+        last_name: 'Shmarov',
+        email: 'yashm@outlook.com'
       },
       {
         first_name: 'Yaroslav',
