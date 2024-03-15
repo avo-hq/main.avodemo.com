@@ -176,7 +176,7 @@ GEM
     countries (5.4.0)
       unaccent (~> 0.3)
     crass (1.0.6)
-    date (3.3.3)
+    date (3.3.4)
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -239,7 +239,7 @@ GEM
       net-pop
       net-smtp
     mapkick-rb (0.1.4)
-    marcel (1.0.2)
+    marcel (1.0.4)
     matrix (0.4.2)
     meta-tags (2.20.0)
       actionpack (>= 6.0.0, < 7.2)
@@ -250,16 +250,16 @@ GEM
     msgpack (1.7.1)
     multi_xml (0.6.0)
     mutex_m (0.2.0)
-    net-imap (0.4.3)
+    net-imap (0.4.10)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.1)
+    net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0)
+    net-smtp (0.4.0.1)
       net-protocol
-    nio4r (2.5.9)
+    nio4r (2.7.0)
     nokogiri (1.16.2-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.16.2-arm64-darwin)
@@ -427,7 +427,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 5.0)
   pundit
-  rails (>= 7.1)
+  rails (~> 7.1.0)
   ransack
   redis (~> 4.0)
   selenium-webdriver
