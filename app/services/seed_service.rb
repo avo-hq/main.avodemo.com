@@ -72,11 +72,6 @@ class SeedService
         email: 'yashm@outlook.com'
       },
       {
-        first_name: 'Yaroslav',
-        last_name: 'Shmarov',
-        email: 'yashm@outlook.com'
-      },
-      {
         first_name: 'Lucian',
         last_name: 'Ghinda',
         email: 'lucian@ghinda.com'
