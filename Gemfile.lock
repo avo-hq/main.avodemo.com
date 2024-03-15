@@ -427,7 +427,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 5.0)
   pundit
-  rails (~> 7.1.0)
+  rails (>= 7.1.0)
   ransack
   redis (~> 4.0)
   selenium-webdriver
