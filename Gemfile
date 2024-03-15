@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "~> 3.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-# gem "rails", "~> 7.0.0"
+gem "rails", "~> 7.1.0"
 gem "actionmailer"
 gem "actioncable"
 
@@ -99,6 +99,7 @@ gem "awesome_print"
 # source "https://#{ENV['AVO_GEM_TOKEN']}@packager.fly.dev/avo-hq-beta/" do
 # source "https://packager.fly.dev/avo-hq-beta/" do
 
+# gem "avo-pro", github: "avo-hq/avo-pro"
 gem "avo-advanced", ">= 3.3.3", source: "https://packager.dev/avo-hq/"
 gem "avo"
 
@@ -160,7 +161,7 @@ gem "acts_as_list"
 
 gem 'friendly_id', '~> 5.4.0'
 
-gem 'acts-as-taggable-on', '~> 9.0'
+gem 'acts-as-taggable-on', '>= 10'
 
 gem 'pundit'
 gem 'chartkick'

@@ -12,11 +12,13 @@ class Avo::Resources::CourseLink < Avo::BaseResource
   self.ordering = {
     display_inline: true,
     visible_on: :index, # :index or :association
+    drag_and_drop: true,
     actions: {
       higher: -> { record.move_higher }, # has access to record, resource, options, params
       lower: -> { record.move_lower },
       to_top: -> { record.move_to_top },
-      to_bottom: -> { record.move_to_bottom }
+      to_bottom: -> { record.move_to_bottom },
+      insert_at: -> { record.insert_at position }
     }
   }
 
