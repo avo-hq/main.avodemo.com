@@ -33,7 +33,7 @@ class ApplicationPolicy
   def destroy?
     false
   end
-  
+
   def search?
     true
   end
