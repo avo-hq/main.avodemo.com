@@ -106,6 +106,8 @@ gem "appsignal"
 gem "acts_as_list"
 
 gem 'friendly_id', '~> 5.4.0'
+gem "prefixed_ids", "~> 1.6", ">= 1.6.1"
+gem "hashid-rails", "~> 1.4", ">= 1.4.1"
 
 gem 'acts-as-taggable-on', '>= 10'
 

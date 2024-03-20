@@ -10,6 +10,7 @@
 #  url         :string
 #
 class Team < ApplicationRecord
+  has_prefix_id :team
   validates :name, presence: true
 
   has_many :memberships, class_name: 'TeamMembership', foreign_key: :team_id, inverse_of: :team
