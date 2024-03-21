@@ -1,30 +1,30 @@
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (3.5.1)
-      avo (>= 3.5.1)
-      avo-dynamic_filters (>= 3.5.1)
-      avo-pro (>= 3.5.1)
+    avo-advanced (3.5.4)
+      avo (>= 3.5.4)
+      avo-dynamic_filters (>= 3.5.4)
+      avo-pro (>= 3.5.4)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (3.5.1)
-      avo (>= 3.5.1)
+    avo-dashboards (3.5.4)
+      avo (>= 3.5.4)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (3.5.1)
-      avo (>= 3.5.1)
+    avo-dynamic_filters (3.5.4)
+      avo (>= 3.5.4)
       ransack (>= 4.1.1)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-menu (3.5.1)
-      avo (>= 3.5.1)
+    avo-menu (3.5.4)
+      avo (>= 3.5.4)
       docile
       dry-initializer
       zeitwerk (>= 2.6.12)
-    avo-pro (3.5.1)
-      avo (>= 3.5.1)
-      avo-dashboards (>= 3.5.1)
-      avo-menu (>= 3.5.1)
+    avo-pro (3.5.4)
+      avo (>= 3.5.4)
+      avo-dashboards (>= 3.5.4)
+      avo-menu (>= 3.5.4)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -118,7 +118,7 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.4.2)
       rack
-    avo (3.5.1)
+    avo (3.5.4)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -260,14 +260,14 @@ GEM
     net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.16.2-aarch64-linux)
+    nokogiri (1.16.3-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.16.2-arm64-darwin)
+    nokogiri (1.16.3-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.2-x86_64-linux)
+    nokogiri (1.16.3-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (7.0.10)
+    pagy (7.0.11)
     pg (1.5.5)
     psych (5.1.2)
       stringio
@@ -277,7 +277,7 @@ GEM
     pundit (2.3.0)
       activesupport (>= 3.0.0)
     racc (1.7.3)
-    rack (3.0.9.1)
+    rack (3.0.10)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -319,7 +319,7 @@ GEM
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
-    rdoc (6.6.2)
+    rdoc (6.6.3.1)
       psych (>= 4.0.0)
     redis (4.8.1)
     regexp_parser (2.8.0)
@@ -404,7 +404,7 @@ DEPENDENCIES
   annotate
   appsignal
   avo
-  avo-advanced (>= 3.3.3)!
+  avo-advanced!
   awesome_print
   aws-sdk-s3
   bootsnap
