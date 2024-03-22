@@ -10,7 +10,7 @@ class Avo::Resources::Review < Avo::BaseResource
 
   def fields
     field :id, as: :id
-    field :body, as: :textarea
+    field :body, as: :tiptap
     field :excerpt, as: :text, only_on: :index, as_description: true do
       ActionView::Base.full_sanitizer.sanitize(record.body.to_s).truncate 60
     rescue

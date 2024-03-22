@@ -87,7 +87,7 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem "avo-advanced", ">= 3.3.3", source: "https://packager.dev/avo-hq/"
+gem "avo-advanced", source: "https://packager.dev/avo-hq/"
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 gem "avo"
 
