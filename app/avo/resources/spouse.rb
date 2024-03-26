@@ -13,4 +13,10 @@ class Avo::Resources::Spouse < Avo::BaseResource
     field :id, as: :id
     field :name, as: :text
   end
+
+  def actions
+    action Avo::Actions::Dummy
+    action Avo::Actions::ExportCsv
+  end
+
 end
