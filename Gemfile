@@ -119,3 +119,4 @@ gem 'mapkick-rb'
 gem "dockerfile-rails", ">= 1.3", :group => :development
 
 gem "whenever"
+gem "pagy", "7.0.11"

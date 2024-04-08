@@ -8,7 +8,7 @@ class Avo::Resources::Project < Avo::BaseResource
   self.includes = :users
 
   def fields
-    field :id, as: :id, link_to_resource: true
+    field :id, as: :id, link_to_record: true
     field :name, as: :text, required: true, as_label: true, sortable: true
     field :progress, as: :progress_bar, value_suffix: "%", display_value: true
     field :stage,
