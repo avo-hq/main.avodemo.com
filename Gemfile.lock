@@ -431,6 +431,7 @@ DEPENDENCIES
   jbuilder
   mapkick-rb
   mini_magick
+  pagy (= 7.0.11)
   pg (>= 0.18, < 2.0)
   puma (~> 5.0)
   pundit
