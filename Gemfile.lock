@@ -1,30 +1,30 @@
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (3.5.4)
-      avo (>= 3.5.4)
-      avo-dynamic_filters (>= 3.5.4)
-      avo-pro (>= 3.5.4)
+    avo-advanced (3.5.5)
+      avo (>= 3.5.5)
+      avo-dynamic_filters (>= 3.5.5)
+      avo-pro (>= 3.5.5)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (3.5.4)
-      avo (>= 3.5.4)
+    avo-dashboards (3.5.5)
+      avo (>= 3.5.5)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (3.5.4)
-      avo (>= 3.5.4)
+    avo-dynamic_filters (3.5.5)
+      avo (>= 3.5.5)
       ransack (>= 4.1.1)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-menu (3.5.4)
-      avo (>= 3.5.4)
+    avo-menu (3.5.5)
+      avo (>= 3.5.5)
       docile
       dry-initializer
       zeitwerk (>= 2.6.12)
-    avo-pro (3.5.4)
-      avo (>= 3.5.4)
-      avo-dashboards (>= 3.5.4)
-      avo-menu (>= 3.5.4)
+    avo-pro (3.5.5)
+      avo (>= 3.5.5)
+      avo-dashboards (>= 3.5.5)
+      avo-menu (>= 3.5.5)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -118,7 +118,8 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.4.2)
       rack
-    avo (3.5.4)
+    ast (2.4.2)
+    avo (3.5.5)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -216,8 +217,9 @@ GEM
     image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
-    importmap-rails (1.1.6)
+    importmap-rails (2.0.1)
       actionpack (>= 6.0.0)
+      activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     inline_svg (1.9.0)
       activesupport (>= 3.0)
@@ -268,6 +270,9 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pagy (7.0.11)
+    parser (3.3.0.5)
+      ast (~> 2.4.1)
+      racc
     pg (1.5.5)
     psych (5.1.2)
       stringio
@@ -323,7 +328,7 @@ GEM
       psych (>= 4.0.0)
     redis (4.8.1)
     regexp_parser (2.8.0)
-    reline (0.4.3)
+    reline (0.5.0)
       io-console (~> 0.5)
     responders (3.1.0)
       actionpack (>= 5.2)
@@ -332,6 +337,8 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
+    scout_apm (5.3.8)
+      parser
     selenium-webdriver (4.9.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -430,6 +437,7 @@ DEPENDENCIES
   rails (>= 7.1.0)
   ransack
   redis (~> 4.0)
+  scout_apm
   selenium-webdriver
   sprockets
   sprockets-rails
