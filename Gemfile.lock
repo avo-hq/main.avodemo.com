@@ -118,7 +118,6 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.4.2)
       rack
-    ast (2.4.2)
     avo (3.5.5)
       actionview (>= 6.1)
       active_link_to
@@ -270,9 +269,6 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pagy (7.0.11)
-    parser (3.3.0.5)
-      ast (~> 2.4.1)
-      racc
     pg (1.5.5)
     psych (5.1.2)
       stringio
@@ -337,8 +333,6 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
-    scout_apm (5.3.8)
-      parser
     selenium-webdriver (4.9.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -438,7 +432,6 @@ DEPENDENCIES
   rails (>= 7.1.0)
   ransack
   redis (~> 4.0)
-  scout_apm
   selenium-webdriver
   sprockets
   sprockets-rails
