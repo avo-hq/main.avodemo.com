@@ -22,10 +22,10 @@ class SeedService
     end
 
     cities = [
-        { name: "New York", population: 8398748, longitude: -74.006, latitude: 40.7128 },
-        { name: "Los Angeles", population: 3990456, longitude: -118.2437, latitude: 34.0522 },
-        { name: "Bucharest", population: 1800000, longitude: 26.1025, latitude: 44.4268 },
-        { name: "Hong Kong", population: 7500000, longitude: 114.1694, latitude: 22.3193 }
+        { name: "New York", population: 8398748, is_capital: false, longitude: -74.006, latitude: 40.7128 },
+        { name: "Los Angeles", population: 3990456, is_capital: false, longitude: -118.2437, latitude: 34.0522 },
+        { name: "Bucharest", population: 1800000, is_capital: true, longitude: 26.1025, latitude: 44.4268 },
+        { name: "Hong Kong", population: 7500000, is_capital: true, longitude: 114.1694, latitude: 22.3193 }
       ]
 
     cities.each do |city_params|
