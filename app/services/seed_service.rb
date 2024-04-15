@@ -16,9 +16,22 @@ class SeedService
     ProjectUser.delete_all
     Project.delete_all
     User.delete_all
+    City.delete_all
     ['active_storage_blobs', 'active_storage_attachments', 'posts', 'projects', 'projects_users', 'team_memberships', 'teams', 'users', 'comments', 'people', 'reviews', 'courses', 'course_links', 'fish'].each do |table_name|
       ActiveRecord::Base.connection.execute("TRUNCATE #{table_name} RESTART IDENTITY CASCADE")
     end
+
+    cities = [
+        { name: "New York", population: 8398748, longitude: -74.006, latitude: 40.7128 },
+        { name: "Los Angeles", population: 3990456, longitude: -118.2437, latitude: 34.0522 },
+        { name: "Bucharest", population: 1800000, longitude: 26.1025, latitude: 44.4268 },
+        { name: "Hong Kong", population: 7500000, longitude: 114.1694, latitude: 22.3193 }
+      ]
+
+    cities.each do |city_params|
+      City.create(city_params)
+    end
+
 
     teams = []
     teams.push(FactoryBot.create(:team, name: 'Apple', url: 'https://apple.com'))
