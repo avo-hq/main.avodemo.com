@@ -29,6 +29,7 @@ class Avo::Resources::Team < Avo::BaseResource
       field :logo, as: :external_image,hide_on: :show, as_avatar: :rounded do
         if record.url
           "//logo.clearbit.com/#{URI.parse(record.url).host}?size=180"
+        rescue
         end
       end
       field :description,
@@ -55,6 +56,7 @@ class Avo::Resources::Team < Avo::BaseResource
         field :logo, as: :external_image, as_avatar: :rounded do
           if record.url
             "//logo.clearbit.com/#{URI.parse(record.url).host}?size=180"
+          rescue
           end
         end
       end
