@@ -1,3 +1,25 @@
+GIT
+  remote: https://github.com/avo-hq/avo.git
+  revision: 4e875ada7b6e56f4a6f49fe32aa260ed343cd0be
+  branch: fix/table_cache
+  specs:
+    avo (3.6.3)
+      actionview (>= 6.1)
+      active_link_to
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
+      addressable
+      docile
+      dry-initializer
+      httparty
+      inline_svg
+      meta-tags
+      pagy (>= 7.0.0)
+      turbo-rails (>= 2.0.0)
+      turbo_power (>= 0.6.0)
+      view_component (>= 3.7.0)
+      zeitwerk (>= 2.6.12)
+
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
@@ -119,22 +141,6 @@ GEM
     appsignal (3.4.2)
       rack
     ast (2.4.2)
-    avo (3.6.3)
-      actionview (>= 6.1)
-      active_link_to
-      activerecord (>= 6.1)
-      activesupport (>= 6.1)
-      addressable
-      docile
-      dry-initializer
-      httparty
-      inline_svg
-      meta-tags
-      pagy (>= 7.0.0)
-      turbo-rails (>= 2.0.0)
-      turbo_power (>= 0.6.0)
-      view_component (>= 3.7.0)
-      zeitwerk (>= 2.6.12)
     awesome_print (1.9.2)
     aws-eventstream (1.2.0)
     aws-partitions (1.767.0)
@@ -413,7 +419,7 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo
+  avo (>= 3.6.3)!
   avo-advanced!
   awesome_print
   aws-sdk-s3
