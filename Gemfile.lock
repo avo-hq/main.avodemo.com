@@ -1,52 +1,30 @@
-GIT
-  remote: https://github.com/avo-hq/avo.git
-  revision: 4e875ada7b6e56f4a6f49fe32aa260ed343cd0be
-  branch: fix/table_cache
-  specs:
-    avo (3.6.3)
-      actionview (>= 6.1)
-      active_link_to
-      activerecord (>= 6.1)
-      activesupport (>= 6.1)
-      addressable
-      docile
-      dry-initializer
-      httparty
-      inline_svg
-      meta-tags
-      pagy (>= 7.0.0)
-      turbo-rails (>= 2.0.0)
-      turbo_power (>= 0.6.0)
-      view_component (>= 3.7.0)
-      zeitwerk (>= 2.6.12)
-
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (3.6.3)
-      avo (>= 3.6.3)
-      avo-dynamic_filters (>= 3.6.3)
-      avo-pro (>= 3.6.3)
+    avo-advanced (3.6.4)
+      avo (>= 3.6.4)
+      avo-dynamic_filters (>= 3.6.4)
+      avo-pro (>= 3.6.4)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (3.6.3)
-      avo (>= 3.6.3)
+    avo-dashboards (3.6.4)
+      avo (>= 3.6.4)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (3.6.3)
-      avo (>= 3.6.3)
+    avo-dynamic_filters (3.6.4)
+      avo (>= 3.6.4)
       ransack (>= 4.1.1)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-menu (3.6.3)
-      avo (>= 3.6.3)
+    avo-menu (3.6.4)
+      avo (>= 3.6.4)
       docile
       dry-initializer
       zeitwerk (>= 2.6.12)
-    avo-pro (3.6.3)
-      avo (>= 3.6.3)
-      avo-dashboards (>= 3.6.3)
-      avo-menu (>= 3.6.3)
+    avo-pro (3.6.4)
+      avo (>= 3.6.4)
+      avo-dashboards (>= 3.6.4)
+      avo-menu (>= 3.6.4)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -141,6 +119,22 @@ GEM
     appsignal (3.4.2)
       rack
     ast (2.4.2)
+    avo (3.6.4)
+      actionview (>= 6.1)
+      active_link_to
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
+      addressable
+      docile
+      dry-initializer
+      httparty
+      inline_svg
+      meta-tags
+      pagy (>= 7.0.0)
+      turbo-rails (>= 2.0.0)
+      turbo_power (>= 0.6.0)
+      view_component (>= 3.7.0)
+      zeitwerk (>= 2.6.12)
     awesome_print (1.9.2)
     aws-eventstream (1.2.0)
     aws-partitions (1.767.0)
@@ -258,7 +252,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.22.3)
     msgpack (1.7.1)
-    multi_xml (0.7.0)
+    multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     mutex_m (0.2.0)
     net-imap (0.4.10)
@@ -419,7 +413,7 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo (>= 3.6.3)!
+  avo
   avo-advanced!
   awesome_print
   aws-sdk-s3
