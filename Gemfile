@@ -123,6 +123,6 @@ gem "dockerfile-rails", ">= 1.3", :group => :development
 
 gem "whenever"
 
-gem "pagy", "7.0.11"
+gem "pagy"
 
 gem "scout_apm"
