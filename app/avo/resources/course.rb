@@ -68,7 +68,7 @@ class Avo::Resources::Course < Avo::BaseResource
       options: Course.cities.values.flatten.map { |city| [city, city] }.to_h,
       display_value: false
     field :links, as: :has_many, searchable: true, placeholder: "Click to choose a link",
-      discreet_pagination: true
+      discreet_pagination: true, linkable: true
   end
 
   def filters
