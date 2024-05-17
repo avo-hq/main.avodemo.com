@@ -1,30 +1,30 @@
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (3.5.5)
-      avo (>= 3.5.5)
-      avo-dynamic_filters (>= 3.5.5)
-      avo-pro (>= 3.5.5)
+    avo-advanced (3.7.4)
+      avo (>= 3.7.4)
+      avo-dynamic_filters (>= 3.7.4)
+      avo-pro (>= 3.7.4)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (3.5.5)
-      avo (>= 3.5.5)
+    avo-dashboards (3.7.4)
+      avo (>= 3.7.4)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (3.5.5)
-      avo (>= 3.5.5)
+    avo-dynamic_filters (3.7.4)
+      avo (>= 3.7.4)
       ransack (>= 4.1.1)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-menu (3.5.5)
-      avo (>= 3.5.5)
+    avo-menu (3.7.4)
+      avo (>= 3.7.4)
       docile
       dry-initializer
       zeitwerk (>= 2.6.12)
-    avo-pro (3.5.5)
-      avo (>= 3.5.5)
-      avo-dashboards (>= 3.5.5)
-      avo-menu (>= 3.5.5)
+    avo-pro (3.7.4)
+      avo (>= 3.7.4)
+      avo-dashboards (>= 3.7.4)
+      avo-menu (>= 3.7.4)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -118,7 +118,8 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.6.4)
       rack
-    avo (3.5.5)
+    ast (2.4.2)
+    avo (3.7.4)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -152,8 +153,8 @@ GEM
     aws-sigv4 (1.5.2)
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.2.0)
-    bcrypt (3.1.20)
-    bigdecimal (3.1.7)
+    bcrypt (3.1.18)
+    bigdecimal (3.1.8)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -176,6 +177,7 @@ GEM
     countries (6.0.0)
       unaccent (~> 0.3)
     crass (1.0.6)
+    csv (3.3.0)
     date (3.3.4)
     debug (1.9.1)
       irb (~> 1.10)
@@ -212,10 +214,11 @@ GEM
       activerecord (>= 4.0)
       hashids (~> 1.0)
     hashids (1.0.6)
-    httparty (0.21.0)
+    httparty (0.22.0)
+      csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    i18n (1.14.4)
+    i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
@@ -228,8 +231,8 @@ GEM
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
     io-console (0.7.2)
-    irb (1.12.0)
-      rdoc
+    irb (1.13.1)
+      rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -246,14 +249,15 @@ GEM
     mapkick-rb (0.1.4)
     marcel (1.0.4)
     matrix (0.4.2)
-    meta-tags (2.20.0)
+    meta-tags (2.21.0)
       actionpack (>= 6.0.0, < 7.2)
-    method_source (1.0.0)
+    method_source (1.1.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.22.3)
     msgpack (1.7.1)
-    multi_xml (0.6.0)
+    multi_xml (0.7.1)
+      bigdecimal (~> 3.1)
     mutex_m (0.2.0)
     net-imap (0.4.10)
       date
@@ -264,19 +268,25 @@ GEM
       timeout
     net-smtp (0.4.0.1)
       net-protocol
-    nio4r (2.7.1)
-    nokogiri (1.16.3-arm64-darwin)
-      racc (~> 1.4)
-    orm_adapter (0.5.0)
-    pagy (7.0.11)
-    pg (1.5.6)
     prefixed_ids (1.6.1)
       hashids (>= 1.0.0, < 2.0.0)
-      rails (>= 6.0.0)
+    nio4r (2.7.0)
+    nokogiri (1.16.4-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.4-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.4-x86_64-linux)
+      racc (~> 1.4)
+    orm_adapter (0.5.0)
+    pagy (8.4.0)
+    parser (3.3.0.5)
+      ast (~> 2.4.1)
+      racc
+    pg (1.5.5)
     psych (5.1.2)
       stringio
-    public_suffix (5.0.4)
-    puma (6.4.2)
+    public_suffix (5.0.5)
+    puma (5.6.5)
       nio4r (~> 2.0)
     pundit (2.3.1)
       activesupport (>= 3.0.0)
@@ -318,7 +328,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
-    rake (13.1.0)
+    rake (13.2.1)
     ransack (4.1.1)
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
@@ -326,8 +336,8 @@ GEM
     rdoc (6.6.3.1)
       psych (>= 4.0.0)
     redis (4.8.1)
-    regexp_parser (2.9.0)
-    reline (0.5.0)
+    regexp_parser (2.8.0)
+    reline (0.5.6)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -336,7 +346,9 @@ GEM
     ruby-vips (2.2.1)
       ffi (~> 1.12)
     rubyzip (2.3.2)
-    selenium-webdriver (4.10.0)
+    scout_apm (5.3.8)
+      parser
+    selenium-webdriver (4.9.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -363,7 +375,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unaccent (0.4.0)
-    view_component (3.11.0)
+    view_component (3.12.1)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -422,6 +434,7 @@ DEPENDENCIES
   jbuilder
   mapkick-rb
   mini_magick
+  pagy
   pg (>= 0.18, < 2.0)
   prefixed_ids (~> 1.6, >= 1.6.1)
   puma (~> 6.0)
@@ -429,6 +442,7 @@ DEPENDENCIES
   rails (>= 7.1.0)
   ransack
   redis (~> 4.0)
+  scout_apm
   selenium-webdriver
   sprockets
   sprockets-rails

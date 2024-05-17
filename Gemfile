@@ -88,8 +88,11 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 gem "awesome_print"
 
 gem "avo-advanced", source: "https://packager.dev/avo-hq/"
-# gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 gem "avo"
+
+# gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
+# gem "avo", path: "../gems/avo"
+# gem "avo", ">= 3.6.3", github: "avo-hq/avo", branch: "fix/table_cache"
 
 # gem 'newrelic_rpm'
 
@@ -121,3 +124,7 @@ gem 'mapkick-rb'
 gem "dockerfile-rails", ">= 1.3", :group => :development
 
 gem "whenever"
+
+gem "pagy"
+
+gem "scout_apm"

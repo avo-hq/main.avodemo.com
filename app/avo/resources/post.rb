@@ -45,7 +45,7 @@ class Avo::Resources::Post < Avo::BaseResource
       enforce_suggestions: true,
       help: "The only allowed values here are `one`, `two`, and `three`"
     field :cover_photo, as: :file, is_image: true, as_avatar: :rounded, hide_on: [:index], full_width: true, accept: "image/*"
-    field :cdn_cover_photo, as: :external_image, name: 'Cover photo', required: true, only_on: [:index], link_to_resource: true, as_avatar: :rounded
+    field :cdn_cover_photo, as: :external_image, name: 'Cover photo', required: true, only_on: [:index], link_to_record: true, as_avatar: :rounded
     field :audio, as: :file, is_audio: true, accept: "audio/*"
     field :excerpt, as: :text, hide_on: :all, as_description: true do
       ActionView::Base.full_sanitizer.sanitize(record.body).truncate 130

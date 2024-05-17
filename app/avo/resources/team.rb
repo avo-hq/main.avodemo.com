@@ -26,9 +26,12 @@ class Avo::Resources::Team < Avo::BaseResource
       field :preview, as: :preview
       field :id, as: :id, filterable: true
       field :name, as: :text, sortable: true, show_on: :preview, filterable: true
-      field :logo, as: :external_image,hide_on: :show, as_avatar: :rounded do
+      field :logo, as: :external_image, hide_on: :show, as_avatar: :rounded do
         if record.url
-          "//logo.clearbit.com/#{URI.parse(record.url).host}?size=180"
+          begin
+            "//logo.clearbit.com/#{URI.parse(record.url).host}?size=180"
+          rescue
+          end
         end
       end
       field :description,
@@ -54,7 +57,11 @@ class Avo::Resources::Team < Avo::BaseResource
         field :created_at, as: :date_time, hide_on: :forms
         field :logo, as: :external_image, as_avatar: :rounded do
           if record.url
-            "//logo.clearbit.com/#{URI.parse(record.url).host}?size=180"
+            begin
+              "//logo.clearbit.com/#{URI.parse(record.url).host}?size=180"
+            rescue
+
+            end
           end
         end
       end

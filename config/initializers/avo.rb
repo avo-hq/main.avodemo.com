@@ -67,6 +67,7 @@ Avo.configure do |config|
           false
         }
         resource :reviews
+        resource :city
       end
 
       group "People", collapsable: true do
