@@ -251,28 +251,32 @@ class SeedService
         description: "A portable music player.",
         category: "Music players",
         price_cents: 19900,
-        price_currency: "USD"
+        price_currency: "USD",
+        image: File.open(Rails.root.join('db', 'seed_files', 'ipod.jpg'))
       },
       {
         title: "iPhone",
         description: "A smartphone.",
         category: "Phones",
         price_cents: 99900,
-        price_currency: "USD"
+        price_currency: "USD",
+        image: File.open(Rails.root.join('db', 'seed_files', 'iphone.jpg'))
       },
       {
         title: "MacBook Pro",
         description: "A powerful laptop.",
         category: "Computers",
         price_cents: 239900,
-        price_currency: "USD"
+        price_currency: "USD",
+        image: File.open(Rails.root.join('db', 'seed_files', 'macbook.jpg'))
       },
       {
         title: "Apple Watch",
         description: "A smartwatch.",
         category: "Wearables",
         price_cents: 39900,
-        price_currency: "USD"
+        price_currency: "USD",
+        image: File.open(Rails.root.join('db', 'seed_files', 'watch.jpg'))
       }
     ]
     products.each do |product_attrs|
