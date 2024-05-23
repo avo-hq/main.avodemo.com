@@ -17,6 +17,7 @@ class SeedService
     Project.delete_all
     User.delete_all
     City.delete_all
+    Product.delete_all
     ['active_storage_blobs', 'active_storage_attachments', 'posts', 'projects', 'projects_users', 'team_memberships', 'teams', 'users', 'comments', 'people', 'reviews', 'courses', 'course_links', 'fish'].each do |table_name|
       ActiveRecord::Base.connection.execute("TRUNCATE #{table_name} RESTART IDENTITY CASCADE")
     end
@@ -243,5 +244,44 @@ class SeedService
       },
       birthday: Faker::Date.birthday(min_age: 18, max_age: 65),
     )
+
+    products = [
+      {
+        title: "iPod",
+        description: "A portable music player.",
+        category: "Music players",
+        price_cents: 19900,
+        price_currency: "USD",
+        image: File.open(Rails.root.join('db', 'seed_files', 'ipod.jpg'))
+      },
+      {
+        title: "iPhone",
+        description: "A smartphone.",
+        category: "Phones",
+        price_cents: 99900,
+        price_currency: "USD",
+        image: File.open(Rails.root.join('db', 'seed_files', 'iphone.jpg'))
+      },
+      {
+        title: "MacBook Pro",
+        description: "A powerful laptop.",
+        category: "Computers",
+        price_cents: 239900,
+        price_currency: "USD",
+        image: File.open(Rails.root.join('db', 'seed_files', 'macbook.jpg'))
+      },
+      {
+        title: "Apple Watch",
+        description: "A smartwatch.",
+        category: "Wearables",
+        price_cents: 39900,
+        price_currency: "USD",
+        image: File.open(Rails.root.join('db', 'seed_files', 'watch.jpg'))
+      }
+    ]
+    products.each do |product_attrs|
+      Product.create!(product_attrs)
+    end
+
   end
 end
