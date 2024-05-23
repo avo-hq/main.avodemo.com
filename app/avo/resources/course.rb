@@ -39,7 +39,7 @@ class Avo::Resources::Course < Avo::BaseResource
         end
       end
     end
-    field :skills, as: :tags, disallowed: -> { record.skill_disallowed }, suggestions: -> { record.skill_suggestions }, html: -> do
+    field :skills, as: :tags, disallowed: -> { record.skill_disallowed }, suggestions: -> { record.skill_suggestions },filterable: true, html: -> do
       edit do
         wrapper do
           classes do
@@ -52,7 +52,7 @@ class Avo::Resources::Course < Avo::BaseResource
       end
     end
     field :country,
-      as: :select,
+      as: :select, filterable: true,
       options: Course.countries.map { |country| [country, country] }.prepend(["-", nil]).to_h,
       html: {
         edit: {
