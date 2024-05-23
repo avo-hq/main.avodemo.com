@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  #  monetize :price_cents
+   monetize :price_cents
 
   enum category: [
     "Music players",
