@@ -146,4 +146,14 @@ class Avo::Resources::User < Avo::BaseResource
     scope Avo::Scopes::NonAdmins
     scope Avo::Scopes::Active
   end
+
+  def cards
+    card Avo::Cards::ExampleAreaChart, cols: 3
+    card Avo::Cards::ExampleMetric, cols: 2
+    card Avo::Cards::ExampleMetric,
+      label: "Active users metric",
+      description: "Count of the active users.",
+      arguments: { active_users: true },
+      visible: -> { !resource.view.form? }
+  end
 end
