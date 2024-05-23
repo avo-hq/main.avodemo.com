@@ -1,6 +1,6 @@
 class Avo::Resources::Product < Avo::BaseResource
  self.title = :title
-  self.includes = []
+  self.includes = [image_attachment: :blob]
   self.default_view_type = :grid
   self.grid_view = {
     card: -> do
@@ -21,9 +21,6 @@ class Avo::Resources::Product < Avo::BaseResource
         }
       }
     end
-  }
-  self.index_query = -> {
-    query.includes image_attachment: :blob
   }
 
   def fields
