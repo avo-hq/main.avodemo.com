@@ -7,7 +7,7 @@ class Avo::Resources::Product < Avo::BaseResource
       {
         cover_url: record.image.attached? ? main_app.url_for(record.image) : nil,
         title: record.title,
-        body: simple_format(record.description)
+        body: "Price: #{record.price.format}<br>#{record.description}".html_safe
       }
     end,
     html: -> do
