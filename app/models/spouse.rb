@@ -11,6 +11,7 @@
 #  person_id  :bigint
 #
 class Spouse < Person
+  include Hashid::Rails
   belongs_to :person, optional: true, inverse_of: :spouse
 
   def self.ransackable_attributes(auth_object = nil)

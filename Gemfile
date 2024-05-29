@@ -15,7 +15,7 @@ gem "sprockets-rails"
 gem 'pg', '>= 0.18', '< 2.0'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma", "~> 6.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
@@ -109,6 +109,8 @@ gem "appsignal"
 gem "acts_as_list"
 
 gem 'friendly_id', '~> 5.4.0'
+gem "prefixed_ids", "~> 1.6", ">= 1.6.1"
+gem "hashid-rails", "~> 1.4", ">= 1.4.1"
 
 gem 'acts-as-taggable-on', '>= 10'
 
