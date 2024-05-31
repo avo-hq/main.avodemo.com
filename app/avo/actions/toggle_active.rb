@@ -6,7 +6,7 @@ class Avo::Actions::ToggleActive < Avo::BaseAction
     field :message, as: :textarea, default: 'Your account has been marked as inactive.'
   end
 
-  def handle(records:, fields:, current_user:, resource:)
+  def handle(records:, fields:, current_user:, resource:, **)
     records.each do
       if record.active
         record.update active: false
