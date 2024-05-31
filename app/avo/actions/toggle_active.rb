@@ -7,7 +7,7 @@ class Avo::Actions::ToggleActive < Avo::BaseAction
   end
 
   def handle(records:, fields:, current_user:, resource:, **)
-    records.each do
+    records.each do |record|
       if record.active
         record.update active: false
       else
