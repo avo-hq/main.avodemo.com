@@ -4,14 +4,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "~> 3.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-# gem "rails", "~> 7.1.0"
-# gem "activestorage"
-# gem "actionmailer"
-# gem "actioncable"
-gem "rails", github: "rails/rails", branch: "main"
-gem "activestorage", github: "rails/rails", branch: "main"
-gem "actionmailer", github: "rails/rails", branch: "main"
-gem "actioncable", github: "rails/rails", branch: "main"
+gem "rails", ">= 7.2.0.beta2"
+gem "activestorage"
+gem "actionmailer"
+gem "actioncable"
+# gem "rails", github: "rails/rails", branch: "main"
+# gem "activestorage", github: "rails/rails", branch: "main"
+# gem "actionmailer", github: "rails/rails", branch: "main"
+# gem "actioncable", github: "rails/rails", branch: "main"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
