@@ -4,9 +4,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "~> 3.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", ">= 7.1.0"
-gem "actionmailer"
-gem "actioncable"
+# gem "rails", "~> 7.1.0"
+# gem "activestorage"
+# gem "actionmailer"
+# gem "actioncable"
+gem "rails", github: "rails/rails", branch: "main"
+gem "activestorage", github: "rails/rails", branch: "main"
+gem "actionmailer", github: "rails/rails", branch: "main"
+gem "actioncable", github: "rails/rails", branch: "main"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -110,13 +115,13 @@ gem "acts_as_list"
 
 gem 'friendly_id', '~> 5.4.0'
 
-gem 'acts-as-taggable-on', '>= 10'
+# gem 'acts-as-taggable-on', '>= 10'
+gem "acts-as-taggable-on", github: "avo-hq/acts-as-taggable-on"
 
 gem 'pundit'
 gem 'chartkick'
 gem 'countries'
 gem 'sprockets'
-gem 'activestorage'
 gem 'mapkick-rb'
 
 gem "dockerfile-rails", ">= 1.3", :group => :development
