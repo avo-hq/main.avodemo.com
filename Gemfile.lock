@@ -5,6 +5,16 @@ GIT
     acts-as-taggable-on (10.0.0)
       activerecord (>= 6.1)
 
+GIT
+  remote: https://github.com/avo-hq/ransack.git
+  revision: 0af36d53a784e19b5a56f3b112f433c54f4d709f
+  branch: fix/rails-8/delegate-alias-tracker-to-relation
+  specs:
+    ransack (4.1.1)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
+
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
@@ -332,10 +342,6 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.2.1)
-    ransack (4.1.1)
-      activerecord (>= 6.1.5)
-      activesupport (>= 6.1.5)
-      i18n
     rdoc (6.7.0)
       psych (>= 4.0.0)
     redis (4.8.1)
@@ -451,7 +457,7 @@ DEPENDENCIES
   puma (~> 5.0)
   pundit
   rails (>= 7.2.0.beta2)
-  ransack
+  ransack!
   redis (~> 4.0)
   scout_apm
   selenium-webdriver
