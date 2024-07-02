@@ -89,6 +89,8 @@ class Avo::Resources::User < Avo::BaseResource
       end
     end
 
+    return if params.dig(:turbo_frame) == "has_one_field_show_admin"
+
     tabs id: :tabs do
       tab "Birthday", description: "hey you", hide_on: :show do
         panel do
@@ -148,6 +150,8 @@ class Avo::Resources::User < Avo::BaseResource
   end
 
   def cards
+    return if params.dig(:related_name).present?
+
     card Avo::Cards::ExampleAreaChart, cols: 3
     card Avo::Cards::ExampleMetric, cols: 2
     card Avo::Cards::ExampleMetric,
