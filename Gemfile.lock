@@ -18,30 +18,30 @@ GIT
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (3.10.1)
-      avo (>= 3.10.1)
-      avo-dynamic_filters (>= 3.10.1)
-      avo-pro (>= 3.10.1)
+    avo-advanced (3.10.2)
+      avo (>= 3.10.2)
+      avo-dynamic_filters (>= 3.10.2)
+      avo-pro (>= 3.10.2)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (3.10.1)
-      avo (>= 3.10.1)
+    avo-dashboards (3.10.2)
+      avo (>= 3.10.2)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (3.10.1)
-      avo (>= 3.10.1)
+    avo-dynamic_filters (3.10.2)
+      avo (>= 3.10.2)
       ransack (>= 4.1.1)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-menu (3.10.1)
-      avo (>= 3.10.1)
+    avo-menu (3.10.2)
+      avo (>= 3.10.2)
       docile
       dry-initializer
       zeitwerk (>= 2.6.12)
-    avo-pro (3.10.1)
-      avo (>= 3.10.1)
-      avo-dashboards (>= 3.10.1)
-      avo-menu (>= 3.10.1)
+    avo-pro (3.10.2)
+      avo (>= 3.10.2)
+      avo-dashboards (>= 3.10.2)
+      avo-menu (>= 3.10.2)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -128,7 +128,7 @@ GEM
     appsignal (3.4.2)
       rack
     ast (2.4.2)
-    avo (3.10.1)
+    avo (3.10.2)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -238,7 +238,7 @@ GEM
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
     io-console (0.7.2)
-    irb (1.13.2)
+    irb (1.14.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.11.5)
@@ -292,7 +292,7 @@ GEM
     nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (8.6.2)
+    pagy (8.6.3)
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
