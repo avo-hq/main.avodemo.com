@@ -39,8 +39,14 @@ class Avo::Resources::Course < Avo::BaseResource
         end
       end
     end
-    field :skills, as: :tags, disallowed: -> { record.skill_disallowed }, suggestions: -> { record.skill_suggestions },
-      filterable: { suggestions: ["example suggestion", "example tag"] }, html: -> do
+    field :skills,
+      as: :tags,
+      disallowed: -> { record.skill_disallowed },
+      suggestions: -> { record.skill_suggestions },
+      filterable: {
+        suggestions: ["example suggestion", "example tag"]
+      },
+      html: -> do
       edit do
         wrapper do
           classes do
