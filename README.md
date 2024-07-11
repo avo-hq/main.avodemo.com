@@ -8,12 +8,24 @@ Have a look at the [/avo](/app/avo) directory to find the resources, filters and
 
 ### Install locally
 
-This should be a pretty straighforward Rails install. The app has seeds and everything it needs.
+This should be a pretty straight forward Rails install. The app has seeds and everything it needs.
 
 ```bash
 bundle install
 
 bin/rails db:setup
+```
 
-bin/rails serve
+To start the server either use:
+
+```bash
+rails assets:precompile
+
+bin/rails server
+```
+
+or uncomment the `css: rails tailwindcss:watch` in the `Procfile.dev`-file and start the server via the dev-script:
+
+```bash
+bin/dev
 ```
