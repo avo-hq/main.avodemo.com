@@ -8,7 +8,7 @@ Have a look at the [/avo](/app/avo) directory to find the resources, filters and
 
 ### Install locally
 
-This should be a pretty straight forward Rails install. The app has seeds and everything it needs.
+This should be a pretty straightforward Rails install. The app has seeds and everything it needs.
 
 ```bash
 bundle install
