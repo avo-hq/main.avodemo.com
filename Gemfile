@@ -101,10 +101,7 @@ gem "avo"
 
 # gem 'newrelic_rpm'
 
-# gem 'ransack'
-
-# Temporary use of fork to add Rails 8 support
-gem "ransack", github: "avo-hq/ransack", branch: "fix/rails-8/delegate-alias-tracker-to-relation"
+gem 'ransack'
 
 gem 'bugsnag'
 
