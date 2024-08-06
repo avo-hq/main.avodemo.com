@@ -8,30 +8,30 @@ GIT
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (3.10.10)
-      avo (>= 3.10.10)
-      avo-dynamic_filters (>= 3.10.10)
-      avo-pro (>= 3.10.10)
+    avo-advanced (3.11.0)
+      avo (= 3.11.0)
+      avo-dynamic_filters (= 3.11.0)
+      avo-pro (= 3.11.0)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (3.10.10)
-      avo (>= 3.10.10)
+    avo-dashboards (3.11.0)
+      avo (= 3.11.0)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (3.10.10)
-      avo (>= 3.10.10)
+    avo-dynamic_filters (3.11.0)
+      avo (= 3.11.0)
       ransack (>= 4.2.0)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-menu (3.10.10)
-      avo (>= 3.10.10)
+    avo-menu (3.11.0)
+      avo (= 3.11.0)
       docile
       dry-initializer
       zeitwerk (>= 2.6.12)
-    avo-pro (3.10.10)
-      avo (>= 3.10.10)
-      avo-dashboards (>= 3.10.10)
-      avo-menu (>= 3.10.10)
+    avo-pro (3.11.0)
+      avo (= 3.11.0)
+      avo-dashboards (= 3.11.0)
+      avo-menu (= 3.11.0)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -118,7 +118,7 @@ GEM
     appsignal (3.4.2)
       rack
     ast (2.4.2)
-    avo (3.10.10)
+    avo (3.11.0)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -274,7 +274,7 @@ GEM
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (9.0.3)
+    pagy (9.0.5)
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
@@ -286,7 +286,7 @@ GEM
       nio4r (~> 2.0)
     pundit (2.3.0)
       activesupport (>= 3.0.0)
-    racc (1.8.0)
+    racc (1.8.1)
     rack (3.1.7)
     rack-session (2.0.0)
       rack (>= 3.0.0)
@@ -400,7 +400,7 @@ GEM
       chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.16)
+    zeitwerk (2.6.17)
 
 PLATFORMS
   aarch64-linux
