@@ -33,7 +33,7 @@ GEM
       avo-dashboards (= 3.11.7)
       avo-menu (= 3.11.7)
       zeitwerk (>= 2.6.12)
-    avo-rhino_field (0.0.1)
+    avo-rhino_field (0.0.2)
 
 GEM
   remote: https://rubygems.org/
