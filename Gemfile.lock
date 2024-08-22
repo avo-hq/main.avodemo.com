@@ -8,31 +8,32 @@ GIT
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (3.11.6)
-      avo (= 3.11.6)
-      avo-dynamic_filters (= 3.11.6)
-      avo-pro (= 3.11.6)
+    avo-advanced (3.11.7)
+      avo (= 3.11.7)
+      avo-dynamic_filters (= 3.11.7)
+      avo-pro (= 3.11.7)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (3.11.6)
-      avo (= 3.11.6)
+    avo-dashboards (3.11.7)
+      avo (= 3.11.7)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (3.11.6)
-      avo (= 3.11.6)
+    avo-dynamic_filters (3.11.7)
+      avo (= 3.11.7)
       ransack (>= 4.2.0)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-menu (3.11.6)
-      avo (= 3.11.6)
+    avo-menu (3.11.7)
+      avo (= 3.11.7)
       docile
       dry-initializer
       zeitwerk (>= 2.6.12)
-    avo-pro (3.11.6)
-      avo (= 3.11.6)
-      avo-dashboards (= 3.11.6)
-      avo-menu (= 3.11.6)
+    avo-pro (3.11.7)
+      avo (= 3.11.7)
+      avo-dashboards (= 3.11.7)
+      avo-menu (= 3.11.7)
       zeitwerk (>= 2.6.12)
+    avo-rhino_field (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -120,7 +121,7 @@ GEM
     appsignal (3.4.2)
       rack
     ast (2.4.2)
-    avo (3.11.6)
+    avo (3.11.7)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -249,7 +250,7 @@ GEM
     method_source (1.1.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
-    minitest (5.25.0)
+    minitest (5.25.1)
     monetize (1.13.0)
       money (~> 6.12)
     money (6.19.0)
@@ -423,6 +424,7 @@ DEPENDENCIES
   avo
   avo-advanced!
   avo-money_field
+  avo-rhino_field!
   awesome_print
   aws-sdk-s3
   bootsnap
