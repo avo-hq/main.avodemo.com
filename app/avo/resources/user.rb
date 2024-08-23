@@ -13,7 +13,7 @@ class Avo::Resources::User < Avo::BaseResource
     query.friendly.find id
   end
   self.includes = [:posts, :post]
-  self.attachments = [:photo]
+  self.attachments = [:cv]
   self.single_includes = [:post]
   self.devise_password_optional = true
 
