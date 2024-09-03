@@ -140,6 +140,7 @@ class Avo::Resources::User < Avo::BaseResource
   end
 
   def filters
+    filter Avo::Filters::Birthday
     filter Avo::Filters::UserNames
     filter Avo::Filters::IsAdmin
     filter Avo::Filters::DummyMultipleSelect
