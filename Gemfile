@@ -132,7 +132,7 @@ gem "whenever"
 
 gem "pagy"
 
-gem "scout_apm"
+gem "rorvswild"
 
 gem "avo-money_field"
 gem "money-rails", "~> 1.12"
