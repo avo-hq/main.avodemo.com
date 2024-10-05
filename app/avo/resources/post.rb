@@ -7,6 +7,7 @@ class Avo::Resources::Post < Avo::BaseResource
     help: "- search by id, name or body"
   }
   self.includes = [:user]
+  self.attachments = [:cover_photo]
   self.default_view_type = :grid
 
   self.grid_view = {
