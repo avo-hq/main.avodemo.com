@@ -5,7 +5,8 @@ class Avo::Resources::Project < Avo::BaseResource
       query.ransack(id_eq: params[:q], name_cont: params[:q], country_cont: params[:q], m: "or").result(distinct: false)
     end
   }
-  self.includes = :users
+  self.includes = [:users]
+  self.attachments = [:files]
 
   def fields
     field :id, as: :id, link_to_record: true

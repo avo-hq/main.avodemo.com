@@ -13,6 +13,8 @@ class Avo::Resources::User < Avo::BaseResource
     query.friendly.find id
   end
   self.includes = [:posts, :post]
+  self.attachments = [:cv]
+  self.single_includes = [:post]
   self.devise_password_optional = true
 
   self.grid_view = {
@@ -138,6 +140,7 @@ class Avo::Resources::User < Avo::BaseResource
   end
 
   def filters
+    filter Avo::Filters::Birthday
     filter Avo::Filters::UserNames
     filter Avo::Filters::IsAdmin
     filter Avo::Filters::DummyMultipleSelect

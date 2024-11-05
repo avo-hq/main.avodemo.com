@@ -45,6 +45,7 @@ Avo.configure do |config|
     }
   end
   config.current_user_method = :current_user
+  config.click_row_to_view_record = true
 
   config.main_menu = -> {
     section I18n.t("avo.dashboards"), icon: "app/assets/images/demo-adjustments.svg" do

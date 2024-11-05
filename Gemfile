@@ -95,16 +95,15 @@ gem "awesome_print"
 gem "avo-advanced", source: "https://packager.dev/avo-hq/"
 gem "avo"
 
+gem "avo-rhino_field", source: "https://packager.dev/avo-hq/"
+
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo", path: "../gems/avo"
 # gem "avo", ">= 3.6.3", github: "avo-hq/avo", branch: "fix/table_cache"
 
 # gem 'newrelic_rpm'
 
-# gem 'ransack'
-
-# Temporary use of fork to add Rails 8 support
-gem "ransack", github: "avo-hq/ransack", branch: "fix/rails-8/delegate-alias-tracker-to-relation"
+gem 'ransack'
 
 gem 'bugsnag'
 
@@ -133,7 +132,7 @@ gem "whenever"
 
 gem "pagy"
 
-gem "scout_apm"
+gem "rorvswild"
 
 gem "avo-money_field"
 gem "money-rails", "~> 1.12"
