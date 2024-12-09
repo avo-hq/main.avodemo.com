@@ -35,7 +35,7 @@ Avo.configure do |config|
   #   logo: "/avo-assets/logo.png",
   #   logomark: "/avo-assets/logomark.png"
   # }
-
+  config.exclude_from_status = ["license_key"]
   config.set_context do
     {
       foo: 'bar',
