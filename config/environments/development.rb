@@ -33,6 +33,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.session_store :redis_store, servers: "#{ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" }}/session"
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
