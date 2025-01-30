@@ -6,3 +6,6 @@
 
 // We can remove this line after upgrading to Avo 3.12
 //= link avo-rhino_field
+
+// Temporary
+//= link late-registration.js

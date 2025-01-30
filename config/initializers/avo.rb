@@ -3,7 +3,6 @@ Avo.configure do |config|
   config.license_key = ENV['AVO_LICENSE_KEY']
   config.id_links_to_resource = true
   config.home_path = -> { "/avo/dashboards/dashy" }
-  config.resource_controls_placement = :right
   # config.branding = {
   #   colors: {
   #     # BLUE
