@@ -96,6 +96,10 @@ Avo.configure do |config|
       end
     end
 
+    section "Media", icon: "heroicons/outline/photo", collapsable: true, collapsed: false do
+      link_to 'Media Library', avo.media_library_index_path
+    end
+
     section "Tools", icon: "heroicons/outline/finger-print", collapsable: true, collapsed: false do
       all_tools
     end
@@ -114,5 +118,11 @@ if defined?(AvoFilters)
   AvoFilters.configure do |config|
     config.button_label = "Advanced filters"
     config.always_expanded = true
+  end
+end
+
+if defined?(Avo::MediaLibrary)
+  Avo::MediaLibrary.configure do |config|
+    config.enabled = true
   end
 end
