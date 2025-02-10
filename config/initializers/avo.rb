@@ -100,6 +100,8 @@ Avo.configure do |config|
       all_tools
     end
 
+    link_to "Media Library", avo.media_library_index_path
+
     group do
       link "Avo", path: "https://avohq.io"
       link "Google", path: "https://google.com", target: :_blank
@@ -116,3 +118,10 @@ if defined?(AvoFilters)
     config.always_expanded = true
   end
 end
+
+if defined?(Avo::MediaLibrary)
+  Avo::MediaLibrary.configure do |config|
+    config.enabled = true
+  end
+end
+

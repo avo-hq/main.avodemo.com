@@ -138,4 +138,4 @@ gem "avo-money_field"
 gem "money-rails", "~> 1.12"
 
 gem "redcarpet"
-gem "avo-markdown_field"
+gem "marksmith"
