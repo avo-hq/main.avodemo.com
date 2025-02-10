@@ -8,29 +8,29 @@ GIT
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (3.17.3)
-      avo (= 3.17.3)
-      avo-dynamic_filters (= 3.17.3)
-      avo-pro (= 3.17.3)
+    avo-advanced (3.17.4)
+      avo (= 3.17.4)
+      avo-dynamic_filters (= 3.17.4)
+      avo-pro (= 3.17.4)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (3.17.3)
-      avo (= 3.17.3)
+    avo-dashboards (3.17.4)
+      avo (= 3.17.4)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (3.17.3)
-      avo (= 3.17.3)
+    avo-dynamic_filters (3.17.4)
+      avo (= 3.17.4)
       ransack (>= 4.2.0)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-menu (3.17.3)
-      avo (= 3.17.3)
+    avo-menu (3.17.4)
+      avo (= 3.17.4)
       docile
       zeitwerk (>= 2.6.12)
-    avo-pro (3.17.3)
-      avo (= 3.17.3)
-      avo-dashboards (= 3.17.3)
-      avo-menu (= 3.17.3)
+    avo-pro (3.17.4)
+      avo (= 3.17.4)
+      avo-dashboards (= 3.17.4)
+      avo-menu (= 3.17.4)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -118,7 +118,7 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.4.2)
       rack
-    avo (3.17.3)
+    avo (3.17.4)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -268,7 +268,7 @@ GEM
       monetize (~> 1.9)
       money (~> 6.13)
       railties (>= 3.0)
-    msgpack (1.7.5)
+    msgpack (1.8.0)
     net-imap (0.4.12)
       date
       net-protocol
@@ -339,11 +339,11 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.2.1)
-    ransack (4.2.1)
+    ransack (4.3.0)
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
-    rdoc (6.11.0)
+    rdoc (6.12.0)
       psych (>= 4.0.0)
     redcarpet (3.6.0)
     redis (4.8.1)
