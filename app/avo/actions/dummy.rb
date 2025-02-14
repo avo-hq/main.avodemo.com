@@ -4,7 +4,7 @@ class Avo::Actions::Dummy < Avo::BaseAction
   self.visible = -> { view.index? }
 
   def fields
-    field :size, as: :radio, options: {small: "Small Option", medium: "Medium Option", large: "Large Option"}
+    field :size, as: :radio, options: {small: "Small Option", medium: "Medium Option", large: "Large Option"}, default: :medium
   end
 
   def handle(**args)
