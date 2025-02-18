@@ -20,8 +20,8 @@ class Avo::Resources::Project < Avo::BaseResource
       display_value: true,
       include_blank: false,
       filterable: true
-    field :stage, as: :badge, options: {info: ["Discovery", "Idea"], success: "Done", warning: "On hold", danger: "Cancelled"}
-    field :status, as: :status, failed_when: [:closed, :rejected, :failed], loading_when: [:loading, :running, :waiting], nullable: true, filterable: true
+    field :stage, as: :badge, options: {info: ["Discovery", "Idea"], success: "Done", warning: "On hold", danger: "Cancelled"}, summarizable: true
+    field :status, as: :status, failed_when: [:closed, :rejected, :failed], loading_when: [:loading, :running, :waiting], nullable: true, filterable: true, summarizable: true
     field :country,
       as: :country,
       filterable: true,
