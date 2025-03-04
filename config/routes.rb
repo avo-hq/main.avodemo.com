@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post "/reset", to: "home#reset"
 
   authenticate :user, ->(user) { user.admin? } do
-    mount Avo::Engine => Avo.configuration.root_path
+    mount_avo
   end
   # scope ":course", constraints: {course: /\w+(-\w+)*/} do
   #   scope ":locale", constraints: {locale: /\w[-\w]*/} do
