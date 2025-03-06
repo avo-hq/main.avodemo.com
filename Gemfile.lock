@@ -215,6 +215,10 @@ GEM
       activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashid-rails (1.4.1)
+      activerecord (>= 4.0)
+      hashids (~> 1.0)
+    hashids (1.0.6)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -285,6 +289,9 @@ GEM
     pg (1.5.5)
     pp (0.6.2)
       prettyprint
+    prefixed_ids (1.8.1)
+      hashids (>= 1.0.0, < 2.0.0)
+      rails (>= 6.0.0)
     prettyprint (0.2.0)
     prop_initializer (0.2.0)
       zeitwerk (>= 2.6.18)
@@ -442,6 +449,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   friendly_id (~> 5.4.0)
+  hashid-rails (~> 1.4, >= 1.4.1)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
@@ -451,6 +459,7 @@ DEPENDENCIES
   money-rails (~> 1.12)
   pagy
   pg (>= 0.18, < 2.0)
+  prefixed_ids (~> 1.6, >= 1.6.1)
   puma (~> 6.0)
   pundit
   rails (>= 7.2.0.beta2)
