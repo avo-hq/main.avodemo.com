@@ -41,6 +41,8 @@ class Avo::Resources::City < Avo::BaseResource
       attachment_key: :description_file,
       visible: -> { resource.params[:show_native_fields].blank? }
 
+    field :tiny_description, as: :markdown
+
     field :created_at, as: :date_time, filterable: true
   end
 
@@ -65,7 +67,6 @@ class Avo::Resources::City < Avo::BaseResource
       field :is_capital, as: :boolean, filterable: true
       field :features, as: :key_value
       field :image_url, as: :external_image
-      field :tiny_description, as: :markdown
       field :status, as: :badge, enum: ::City.statuses
     end
   end

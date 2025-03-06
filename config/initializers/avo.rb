@@ -3,7 +3,6 @@ Avo.configure do |config|
   config.license_key = ENV['AVO_LICENSE_KEY']
   config.id_links_to_resource = true
   config.home_path = -> { "/avo/dashboards/dashy" }
-  config.resource_controls_placement = :right
   # config.branding = {
   #   colors: {
   #     # BLUE
@@ -35,7 +34,7 @@ Avo.configure do |config|
   #   logo: "/avo-assets/logo.png",
   #   logomark: "/avo-assets/logomark.png"
   # }
-
+  config.exclude_from_status = ["license_key"]
   config.set_context do
     {
       foo: 'bar',
@@ -45,6 +44,7 @@ Avo.configure do |config|
     }
   end
   config.current_user_method = :current_user
+  config.click_row_to_view_record = true
 
   config.main_menu = -> {
     section I18n.t("avo.dashboards"), icon: "app/assets/images/demo-adjustments.svg" do
@@ -68,6 +68,7 @@ Avo.configure do |config|
         }
         resource :reviews
         resource :city
+        resource :products
       end
 
       group "People", collapsable: true do
@@ -92,12 +93,15 @@ Avo.configure do |config|
 
       group "Other", collapsable: true, collapsed: true do
         resource :fish, label: "Fishies"
+        resource :movie
       end
     end
 
     section "Tools", icon: "heroicons/outline/finger-print", collapsable: true, collapsed: false do
       all_tools
     end
+
+    link_to "Media Library", avo.media_library_index_path
 
     group do
       link "Avo", path: "https://avohq.io"
@@ -115,3 +119,10 @@ if defined?(AvoFilters)
     config.always_expanded = true
   end
 end
+
+if defined?(Avo::MediaLibrary)
+  Avo::MediaLibrary.configure do |config|
+    config.enabled = true
+  end
+end
+

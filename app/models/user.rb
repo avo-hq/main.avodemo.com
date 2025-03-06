@@ -49,6 +49,8 @@ class User < ApplicationRecord
     roles.present? and roles['admin'] === true
   end
 
+  def is_admin? = admin?
+
   def name
     "#{first_name} #{last_name}"
   end

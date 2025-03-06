@@ -12,6 +12,7 @@ class Avo::Resources::Person < Avo::BaseResource
   # }
 
   def fields
+    field :id, as: :id
     field :name, as: :text, link_to_record: true,sortable: true
     field :type, as: :select, name: "Type", options: { Spouse: "Spouse" }, include_blank: true, filterable: true
     field :link, as: :text, as_html: true do

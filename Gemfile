@@ -4,9 +4,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "~> 3.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", ">= 7.1.0"
+gem "rails", ">= 7.2.0.beta2"
+gem "activestorage"
 gem "actionmailer"
 gem "actioncable"
+# gem "rails", github: "rails/rails", branch: "main"
+# gem "activestorage", github: "rails/rails", branch: "main"
+# gem "actionmailer", github: "rails/rails", branch: "main"
+# gem "actioncable", github: "rails/rails", branch: "main"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -87,8 +92,10 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem "avo-advanced", source: "https://packager.dev/avo-hq/"
-gem "avo"
+gem "avo-advanced", "3.18.0", source: "https://packager.dev/avo-hq/"
+gem "avo", "3.18.0.tw4"
+
+gem "avo-rhino_field", "0.0.12.tw4"
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo", path: "../gems/avo"
@@ -112,13 +119,13 @@ gem 'friendly_id', '~> 5.4.0'
 gem "prefixed_ids", "~> 1.6", ">= 1.6.1"
 gem "hashid-rails", "~> 1.4", ">= 1.4.1"
 
-gem 'acts-as-taggable-on', '>= 10'
+# gem 'acts-as-taggable-on', '>= 10'
+gem "acts-as-taggable-on", github: "avo-hq/acts-as-taggable-on"
 
 gem 'pundit'
 gem 'chartkick'
 gem 'countries'
 gem 'sprockets'
-gem 'activestorage'
 gem 'mapkick-rb'
 
 gem "dockerfile-rails", ">= 1.3", :group => :development
@@ -127,4 +134,11 @@ gem "whenever"
 
 gem "pagy"
 
-gem "scout_apm"
+gem "rorvswild"
+
+gem "avo-money_field"
+gem "money-rails", "~> 1.12"
+
+gem "redcarpet"
+gem "marksmith"
+gem "commonmarker"

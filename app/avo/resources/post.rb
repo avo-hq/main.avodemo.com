@@ -7,6 +7,7 @@ class Avo::Resources::Post < Avo::BaseResource
     help: "- search by id, name or body"
   }
   self.includes = [:user]
+  self.attachments = [:cover_photo]
   self.default_view_type = :grid
 
   self.grid_view = {
@@ -28,13 +29,7 @@ class Avo::Resources::Post < Avo::BaseResource
     field :id, as: :id
     field :name, as: :text, required: true, sortable: true
     field :body,
-      as: :trix,
-      placeholder: "Enter text",
-      always_show: false,
-      attachment_key: :trix_attachments,
-      hide_attachment_url: true,
-      hide_attachment_filename: true,
-      hide_attachment_filesize: true
+      as: :rhino
     field :tags,
       as: :tags,
       # readonly: true,

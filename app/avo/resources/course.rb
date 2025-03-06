@@ -39,7 +39,14 @@ class Avo::Resources::Course < Avo::BaseResource
         end
       end
     end
-    field :skills, as: :tags, disallowed: -> { record.skill_disallowed }, suggestions: -> { record.skill_suggestions }, html: -> do
+    field :skills,
+      as: :tags,
+      disallowed: -> { record.skill_disallowed },
+      suggestions: -> { record.skill_suggestions },
+      filterable: {
+        suggestions: ["example suggestion", "example tag"]
+      },
+      html: -> do
       edit do
         wrapper do
           classes do
@@ -52,7 +59,7 @@ class Avo::Resources::Course < Avo::BaseResource
       end
     end
     field :country,
-      as: :select,
+      as: :select, filterable: true,
       options: Course.countries.map { |country| [country, country] }.prepend(["-", nil]).to_h,
       html: {
         edit: {
@@ -67,8 +74,12 @@ class Avo::Resources::Course < Avo::BaseResource
       as: :select,
       options: Course.cities.values.flatten.map { |city| [city, city] }.to_h,
       display_value: false
-    field :links, as: :has_many, searchable: true, placeholder: "Click to choose a link",
-      discreet_pagination: true, linkable: true
+    field :links,
+      as: :has_many,
+      searchable: true,
+      placeholder: "Click to choose a link",
+      discreet_pagination: true,
+      linkable: true
   end
 
   def filters

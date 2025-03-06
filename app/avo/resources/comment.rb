@@ -1,6 +1,6 @@
 class Avo::Resources::Comment < Avo::BaseResource
   self.title = :tiny_name
-  self.includes = []
+  self.includes = [:user, :commentable]
   self.description = "Demo resource to illustrate Avo's Polymorphic BelongsTo support (Comment is commentable to Post and Project)"
   self.search = {
     query: -> do

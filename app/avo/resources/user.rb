@@ -13,6 +13,8 @@ class Avo::Resources::User < Avo::BaseResource
     query.friendly.find id
   end
   self.includes = [:posts, :post]
+  self.attachments = [:cv]
+  self.single_includes = [:post]
   self.devise_password_optional = true
 
   self.grid_view = {
@@ -89,6 +91,8 @@ class Avo::Resources::User < Avo::BaseResource
       end
     end
 
+    return if params.dig(:turbo_frame) == "has_one_field_show_admin"
+
     tabs id: :tabs do
       tab "Birthday", description: "hey you", hide_on: :show do
         panel do
@@ -136,6 +140,7 @@ class Avo::Resources::User < Avo::BaseResource
   end
 
   def filters
+    filter Avo::Filters::Birthday
     filter Avo::Filters::UserNames
     filter Avo::Filters::IsAdmin
     filter Avo::Filters::DummyMultipleSelect
@@ -145,5 +150,17 @@ class Avo::Resources::User < Avo::BaseResource
     scope Avo::Scopes::Admins
     scope Avo::Scopes::NonAdmins
     scope Avo::Scopes::Active
+  end
+
+  def cards
+    return if params.dig(:related_name).present?
+
+    card Avo::Cards::ExampleAreaChart, cols: 3
+    card Avo::Cards::ExampleMetric, cols: 2
+    card Avo::Cards::ExampleMetric,
+      label: "Active users metric",
+      description: "Count of the active users.",
+      arguments: { active_users: true },
+      visible: -> { !resource.view.form? }
   end
 end

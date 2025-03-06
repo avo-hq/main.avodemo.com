@@ -53,6 +53,10 @@ class Avo::Resources::Fish < Avo::BaseResource
       icon: "heroicons/outline/information-circle", target: :_blank, style: :icon
   end
 
+  self.row_controls_config = {
+    show_on_hover: true,
+  }
+
   def fields
     field :id, as: :id
     field :name, as: :text
