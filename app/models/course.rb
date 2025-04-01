@@ -11,6 +11,7 @@
 #
 class Course < ApplicationRecord
   has_many :links, -> { order(position: :asc) }, class_name: "Course::Link", inverse_of: :course
+  accepts_nested_attributes_for :links
 
   def has_skills
     true
