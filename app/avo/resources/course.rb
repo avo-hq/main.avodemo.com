@@ -79,7 +79,8 @@ class Avo::Resources::Course < Avo::BaseResource
       searchable: true,
       placeholder: "Click to choose a link",
       discreet_pagination: true,
-      linkable: true
+      linkable: true,
+      nested: true
   end
 
   def filters
