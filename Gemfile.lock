@@ -251,7 +251,7 @@ GEM
       net-smtp
     mapkick-rb (0.1.4)
     marcel (1.0.4)
-    marksmith (0.3.0)
+    marksmith (0.4.4)
       activesupport
     matrix (0.4.2)
     meta-tags (2.22.1)
