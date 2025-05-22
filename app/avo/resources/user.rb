@@ -142,14 +142,7 @@ class Avo::Resources::User < Avo::BaseResource
   end
 
   def actions
-    # action Avo::Actions::Dummy, narguments: {
-    #   handle: -> {
-    #     records.each do |record|
-    #       record.update(first_name: "Anonymous")
-    #     end
-    #   },
-    #   label: "Make anonymous"
-    # }
+    action Avo::Actions::Dummy
   end
 
   def filters
@@ -162,7 +155,7 @@ class Avo::Resources::User < Avo::BaseResource
   def scopes
     scope Avo::Scopes::Admins
     scope Avo::Scopes::NonAdmins
-    # scope Avo::Scopes::Active, scope: -> { query.where(active: true) }
+    scope Avo::Scopes::Active
   end
 
   def cards
