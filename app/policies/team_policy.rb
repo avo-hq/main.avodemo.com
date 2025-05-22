@@ -27,6 +27,10 @@ class TeamPolicy < ApplicationPolicy
     true
   end
 
+  def preview?
+    true
+  end
+
   # The methods below control the level of access to the `memberships` association
 
   def attach_memberships?
