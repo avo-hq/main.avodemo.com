@@ -27,6 +27,12 @@ class Avo::Resources::User < Avo::BaseResource
     }
   }
 
+  self.profile_photo = {
+    source: -> {
+      record.gravatar
+    }
+  }
+
   def fields
     main_panel do
       field :id, as: :id, link_to_record: true
@@ -136,7 +142,14 @@ class Avo::Resources::User < Avo::BaseResource
   end
 
   def actions
-    action Avo::Actions::Dummy
+    # action Avo::Actions::Dummy, narguments: {
+    #   handle: -> {
+    #     records.each do |record|
+    #       record.update(first_name: "Anonymous")
+    #     end
+    #   },
+    #   label: "Make anonymous"
+    # }
   end
 
   def filters
@@ -149,7 +162,7 @@ class Avo::Resources::User < Avo::BaseResource
   def scopes
     scope Avo::Scopes::Admins
     scope Avo::Scopes::NonAdmins
-    scope Avo::Scopes::Active
+    # scope Avo::Scopes::Active, scope: -> { query.where(active: true) }
   end
 
   def cards

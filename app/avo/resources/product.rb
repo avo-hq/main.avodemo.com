@@ -23,6 +23,14 @@ class Avo::Resources::Product < Avo::BaseResource
     end
   }
 
+  self.discreet_information = [
+    {
+      tooltip: -> { sanitize("Product category: <strong>#{record.category}</strong>", tags: %w[strong]) },
+      icon: -> { "heroicons/outline/#{(record.category == :new) ? "arrow-trending-up" : "arrow-trending-down"}" }
+    },
+    :timestamps
+  ]
+
   def fields
     field :id, as: :id
     field :title, as: :text, html: {
