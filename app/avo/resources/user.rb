@@ -44,6 +44,17 @@ class Avo::Resources::User < Avo::BaseResource
       field :active, as: :boolean, name: "Is active", only_on: :index, filterable: true
       field :cv, as: :file, name: "CV"
       field :is_admin?, as: :boolean, name: "Is admin", only_on: :index, filterable: true
+
+      # computed field to demo the some fields
+      field :status, as: :status, failed_when: [:closed, :rejected, :failed], loading_when: [:loading, :running, :waiting] do
+        [:closed, :rejected, :failed, :loading, :running, :waiting].sample
+      end
+      field :user_status, as: :badge, options: {success: "Active", warning: "Inactive", danger: "Banned"} do
+        ["Active", "Inactive", "Banned"].sample
+      end
+      field :progress, as: :progress_bar do
+        rand(100)
+      end
       field :roles, as: :boolean_group, options: {admin: "Administrator", manager: "Manager", writer: "Writer"}
       field :roles, as: :text, hide_on: :all do
         "This user has the following roles: #{record.roles.select { |key, value| value }.keys.join(", ")}"
