@@ -18,6 +18,7 @@ class SeedService
     User.delete_all
     City.delete_all
     Product.delete_all
+    Event.delete_all
     ['active_storage_blobs', 'active_storage_attachments', 'posts', 'projects', 'projects_users', 'team_memberships', 'teams', 'users', 'comments', 'people', 'reviews', 'courses', 'course_links', 'fish'].each do |table_name|
       ActiveRecord::Base.connection.execute("TRUNCATE #{table_name} RESTART IDENTITY CASCADE")
     end
@@ -283,5 +284,13 @@ class SeedService
       Product.create!(product_attrs)
     end
 
+    # Events
+    event = Event.create(
+      name: "Your friendly european Ruby conference",
+      event_time: Time.new(2025, 9, 10, 10, 0, 0, "+02:00")
+    )
+
+    event.cover_photo.attach(io: URI.open(Rails.root.join('db', 'seed_files', 'events', 'friendly_cover.avif')), filename: 'friendly_cover.avif')
+    event.profile_photo.attach(io: URI.open(Rails.root.join('db', 'seed_files', 'events', 'friendly_profile.png')), filename: 'friendly_profile.png')
   end
 end
