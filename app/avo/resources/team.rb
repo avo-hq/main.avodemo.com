@@ -68,7 +68,18 @@ class Avo::Resources::Team < Avo::BaseResource
     end
 
     field :admin, as: :has_one
-    field :team_members, as: :has_many, through: :memberships
+    field :team_members,
+      as: :has_many,
+      through: :memberships,
+      attach_fields: -> do
+        field :level, as: :select, options: -> do
+          {
+            "Beginner" => "beginner",
+            "Intermediate" => "intermediate",
+            "Advanced" => "advanced"
+          }
+        end
+      end
     field :memberships,
       as: :has_many,
       searchable: true,

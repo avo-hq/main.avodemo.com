@@ -44,7 +44,13 @@ class Avo::Resources::User < Avo::BaseResource
       field :active, as: :boolean, name: "Is active", only_on: :index, filterable: true
       field :cv, as: :file, name: "CV"
       field :is_admin?, as: :boolean, name: "Is admin", only_on: :index, filterable: true
-
+      field :level,
+        format_using: -> do
+          record.memberships.find_by(user_id: record.id, team_id: Team.find(params[:id]))&.level
+        end,
+        visible: -> do
+          resource.view.index? && params[:resource_name] == 'teams'
+        end
       # computed field to demo the some fields
       field :status, as: :status, failed_when: [:closed, :rejected, :failed], loading_when: [:loading, :running, :waiting] do
         [:closed, :rejected, :failed, :loading, :running, :waiting].sample
