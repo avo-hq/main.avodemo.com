@@ -5,9 +5,17 @@ class Avo::Resources::User < Avo::BaseResource
   }
   self.translation_key = "avo.resource_translations.user"
   self.search = {
-    query: -> do
+    query: -> {
       query.order(created_at: :desc).ransack(id_eq: params[:q], first_name_cont: params[:q], last_name_cont: params[:q], m: "or").result(distinct: false)
-    end
+    },
+    item: -> {
+      {
+        title: "[#{record.id}] #{record.name}",
+        description: record.email,
+        image_url: record.gravatar,
+        image_format: :circular
+      }
+    }
   }
   self.find_record_method = -> do
     query.friendly.find id

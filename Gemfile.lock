@@ -432,7 +432,7 @@ DEPENDENCIES
   annotate
   appsignal
   avo
-  avo-advanced (>= 3.20.0)!
+  avo-advanced (>= 3.22.0)!
   avo-money_field
   avo-rhino_field (= 0.0.16)
   awesome_print
