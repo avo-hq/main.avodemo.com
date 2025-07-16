@@ -46,69 +46,69 @@ Avo.configure do |config|
   config.current_user_method = :current_user
   config.click_row_to_view_record = true
 
-  config.main_menu = -> {
-    section I18n.t("avo.dashboards"), icon: "app/assets/images/demo-adjustments.svg" do
-      dashboard :dashy, visible: -> { true }
+  # config.main_menu = -> {
+  #   section I18n.t("avo.dashboards"), icon: "app/assets/images/demo-adjustments.svg" do
+  #     dashboard :dashy, visible: -> { true }
 
-      group "All dashboards", visible: false, collapsable: true do
-        all_dashboards
-      end
-    end
+  #     group "All dashboards", visible: false, collapsable: true do
+  #       all_dashboards
+  #     end
+  #   end
 
-    section "Resources", icon: "academic-cap.svg", collapsable: true, collapsed: false do
-      group "Company", collapsable: true do
-        resource :projects
-        resource :team, visible: -> {
-          authorize current_user, Team, "index?", raise_exception: false
-        }
-        resource :team_membership, visible: -> {
-          authorize current_user, TeamMembership, "index?", raise_exception: false
+  #   section "Resources", icon: "academic-cap.svg", collapsable: true, collapsed: false do
+  #     group "Company", collapsable: true do
+  #       resource :projects
+  #       resource :team, visible: -> {
+  #         authorize current_user, Team, "index?", raise_exception: false
+  #       }
+  #       resource :team_membership, visible: -> {
+  #         authorize current_user, TeamMembership, "index?", raise_exception: false
 
-          false
-        }
-        resource :reviews
-        resource :city
-        resource :products
-      end
+  #         false
+  #       }
+  #       resource :reviews
+  #       resource :city
+  #       resource :products
+  #     end
 
-      group "People", collapsable: true do
-        # resource "UserResource", visible: -> do
+  #     group "People", collapsable: true do
+  #       # resource "UserResource", visible: -> do
 
-        # end
-        # authorize current_user, User, "index?", raise_exception: false
-        resource "User"
-        resource :people
-        resource :spouses
-      end
+  #       # end
+  #       # authorize current_user, User, "index?", raise_exception: false
+  #       resource "User"
+  #       resource :people
+  #       resource :spouses
+  #     end
 
-      group "Education", collapsable: true do
-        resource :course
-        resource :course_link
-      end
+  #     group "Education", collapsable: true do
+  #       resource :course
+  #       resource :course_link
+  #     end
 
-      group "Blog", collapsable: true do
-        resource :posts
-        resource :comments
-      end
+  #     group "Blog", collapsable: true do
+  #       resource :posts
+  #       resource :comments
+  #     end
 
-      group "Other", collapsable: true, collapsed: true do
-        resource :fish, label: "Fishies"
-        resource :movie
-        resource :event
-      end
-    end
+  #     group "Other", collapsable: true, collapsed: true do
+  #       resource :fish, label: "Fishies"
+  #       resource :movie
+  #       resource :event
+  #     end
+  #   end
 
-    section "Tools", icon: "heroicons/outline/finger-print", collapsable: true, collapsed: false do
-      all_tools
-    end
+  #   section "Tools", icon: "heroicons/outline/finger-print", collapsable: true, collapsed: false do
+  #     all_tools
+  #   end
 
-    link_to "Media Library", avo.media_library_index_path
+  #   link_to "Media Library", avo.media_library_index_path
 
-    group do
-      link "Avo", path: "https://avohq.io"
-      link "Google", path: "https://google.com", target: :_blank
-    end
-  }
+  #   group do
+  #     link "Avo", path: "https://avohq.io"
+  #     link "Google", path: "https://google.com", target: :_blank
+  #   end
+  # }
   config.profile_menu = -> {
     link "Dashboard", path: "/avo/dashboards/dashy", icon: "user-circle"
   }

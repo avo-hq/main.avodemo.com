@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_22_132856) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_16_112927) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -84,6 +84,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_22_132856) do
     t.string "country"
     t.string "city"
     t.text "skills", default: [], array: true
+    t.boolean "has_skills", default: true, null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -101,6 +102,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_22_132856) do
     t.bigint "user_id"
     t.string "type"
     t.index ["user_id"], name: "index_fish_on_user_id"
+  end
+
+  create_table "foo", force: :cascade do |t|
+    t.string "bar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "people", force: :cascade do |t|
