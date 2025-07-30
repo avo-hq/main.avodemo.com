@@ -96,6 +96,8 @@ gem "avo-advanced", ">= 3.22.0", source: "https://packager.dev/avo-hq/"
 gem "avo-http_resource", source: "https://packager.dev/avo-hq/"
 gem "avo"
 
+gem "view_component", "3.23.2"
+
 gem "avo-rhino_field", "0.0.16"
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
