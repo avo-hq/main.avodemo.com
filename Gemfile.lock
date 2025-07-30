@@ -8,32 +8,32 @@ GIT
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (3.22.4)
-      avo (= 3.22.4)
-      avo-dynamic_filters (= 3.22.4)
-      avo-pro (= 3.22.4)
+    avo-advanced (3.22.5)
+      avo (= 3.22.5)
+      avo-dynamic_filters (= 3.22.5)
+      avo-pro (= 3.22.5)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (3.22.4)
-      avo (= 3.22.4)
+    avo-dashboards (3.22.5)
+      avo (= 3.22.5)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (3.22.4)
-      avo (= 3.22.4)
+    avo-dynamic_filters (3.22.5)
+      avo (= 3.22.5)
       ransack (>= 4.2.0)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
     avo-http_resource (0.1.0.alpha.4)
       avo (>= 3.19.1)
       httparty
-    avo-menu (3.22.4)
-      avo (= 3.22.4)
+    avo-menu (3.22.5)
+      avo (= 3.22.5)
       docile
       zeitwerk (>= 2.6.12)
-    avo-pro (3.22.4)
-      avo (= 3.22.4)
-      avo-dashboards (= 3.22.4)
-      avo-menu (= 3.22.4)
+    avo-pro (3.22.5)
+      avo (= 3.22.5)
+      avo-dashboards (= 3.22.5)
+      avo-menu (= 3.22.5)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -122,7 +122,7 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.4.2)
       rack
-    avo (3.22.4)
+    avo (3.22.5)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -265,7 +265,6 @@ GEM
     matrix (0.4.2)
     meta-tags (2.22.1)
       actionpack (>= 6.0.0, < 8.1)
-    method_source (1.1.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.25.5)
@@ -402,10 +401,9 @@ GEM
       concurrent-ruby (~> 1.0)
     unaccent (0.4.0)
     useragent (0.16.11)
-    view_component (3.23.2)
-      activesupport (>= 5.2.0, < 8.1)
+    view_component (4.0.0)
+      activesupport (>= 7.1.0, < 8.1)
       concurrent-ruby (~> 1)
-      method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -485,7 +483,7 @@ DEPENDENCIES
   tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
-  view_component (= 3.23.2)
+  view_component (= 4.0.0)
   web-console
   webdrivers
   whenever
