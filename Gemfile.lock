@@ -260,7 +260,7 @@ GEM
       net-smtp
     mapkick-rb (0.1.4)
     marcel (1.0.4)
-    marksmith (0.4.4)
+    marksmith (0.4.6.pre)
       activesupport
     matrix (0.4.2)
     meta-tags (2.22.1)
@@ -464,7 +464,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mapkick-rb
-  marksmith
+  marksmith (= 0.4.6.pre)
   mini_magick
   money-rails (~> 1.12)
   pagy
