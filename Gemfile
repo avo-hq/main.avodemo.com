@@ -141,5 +141,5 @@ gem "avo-money_field"
 gem "money-rails", "~> 1.12"
 
 gem "redcarpet"
-gem "marksmith", "0.4.6.pre"
+gem "marksmith"
 gem "commonmarker"
