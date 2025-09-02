@@ -92,7 +92,7 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem "avo-advanced", ">= 3.22.0", source: "https://packager.dev/avo-hq/"
+gem "avo-advanced", ">= 3.24.0", source: "https://packager.dev/avo-hq/"
 gem "avo-http_resource", source: "https://packager.dev/avo-hq/"
 gem "avo"
 
