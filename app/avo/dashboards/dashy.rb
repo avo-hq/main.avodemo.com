@@ -1,7 +1,7 @@
 class Avo::Dashboards::Dashy < Avo::Dashboards::BaseDashboard
   self.id = "dashy"
   self.name = "Dashy"
-  self.description = "The first dashbaord"
+  self.description = "The first dashboard"
   self.grid_cols = 3
 
   def cards

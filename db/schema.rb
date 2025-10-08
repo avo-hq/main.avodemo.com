@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_23_085952) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_22_132856) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,12 +86,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_085952) do
     t.text "skills", default: [], array: true
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.text "body"
+    t.datetime "event_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "fish", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type"
     t.bigint "user_id"
+    t.string "type"
     t.index ["user_id"], name: "index_fish_on_user_id"
   end
 
@@ -151,17 +159,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_23_085952) do
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_projects_users_on_project_id"
     t.index ["user_id"], name: "index_projects_users_on_user_id"
-  end
-
-  create_table "rails_comments_comments", force: :cascade do |t|
-    t.text "body"
-    t.string "commentable_type", null: false
-    t.string "commentable_id", null: false
-    t.string "author_type"
-    t.string "author_id"
-    t.string "parent_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|

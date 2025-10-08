@@ -5,9 +5,17 @@ class Avo::Resources::User < Avo::BaseResource
   }
   self.translation_key = "avo.resource_translations.user"
   self.search = {
-    query: -> do
+    query: -> {
       query.order(created_at: :desc).ransack(id_eq: params[:q], first_name_cont: params[:q], last_name_cont: params[:q], m: "or").result(distinct: false)
-    end
+    },
+    item: -> {
+      {
+        title: "[#{record.id}] #{record.name}",
+        description: record.email,
+        image_url: record.gravatar,
+        image_format: :circular
+      }
+    }
   }
   self.find_record_method = -> do
     query.friendly.find id
@@ -44,7 +52,13 @@ class Avo::Resources::User < Avo::BaseResource
       field :active, as: :boolean, name: "Is active", only_on: :index, filterable: true
       field :cv, as: :file, name: "CV"
       field :is_admin?, as: :boolean, name: "Is admin", only_on: :index, filterable: true
-
+      field :level,
+        format_using: -> do
+          record.memberships.find_by(user_id: record.id, team_id: Team.find(params[:id]))&.level
+        end,
+        visible: -> do
+          resource.view.index? && params[:resource_name] == 'teams'
+        end
       # computed field to demo the some fields
       field :status, as: :status, failed_when: [:closed, :rejected, :failed], loading_when: [:loading, :running, :waiting] do
         [:closed, :rejected, :failed, :loading, :running, :waiting].sample
@@ -157,10 +171,11 @@ class Avo::Resources::User < Avo::BaseResource
   end
 
   def filters
-    filter Avo::Filters::Birthday
-    filter Avo::Filters::UserNames
+    filter Avo::Filters::Active
     filter Avo::Filters::IsAdmin
     filter Avo::Filters::DummyMultipleSelect
+    filter Avo::Filters::UserNames
+    filter Avo::Filters::Birthday
   end
 
   def scopes

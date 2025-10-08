@@ -94,6 +94,8 @@ Avo.configure do |config|
       group "Other", collapsable: true, collapsed: true do
         resource :fish, label: "Fishies"
         resource :movie
+        resource :event
+        resource :author, visible: -> { params[:http_resource_test].present? }
       end
     end
 
@@ -113,8 +115,8 @@ Avo.configure do |config|
   }
 end
 
-if defined?(AvoFilters)
-  AvoFilters.configure do |config|
+if defined?(Avo::DynamicFilters)
+  Avo::DynamicFilters.configure do |config|
     config.button_label = "Advanced filters"
     config.always_expanded = true
   end
@@ -125,4 +127,3 @@ if defined?(Avo::MediaLibrary)
     config.enabled = true
   end
 end
-

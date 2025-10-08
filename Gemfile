@@ -92,10 +92,13 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem "avo-advanced", ">= 3.20.0", source: "https://packager.dev/avo-hq/"
-gem "avo"
+gem "avo-advanced", "3.25", source: "https://packager.dev/avo-hq/"
+gem "avo-http_resource", source: "https://packager.dev/avo-hq/"
+gem "avo", "3.25"
 
-gem "avo-rhino_field", "0.0.12"
+gem "view_component", "4.0.0"
+
+gem "avo-rhino_field", "0.0.16"
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo", path: "../gems/avo"
