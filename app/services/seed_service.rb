@@ -49,7 +49,7 @@ class SeedService
       first_name: 'Avo',
       last_name: 'Cado',
       email: 'avo@cado.com',
-      password: 'secret',
+      password: 'secreto',
       active: true,
       roles: {
         admin: true,
@@ -146,7 +146,7 @@ class SeedService
       last_name: "Cado",
       email: "avo@avohq.io",
       birthday: "2020-03-28",
-      password: "secret",
+      password: "secreto",
       active: true,
       roles: {
         admin: true,
@@ -235,7 +235,7 @@ class SeedService
       first_name: 'Avo',
       last_name: 'Cado',
       email: 'avo@avohq.io',
-      password: 'secret',
+      password: 'secreto',
       active: true,
       roles: {
         admin: true,
