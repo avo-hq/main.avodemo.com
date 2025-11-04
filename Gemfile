@@ -92,9 +92,9 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem "avo-advanced", "3.25.3", source: "https://packager.dev/avo-hq/"
+gem "avo-advanced", "3.26", source: "https://packager.dev/avo-hq/"
 gem "avo-http_resource", source: "https://packager.dev/avo-hq/"
-gem "avo", "3.25.3"
+gem "avo", "3.26"
 
 gem "view_component", "4.0.0"
 
@@ -123,7 +123,7 @@ gem "prefixed_ids", "~> 1.6", ">= 1.6.1"
 gem "hashid-rails", "~> 1.4", ">= 1.4.1"
 
 # gem 'acts-as-taggable-on', '>= 10'
-gem "acts-as-taggable-on", github: "avo-hq/acts-as-taggable-on"
+gem "acts-as-taggable-on", "10.0.0", github: "avo-hq/acts-as-taggable-on"
 
 gem 'pundit'
 gem 'chartkick'
