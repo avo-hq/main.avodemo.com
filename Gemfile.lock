@@ -8,32 +8,32 @@ GIT
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (3.26.0)
-      avo (= 3.26.0)
-      avo-dynamic_filters (= 3.26.0)
-      avo-pro (= 3.26.0)
+    avo-advanced (3.26.1)
+      avo (= 3.26.1)
+      avo-dynamic_filters (= 3.26.1)
+      avo-pro (= 3.26.1)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (3.26.0)
-      avo (= 3.26.0)
+    avo-dashboards (3.26.1)
+      avo (= 3.26.1)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (3.26.0)
-      avo (= 3.26.0)
+    avo-dynamic_filters (3.26.1)
+      avo (= 3.26.1)
       ransack (>= 4.2.0)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
     avo-http_resource (0.1.0.alpha.4)
       avo (>= 3.19.1)
       httparty
-    avo-menu (3.26.0)
-      avo (= 3.26.0)
+    avo-menu (3.26.1)
+      avo (= 3.26.1)
       docile
       zeitwerk (>= 2.6.12)
-    avo-pro (3.26.0)
-      avo (= 3.26.0)
-      avo-dashboards (= 3.26.0)
-      avo-menu (= 3.26.0)
+    avo-pro (3.26.1)
+      avo (= 3.26.1)
+      avo-dashboards (= 3.26.1)
+      avo-menu (= 3.26.1)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -122,7 +122,7 @@ GEM
       rake (>= 10.4, < 14.0)
     appsignal (3.4.2)
       rack
-    avo (3.26.0)
+    avo (3.26.1)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -131,7 +131,7 @@ GEM
       avo-icons (>= 0.1.1)
       docile
       meta-tags
-      pagy (>= 7.0.0)
+      pagy (>= 7.0.0, < 43)
       prop_initializer (>= 0.2.0)
       turbo-rails (>= 2.0.0)
       turbo_power (>= 0.6.0)
@@ -443,8 +443,8 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo (= 3.26)
-  avo-advanced (= 3.26)!
+  avo (= 3.26.1)
+  avo-advanced (= 3.26.1)!
   avo-http_resource!
   avo-money_field
   avo-rhino_field (= 0.0.16)
