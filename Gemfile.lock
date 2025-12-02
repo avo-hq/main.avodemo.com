@@ -8,32 +8,32 @@ GIT
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (3.26.4)
-      avo (= 3.26.4)
-      avo-dynamic_filters (= 3.26.4)
-      avo-pro (= 3.26.4)
+    avo-advanced (3.27.0)
+      avo (= 3.27.0)
+      avo-dynamic_filters (= 3.27.0)
+      avo-pro (= 3.27.0)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (3.26.4)
-      avo (= 3.26.4)
+    avo-dashboards (3.27.0)
+      avo (= 3.27.0)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (3.26.4)
-      avo (= 3.26.4)
+    avo-dynamic_filters (3.27.0)
+      avo (= 3.27.0)
       ransack (>= 4.2.0)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
     avo-http_resource (0.1.0.alpha.4)
       avo (>= 3.19.1)
       httparty
-    avo-menu (3.26.4)
-      avo (= 3.26.4)
+    avo-menu (3.27.0)
+      avo (= 3.27.0)
       docile
       zeitwerk (>= 2.6.12)
-    avo-pro (3.26.4)
-      avo (= 3.26.4)
-      avo-dashboards (= 3.26.4)
-      avo-menu (= 3.26.4)
+    avo-pro (3.27.0)
+      avo (= 3.27.0)
+      avo-dashboards (= 3.27.0)
+      avo-menu (= 3.27.0)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -120,9 +120,10 @@ GEM
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
-    appsignal (3.4.2)
-      rack
-    avo (3.26.4)
+    appsignal (4.7.5)
+      logger
+      rack (>= 2.0.0)
+    avo (3.27.0)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -443,8 +444,8 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo (= 3.26.4)
-  avo-advanced (= 3.26.4)!
+  avo (= 3.27.0)
+  avo-advanced (= 3.27.0)!
   avo-http_resource!
   avo-money_field
   avo-rhino_field (= 0.0.16)
