@@ -95,7 +95,6 @@ Avo.configure do |config|
         resource :fish, label: "Fishies"
         resource :movie
         resource :event
-        resource :author, visible: -> { params[:http_resource_test].present? }
       end
     end
 
