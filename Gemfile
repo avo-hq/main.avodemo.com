@@ -57,7 +57,9 @@ gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  # require: false avoids loading pp → prettyprint during Bundler.require; a broken Ruby default-gem
+  # tree for prettyprint then cannot crash boot. Use `require "debug/start"` or `bin/rdbg` when debugging.
+  gem "debug", platforms: %i[ mri mingw x64_mingw ], require: false
 end
 
 group :development do
@@ -121,8 +123,7 @@ gem 'friendly_id', '~> 5.4.0'
 gem "prefixed_ids", "~> 1.6", ">= 1.6.1"
 gem "hashid-rails", "~> 1.4", ">= 1.4.1"
 
-# gem 'acts-as-taggable-on', '>= 10'
-gem "acts-as-taggable-on", "10.0.0", github: "avo-hq/acts-as-taggable-on"
+gem "acts-as-taggable-on", ">= 13.0.0"
 
 gem 'pundit'
 gem 'chartkick'
