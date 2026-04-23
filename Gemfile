@@ -94,8 +94,8 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem "avo-advanced", "3.31.1", source: "https://packager.dev/avo-hq/"
-gem "avo", "3.31.1"
+gem "avo-advanced", "3.31.2", source: "https://packager.dev/avo-hq/"
+gem "avo", "3.31.2"
 
 gem "view_component", "4.0.0"
 
