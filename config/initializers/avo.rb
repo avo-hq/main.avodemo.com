@@ -93,7 +93,7 @@ Avo.configure do |config|
   }
   config.profile_menu = -> {
     link "Dashboard", path: "/avo/dashboards/dashy", icon: "user-circle"
-    link "See Avo 3 version", path: "https://main-3.avodemo.com", target: :_blank
+    link "See Avo 3 version", path: "https://avo-3.avodemo.com", target: :_blank
   }
   config.header_menu = -> {
     link_to 'Avo HQ', path: 'https://avohq.io', target: :_blank
