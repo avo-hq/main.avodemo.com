@@ -1,7 +1,7 @@
 class Avo::Resources::Event < Avo::BaseResource
   self.description = "An event that happened at a certain time."
 
-  self.cover_photo = {
+  self.cover = {
     size: :xl,
     visible_on: [:show, :index],
     source: -> {
@@ -12,7 +12,7 @@ class Avo::Resources::Event < Avo::BaseResource
       end
     }
   }
-  self.profile_photo = {
+  self.avatar = {
     source: :profile_photo
   }
   self.discreet_information = :timestamps

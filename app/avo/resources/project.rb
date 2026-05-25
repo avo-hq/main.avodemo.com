@@ -10,12 +10,12 @@ class Avo::Resources::Project < Avo::BaseResource
 
   self.discreet_information = [
     :timestamps,
-    :id_badge,
+    :id,
     {
-      tooltip: -> { sanitize("View <strong>#{record.name}</strong> on site", tags: %w[strong]) },
-      icon: -> { "heroicons/outline/arrow-top-right-on-square" },
+      title: -> { sanitize("View <strong>#{record.name}</strong> on site", tags: %w[strong]) },
+      icon: -> { "tabler/outline/external-link" },
       url: -> { main_app.root_url },
-      url_target: :_blank,
+      target: :_blank,
       # as: :badge
     }
   ]

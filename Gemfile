@@ -94,12 +94,20 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem "avo-advanced", "3.31.0", source: "https://packager.dev/avo-hq/"
-gem "avo", "3.31.0"
+# NOTE: pin Avo 4 beta gems to EXACT versions. `>=` is unsafe here because the
+# `4.0.0.pre.dev.*` dev builds sort HIGHER than `4.0.0.beta.*` in RubyGems
+# version ordering ("pre" > "beta"), so a `>=` constraint resolves to a broken
+# dev build that fails to boot. Bump these explicitly when upgrading betas.
+gem "avo-advanced", "4.0.0.beta.12", source: "https://packager.dev/avo-hq/"
+gem "avo", "4.0.0.beta.37"
+
+# avo-nested is no longer bundled inside avo-advanced in Avo 4; this app uses
+# nested association forms (see app/views/avo/resource_tools/_nested_fish_reviews.html.erb).
+gem "avo-nested", "4.0.0.beta.8", source: "https://packager.dev/avo-hq/"
 
 gem "view_component", "4.0.0"
 
-gem "avo-rhino_field", "0.0.16"
+gem "avo-rhino_field", "4.0.0"
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo", path: "../gems/avo"
@@ -143,5 +151,3 @@ gem "money-rails", "~> 1.12"
 gem "redcarpet"
 gem "marksmith"
 gem "commonmarker"
-
-gem "rorvswild", "~> 1.10"

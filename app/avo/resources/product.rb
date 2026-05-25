@@ -25,8 +25,8 @@ class Avo::Resources::Product < Avo::BaseResource
 
   self.discreet_information = [
     {
-      tooltip: -> { sanitize("Product category: <strong>#{record.category}</strong>", tags: %w[strong]) },
-      icon: -> { "heroicons/outline/#{(record.category == :new) ? "arrow-trending-up" : "arrow-trending-down"}" }
+      title: -> { sanitize("Product category: <strong>#{record.category}</strong>", tags: %w[strong]) },
+      icon: -> { "tabler/outline/#{(record.category == :new) ? "trending-up" : "trending-down"}" }
     },
     :timestamps
   ]

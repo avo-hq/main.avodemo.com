@@ -16,8 +16,10 @@ class Avo::Resources::City < Avo::BaseResource
       }
     },
     table: {
-      visible: true,
-      layout: :bottom
+      visible: true
+    },
+    map: {
+      position: :top
     }
   }
 

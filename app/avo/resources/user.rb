@@ -35,23 +35,22 @@ class Avo::Resources::User < Avo::BaseResource
     }
   }
 
-  self.profile_photo = {
+  self.avatar = {
     source: -> {
       record.gravatar
     }
   }
 
   def fields
-    main_panel do
-      field :id, as: :id, link_to_record: true
-      field :email, as: :gravatar, link_to_record: true, as_avatar: :circle, only_on: :index
-      field :user_information, as: :heading
-      row do
-        field :first_name, as: :text, placeholder: "John", stacked: true, filterable: true
-        field :last_name, as: :text, placeholder: "Doe", filterable: true, stacked: true
-        field :email, as: :text, name: "User Email", required: true, protocol: :mailto, filterable: true, stacked: true
-      end
-      field :active, as: :boolean, name: "Is active", only_on: :index, filterable: true
+    panel do
+      card do
+        field :id, as: :id, link_to_record: true
+        field :email, as: :gravatar, link_to_record: true, as_avatar: :circle, only_on: :index
+        field :user_information, as: :heading
+        field :first_name, as: :text, placeholder: "John", width: 33, stacked: true, filterable: true
+        field :last_name, as: :text, placeholder: "Doe", filterable: true, width: 33, stacked: true
+        field :email, as: :text, name: "User Email", required: true, protocol: :mailto, filterable: true, width: 33, stacked: true
+        field :active, as: :boolean, name: "Is active", only_on: :index, filterable: true
       field :cv, as: :file, name: "CV"
       field :is_admin?, as: :boolean, name: "Is admin", only_on: :index, filterable: true
       field :level,
@@ -99,6 +98,7 @@ class Avo::Resources::User < Avo::BaseResource
 
       field :dev, as: :heading, label: '<div class="underline uppercase font-bold">DEV</div>', as_html: true
       field :team_id, as: :hidden, default: 0 # For testing purposes
+      end
 
       sidebar do
         field :email, as: :gravatar, link_to_record: true, as_avatar: :circle, only_on: :show
@@ -127,7 +127,7 @@ class Avo::Resources::User < Avo::BaseResource
     return if params.dig(:turbo_frame) == "has_one_field_show_admin"
 
     tabs id: :tabs do
-      tab "Birthday", description: "hey you", hide_on: :show do
+      tab title: "Birthday", description: "hey you", hide_on: :show do
         panel do
           field :birthday,
             as: :date,

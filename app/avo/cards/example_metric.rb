@@ -34,5 +34,6 @@ class Avo::Cards::ExampleMetric < Avo::Cards::MetricCard
     end
 
     result User.where(created_at: from..to).count
+    result rand(1000)
   end
 end

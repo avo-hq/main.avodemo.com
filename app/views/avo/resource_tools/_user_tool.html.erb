@@ -1,22 +1,22 @@
 <div class="flex flex-col">
-  <%= render Avo::PanelComponent.new(name: "User tool") do |c| %>
-    <% c.with_tools do %>
-      <%= a_link('/avo', icon: 'heroicons/solid/academic-cap', style: :primary) do %>
+  <%= render Avo::UI::PanelComponent.new(title: "User tool") do |c| %>
+    <% c.with_controls do %>
+      <%= a_link('/avo', icon: 'tabler/outline/school', style: :primary) do %>
         Dummy link
       <% end %>
     <% end %>
 
-    <% c.with_body do %>
+    <% c.with_card do %>
       <div class="flex flex-col p-4 min-h-24">
         <div class="space-y-4">
           <h3>🪧 This partial is waiting to be updated</h3>
 
           <p>
-            You can edit this file here <code class='p-1 rounded bg-gray-500 text-white text-sm'>app/views/avo/resource_tools/user_tool.html.erb</code>.
+            You can edit this file here <code class="p-1 rounded bg-gray-500 text-white text-sm">app/views/avo/resource_tools/user_tool.html.erb</code>.
           </p>
 
           <p>
-            The resource tool configuration file should be here <code class='p-1 rounded bg-gray-500 text-white text-sm'>app/avo/resource_tools/user_tool.rb</code>.
+            The resource tool configuration file should be here <code class="p-1 rounded bg-gray-500 text-white text-sm">app/avo/resource_tools/user_tool.rb</code>.
           </p>
 
           <p>
@@ -41,5 +41,3 @@
     <% end %>
   <% end %>
 </div>
-
-

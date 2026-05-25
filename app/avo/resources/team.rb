@@ -22,7 +22,8 @@ class Avo::Resources::Team < Avo::BaseResource
   }
 
   def fields
-    main_panel do
+    panel do
+      card do
       field :preview, as: :preview
       field :id, as: :id, filterable: true
       field :name, as: :text, sortable: true, show_on: :preview, filterable: true
@@ -50,6 +51,7 @@ class Avo::Resources::Team < Avo::BaseResource
       field :created_at, as: :date_time, filterable: true
       field :members_count, as: :number do
         record.team_members.length
+      end
       end
 
       sidebar do

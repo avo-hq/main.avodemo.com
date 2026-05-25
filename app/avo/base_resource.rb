@@ -20,7 +20,7 @@ class Avo::BaseResource < Avo::Resources::Base
     end.html_safe
 
     action Avo::Actions::BulkDestroy,
-      icon: "heroicons/solid/trash",
+      icon: "tabler/outline/trash",
       color: "red",
       label: "",
       style: :outline,

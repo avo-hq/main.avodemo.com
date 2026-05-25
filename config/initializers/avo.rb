@@ -3,37 +3,19 @@ Avo.configure do |config|
   config.license_key = ENV['AVO_LICENSE_KEY']
   config.id_links_to_resource = true
   config.home_path = -> { "/avo/dashboards/dashy" }
-  # config.branding = {
-  #   colors: {
-  #     # BLUE
-  #     100 => "#CEE7F8",
-  #     400 => "#399EE5",
-  #     500 => "#0886DE",
-  #     600 => "#066BB2",
-  #     # RED
-  #     100 => "#FACDD4",
-  #     400 => "#F06A7D",
-  #     500 => "#EB3851",
-  #     600 => "#E60626",
-  #     # GREEN
-  #     100 => "#C5F1D4",
-  #     400 => "#3CD070",
-  #     500 => "#30A65A",
-  #     600 => "#247D43",
-  #     # PURPLE
-  #     100 => "#e9d5ff",
-  #     400 => "#c084fc",
-  #     500 => "#a855f7",
-  #     600 => "#9333ea",
-  #     # ORANGE
-  #     100 => "#FFECCC",
-  #     400 => "#FFB435",
-  #     500 => "#FFA102",
-  #     600 => "#CC8102",
-  #   },
-  #   logo: "/avo-assets/logo.png",
-  #   logomark: "/avo-assets/logomark.png"
-  # }
+  # Avo 4: `config.branding` was renamed to `config.appearance`. The flat `colors:`
+  # hash was removed in favor of an accent preset (`accent: :blue`) or a custom
+  # accent palette via `accent_colors: { color:, content:, foreground: }`.
+  config.appearance = {
+    logo: "/img/logo.png",
+  #   logomark: "/avo-assets/logomark.png",
+  #   accent: :brand,
+  #   accent_colors: {
+  #     color: "#0886DE",
+  #     content: "#066BB2",
+  #     foreground: "#FFFFFF"
+  #   }
+  }
   config.exclude_from_status = ["license_key"]
   config.set_context do
     {
@@ -55,7 +37,7 @@ Avo.configure do |config|
       end
     end
 
-    section "Resources", icon: "academic-cap.svg", collapsable: true, collapsed: false do
+    section "Resources", icon: "tabler/outline/school", collapsable: true, collapsed: false do
       group "Company", collapsable: true do
         resource :projects
         resource :team, visible: -> {
@@ -98,7 +80,7 @@ Avo.configure do |config|
       end
     end
 
-    section "Tools", icon: "heroicons/outline/finger-print", collapsable: true, collapsed: false do
+    section "Tools", icon: "tabler/outline/fingerprint", collapsable: true, collapsed: false do
       all_tools
     end
 
@@ -111,6 +93,11 @@ Avo.configure do |config|
   }
   config.profile_menu = -> {
     link "Dashboard", path: "/avo/dashboards/dashy", icon: "user-circle"
+  }
+  config.header_menu = -> {
+    link_to 'Avo HQ', path: 'https://avohq.io', target: :_blank
+    link_to 'Source code', path: 'https://github.com/avo-hq/avodemo', target: :_blank
+    link_to 'Documentation', path: 'https://docs.avohq.io', target: :_blank
   }
 end
 
