@@ -83,9 +83,10 @@ they're app-specific customizations that used removed Avo internals:
    `Avo.license.id`. `Avo.license` was removed in v4 (licensing moved to the
    `avo-licensing` gem). Since the footer rendered on every page, *every* Avo page
    500'd. Removed the `title="<%= Avo.license.id %>"` tooltip; kept version/account info.
-2. **`app/views/avo/resource_tools/_city_editor.html.erb`** used the `field_container`
-   helper, removed in v4. It was just a `flex flex-col divide-y` wrapper, so replaced
-   it with that `<div>` (matching how the app's other tool partials already wrap fields).
+2. **`field_container` helper removed in v4.** Replace it with `ui.description_list` to keep
+   fields full width inside a card. Affected: `_city_editor`, `_fish_information`, `_fish_review`.
+   Also: when a partial already renders its own card, its parent panel must use `with_body`
+   (not `with_card`) to avoid a card nested in a card.
 3. **Gem pinning** — A `>=` constraint is unsafe for Avo 4 betas: the
    `4.0.0.pre.dev.*` dev builds sort **higher** than `4.0.0.beta.*` in RubyGems
    ordering (`"pre" > "beta"`), so `>=` resolved to a broken non-booting `pre.dev`
