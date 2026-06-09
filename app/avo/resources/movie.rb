@@ -1,4 +1,6 @@
 class Avo::Resources::Movie < Avo::Resources::ArrayResource
+  self.hotkey = "r v"
+
   def records
     [
       {

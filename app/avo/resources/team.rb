@@ -1,4 +1,5 @@
 class Avo::Resources::Team < Avo::BaseResource
+  self.hotkey = "r t"
   self.title = :name
   self.includes = [:admin, :team_members]
   self.search = {

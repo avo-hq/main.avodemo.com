@@ -1,4 +1,5 @@
 class Avo::Resources::Post < Avo::BaseResource
+  self.hotkey = "r p"
   self.title = :name
   self.search = {
     query: -> do

@@ -1,4 +1,5 @@
 class Avo::Resources::Project < Avo::BaseResource
+  self.hotkey = "r j"
   self.title = :name
   self.search = {
     query: -> do

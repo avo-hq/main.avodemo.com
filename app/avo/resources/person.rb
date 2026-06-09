@@ -1,4 +1,5 @@
 class Avo::Resources::Person < Avo::BaseResource
+  self.hotkey = "r n"
   self.title = :name
   self.description = "Demo resource to illustrate Avo's Single Table Inheritance support (Spouse < Person)"
   self.includes = []

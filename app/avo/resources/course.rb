@@ -1,4 +1,5 @@
 class Avo::Resources::Course < Avo::BaseResource
+  self.hotkey = "r c"
   self.title = :name
   self.includes = []
   self.description = "Demo resource to illustrate Avo's nested (namespaced) model support (Course has_many Course::Link)"

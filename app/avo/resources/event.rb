@@ -1,4 +1,5 @@
 class Avo::Resources::Event < Avo::BaseResource
+  self.hotkey = "r e"
   self.description = "An event that happened at a certain time."
 
   self.cover = {

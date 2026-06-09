@@ -1,4 +1,5 @@
 class Avo::Resources::Product < Avo::BaseResource
+  self.hotkey = "r d"
  self.title = :title
   self.includes = [image_attachment: :blob]
   self.default_view_type = :grid

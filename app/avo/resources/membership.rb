@@ -1,4 +1,5 @@
 class Avo::Resources::Membership < Avo::BaseResource
+  self.hotkey = "r m"
   self.title = :id
   self.includes = [:user, :team]
   self.visible_on_sidebar = false
