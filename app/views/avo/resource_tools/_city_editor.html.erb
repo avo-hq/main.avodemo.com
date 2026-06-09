@@ -2,8 +2,7 @@
   <%= render Avo::UI::PanelComponent.new do |c| %>
     <% c.with_card do %>
       <% if form.present? %>
-        <%# Avo 4: the `field_container` helper was removed; it was a simple `flex flex-col divide-y` wrapper. %>
-        <div class="flex flex-col divide-y">
+        <%= render ui.description_list do %>
           <%= avo_edit_field(:name, as: :text, form: form, help: "The name of your city", required: true, component_options: {stacked: true}) %>
           <%= avo_edit_field(:number, :population, form: form, help: "The population of the city.") %>
           <%= avo_edit_field(:is_capital, as: :boolean, form: form) %>
@@ -18,7 +17,7 @@
           <%#= avo_edit_field(:tiny_description, as: :markdown, form: form) %>
           <%= avo_edit_field(:status, as: :select, enum: ::City.statuses, form: form) %>
           <%= avo_show_field(:status, as: :badge, enum: ::City.statuses, form: form) %>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
