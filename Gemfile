@@ -100,7 +100,7 @@ gem "awesome_print"
 # dev build that fails to boot. Bump these explicitly when upgrading betas.
 gem "avo-advanced", ">= 4.0.0.beta.12", source: "https://packager.dev/avo-hq/"
 # gem "avo-advanced", path: "/Users/adrian/work/avocado/gems/avo-advanced"
-gem "avo", "4.0.0.beta.42"
+gem "avo", ">= 4.0.0.beta.42"
 
 # avo-nested is no longer bundled inside avo-advanced in Avo 4; this app uses
 # nested association forms (see app/views/avo/resource_tools/_nested_fish_reviews.html.erb).
@@ -108,7 +108,7 @@ gem "avo-nested", ">= 4.0.0.beta.8", source: "https://packager.dev/avo-hq/"
 
 gem "view_component", "4.0.0"
 
-gem "avo-rhino_field", "4.0.0"
+gem "avo-rhino_field", ">= 4.0.0"
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo", path: "../gems/avo"
