@@ -97,7 +97,14 @@ gem "awesome_print"
 gem "avo"
 
 source "https://packager.dev/avo-hq/" do
-  gem "avo-advanced"
+  gem "avo-dashboards"
+  gem "avo-menu"
+  gem "avo-advanced_search"
+  gem "avo-authorization"
+  gem "avo-record_reordering"
+  gem "avo-scopes"
+  gem "avo-custom_controls"
+  gem "avo-dynamic_filters"
   gem "avo-nested"
   gem "avo-api"
   gem "avo-http_resource"
@@ -106,7 +113,6 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-reactive_fields"
   gem "avo-kanban"
 end
-# gem "avo-advanced", path: "/Users/adrian/work/avocado/gems/avo-advanced"
 
 # avo-nested is no longer bundled inside avo-advanced in Avo 4; this app uses
 # nested association forms (see app/views/avo/resource_tools/_nested_fish_reviews.html.erb).
@@ -126,7 +132,7 @@ gem "db_config", "0.1.10"
 # avo .42 only requires view_component >= 3.7.0.
 gem "view_component"
 
-# gem "avo-rhino_field", "4.0.0"
+gem "avo-rhino_field", "4.0.0"
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo", path: "../gems/avo"

@@ -1,4 +1,4 @@
-class Avo::Scopes::Active < Avo::Advanced::Scopes::BaseScope
+class Avo::Scopes::Active < Avo::Scopes::BaseScope
   self.name = "Active"
   self.description = "Active only"
   self.scope = :active
