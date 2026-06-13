@@ -1,5 +1,7 @@
 class Avo::Resources::Movie < Avo::Resources::ArrayResource
   self.hotkey = "r v"
+  self.icon = "heroicons/outline/film"
+  self.description = "Demo ArrayResource — records come from a plain Ruby array in memory, with no database table behind them."
 
   def records
     [

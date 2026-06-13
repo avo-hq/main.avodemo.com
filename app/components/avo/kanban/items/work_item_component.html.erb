@@ -1,0 +1,35 @@
+<%# The whole card is the link to the record. Negative margins expand the anchor
+    over the .item-card padding (px-3 py-2.5) so the entire card surface is
+    clickable. `draggable: false` keeps SortableJS drag-and-drop working (a native
+    anchor drag would otherwise hijack it). The gem's delete dropdown stays
+    clickable because it is absolutely positioned and paints above this in-flow link. %>
+<%= link_to record_show_path,
+    class: "item-card__content w-full block no-underline -mx-3 -my-2.5 py-2.5",
+    draggable: "false" do %>
+  <div class="item-card__head">
+    <% if card_icon.present? %>
+      <%= helpers.svg(card_icon[:svg], class: class_names("item-card__icon", card_icon[:classes])) %>
+    <% end %>
+    <span class="item-card__title"><%= @item.record_title %></span>
+  </div>
+
+  <div class="item-card__meta">
+    <div class="item-card__tags">
+      <% if card_reference.present? %>
+        <span class="item-card__tag">#<%= card_reference %></span>
+      <% end %>
+      <% card_badges.each do |badge| %>
+        <span class="item-card__tag">
+          <% if badge[:color].present? %>
+            <span class="item-card__tag-dot" style="background-color: <%= badge[:color] %>" aria-hidden="true"></span>
+          <% end %>
+          <%= badge[:label] %>
+        </span>
+      <% end %>
+    </div>
+
+    <% if card_assignee.present? %>
+      <span class="item-card__avatar" title="<%= card_assignee %>"><%= assignee_initials %></span>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+class SpousePolicy < BaseAvoPolicy
+end

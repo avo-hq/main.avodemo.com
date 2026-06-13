@@ -1,5 +1,7 @@
 class Avo::Resources::Project < Avo::BaseResource
   self.hotkey = "r j"
+  self.icon = "heroicons/outline/briefcase"
+  self.description = "Demo resource showcasing progress bar, status, country and key-value fields, discreet information, and CSV export."
   self.title = :name
   self.search = {
     query: -> do

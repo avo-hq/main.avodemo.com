@@ -1,0 +1,2 @@
+class CoursePolicy < BaseAvoPolicy
+end

@@ -1,0 +1,2 @@
+class EventPolicy < BaseAvoPolicy
+end

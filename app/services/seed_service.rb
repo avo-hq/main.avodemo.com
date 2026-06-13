@@ -19,6 +19,12 @@ class SeedService
     City.delete_all
     Product.delete_all
     Event.delete_all
+    Avo::Kanban::Item.delete_all
+    Avo::Kanban::Column.delete_all
+    Avo::Kanban::Board.delete_all
+    Issue.delete_all
+    PullRequest.delete_all
+    Task.delete_all
     ['active_storage_blobs', 'active_storage_attachments', 'posts', 'projects', 'projects_users', 'team_memberships', 'teams', 'users', 'comments', 'people', 'reviews', 'courses', 'course_links', 'fish'].each do |table_name|
       ActiveRecord::Base.connection.execute("TRUNCATE #{table_name} RESTART IDENTITY CASCADE")
     end
@@ -284,13 +290,143 @@ class SeedService
       Product.create!(product_attrs)
     end
 
-    # Events
-    event = Event.create(
-      name: "Your friendly european Ruby conference",
-      event_time: Time.new(2025, 9, 10, 10, 0, 0, "+02:00")
+    seed_events
+
+    seed_kanban
+  end
+
+  # Popular Ruby conferences pulled from https://www.rubyevents.org/.
+  # Names, dates, locations, descriptions and the logo/cover assets bundled under
+  # db/seed_files/events/ all come from each event's rubyevents.org page.
+  # Can be run on its own with `SeedService.seed_events` to (re)seed only events.
+  def self.seed_events
+    Event.all.each do |event|
+      event.profile_photo.purge
+      event.cover_photo.purge
+    end
+    Event.delete_all
+
+    # asset key (db/seed_files/events/{key}_logo.webp + {key}_cover.webp),
+    # name, start time, location, and description from rubyevents.org.
+    # Friendly.rb is listed last so it's the most recently added record (and
+    # lists first under the default newest-first ordering).
+    events = [
+      ["blue_ridge", "Blue Ridge Ruby 2024", Time.new(2024, 5, 30, 9, 0, 0, "-04:00"), "Asheville, NC, United States",
+        "Blue Ridge Ruby is a yearly conference held in the United States and features 20 talks from various speakers."],
+      ["rails_world", "Rails World 2025", Time.new(2025, 9, 4, 9, 0, 0, "+02:00"), "Amsterdam, Netherlands",
+        "Rails World is a yearly conference held in the Netherlands and features 24 talks from various speakers, including keynotes by David Heinemeier Hansson, Joe Masilotti, and Aaron Patterson."],
+      ["tropical", "Tropical on Rails 2025", Time.new(2025, 4, 3, 9, 0, 0, "-03:00"), "São Paulo, Brazil",
+        "Tropical on Rails is a yearly conference held in Brazil and features 18 talks from various speakers, including keynotes by Chris Oliver, Rosa Gutiérrez, Vinícius Stock, Irina Nazarova, and Xavier Noria."],
+      ["balkan", "Balkan Ruby 2025", Time.new(2025, 4, 25, 9, 0, 0, "+03:00"), "Sofia, Bulgaria",
+        "Balkan Ruby is a yearly conference held in Bulgaria and features 12 talks from various speakers."],
+      ["sin_city", "Sin City Ruby 2025", Time.new(2025, 4, 10, 9, 0, 0, "-08:00"), "Las Vegas, NV, United States",
+        "Sin City Ruby is a yearly conference held in the United States and features 9 talks from various speakers, including a keynote by Dave Thomas."],
+      ["railssaas", "The Rails SaaS Conference 2023", Time.new(2023, 6, 1, 9, 0, 0, "+03:00"), "Athens, Greece",
+        "The Rails SaaS Conference is a yearly conference held in Greece and features 12 talks from various speakers."],
+      ["friendly", "Friendly.rb 2025", Time.new(2025, 9, 10, 9, 0, 0, "+03:00"), "Bucharest, Romania",
+        "Friendly.rb is your friendly European Ruby conference, held in Romania, featuring 17 talks from various speakers."]
+    ]
+
+    events.each do |key, name, event_time, location, description|
+      event = Event.create!(
+        name: name,
+        event_time: event_time,
+        body: "#{location} — #{event_time.strftime("%B %-d, %Y")}\n\n#{description}"
+      )
+      event.profile_photo.attach(
+        io: File.open(Rails.root.join("db", "seed_files", "events", "#{key}_logo.webp")),
+        filename: "#{key}_logo.webp"
+      )
+      event.cover_photo.attach(
+        io: File.open(Rails.root.join("db", "seed_files", "events", "#{key}_cover.webp")),
+        filename: "#{key}_cover.webp"
+      )
+    end
+  end
+
+  # Issues, pull requests and tasks displayed together on a single kanban board.
+  # The board groups records by their `status`, and each column's `value` is
+  # matched against it — a record lands in the column whose value equals its
+  # status (or the "No status" column when blank).
+  def self.seed_kanban
+    statuses = Issue::STATUSES
+
+    issues = [
+      ["Dark mode flickers on first paint", "High"],
+      ["N+1 query on the projects index", "Urgent"],
+      ["Add keyboard shortcuts to the board", "Low"],
+      ["Timezone off by one on the events page", "Medium"],
+      ["Search returns archived records", "Medium"],
+      ["Upgrade to the latest Avo beta", "Low"],
+      ["Broken avatar fallback for new users", "High"],
+      ["Export CSV times out for large tables", "Urgent"],
+      ["Tooltip copy is truncated on mobile", "Low"],
+      ["Filters reset after editing a record", "Medium"]
+    ].each_with_index.map do |(title, priority), i|
+      Issue.create!(
+        number: i + 1,
+        title: title,
+        priority: priority,
+        status: (statuses + [nil]).sample,
+        author: ["avo", "adrian", "paul", "ema"].sample,
+        body: Faker::Lorem.paragraph(sentence_count: 3)
+      )
+    end
+
+    pull_requests = [
+      ["Cache the resource table queries", "feature/table-cache"],
+      ["Fix dark mode first paint", "fix/dark-mode-flicker"],
+      ["Introduce kanban boards", "feature/kanban"],
+      ["Bump avo-advanced", "chore/bump-avo"],
+      ["Add board keyboard shortcuts", "feature/board-shortcuts"],
+      ["Stream CSV exports", "fix/csv-export-timeout"]
+    ].each_with_index.map do |(title, branch), i|
+      PullRequest.create!(
+        number: 100 + i + 1,
+        title: title,
+        branch: branch,
+        draft: [true, false, false].sample,
+        status: (statuses + [nil]).sample,
+        author: ["avo", "adrian", "paul", "ema"].sample,
+        body: Faker::Lorem.paragraph(sentence_count: 3)
+      )
+    end
+
+    tasks = [
+      "Write the release notes",
+      "Record a demo video",
+      "Update the documentation",
+      "Review the Q3 roadmap",
+      "Triage incoming issues",
+      "Prepare the changelog",
+      "Schedule the team retro",
+      "Audit the seed data"
+    ].map do |title|
+      Task.create!(
+        title: title,
+        completed: [true, false].sample,
+        due_on: Faker::Date.between(from: Date.today, to: Date.today + 30),
+        status: (statuses + [nil]).sample,
+        assignee: ["avo", "adrian", "paul", "ema"].sample,
+        description: Faker::Lorem.paragraph(sentence_count: 2)
+      )
+    end
+
+    board = Avo::Kanban::Board.create!(
+      name: "Engineering board",
+      description: "Issues, pull requests and tasks across the engineering team.",
+      allowed_resources: ["Avo::Resources::Issue", "Avo::Resources::PullRequest", "Avo::Resources::Task"],
+      property: "status"
     )
 
-    event.cover_photo.attach(io: URI.open(Rails.root.join('db', 'seed_files', 'events', 'friendly_cover.avif')), filename: 'friendly_cover.avif')
-    event.profile_photo.attach(io: URI.open(Rails.root.join('db', 'seed_files', 'events', 'friendly_profile.png')), filename: 'friendly_profile.png')
+    columns = {nil => board.columns.create!(name: "No status", value: nil)}
+    statuses.each do |status|
+      columns[status] = board.columns.create!(name: status, value: status)
+    end
+
+    (issues + pull_requests + tasks).shuffle.each do |record|
+      column = columns[record.status]
+      column.items.create!(record: record, board: board)
+    end
   end
 end

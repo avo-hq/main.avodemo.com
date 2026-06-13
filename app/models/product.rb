@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
    monetize :price_cents
 
-  enum category: [
+  enum :category, [
     "Music players",
     "Phones",
     "Computers",

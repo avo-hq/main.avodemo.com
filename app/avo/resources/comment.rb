@@ -1,5 +1,6 @@
 class Avo::Resources::Comment < Avo::BaseResource
   self.hotkey = "r o"
+  self.icon = "heroicons/outline/chat-bubble-left-ellipsis"
   self.title = :tiny_name
   self.includes = [:user, :commentable]
   self.description = "Demo resource to illustrate Avo's Polymorphic BelongsTo support (Comment is commentable to Post and Project)"
