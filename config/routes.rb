@@ -6,6 +6,11 @@ Rails.application.routes.draw do
 
   post "/reset", to: "home#reset"
 
+  # REST API (avo-api). Mounted OUTSIDE the `authenticate` block on purpose — it
+  # carries its own HTTP Basic auth (see Avo::Api::Resources::V1::BaseResourcesController)
+  # and is consumed by the Avo::Resources::HttpUser HTTP resource.
+  mount_avo_api
+
   authenticate :user, ->(user) { user.admin? } do
     mount_avo
   end

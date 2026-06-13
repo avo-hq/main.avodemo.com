@@ -4,17 +4,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "~> 3.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", ">= 7.2.0.beta2"
-gem "activestorage"
-gem "actionmailer"
-gem "actioncable"
+gem "rails", ">= 8.1"
 # gem "rails", github: "rails/rails", branch: "main"
 # gem "activestorage", github: "rails/rails", branch: "main"
 # gem "actionmailer", github: "rails/rails", branch: "main"
 # gem "actioncable", github: "rails/rails", branch: "main"
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+gem "propshaft"
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
@@ -98,17 +94,39 @@ gem "awesome_print"
 # `4.0.0.pre.dev.*` dev builds sort HIGHER than `4.0.0.beta.*` in RubyGems
 # version ordering ("pre" > "beta"), so a `>=` constraint resolves to a broken
 # dev build that fails to boot. Bump these explicitly when upgrading betas.
-gem "avo-advanced", ">= 4.0.0.beta.12", source: "https://packager.dev/avo-hq/"
+gem "avo"
+
+source "https://packager.dev/avo-hq/" do
+  gem "avo-advanced"
+  gem "avo-nested"
+  gem "avo-api"
+  gem "avo-http_resource"
+  gem "avo-collaboration"
+  gem "avo-forms"
+  gem "avo-reactive_fields"
+  gem "avo-kanban"
+end
 # gem "avo-advanced", path: "/Users/adrian/work/avocado/gems/avo-advanced"
-gem "avo", "4.0.0.beta.42"
 
 # avo-nested is no longer bundled inside avo-advanced in Avo 4; this app uses
 # nested association forms (see app/views/avo/resource_tools/_nested_fish_reviews.html.erb).
-gem "avo-nested", ">= 4.0.0.beta.8", source: "https://packager.dev/avo-hq/"
 
-gem "view_component", "4.0.0"
+# Kanban boards for Avo. Pin to an EXACT version for the same reason as the
+# other Avo 4 beta gems above (pre.dev builds sort higher than beta).
 
-gem "avo-rhino_field", "4.0.0"
+# Avo 4 suite gems for the new feature demos (REST API, HTTP resources,
+# collaboration, reactive fields, forms). EXACT pins (see note above) — these are
+# the versions that resolve against avo 4.0.0.beta.42. Bump explicitly on upgrade.
+
+# Backs the Avo::Forms::Settings::Integrations demo form (DB-stored config values).
+gem "db_config", "0.1.10"
+
+# view_component 4.0.0 caps activesupport < 8.1, conflicting with rails 8.1.3.
+# Bumped to 4.11.0 (no activesupport cap; the version avo-4.avodemo.com runs).
+# avo .42 only requires view_component >= 3.7.0.
+gem "view_component"
+
+# gem "avo-rhino_field", "4.0.0"
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo", path: "../gems/avo"
@@ -137,7 +155,6 @@ gem "acts-as-taggable-on", ">= 13.0.0"
 gem 'pundit'
 gem 'chartkick'
 gem 'countries'
-gem 'sprockets'
 gem 'mapkick-rb'
 
 gem "dockerfile-rails", ">= 1.3", :group => :development
