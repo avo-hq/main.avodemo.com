@@ -53,10 +53,18 @@ class Avo::Resources::User < Avo::BaseResource
         field :email, as: :text, name: "User Email", required: true, protocol: :mailto, filterable: true, width: 33, stacked: true
         field :active, as: :boolean, name: "Is active", only_on: :index, filterable: true
       field :cv, as: :file, name: "CV"
-      field :is_admin?, as: :boolean, name: "Is admin", only_on: :index, filterable: true
+      # Field id is `is_admin` (no `?`) so the REST API emits a valid JSON key — a
+      # `?`-suffixed key breaks consumers (e.g. the HttpUser HTTP resource builds
+      # attr_accessors per key, and `attr_accessor :is_admin?` is invalid Ruby).
+      field :is_admin, as: :boolean, name: "Is admin", only_on: :index, filterable: true do
+        record.is_admin?
+      end
       field :level,
         format_using: -> do
-          record.memberships.find_by(user_id: record.id, team_id: Team.find(params[:id]))&.level
+          # `find_by` (not `find`) so this doesn't raise when params[:id] is absent
+          # — e.g. when the resource is serialized headlessly by the REST API.
+          team = Team.find_by(id: params[:id])
+          team && record.memberships.find_by(user_id: record.id, team_id: team)&.level
         end,
         visible: -> do
           resource.view.index? && params[:resource_name] == 'teams'
@@ -105,7 +113,9 @@ class Avo::Resources::User < Avo::BaseResource
         field :email, as: :gravatar, link_to_record: true, as_avatar: :circle, only_on: :show
         field :heading, as: :heading, label: ""
         field :active, as: :boolean, name: "Is active"
-        field :is_admin?, as: :boolean, name: "Is admin", only_on: :index
+        field :is_admin, as: :boolean, name: "Is admin", only_on: :index do
+          record.is_admin?
+        end
         field :birthday,
           as: :date,
           first_day_of_week: 1,

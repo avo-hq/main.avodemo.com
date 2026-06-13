@@ -91,6 +91,7 @@ class Avo::Resources::Team < Avo::BaseResource
         query.where.not(user_id: parent.id).or(query.where(user_id: nil))
       end
     field :reviews, as: :has_many
+    field :users, as: :has_many, through: :memberships
   end
 
   def filters

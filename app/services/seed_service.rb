@@ -19,6 +19,12 @@ class SeedService
     City.delete_all
     Product.delete_all
     Event.delete_all
+    Avo::Kanban::Item.delete_all
+    Avo::Kanban::Column.delete_all
+    Avo::Kanban::Board.delete_all
+    Issue.delete_all
+    PullRequest.delete_all
+    Task.delete_all
     ['active_storage_blobs', 'active_storage_attachments', 'posts', 'projects', 'projects_users', 'team_memberships', 'teams', 'users', 'comments', 'people', 'reviews', 'courses', 'course_links', 'fish'].each do |table_name|
       ActiveRecord::Base.connection.execute("TRUNCATE #{table_name} RESTART IDENTITY CASCADE")
     end
@@ -292,5 +298,93 @@ class SeedService
 
     event.cover_photo.attach(io: URI.open(Rails.root.join('db', 'seed_files', 'events', 'friendly_cover.avif')), filename: 'friendly_cover.avif')
     event.profile_photo.attach(io: URI.open(Rails.root.join('db', 'seed_files', 'events', 'friendly_profile.png')), filename: 'friendly_profile.png')
+
+    seed_kanban
+  end
+
+  # Issues, pull requests and tasks displayed together on a single kanban board.
+  # The board groups records by their `status`, and each column's `value` is
+  # matched against it — a record lands in the column whose value equals its
+  # status (or the "No status" column when blank).
+  def self.seed_kanban
+    statuses = Issue::STATUSES
+
+    issues = [
+      ["Dark mode flickers on first paint", "High"],
+      ["N+1 query on the projects index", "Urgent"],
+      ["Add keyboard shortcuts to the board", "Low"],
+      ["Timezone off by one on the events page", "Medium"],
+      ["Search returns archived records", "Medium"],
+      ["Upgrade to the latest Avo beta", "Low"],
+      ["Broken avatar fallback for new users", "High"],
+      ["Export CSV times out for large tables", "Urgent"],
+      ["Tooltip copy is truncated on mobile", "Low"],
+      ["Filters reset after editing a record", "Medium"]
+    ].each_with_index.map do |(title, priority), i|
+      Issue.create!(
+        number: i + 1,
+        title: title,
+        priority: priority,
+        status: (statuses + [nil]).sample,
+        author: ["avo", "adrian", "paul", "ema"].sample,
+        body: Faker::Lorem.paragraph(sentence_count: 3)
+      )
+    end
+
+    pull_requests = [
+      ["Cache the resource table queries", "feature/table-cache"],
+      ["Fix dark mode first paint", "fix/dark-mode-flicker"],
+      ["Introduce kanban boards", "feature/kanban"],
+      ["Bump avo-advanced", "chore/bump-avo"],
+      ["Add board keyboard shortcuts", "feature/board-shortcuts"],
+      ["Stream CSV exports", "fix/csv-export-timeout"]
+    ].each_with_index.map do |(title, branch), i|
+      PullRequest.create!(
+        number: 100 + i + 1,
+        title: title,
+        branch: branch,
+        draft: [true, false, false].sample,
+        status: (statuses + [nil]).sample,
+        author: ["avo", "adrian", "paul", "ema"].sample,
+        body: Faker::Lorem.paragraph(sentence_count: 3)
+      )
+    end
+
+    tasks = [
+      "Write the release notes",
+      "Record a demo video",
+      "Update the documentation",
+      "Review the Q3 roadmap",
+      "Triage incoming issues",
+      "Prepare the changelog",
+      "Schedule the team retro",
+      "Audit the seed data"
+    ].map do |title|
+      Task.create!(
+        title: title,
+        completed: [true, false].sample,
+        due_on: Faker::Date.between(from: Date.today, to: Date.today + 30),
+        status: (statuses + [nil]).sample,
+        assignee: ["avo", "adrian", "paul", "ema"].sample,
+        description: Faker::Lorem.paragraph(sentence_count: 2)
+      )
+    end
+
+    board = Avo::Kanban::Board.create!(
+      name: "Engineering board",
+      description: "Issues, pull requests and tasks across the engineering team.",
+      allowed_resources: ["Avo::Resources::Issue", "Avo::Resources::PullRequest", "Avo::Resources::Task"],
+      property: "status"
+    )
+
+    columns = {nil => board.columns.create!(name: "No status", value: nil)}
+    statuses.each do |status|
+      columns[status] = board.columns.create!(name: status, value: status)
+    end
+
+    (issues + pull_requests + tasks).shuffle.each do |record|
+      column = columns[record.status]
+      column.items.create!(record: record, board: board)
+    end
   end
 end

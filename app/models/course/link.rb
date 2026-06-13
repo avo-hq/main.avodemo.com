@@ -22,4 +22,10 @@ class Course::Link < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["course_id", "created_at", "id", "link", "position", "updated_at"]
   end
+
+  # Enables the `course_name` dynamic filter (query_attributes: [:course_name])
+  # on the CourseLink resource's belongs_to :course field.
+  def self.ransackable_associations(auth_object = nil)
+    ["course"]
+  end
 end
