@@ -1,4 +1,5 @@
 class Avo::Resources::Author < Avo::Core::Resources::Http
+  self.icon = "heroicons/outline/academic-cap"
   self.description = -> {
     "Authors fetched live from <a href='https://docs.openalex.org' target='_blank'>https://docs.openalex.org</a> — a read-only HTTP resource (avo-http_resource), no local database table.".html_safe
   }

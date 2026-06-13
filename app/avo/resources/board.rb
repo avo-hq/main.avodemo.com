@@ -1,5 +1,7 @@
 class Avo::Resources::Board < Avo::BaseResource
   self.model_class = "Avo::Kanban::Board"
+  self.icon = "heroicons/outline/view-columns"
+  self.description = "Demo Kanban board manager (avo-kanban). A board pulls records from several resources into draggable, drag-and-drop columns."
 
   self.edit_controls = -> {
     if record.persisted?

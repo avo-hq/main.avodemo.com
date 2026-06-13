@@ -12,7 +12,13 @@ Rails.application.routes.draw do
   mount_avo_api
 
   authenticate :user, ->(user) { user.admin? } do
-    mount_avo
+    mount_avo do
+      get "custom_page", to: "tools#custom_page"
+
+      scope :resources do
+        get "courses/cities", to: "courses#cities"
+      end
+    end
   end
   # scope ":course", constraints: {course: /\w+(-\w+)*/} do
   #   scope ":locale", constraints: {locale: /\w[-\w]*/} do
@@ -23,14 +29,4 @@ Rails.application.routes.draw do
 
   get :checkcheckcheck, to: "home#check"
   get "up" => "health#show", as: :rails_health_check
-end
-
-if defined? ::Avo
-  Avo::Engine.routes.draw do
-    get "custom_page", to: "tools#custom_page"
-
-    scope :resources do
-      get "courses/cities", to: "courses#cities"
-    end
-  end
 end

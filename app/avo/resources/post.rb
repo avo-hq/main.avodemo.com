@@ -1,5 +1,7 @@
 class Avo::Resources::Post < Avo::BaseResource
   self.hotkey = "r p"
+  self.icon = "heroicons/outline/newspaper"
+  self.description = "Demo resource showcasing grid view, rich-text body, tags, file attachments, and discreet information."
   self.title = :name
   self.search = {
     query: -> do

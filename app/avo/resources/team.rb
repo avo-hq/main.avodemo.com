@@ -1,5 +1,7 @@
 class Avo::Resources::Team < Avo::BaseResource
   self.hotkey = "r t"
+  self.icon = "heroicons/outline/user-group"
+  self.description = "Demo resource showcasing grid view, a preview field, has_many :through associations, and live logo fetching."
   self.title = :name
   self.includes = [:admin, :team_members]
   self.search = {

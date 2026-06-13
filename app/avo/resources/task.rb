@@ -1,5 +1,7 @@
 class Avo::Resources::Task < Avo::BaseResource
   self.title = :name
+  self.icon = "heroicons/outline/clipboard-document-check"
+  self.description = "Demo Kanban-enabled resource (avo-kanban) using a custom item component for rich board cards."
 
   self.search = {
     query: -> {

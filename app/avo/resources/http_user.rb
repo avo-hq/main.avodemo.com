@@ -1,4 +1,5 @@
 class Avo::Resources::HttpUser < Avo::Core::Resources::Http
+  self.icon = "heroicons/outline/cloud"
   self.http_adapter = {
     endpoint: Rails.env.production? ? "https://main.avodemo.com/api/resources/v1/users" : "http://localhost:3020/api/resources/v1/users",
     # Basic auth example. The credential is read from a cookie set by the

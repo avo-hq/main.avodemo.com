@@ -1,5 +1,7 @@
 class Avo::Resources::Issue < Avo::BaseResource
   self.title = :name
+  self.icon = "tabler/outline/circle-dot"
+  self.description = "Demo Kanban-enabled resource (avo-kanban) that renders rich, GitHub-style cards via a custom item component."
 
   self.search = {
     query: -> {

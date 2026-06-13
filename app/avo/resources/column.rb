@@ -1,5 +1,7 @@
 class Avo::Resources::Column < Avo::BaseResource
   self.model_class = "Avo::Kanban::Column"
+  self.icon = "heroicons/outline/view-columns"
+  self.description = "Demo resource for the columns that make up an avo-kanban board, reorderable with drag-and-drop."
   self.visible_on_sidebar = false
 
   self.ordering = {

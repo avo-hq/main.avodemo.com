@@ -1,5 +1,7 @@
 class Avo::Resources::PullRequest < Avo::BaseResource
   self.title = :name
+  self.icon = "tabler/outline/git-pull-request"
+  self.description = "Demo Kanban-enabled resource (avo-kanban) with rich, GitHub-style cards via a custom item component."
 
   self.search = {
     query: -> {

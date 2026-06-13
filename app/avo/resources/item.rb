@@ -1,5 +1,7 @@
 class Avo::Resources::Item < Avo::BaseResource
   self.model_class = "Avo::Kanban::Item"
+  self.icon = "heroicons/outline/squares-2x2"
+  self.description = "Demo resource for the polymorphic avo-kanban items that place any allowed record into a board column."
   self.visible_on_sidebar = false
 
   def fields

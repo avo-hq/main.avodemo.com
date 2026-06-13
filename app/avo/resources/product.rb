@@ -1,5 +1,7 @@
 class Avo::Resources::Product < Avo::BaseResource
   self.hotkey = "r d"
+  self.icon = "heroicons/outline/shopping-bag"
+  self.description = "Demo resource showcasing grid view cards, a money field with multiple currencies, and the Tiptap editor."
  self.title = :title
   self.includes = [image_attachment: :blob]
   self.default_view_type = :grid

@@ -1,5 +1,6 @@
 class Avo::Resources::Fish < Avo::BaseResource
   self.hotkey = "r f"
+  self.icon = "tabler/outline/fish"
   self.title = :name
   self.includes = []
   self.description = "Demo resource to illustrate Avo's support for uncountable models (the model represented here is Fish) and nested records on new view"

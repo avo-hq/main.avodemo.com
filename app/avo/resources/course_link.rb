@@ -1,5 +1,6 @@
 class Avo::Resources::CourseLink < Avo::BaseResource
   self.hotkey = "r l"
+  self.icon = "heroicons/outline/link"
   self.title = :link
   self.includes = [:course]
   self.description = "Demo resource to illustrate Avo's nested (namespaced) model support (the model represented here is Course::Link)"

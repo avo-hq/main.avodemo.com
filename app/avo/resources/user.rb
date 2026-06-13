@@ -1,5 +1,6 @@
 class Avo::Resources::User < Avo::BaseResource
   self.hotkey = "r u"
+  self.icon = "heroicons/outline/user-circle"
   self.title = :name
   self.description = -> {
     "Users of the app. view: #{view}"

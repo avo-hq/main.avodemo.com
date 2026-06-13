@@ -40,9 +40,7 @@ Avo.configure do |config|
       # path string (matching the other links in this menu) because the menu block
       # isn't a full routing context, so engine route helpers can't resolve here.
       if (engineering_board = Avo::Kanban::Board.find_by(name: "Engineering board"))
-        link "Engineering board",
-          path: "#{Avo.configuration.root_path}/boards/#{engineering_board.id}",
-          icon: "avo/square-kanban"
+        link_to "Engineering board", "#{Avo.configuration.root_path}/boards/#{engineering_board.id}", icon: "avo/square-kanban"
       end
 
       group "All dashboards", visible: false, collapsable: true do
@@ -95,11 +93,12 @@ Avo.configure do |config|
         resource :comments
       end
 
-      resource :issues do
-        resource :pull_requests
-        resource :tasks
-        resource :boards
-      end
+      # comment for now until we merge https://github.com/avo-hq/avo-menu/pull/59
+      # resource :issues do
+      #   resource :pull_requests
+      #   resource :tasks
+      #   resource :boards
+      # end
 
       # end
       group "Engineering", collapsable: true do
@@ -119,21 +118,21 @@ Avo.configure do |config|
     link_to "Media Library", avo.media_library_index_path
 
     group do
-      link "Avo", path: "https://avohq.io"
-      link "Google", path: "https://google.com", target: :_blank
+      link_to "Avo", "https://avohq.io", target: :_blank
+      link_to "Google", "https://google.com", target: :_blank
     end
   }
   config.profile_menu = -> {
-    link "Dashboard", path: "/avo/dashboards/dashy", icon: "user-circle"
-    link "See Avo 3 version", path: "https://avo-3.avodemo.com", target: :_blank
+    link_to "Dashboard", "/avo/dashboards/dashy", icon: "user-circle"
+    link_to "See Avo 3 version", "https://avo-3.avodemo.com", target: :_blank
   }
   config.header_menu = -> {
     # Shows the live app name (same cookie source as config.app_name above), so it
     # updates when you change the name in Settings → App Settings.
-    link_to (request.cookies["app_name"] || "Avo Demo"), path: Avo.configuration.root_path
-    link_to 'Avo HQ', path: 'https://avohq.io', target: :_blank
-    link_to 'Source code', path: 'https://github.com/avo-hq/avodemo', target: :_blank
-    link_to 'Documentation', path: 'https://docs.avohq.io/4.0', target: :_blank
+    link_to (request.cookies["app_name"] || "Avo Demo"), Avo.configuration.root_path
+    link_to 'Avo HQ', 'https://avohq.io', target: :_blank
+    link_to 'Source code', 'https://github.com/avo-hq/avodemo', target: :_blank
+    link_to 'Documentation', 'https://docs.avohq.io/4.0', target: :_blank
   }
 end
 
