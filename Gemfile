@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "~> 3.3"
+ruby file: ".ruby-version"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", ">= 8.1"
@@ -40,7 +40,7 @@ gem "redis", "~> 4.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -55,7 +55,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   # require: false avoids loading pp → prettyprint during Bundler.require; a broken Ruby default-gem
   # tree for prettyprint then cannot crash boot. Use `require "debug/start"` or `bin/rdbg` when debugging.
-  gem "debug", platforms: %i[ mri mingw x64_mingw ], require: false
+  gem "debug", platforms: %i[ mri windows ], require: false
 end
 
 group :development do
