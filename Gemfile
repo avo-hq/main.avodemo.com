@@ -148,6 +148,12 @@ gem "tailwindcss-rails", "~> 2.7"
 
 gem "mini_magick"
 
+# Promoted out of Ruby's default gems and not declared by their users:
+# observer (removed in Ruby 3.4) is required by factory_bot 6.2.x; benchmark
+# (removed in Ruby 4.0) is required by mini_magick. Declare them explicitly.
+gem "observer"
+gem "benchmark"
+
 gem "appsignal"
 
 gem "acts_as_list"

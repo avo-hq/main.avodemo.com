@@ -208,6 +208,7 @@ GEM
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.3.0)
     bcrypt (3.1.22)
+    benchmark (0.5.0)
     bigdecimal (4.1.2)
     bindex (0.8.1)
     bootsnap (1.18.6)
@@ -226,8 +227,6 @@ GEM
       xpath (~> 3.2)
     chartkick (5.0.2)
     chronic (0.10.2)
-    commonmarker (2.8.2)
-      rb_sys (~> 0.9)
     commonmarker (2.8.2-aarch64-linux)
     commonmarker (2.8.2-arm64-darwin)
     commonmarker (2.8.2-x86_64-linux)
@@ -331,7 +330,6 @@ GEM
       actionpack (>= 6.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.9)
     minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
@@ -357,15 +355,13 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
-    nokogiri (1.19.3)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
     nokogiri (1.19.3-aarch64-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.19.3-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.19.3-x86_64-linux-gnu)
       racc (~> 1.4)
+    observer (0.1.2)
     orm_adapter (0.5.0)
     pagy (43.5.6)
       json
@@ -437,13 +433,10 @@ GEM
       tsort (>= 0.2)
       zeitwerk (~> 2.6)
     rake (13.4.2)
-    rake-compiler-dock (1.11.0)
     ransack (4.4.1)
       activerecord (>= 7.2)
       activesupport (>= 7.2)
       i18n
-    rb_sys (0.9.124)
-      rake-compiler-dock (= 1.11.0)
     rdoc (7.2.0)
       erb
       psych (>= 4.0.0)
@@ -522,7 +515,7 @@ PLATFORMS
   aarch64-linux
   arm64-darwin-23
   arm64-darwin-24
-  ruby
+  arm64-darwin-25
   x86_64-linux
 
 DEPENDENCIES
@@ -550,6 +543,7 @@ DEPENDENCIES
   avo-scopes!
   awesome_print
   aws-sdk-s3
+  benchmark
   bootsnap
   bugsnag
   capybara
@@ -572,6 +566,7 @@ DEPENDENCIES
   marksmith
   mini_magick
   money-rails (~> 1.12)
+  observer
   pagy
   pg (>= 0.18, < 2.0)
   prefixed_ids (~> 1.6, >= 1.6.1)
