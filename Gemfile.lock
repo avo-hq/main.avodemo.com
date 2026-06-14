@@ -1,3 +1,25 @@
+PATH
+  remote: /Users/adrian/work/avocado/gems/avo-forms
+  specs:
+    avo-forms (4.0.0.beta.7)
+      avo (>= 4.0.0.beta.51)
+      avo-licensing (>= 4.0.0.beta.11)
+
+PATH
+  remote: /Users/adrian/work/avocado/gems/avo-http_resource
+  specs:
+    avo-http_resource (4.0.0.beta.5)
+      avo (>= 4.0.0.beta.51)
+      avo-licensing (>= 4.0.0.beta.11)
+      httparty
+
+PATH
+  remote: /Users/adrian/work/avocado/gems/avo-licensing
+  specs:
+    avo-licensing (4.0.0.beta.11)
+      avo (>= 4.0.0.beta.51)
+      zeitwerk (>= 2.6.12)
+
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
@@ -35,20 +57,10 @@ GEM
       ransack (>= 4.2.0)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-forms (4.0.0.beta.6)
-      avo (>= 4.0.0.beta.40)
-      avo-licensing (>= 4.0.0.beta.8)
-    avo-http_resource (4.0.0.beta.5)
-      avo (>= 4.0.0.beta.51)
-      avo-licensing (>= 4.0.0.beta.9)
-      httparty
     avo-kanban (4.0.0.beta.5)
       acts_as_list (~> 1.1)
       avo (>= 4.0.0.beta.41)
       hotwire_combobox (~> 0.4.0)
-    avo-licensing (4.0.0.beta.11)
-      avo (>= 4.0.0.beta.47)
-      zeitwerk (>= 2.6.12)
     avo-menu (4.0.1.beta.12)
       avo (>= 4.0.0.beta.37)
       avo-licensing (>= 4.0.0.beta.8)
@@ -538,6 +550,7 @@ DEPENDENCIES
   avo-forms!
   avo-http_resource!
   avo-kanban!
+  avo-licensing!
   avo-menu!
   avo-money_field
   avo-nested!
