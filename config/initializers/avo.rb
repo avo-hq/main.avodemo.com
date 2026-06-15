@@ -49,7 +49,7 @@ Avo.configure do |config|
     end
 
     section "Config", icon: "cog" do
-      page Avo::Pages::Settings, icon: "adjustments-vertical"
+      page "Avo::Pages::Settings", icon: "adjustments-vertical"
     end
 
     section "API", icon: "heroicons/outline/key" do
