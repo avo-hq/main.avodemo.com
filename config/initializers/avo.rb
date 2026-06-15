@@ -74,10 +74,6 @@ Avo.configure do |config|
       end
 
       group "People", collapsable: true do
-        # resource "UserResource", visible: -> do
-
-        # end
-        # authorize current_user, User, "index?", raise_exception: false
         resource "User"
         resource :people
         resource :spouses
@@ -93,7 +89,6 @@ Avo.configure do |config|
         resource :comments
       end
 
-      # comment for now until we merge https://github.com/avo-hq/avo-menu/pull/59
       resource :issues do
         resource :pull_requests
         resource :tasks

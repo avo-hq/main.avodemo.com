@@ -94,7 +94,7 @@ gem "awesome_print"
 # `4.0.0.pre.dev.*` dev builds sort HIGHER than `4.0.0.beta.*` in RubyGems
 # version ordering ("pre" > "beta"), so a `>=` constraint resolves to a broken
 # dev build that fails to boot. Bump these explicitly when upgrading betas.
-gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
+gem "avo"
 
 source "https://packager.dev/avo-hq/" do
   gem "avo-dashboards"
