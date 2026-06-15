@@ -46,8 +46,8 @@ GEM
       acts_as_list (~> 1.1)
       avo (>= 4.0.0.beta.41)
       hotwire_combobox (~> 0.4.0)
-    avo-menu (4.0.1.beta.14)
-      avo (>= 4.0.0.beta.54)
+    avo-menu (4.0.0.beta.13)
+      avo (>= 4.0.0.beta.53)
       avo-licensing (>= 4.0.0.beta.11)
       docile
       zeitwerk (>= 2.6.12)
