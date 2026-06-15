@@ -94,11 +94,11 @@ Avo.configure do |config|
       end
 
       # comment for now until we merge https://github.com/avo-hq/avo-menu/pull/59
-      # resource :issues do
-      #   resource :pull_requests
-      #   resource :tasks
-      #   resource :boards
-      # end
+      resource :issues do
+        resource :pull_requests
+        resource :tasks
+        resource :boards
+      end
 
       # end
       group "Engineering", collapsable: true do
