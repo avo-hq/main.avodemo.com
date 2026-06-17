@@ -468,8 +468,6 @@ GEM
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.2.0)
-    tailwindcss-rails (2.7.9)
-      railties (>= 7.0.0)
     tailwindcss-rails (2.7.9-aarch64-linux)
       railties (>= 7.0.0)
     tailwindcss-rails (2.7.9-arm64-darwin)
@@ -542,7 +540,7 @@ DEPENDENCIES
   avo-money_field
   avo-nested!
   avo-reactive_fields!
-  avo-record_reordering (= 4.0.0.beta.3)!
+  avo-record_reordering!
   avo-rhino_field
   avo-scopes!
   awesome_print
