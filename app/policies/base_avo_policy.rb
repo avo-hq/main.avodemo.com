@@ -18,6 +18,7 @@ class BaseAvoPolicy < ApplicationPolicy
   def preview? = true
   def act_on? = true
   def search? = true
+  def reorder? = true
 
   class Scope < ApplicationPolicy::Scope
     def resolve
