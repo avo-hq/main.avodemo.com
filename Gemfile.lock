@@ -46,6 +46,9 @@ GEM
       acts_as_list (~> 1.1)
       avo (>= 4.0.0.beta.41)
       hotwire_combobox (~> 0.4.0)
+    avo-licensing (4.0.0.beta.13)
+      avo (>= 4.0.0.beta.57)
+      zeitwerk (>= 2.6.12)
     avo-menu (4.0.0.beta.13)
       avo (>= 4.0.0.beta.53)
       avo-licensing (>= 4.0.0.beta.11)
@@ -59,9 +62,9 @@ GEM
       avo (>= 4.0.0.beta.41)
       avo-licensing (>= 4.0.0.beta.9)
       zeitwerk (>= 2.6.12)
-    avo-record_reordering (4.0.0.beta.2)
-      avo (>= 4.0.0.beta.47)
-      avo-licensing (>= 4.0.0.beta.10)
+    avo-record_reordering (4.0.0.beta.3)
+      avo (>= 4.0.0.beta.57)
+      avo-licensing (>= 4.0.0.beta.13)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
@@ -183,9 +186,6 @@ GEM
       zeitwerk (>= 2.6.12)
     avo-icons (0.1.5)
       inline_svg
-    avo-licensing (4.0.0.beta.11)
-      avo (>= 4.0.0.beta.47)
-      zeitwerk (>= 2.6.12)
     avo-money_field (0.0.6)
       money-rails (~> 1.12)
     avo-rhino_field (4.0.4)
@@ -542,7 +542,7 @@ DEPENDENCIES
   avo-money_field
   avo-nested!
   avo-reactive_fields!
-  avo-record_reordering!
+  avo-record_reordering (= 4.0.0.beta.3)!
   avo-rhino_field
   avo-scopes!
   awesome_print
