@@ -1,0 +1,22 @@
+<div class="flex flex-col space-y-6">
+  <%= render Avo::UI::PanelComponent.new title: 'Welcome to the Avo demo 👋', description: 'A kitchen-sink app for exploring what Avo can do' do |c| %>
+    <% c.with_controls do %>
+      <%= a_link 'https://docs.avohq.io/4.0', icon: 'heroicons/outline/book-open', style: :primary, is_link: true, target: :_blank do %>
+        Read the docs
+      <% end %>
+    <% end %>
+
+    <% c.with_card do %>
+      <div class="flex flex-col justify-between py-6">
+        <div class="px-6 space-y-4 max-w-3xl text-content">
+          <p>
+            This is a <strong>kitchen-sink</strong> application — it intentionally packs in as many
+            Avo features as possible so you can see them working together in one real app.
+            Dashboards, full CRUD resources, kanban boards, custom forms and pages, a REST API,
+            a media library, filters, actions and bespoke tools all live here side by side.
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

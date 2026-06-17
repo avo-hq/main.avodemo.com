@@ -101,7 +101,7 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-menu"
   gem "avo-advanced_search"
   gem "avo-authorization"
-  gem "avo-records_reordering"
+  gem "avo-record_reordering"
   gem "avo-scopes"
   gem "avo-custom_controls"
   gem "avo-dynamic_filters"

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   authenticate :user, ->(user) { user.admin? } do
     mount_avo do
+      get "welcome", to: "tools#welcome"
       get "custom_page", to: "tools#custom_page"
 
       scope :resources do

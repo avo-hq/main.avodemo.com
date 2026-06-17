@@ -59,9 +59,9 @@ GEM
       avo (>= 4.0.0.beta.41)
       avo-licensing (>= 4.0.0.beta.9)
       zeitwerk (>= 2.6.12)
-    avo-records_reordering (4.0.0.beta.1)
-      avo (>= 4.0.0.beta.53)
-      avo-licensing (>= 4.0.0.beta.11)
+    avo-record_reordering (4.0.0.beta.2)
+      avo (>= 4.0.0.beta.47)
+      avo-licensing (>= 4.0.0.beta.10)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
@@ -166,7 +166,7 @@ GEM
     appsignal (4.8.5)
       logger
       rack (>= 2.0.0)
-    avo (4.0.0.beta.54)
+    avo (4.0.0.beta.55)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -233,7 +233,7 @@ GEM
     commonmarker (2.8.2-aarch64-linux)
     commonmarker (2.8.2-arm64-darwin)
     commonmarker (2.8.2-x86_64-linux)
-    concurrent-ruby (1.3.6)
+    concurrent-ruby (1.3.7)
     connection_pool (3.0.2)
     countries (8.1.0)
       unaccent (~> 0.3)
@@ -290,7 +290,7 @@ GEM
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    i18n (1.14.8)
+    i18n (1.15.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.14.0)
       mini_magick (>= 4.9.5, < 6)
@@ -542,7 +542,7 @@ DEPENDENCIES
   avo-money_field
   avo-nested!
   avo-reactive_fields!
-  avo-records_reordering!
+  avo-record_reordering!
   avo-rhino_field
   avo-scopes!
   awesome_print

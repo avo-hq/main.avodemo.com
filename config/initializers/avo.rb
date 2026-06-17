@@ -2,7 +2,12 @@ Avo.configure do |config|
   config.root_path = '/avo'
   config.license_key = ENV['AVO_LICENSE_KEY']
   config.id_links_to_resource = true
-  config.home_path = -> { "/avo/dashboards/dashy" }
+  config.home_path = -> { "/avo/welcome" }
+  # Point the root (home) breadcrumb at the Welcome page, keeping the default
+  # label and icon.
+  config.set_initial_breadcrumbs do
+    add_breadcrumb title: I18n.t("avo.home").humanize, path: "#{Avo.configuration.root_path}/welcome", icon: "tabler/outline/home"
+  end
   # Avo 4: `config.branding` was renamed to `config.appearance`. The flat `colors:`
   # hash was removed in favor of an accent preset (`accent: :blue`) or a custom
   # accent palette via `accent_colors: { color:, content:, foreground: }`.
@@ -33,6 +38,8 @@ Avo.configure do |config|
   config.app_name = -> { request.cookies["app_name"] || "Avo Demo" }
 
   config.main_menu = -> {
+    link_to "Welcome", "#{Avo.configuration.root_path}/welcome", icon: "heroicons/outline/home"
+
     section I18n.t("avo.dashboards"), icon: "app/assets/images/demo-adjustments.svg" do
       dashboard :dashy, visible: -> { true }
 
