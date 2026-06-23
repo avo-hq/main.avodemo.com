@@ -466,6 +466,14 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    solid_cable (4.0.0)
+      actioncable (>= 7.2)
+      activejob (>= 7.2)
+      activerecord (>= 7.2)
+      railties (>= 7.2)
+    sqlite3 (2.9.5-aarch64-linux-gnu)
+    sqlite3 (2.9.5-arm64-darwin)
+    sqlite3 (2.9.5-x86_64-linux-gnu)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.2.0)
@@ -581,6 +589,8 @@ DEPENDENCIES
   redcarpet
   redis (~> 4.0)
   selenium-webdriver
+  solid_cable
+  sqlite3 (>= 2.1)
   stimulus-rails
   tailwindcss-rails (~> 2.7)
   turbo-rails

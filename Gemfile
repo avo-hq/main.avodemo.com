@@ -33,6 +33,11 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
+# Database-backed Action Cable adapter — runs on its own SQLite database
+# (see config/database.yml `cable`), so no Redis needed for pub/sub.
+gem "solid_cable"
+gem "sqlite3", ">= 2.1"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
