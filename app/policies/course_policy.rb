@@ -11,4 +11,10 @@ class CoursePolicy < BaseAvoPolicy
   def detach_links? = true
   def destroy_links? = true
   def act_on_links? = true
+
+  # Custom `Avo::CoursesController#cities` action (the country→cities dropdown
+  # JSON endpoint) routes through Avo's authorize_action, which asks Pundit for
+  # `cities?`. With explicit_authorization a missing method raises NoMethodError,
+  # so define it. Permissive to match the demo intent.
+  def cities? = true
 end
