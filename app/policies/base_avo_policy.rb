@@ -20,6 +20,13 @@ class BaseAvoPolicy < ApplicationPolicy
   def search? = true
   def reorder? = true
 
+  # avo-collaboration gates the timeline on these methods. With
+  # explicit_authorization, a missing method = denied, so the timeline stays
+  # hidden unless they're defined. Permissive here to match the demo intent.
+  def collaboration_view_timeline? = true
+  def collaboration_create_entry? = true
+  def collaboration_destroy_entry? = true
+
   class Scope < ApplicationPolicy::Scope
     def resolve
       # Defensive: AR-backed resources scope with `.all`; non-AR resources (HTTP
