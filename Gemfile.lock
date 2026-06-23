@@ -1,9 +1,3 @@
-PATH
-  remote: /Users/adrian/work/avocado/gems/avo-notifications
-  specs:
-    avo-notifications (4.0.0.alpha.1)
-      avo (>= 4.0.0.beta.58)
-
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
@@ -64,13 +58,15 @@ GEM
       avo (>= 4.0.0.beta.27)
       avo-licensing (>= 4.0.0.beta.8)
       zeitwerk (>= 2.6.12)
+    avo-notifications (4.0.0.alpha.1)
+      avo (>= 4.0.0.beta.42)
     avo-reactive_fields (4.0.0.beta.9)
       avo (>= 4.0.0.beta.41)
       avo-licensing (>= 4.0.0.beta.9)
       zeitwerk (>= 2.6.12)
-    avo-records_reordering (4.0.0.beta.1)
-      avo (>= 4.0.0.beta.53)
-      avo-licensing (>= 4.0.0.beta.11)
+    avo-record_reordering (4.0.0.beta.3)
+      avo (>= 4.0.0.beta.57)
+      avo-licensing (>= 4.0.0.beta.13)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
@@ -172,7 +168,7 @@ GEM
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
-    appsignal (4.8.5)
+    appsignal (4.8.6)
       logger
       rack (>= 2.0.0)
     avo (4.0.0.beta.58)
@@ -197,7 +193,7 @@ GEM
     avo-rhino_field (4.0.4)
     awesome_print (1.9.2)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1260.0)
+    aws-partitions (1.1262.0)
     aws-sdk-core (3.252.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
@@ -209,7 +205,7 @@ GEM
     aws-sdk-kms (1.129.0)
       aws-sdk-core (~> 3, >= 3.248.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.225.1)
+    aws-sdk-s3 (1.226.0)
       aws-sdk-core (~> 3, >= 3.248.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -235,6 +231,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     chartkick (5.2.1)
+    childprocess (4.1.0)
     chronic (0.10.2)
     commonmarker (2.8.2-aarch64-linux)
     commonmarker (2.8.2-arm64-darwin)
@@ -296,7 +293,7 @@ GEM
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    i18n (1.15.0)
+    i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     image_processing (1.14.0)
       mini_magick (>= 4.9.5, < 6)
@@ -364,11 +361,11 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
-    nokogiri (1.19.3-aarch64-linux-gnu)
+    nokogiri (1.19.4-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.3-arm64-darwin)
+    nokogiri (1.19.4-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.19.3-x86_64-linux-gnu)
+    nokogiri (1.19.4-x86_64-linux-gnu)
       racc (~> 1.4)
     observer (0.1.2)
     orm_adapter (0.5.0)
@@ -382,7 +379,7 @@ GEM
     platform_agent (1.0.1)
       activesupport (>= 5.2.0)
       useragent (~> 0.16.3)
-    pp (0.6.3)
+    pp (0.6.4)
       prettyprint
     prefixed_ids (1.8.1)
       hashids (>= 1.0.0, < 2.0.0)
@@ -465,12 +462,10 @@ GEM
       logger
     rubyzip (3.4.0)
     securerandom (0.4.1)
-    selenium-webdriver (4.44.0)
-      base64 (~> 0.2)
-      logger (~> 1.4)
+    selenium-webdriver (4.1.0)
+      childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
-      rubyzip (>= 1.2.2, < 4.0)
-      websocket (~> 1.0)
+      rubyzip (>= 1.2.2)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.2.0)
@@ -503,11 +498,10 @@ GEM
       actionview (>= 8.0.0)
       bindex (>= 0.4.0)
       railties (>= 8.0.0)
-    webdrivers (5.2.0)
+    webdrivers (5.3.1)
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
-      selenium-webdriver (~> 4.0)
-    websocket (1.2.11)
+      selenium-webdriver (~> 4.0, < 4.11)
     websocket-driver (0.8.1)
       base64
       websocket-extensions (>= 0.1.0)
@@ -547,7 +541,7 @@ DEPENDENCIES
   avo-nested!
   avo-notifications!
   avo-reactive_fields!
-  avo-records_reordering!
+  avo-record_reordering!
   avo-rhino_field
   avo-scopes!
   awesome_print
@@ -597,7 +591,7 @@ DEPENDENCIES
   whenever
 
 RUBY VERSION
-   ruby 4.0.0
+   ruby 4.0.5p0
 
 BUNDLED WITH
    2.7.2
