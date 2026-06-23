@@ -15,6 +15,15 @@ class Course::Link < ApplicationRecord
   acts_as_list
   default_scope -> { order(position: :asc, created_at: :desc) }
 
+  # Notify admins when a link is attached to / detached from a course. Uses
+  # *_commit so notifications only fire after the DB transaction succeeds.
+  after_create_commit do
+    notify_admins("Course link attached", "#{link} was attached to “#{course.name}”.", :info, course.course_url)
+  end
+  after_destroy_commit do
+    notify_admins("Course link detached", "#{link} was detached from “#{course.name}”.", :warning, course.course_url)
+  end
+
   def self.table_name_prefix
     'course_'
   end
@@ -27,5 +36,24 @@ class Course::Link < ApplicationRecord
   # on the CourseLink resource's belongs_to :course field.
   def self.ransackable_associations(auth_object = nil)
     ["course"]
+  end
+
+  private
+
+  def notify_admins(title, body, level, url = nil)
+    # NOTE: pass an Array, not a Relation — avo-notifications 4.0.0.alpha.1's
+    # resolve_recipients only special-cases Array/:all and would otherwise wrap
+    # the whole relation as a single recipient.
+    recipients = User.admins.to_a
+    return if recipients.blank?
+
+    Avo::Notifications.send(
+      to: recipients,
+      title: title,
+      body: body,
+      level: level,
+      url: url,
+      notification_type: "course_link"
+    )
   end
 end

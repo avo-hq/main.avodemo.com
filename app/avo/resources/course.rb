@@ -3,7 +3,7 @@ class Avo::Resources::Course < Avo::BaseResource
   self.icon = "heroicons/outline/book-open"
   self.title = :name
   self.includes = []
-  self.description = "Demo resource to illustrate Avo's nested (namespaced) model support (Course has_many Course::Link)"
+  self.description = "Demo resource to illustrate Avo's nested (namespaced) model support (Course has_many Course::Link). Heads up: creating, updating, or destroying a course sends an Avo notification to all admins (see the bell icon)."
   self.search = {
     query: -> do
       query.ransack(id_eq: params[:q], name_cont: params[:q], m: "or").result(distinct: false)

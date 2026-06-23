@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_09_120305) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_17_190548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -107,6 +107,33 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_09_120305) do
     t.index ["board_id"], name: "index_avo_kanban_items_on_board_id"
     t.index ["column_id"], name: "index_avo_kanban_items_on_column_id"
     t.index ["record_type", "record_id"], name: "index_avo_kanban_items_on_record"
+  end
+
+  create_table "avo_notifications_notifications", force: :cascade do |t|
+    t.text "body"
+    t.json "buttons"
+    t.datetime "created_at", null: false
+    t.datetime "expires_at"
+    t.integer "level", default: 0, null: false
+    t.datetime "marked_as_done_at"
+    t.string "notification_type"
+    t.datetime "read_at"
+    t.bigint "recipient_id", null: false
+    t.string "recipient_type", null: false
+    t.datetime "saved_at"
+    t.bigint "sender_id"
+    t.string "sender_type"
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.string "url"
+    t.index ["created_at"], name: "index_avo_notifications_notifications_on_created_at"
+    t.index ["expires_at"], name: "index_avo_notifications_notifications_on_expires_at"
+    t.index ["level"], name: "index_avo_notifications_notifications_on_level"
+    t.index ["marked_as_done_at"], name: "index_avo_notifications_notifications_on_marked_as_done_at"
+    t.index ["read_at"], name: "index_avo_notifications_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_avo_notifications_notifications_on_recipient"
+    t.index ["saved_at"], name: "index_avo_notifications_notifications_on_saved_at"
+    t.index ["sender_type", "sender_id"], name: "index_avo_notifications_notifications_on_sender"
   end
 
   create_table "cities", force: :cascade do |t|

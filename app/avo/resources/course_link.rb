@@ -3,7 +3,7 @@ class Avo::Resources::CourseLink < Avo::BaseResource
   self.icon = "heroicons/outline/link"
   self.title = :link
   self.includes = [:course]
-  self.description = "Demo resource to illustrate Avo's nested (namespaced) model support (the model represented here is Course::Link)"
+  self.description = "Demo resource to illustrate Avo's nested (namespaced) model support (the model represented here is Course::Link). Heads up: attaching or detaching a link sends an Avo notification to all admins (see the bell icon)."
   self.model_class = ::Course::Link
   self.search = {
     query: -> do

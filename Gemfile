@@ -101,7 +101,7 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-menu"
   gem "avo-advanced_search"
   gem "avo-authorization"
-  gem "avo-record_reordering"
+  gem "avo-records_reordering"
   gem "avo-scopes"
   gem "avo-custom_controls"
   gem "avo-dynamic_filters"
@@ -112,6 +112,8 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-forms"
   gem "avo-reactive_fields"
   gem "avo-kanban"
+  gem "avo-notifications", path: "/Users/adrian/work/avocado/gems/avo-notifications"
+  # gem "avo-licensing", path: "/Users/adrian/work/avocado/gems/avo-licensing"
 end
 
 # avo-nested is no longer bundled inside avo-advanced in Avo 4; this app uses
