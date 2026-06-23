@@ -54,9 +54,9 @@ GEM
       avo-licensing (>= 4.0.0.beta.11)
       docile
       zeitwerk (>= 2.6.12)
-    avo-nested (4.0.0.beta.8)
-      avo (>= 4.0.0.beta.27)
-      avo-licensing (>= 4.0.0.beta.8)
+    avo-nested (4.0.0.beta.9)
+      avo (>= 4.0.0.beta.58)
+      avo-licensing (>= 4.0.0.beta.11)
       zeitwerk (>= 2.6.12)
     avo-notifications (4.0.0.alpha.2)
       avo (>= 4.0.0.beta.58)
