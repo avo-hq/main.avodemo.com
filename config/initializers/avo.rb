@@ -132,9 +132,9 @@ Avo.configure do |config|
     # Shows the live app name (same cookie source as config.app_name above), so it
     # updates when you change the name in Settings → App Settings.
     link_to (request.cookies["app_name"] || "Avo Demo"), Avo.configuration.root_path
-    link_to 'Avo HQ', 'https://avohq.io', target: :_blank
+    link_to 'Use Avo today', 'https://avohq.io', target: :_blank
     link_to 'Source code', 'https://github.com/avo-hq/avodemo', target: :_blank
-    link_to 'Documentation', 'https://docs.avohq.io/4.0', target: :_blank
+    link_to 'Docs', 'https://docs.avohq.io/4.0', target: :_blank
   }
 end
 
