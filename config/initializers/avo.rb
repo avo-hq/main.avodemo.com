@@ -13,6 +13,7 @@ Avo.configure do |config|
   # accent palette via `accent_colors: { color:, content:, foreground: }`.
   config.appearance = {
     logo: "/img/logo.png",
+    picker_layout: :dropdown,
   #   logomark: "/avo-assets/logomark.png",
   #   accent: :brand,
   #   accent_colors: {
