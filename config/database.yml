@@ -28,6 +28,10 @@ default: &default
 cable: &cable
   adapter: sqlite3
   pool: <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
+  # Scope this database's migration check to its own (empty) path. Schema is
+  # loaded from db/cable_schema.rb; without this the cable DB is checked against
+  # the primary's db/migrate and every primary migration reads as "pending".
+  migrations_paths: db/cable_migrate
 
 development:
   primary:
