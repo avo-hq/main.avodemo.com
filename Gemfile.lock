@@ -28,9 +28,9 @@ GEM
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (4.0.0)
-      avo (>= 4.0.0)
-      avo-licensing (>= 4.0.0)
+    avo-dynamic_filters (4.0.2)
+      avo (>= 4.0.2)
+      avo-licensing (>= 4.0.1)
       ransack (>= 4.2.0)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
@@ -49,9 +49,9 @@ GEM
     avo-licensing (4.0.1)
       avo (>= 4.0.0)
       zeitwerk (>= 2.6.12)
-    avo-menu (4.0.0)
-      avo (>= 4.0.0)
-      avo-licensing (>= 4.0.0)
+    avo-menu (4.0.3)
+      avo (>= 4.0.2)
+      avo-licensing (>= 4.0.1)
       docile
       zeitwerk (>= 2.6.12)
     avo-nested (4.0.0)
@@ -172,7 +172,7 @@ GEM
     appsignal (4.8.6)
       logger
       rack (>= 2.0.0)
-    avo (4.0.1)
+    avo (4.0.2)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
