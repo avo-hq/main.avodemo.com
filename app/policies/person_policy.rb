@@ -1,0 +1,2 @@
+class PersonPolicy < BaseAvoPolicy
+end

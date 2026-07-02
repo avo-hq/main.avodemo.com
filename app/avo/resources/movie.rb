@@ -1,4 +1,8 @@
 class Avo::Resources::Movie < Avo::Resources::ArrayResource
+  self.hotkey = "r v"
+  self.icon = "heroicons/outline/film"
+  self.description = "Demo ArrayResource — records come from a plain Ruby array in memory, with no database table behind them."
+
   def records
     [
       {
@@ -21,12 +25,14 @@ class Avo::Resources::Movie < Avo::Resources::ArrayResource
   end
 
   def fields
-    main_panel do
+    panel do
+      card do
       field :id, as: :id
       field :name, as: :text
       field :release_date, as: :date
       field :fun_fact, only_on: :index, visible: -> { resource.record.fun_fact.present? } do
         record.fun_fact.truncate_words(10)
+      end
       end
 
       sidebar do

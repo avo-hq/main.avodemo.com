@@ -2,7 +2,9 @@ require 'csv'
 
 class Avo::Actions::ExportCsv < Avo::BaseAction
   self.name = "Export csv"
-  self.no_confirmation = false
+  # Avo 4: `no_confirmation` was inverted/renamed to `confirmation`.
+  # `no_confirmation = false` (show confirmation) becomes `confirmation = true`.
+  self.confirmation = true
 
   def handle(**args)
     records, resource = args.values_at(:records, :resource)

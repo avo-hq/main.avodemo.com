@@ -1,20 +1,16 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "~> 3.3"
+ruby file: ".ruby-version"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", ">= 7.2.0.beta2"
-gem "activestorage"
-gem "actionmailer"
-gem "actioncable"
+gem "rails", ">= 8.1"
 # gem "rails", github: "rails/rails", branch: "main"
 # gem "activestorage", github: "rails/rails", branch: "main"
 # gem "actionmailer", github: "rails/rails", branch: "main"
 # gem "actioncable", github: "rails/rails", branch: "main"
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+gem "propshaft"
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
@@ -37,6 +33,11 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
+# Database-backed Action Cable adapter — runs on its own SQLite database
+# (see config/database.yml `cable`), so no Redis needed for pub/sub.
+gem "solid_cable"
+gem "sqlite3", ">= 2.1"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -44,7 +45,7 @@ gem "redis", "~> 4.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -59,7 +60,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   # require: false avoids loading pp → prettyprint during Bundler.require; a broken Ruby default-gem
   # tree for prettyprint then cannot crash boot. Use `require "debug/start"` or `bin/rdbg` when debugging.
-  gem "debug", platforms: %i[ mri mingw x64_mingw ], require: false
+  gem "debug", platforms: %i[ mri windows ], require: false
 end
 
 group :development do
@@ -94,12 +95,51 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-gem "avo-advanced", "3.32.0", source: "https://packager.dev/avo-hq/"
-gem "avo", "3.32.0"
+# NOTE: pin Avo 4 beta gems to EXACT versions. `>=` is unsafe here because the
+# `4.0.0.pre.dev.*` dev builds sort HIGHER than `4.0.0.beta.*` in RubyGems
+# version ordering ("pre" > "beta"), so a `>=` constraint resolves to a broken
+# dev build that fails to boot. Bump these explicitly when upgrading betas.
+gem "avo"
 
-gem "view_component", "4.0.0"
+source "https://packager.dev/avo-hq/" do
+  gem "avo-dashboards"
+  gem "avo-menu"
+  gem "avo-advanced_search"
+  gem "avo-authorization"
+  gem "avo-record_reordering"
+  gem "avo-scopes"
+  gem "avo-custom_controls"
+  gem "avo-dynamic_filters"
+  gem "avo-nested"
+  gem "avo-api"
+  gem "avo-http_resource"
+  gem "avo-collaboration"
+  gem "avo-forms"
+  gem "avo-reactive_fields"
+  gem "avo-kanban"
+  gem "avo-notifications"
+  # gem "avo-licensing", path: "/Users/adrian/work/avocado/gems/avo-licensing"
+end
 
-gem "avo-rhino_field", "0.0.16"
+# avo-nested is no longer bundled inside avo-advanced in Avo 4; this app uses
+# nested association forms (see app/views/avo/resource_tools/_nested_fish_reviews.html.erb).
+
+# Kanban boards for Avo. Pin to an EXACT version for the same reason as the
+# other Avo 4 beta gems above (pre.dev builds sort higher than beta).
+
+# Avo 4 suite gems for the new feature demos (REST API, HTTP resources,
+# collaboration, reactive fields, forms). EXACT pins (see note above) — these are
+# the versions that resolve against avo 4.0.0.beta.42. Bump explicitly on upgrade.
+
+# Backs the Avo::Forms::Settings::Integrations demo form (DB-stored config values).
+gem "db_config", "0.1.10"
+
+# view_component 4.0.0 caps activesupport < 8.1, conflicting with rails 8.1.3.
+# Bumped to 4.11.0 (no activesupport cap; the version avo-4.avodemo.com runs).
+# avo .42 only requires view_component >= 3.7.0.
+gem "view_component"
+
+gem "avo-rhino_field"
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo", path: "../gems/avo"
@@ -115,6 +155,12 @@ gem "tailwindcss-rails", "~> 2.7"
 
 gem "mini_magick"
 
+# Promoted out of Ruby's default gems and not declared by their users:
+# observer (removed in Ruby 3.4) is required by factory_bot 6.2.x; benchmark
+# (removed in Ruby 4.0) is required by mini_magick. Declare them explicitly.
+gem "observer"
+gem "benchmark"
+
 gem "appsignal"
 
 gem "acts_as_list"
@@ -128,7 +174,6 @@ gem "acts-as-taggable-on", ">= 13.0.0"
 gem 'pundit'
 gem 'chartkick'
 gem 'countries'
-gem 'sprockets'
 gem 'mapkick-rb'
 
 gem "dockerfile-rails", ">= 1.3", :group => :development
@@ -143,5 +188,3 @@ gem "money-rails", "~> 1.12"
 gem "redcarpet"
 gem "marksmith"
 gem "commonmarker"
-
-gem "rorvswild", "~> 1.10"

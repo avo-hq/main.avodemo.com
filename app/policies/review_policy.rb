@@ -1,0 +1,2 @@
+class ReviewPolicy < BaseAvoPolicy
+end

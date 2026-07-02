@@ -1,4 +1,7 @@
 class Avo::Resources::Membership < Avo::BaseResource
+  self.hotkey = "r m"
+  self.icon = "heroicons/outline/identification"
+  self.description = "Demo join model (User ↔ Team) showcasing a has_many :through association with extra attach fields."
   self.title = :id
   self.includes = [:user, :team]
   self.visible_on_sidebar = false

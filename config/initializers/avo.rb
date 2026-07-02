@@ -2,38 +2,26 @@ Avo.configure do |config|
   config.root_path = '/avo'
   config.license_key = ENV['AVO_LICENSE_KEY']
   config.id_links_to_resource = true
-  config.home_path = -> { "/avo/dashboards/dashy" }
-  # config.branding = {
-  #   colors: {
-  #     # BLUE
-  #     100 => "#CEE7F8",
-  #     400 => "#399EE5",
-  #     500 => "#0886DE",
-  #     600 => "#066BB2",
-  #     # RED
-  #     100 => "#FACDD4",
-  #     400 => "#F06A7D",
-  #     500 => "#EB3851",
-  #     600 => "#E60626",
-  #     # GREEN
-  #     100 => "#C5F1D4",
-  #     400 => "#3CD070",
-  #     500 => "#30A65A",
-  #     600 => "#247D43",
-  #     # PURPLE
-  #     100 => "#e9d5ff",
-  #     400 => "#c084fc",
-  #     500 => "#a855f7",
-  #     600 => "#9333ea",
-  #     # ORANGE
-  #     100 => "#FFECCC",
-  #     400 => "#FFB435",
-  #     500 => "#FFA102",
-  #     600 => "#CC8102",
-  #   },
-  #   logo: "/avo-assets/logo.png",
-  #   logomark: "/avo-assets/logomark.png"
-  # }
+  config.home_path = -> { "/avo/welcome" }
+  # Point the root (home) breadcrumb at the Welcome page, keeping the default
+  # label and icon.
+  config.set_initial_breadcrumbs do
+    add_breadcrumb title: I18n.t("avo.home").humanize, path: "#{Avo.configuration.root_path}/welcome", icon: "tabler/outline/home"
+  end
+  # Avo 4: `config.branding` was renamed to `config.appearance`. The flat `colors:`
+  # hash was removed in favor of an accent preset (`accent: :blue`) or a custom
+  # accent palette via `accent_colors: { color:, content:, foreground: }`.
+  config.appearance = {
+    logo: "/img/logo.png",
+    picker_layout: :dropdown,
+  #   logomark: "/avo-assets/logomark.png",
+  #   accent: :brand,
+  #   accent_colors: {
+  #     color: "#0886DE",
+  #     content: "#066BB2",
+  #     foreground: "#FFFFFF"
+  #   }
+  }
   config.exclude_from_status = ["license_key"]
   config.set_context do
     {
@@ -43,19 +31,41 @@ Avo.configure do |config|
       account: Current.account
     }
   end
+  config.explicit_authorization = true
   config.current_user_method = :current_user
   config.click_row_to_view_record = true
+  # Read the app name from a cookie so the Settings → App Settings form can change
+  # it live (the form writes cookies[:app_name]). Falls back to the default name.
+  config.app_name = -> { request.cookies["app_name"] || "Avo Demo" }
 
   config.main_menu = -> {
+    link_to "Welcome", "#{Avo.configuration.root_path}/welcome", icon: "heroicons/outline/home"
+
     section I18n.t("avo.dashboards"), icon: "app/assets/images/demo-adjustments.svg" do
       dashboard :dashy, visible: -> { true }
+
+      # Direct link to the seeded "Engineering board" kanban view. Built as a plain
+      # path string (matching the other links in this menu) because the menu block
+      # isn't a full routing context, so engine route helpers can't resolve here.
+      if (engineering_board = Avo::Kanban::Board.find_by(name: "Engineering board"))
+        link_to "Engineering board", "#{Avo.configuration.root_path}/boards/#{engineering_board.id}", icon: "avo/square-kanban"
+      end
 
       group "All dashboards", visible: false, collapsable: true do
         all_dashboards
       end
     end
 
-    section "Resources", icon: "academic-cap.svg", collapsable: true, collapsed: false do
+    section "Config", icon: "cog" do
+      page "Avo::Pages::Settings", icon: "adjustments-vertical"
+    end
+
+    section "API", icon: "heroicons/outline/key" do
+      resource :http_user
+      resource :author
+    end
+
+    section "Resources", icon: "tabler/outline/school", collapsable: true, collapsed: false do
       group "Company", collapsable: true do
         resource :projects
         resource :team, visible: -> {
@@ -72,10 +82,6 @@ Avo.configure do |config|
       end
 
       group "People", collapsable: true do
-        # resource "UserResource", visible: -> do
-
-        # end
-        # authorize current_user, User, "index?", raise_exception: false
         resource "User"
         resource :people
         resource :spouses
@@ -91,6 +97,16 @@ Avo.configure do |config|
         resource :comments
       end
 
+      resource :issues do
+        resource :pull_requests
+        resource :tasks
+        resource :boards
+      end
+
+      # end
+      group "Engineering", collapsable: true do
+      end
+
       group "Other", collapsable: true, collapsed: true do
         resource :fish, label: "Fishies"
         resource :movie
@@ -98,19 +114,28 @@ Avo.configure do |config|
       end
     end
 
-    section "Tools", icon: "heroicons/outline/finger-print", collapsable: true, collapsed: false do
+    section "Tools", icon: "tabler/outline/fingerprint", collapsable: true, collapsed: false do
       all_tools
     end
 
     link_to "Media Library", avo.media_library_index_path
 
     group do
-      link "Avo", path: "https://avohq.io"
-      link "Google", path: "https://google.com", target: :_blank
+      link_to "Avo", "https://avohq.io", target: :_blank
+      link_to "Google", "https://google.com", target: :_blank
     end
   }
   config.profile_menu = -> {
-    link "Dashboard", path: "/avo/dashboards/dashy", icon: "user-circle"
+    link_to "Dashboard", "/avo/dashboards/dashy", icon: "user-circle"
+    link_to "See Avo 3 version", "https://avo-3.avodemo.com", target: :_blank
+  }
+  config.header_menu = -> {
+    # Shows the live app name (same cookie source as config.app_name above), so it
+    # updates when you change the name in Settings → App Settings.
+    link_to (request.cookies["app_name"] || "Avo Demo"), Avo.configuration.root_path
+    link_to 'Use Avo today', 'https://avohq.io', target: :_blank
+    link_to 'Source code', 'https://github.com/avo-hq/avodemo', target: :_blank
+    link_to 'Docs', 'https://docs.avohq.io/4.0', target: :_blank
   }
 end
 

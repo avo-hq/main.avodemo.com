@@ -1,0 +1,2 @@
+class CityPolicy < BaseAvoPolicy
+end

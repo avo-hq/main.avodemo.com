@@ -1,18 +1,26 @@
 class Avo::Resources::Event < Avo::BaseResource
-  self.description = "An event that happened at a certain time."
+  self.hotkey = "r e"
+  self.icon = "heroicons/outline/calendar-days"
+  self.description = -> {
+    if record.present?
+      "An event that happened at a certain time."
+    else
+      "This resource type has avatar and cover photos attached to it."
+    end
+  }
 
-  self.cover_photo = {
-    size: :xl,
+  self.cover = {
+    # size: :xl,
     visible_on: [:show, :index],
     source: -> {
       if record.present?
         record.cover_photo
-      else
-        Event.first&.cover_photo
+      # else
+      #   Event.first&.cover_photo
       end
     }
   }
-  self.profile_photo = {
+  self.avatar = {
     source: :profile_photo
   }
   self.discreet_information = :timestamps
@@ -20,10 +28,11 @@ class Avo::Resources::Event < Avo::BaseResource
   self.row_controls_config = {
     float: true,
     show_on_hover: true,
-    placement: :both
+    placement: :right
   }
 
   def fields
+    field :profile_photo, as: :avatar
     field :name, as: :text, link_to_record: true, sortable: true, stacked: true
     field :event_time, as: :date_time, sortable: true
 

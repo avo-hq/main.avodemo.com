@@ -1,4 +1,6 @@
 class Avo::Resources::User < Avo::BaseResource
+  self.hotkey = "r u"
+  self.icon = "heroicons/outline/user-circle"
   self.title = :name
   self.description = -> {
     "Users of the app. view: #{view}"
@@ -35,28 +37,35 @@ class Avo::Resources::User < Avo::BaseResource
     }
   }
 
-  self.profile_photo = {
+  self.avatar = {
     source: -> {
       record.gravatar
     }
   }
 
   def fields
-    main_panel do
-      field :id, as: :id, link_to_record: true
-      field :email, as: :gravatar, link_to_record: true, as_avatar: :circle, only_on: :index
-      field :user_information, as: :heading
-      row do
-        field :first_name, as: :text, placeholder: "John", stacked: true, filterable: true
-        field :last_name, as: :text, placeholder: "Doe", filterable: true, stacked: true
-        field :email, as: :text, name: "User Email", required: true, protocol: :mailto, filterable: true, stacked: true
-      end
-      field :active, as: :boolean, name: "Is active", only_on: :index, filterable: true
+    panel do
+      card do
+        field :id, as: :id, link_to_record: true
+        field :email, as: :gravatar, link_to_record: true, as_avatar: :circle, only_on: :index
+        field :user_information, as: :heading
+        field :first_name, as: :text, placeholder: "John", width: 33, stacked: true, filterable: true
+        field :last_name, as: :text, placeholder: "Doe", filterable: true, width: 33, stacked: true
+        field :email, as: :text, name: "User Email", required: true, protocol: :mailto, filterable: true, width: 33, stacked: true
+        field :active, as: :boolean, name: "Is active", only_on: :index, filterable: true
       field :cv, as: :file, name: "CV"
-      field :is_admin?, as: :boolean, name: "Is admin", only_on: :index, filterable: true
+      # Field id is `is_admin` (no `?`) so the REST API emits a valid JSON key — a
+      # `?`-suffixed key breaks consumers (e.g. the HttpUser HTTP resource builds
+      # attr_accessors per key, and `attr_accessor :is_admin?` is invalid Ruby).
+      field :is_admin, as: :boolean, name: "Is admin", only_on: :index, filterable: true do
+        record.is_admin?
+      end
       field :level,
         format_using: -> do
-          record.memberships.find_by(user_id: record.id, team_id: Team.find(params[:id]))&.level
+          # `find_by` (not `find`) so this doesn't raise when params[:id] is absent
+          # — e.g. when the resource is serialized headlessly by the REST API.
+          team = Team.find_by(id: params[:id])
+          team && record.memberships.find_by(user_id: record.id, team_id: team)&.level
         end,
         visible: -> do
           resource.view.index? && params[:resource_name] == 'teams'
@@ -99,12 +108,15 @@ class Avo::Resources::User < Avo::BaseResource
 
       field :dev, as: :heading, label: '<div class="underline uppercase font-bold">DEV</div>', as_html: true
       field :team_id, as: :hidden, default: 0 # For testing purposes
+      end
 
       sidebar do
         field :email, as: :gravatar, link_to_record: true, as_avatar: :circle, only_on: :show
         field :heading, as: :heading, label: ""
         field :active, as: :boolean, name: "Is active"
-        field :is_admin?, as: :boolean, name: "Is admin", only_on: :index
+        field :is_admin, as: :boolean, name: "Is admin", only_on: :index do
+          record.is_admin?
+        end
         field :birthday,
           as: :date,
           first_day_of_week: 1,
@@ -127,7 +139,7 @@ class Avo::Resources::User < Avo::BaseResource
     return if params.dig(:turbo_frame) == "has_one_field_show_admin"
 
     tabs id: :tabs do
-      tab "Birthday", description: "hey you", hide_on: :show do
+      tab title: "Birthday", description: "hey you", hide_on: :show do
         panel do
           field :birthday,
             as: :date,

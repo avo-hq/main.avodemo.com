@@ -1,4 +1,7 @@
 class Avo::Resources::City < Avo::BaseResource
+  self.hotkey = "r i"
+  self.icon = "heroicons/outline/building-office-2"
+  self.description = "Demo resource showcasing Avo's map view with location and polygon area fields, plus a custom resource tool for inline editing."
   self.search = {
     query: -> { query.ransack(id_eq: params[:q], m: "or").result(distinct: false) }
   }
@@ -16,8 +19,10 @@ class Avo::Resources::City < Avo::BaseResource
       }
     },
     table: {
-      visible: true,
-      layout: :bottom
+      visible: true
+    },
+    map: {
+      position: :top
     }
   }
 

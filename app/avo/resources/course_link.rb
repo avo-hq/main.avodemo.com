@@ -1,7 +1,9 @@
 class Avo::Resources::CourseLink < Avo::BaseResource
+  self.hotkey = "r l"
+  self.icon = "heroicons/outline/link"
   self.title = :link
   self.includes = [:course]
-  self.description = "Demo resource to illustrate Avo's nested (namespaced) model support (the model represented here is Course::Link)"
+  self.description = "Demo resource to illustrate Avo's nested (namespaced) model support (the model represented here is Course::Link). Heads up: attaching or detaching a link sends an Avo notification to all admins (see the bell icon)."
   self.model_class = ::Course::Link
   self.search = {
     query: -> do
@@ -23,8 +25,8 @@ class Avo::Resources::CourseLink < Avo::BaseResource
   }
 
   def fields
-    field :id, as: :id
-    field :link, as: :text, help: "Hehe. Something helpful."
+    field :id, as: :id, filterable: true
+    field :link, as: :text, help: "Hehe. Something helpful.", filterable: true
     field :enable_course, as: :boolean, only_on: :forms, html: {
       edit: {
         input: {
@@ -35,6 +37,8 @@ class Avo::Resources::CourseLink < Avo::BaseResource
         }
       }
     }
-    field :course, as: :belongs_to, searchable: true
+    field :course, as: :belongs_to, searchable: true, filterable: {
+      query_attributes: [:course_name]
+    }
   end
 end

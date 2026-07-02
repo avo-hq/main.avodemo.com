@@ -1,4 +1,7 @@
 class Avo::Resources::Team < Avo::BaseResource
+  self.hotkey = "r t"
+  self.icon = "heroicons/outline/user-group"
+  self.description = "Demo resource showcasing grid view, a preview field, has_many :through associations, and live logo fetching."
   self.title = :name
   self.includes = [:admin, :team_members]
   self.search = {
@@ -22,7 +25,8 @@ class Avo::Resources::Team < Avo::BaseResource
   }
 
   def fields
-    main_panel do
+    panel do
+      card do
       field :preview, as: :preview
       field :id, as: :id, filterable: true
       field :name, as: :text, sortable: true, show_on: :preview, filterable: true
@@ -50,6 +54,7 @@ class Avo::Resources::Team < Avo::BaseResource
       field :created_at, as: :date_time, filterable: true
       field :members_count, as: :number do
         record.team_members.length
+      end
       end
 
       sidebar do
@@ -88,6 +93,7 @@ class Avo::Resources::Team < Avo::BaseResource
         query.where.not(user_id: parent.id).or(query.where(user_id: nil))
       end
     field :reviews, as: :has_many
+    field :users, as: :has_many, through: :memberships
   end
 
   def filters

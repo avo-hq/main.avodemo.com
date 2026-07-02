@@ -1,13 +1,13 @@
 <div class="flex flex-col">
-  <%= render Avo::PanelComponent.new(name: @resource.record.name, description: "There should be an image of this fish below 🐠") do |c| %>
-    <% c.with_tools do %>
-      <%= a_link('/avo', icon: 'heroicons/solid/academic-cap', style: :primary) do %>
+  <%= render Avo::UI::PanelComponent.new(title: @resource.record.name, description: "There should be an image of this fish below 🐠") do |c| %>
+    <% c.with_controls do %>
+      <%= a_link('/avo', icon: 'tabler/outline/school', style: :primary) do %>
         Back to your admin homepage
       <% end %>
     <% end %>
     <% if form.present? %>
-      <% c.with_body do %>
-        <div class="divide-y">
+      <% c.with_card do %>
+        <%= render ui.description_list do %>
           <%= avo_edit_field :fish_type, as: :text, form: form, help: "Set the fish type", required: true, component_options: {compact: false, stacked: false} %>
           <%= avo_edit_field :properties, as: :text, form: form, name: "Property 1", help: "Prop 1", required: true, component_options: {multiple: true} %>
           <%= avo_edit_field :properties, as: :text, form: form, name: "Property 2", help: "Prop 2", required: true, component_options: {multiple: true} %>
@@ -17,10 +17,10 @@
             <%= avo_edit_field :history, name: "Information history", as: :text, form: information_form, value: "information history", help: "This is going to be passed to the model", required: true %>
             <%= avo_edit_field :age, name: "Information age", as: :text, form: information_form, value: "information age", help: "This is NOT going to be passed to the model", required: true %>
           <% end %>
-        </div>
+        <% end %>
       <% end %>
     <% else %>
-      <% c.with_body do %>
+      <% c.with_card do %>
         <div class="flex flex-col p-4 min-h-24">
           <div class="space-y-4">
             <p>

@@ -1,7 +1,7 @@
 class Avo::BaseResource < Avo::Resources::Base
   self.index_controls = -> {
-    # Don't show bulk destroy for these resources
-    return default_controls if resource.class.in?([
+    # Only show bulk destroy for these resources; all other (new) resources get the default controls
+    return default_controls unless resource.class.in?([
       Avo::Resources::User,
       Avo::Resources::Post,
       Avo::Resources::Product,
@@ -20,7 +20,7 @@ class Avo::BaseResource < Avo::Resources::Base
     end.html_safe
 
     action Avo::Actions::BulkDestroy,
-      icon: "heroicons/solid/trash",
+      icon: "tabler/outline/trash",
       color: "red",
       label: "",
       style: :outline,
