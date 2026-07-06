@@ -375,7 +375,6 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.5)
-    rorvswild (1.10.1)
     ruby-vips (2.3.0)
       ffi (~> 1.12)
       logger
@@ -493,7 +492,6 @@ DEPENDENCIES
   ransack
   redcarpet
   redis (~> 4.0)
-  rorvswild (~> 1.10)
   selenium-webdriver
   sprockets
   sprockets-rails

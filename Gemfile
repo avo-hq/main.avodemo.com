@@ -143,5 +143,3 @@ gem "money-rails", "~> 1.12"
 gem "redcarpet"
 gem "marksmith"
 gem "commonmarker"
-
-gem "rorvswild", "~> 1.10"
