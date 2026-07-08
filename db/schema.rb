@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_17_190548) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_08_122439) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -74,6 +74,109 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_17_190548) do
     t.datetime "created_at", null: false
     t.string "emoji"
     t.datetime "updated_at", null: false
+  end
+
+  create_table "avo_intelligence_chats", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "model_id"
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.string "user_type", null: false
+    t.index ["model_id"], name: "index_avo_intelligence_chats_on_model_id"
+    t.index ["user_type", "user_id"], name: "index_avo_intelligence_chats_on_user"
+  end
+
+  create_table "avo_intelligence_messages", force: :cascade do |t|
+    t.integer "cache_creation_tokens"
+    t.integer "cached_tokens"
+    t.bigint "chat_id", null: false
+    t.text "content"
+    t.json "content_raw"
+    t.datetime "created_at", null: false
+    t.integer "input_tokens"
+    t.bigint "model_id"
+    t.integer "output_tokens"
+    t.string "role", null: false
+    t.text "thinking_signature"
+    t.text "thinking_text"
+    t.integer "thinking_tokens"
+    t.bigint "tool_call_id"
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_avo_intelligence_messages_on_chat_id"
+    t.index ["model_id"], name: "index_avo_intelligence_messages_on_model_id"
+    t.index ["role"], name: "index_avo_intelligence_messages_on_role"
+    t.index ["tool_call_id"], name: "index_avo_intelligence_messages_on_tool_call_id"
+  end
+
+  create_table "avo_intelligence_models", force: :cascade do |t|
+    t.jsonb "capabilities", default: []
+    t.integer "context_window"
+    t.datetime "created_at", null: false
+    t.string "family"
+    t.date "knowledge_cutoff"
+    t.integer "max_output_tokens"
+    t.jsonb "metadata", default: {}
+    t.jsonb "modalities", default: {}
+    t.datetime "model_created_at"
+    t.string "model_id", null: false
+    t.string "name", null: false
+    t.jsonb "pricing", default: {}
+    t.string "provider", null: false
+    t.datetime "updated_at", null: false
+    t.index ["capabilities"], name: "index_avo_intelligence_models_on_capabilities", using: :gin
+    t.index ["family"], name: "index_avo_intelligence_models_on_family"
+    t.index ["modalities"], name: "index_avo_intelligence_models_on_modalities", using: :gin
+    t.index ["provider", "model_id"], name: "index_avo_intelligence_models_on_provider_and_model_id", unique: true
+    t.index ["provider"], name: "index_avo_intelligence_models_on_provider"
+  end
+
+  create_table "avo_intelligence_pending_writes", force: :cascade do |t|
+    t.string "action", null: false
+    t.bigint "chat_id", null: false
+    t.datetime "created_at", null: false
+    t.jsonb "payload", default: {}, null: false
+    t.string "record_id"
+    t.string "record_type"
+    t.string "resource"
+    t.string "status", default: "pending", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.string "user_type", null: false
+    t.index ["chat_id", "status"], name: "index_avo_intelligence_pending_writes_on_chat_id_and_status"
+    t.index ["chat_id"], name: "index_avo_intelligence_pending_writes_on_chat_id"
+    t.index ["user_type", "user_id"], name: "index_avo_intelligence_pending_writes_on_user"
+  end
+
+  create_table "avo_intelligence_tool_calls", force: :cascade do |t|
+    t.jsonb "arguments", default: {}
+    t.datetime "created_at", null: false
+    t.bigint "message_id", null: false
+    t.string "name", null: false
+    t.text "thought_signature"
+    t.string "tool_call_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_avo_intelligence_tool_calls_on_message_id"
+    t.index ["name"], name: "index_avo_intelligence_tool_calls_on_name"
+    t.index ["tool_call_id"], name: "index_avo_intelligence_tool_calls_on_tool_call_id", unique: true
+  end
+
+  create_table "avo_intelligence_write_logs", force: :cascade do |t|
+    t.string "action", null: false
+    t.jsonb "after_snapshot"
+    t.jsonb "before_snapshot"
+    t.bigint "chat_id", null: false
+    t.datetime "created_at", null: false
+    t.string "record_id", null: false
+    t.string "record_type", null: false
+    t.string "resource", null: false
+    t.datetime "reverted_at"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.string "user_type", null: false
+    t.index ["chat_id", "created_at"], name: "index_avo_intelligence_write_logs_on_chat_id_and_created_at"
+    t.index ["chat_id"], name: "index_avo_intelligence_write_logs_on_chat_id"
+    t.index ["user_type", "user_id"], name: "index_avo_intelligence_write_logs_on_user"
   end
 
   create_table "avo_kanban_boards", force: :cascade do |t|
@@ -395,6 +498,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_17_190548) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "avo_intelligence_chats", "avo_intelligence_models", column: "model_id"
+  add_foreign_key "avo_intelligence_messages", "avo_intelligence_chats", column: "chat_id"
+  add_foreign_key "avo_intelligence_messages", "avo_intelligence_models", column: "model_id"
+  add_foreign_key "avo_intelligence_messages", "avo_intelligence_tool_calls", column: "tool_call_id"
+  add_foreign_key "avo_intelligence_pending_writes", "avo_intelligence_chats", column: "chat_id"
+  add_foreign_key "avo_intelligence_tool_calls", "avo_intelligence_messages", column: "message_id"
+  add_foreign_key "avo_intelligence_write_logs", "avo_intelligence_chats", column: "chat_id"
   add_foreign_key "comments", "users"
   add_foreign_key "fish", "users"
   add_foreign_key "people", "people"

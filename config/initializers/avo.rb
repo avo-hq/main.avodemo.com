@@ -41,6 +41,15 @@ Avo.configure do |config|
   config.main_menu = -> {
     link_to "Welcome", "#{Avo.configuration.root_path}/welcome", icon: "heroicons/outline/home"
 
+    section "Intelligence", icon: "heroicons/outline/sparkles", visible: -> {
+      authorize current_user, Avo::Intelligence::Chat, "index?", raise_exception: false
+    } do
+      resource "avo_intelligence/chats"
+      resource "avo_intelligence/messages"
+      resource "avo_intelligence/tool_calls"
+      resource "avo_intelligence/models"
+    end
+
     section I18n.t("avo.dashboards"), icon: "app/assets/images/demo-adjustments.svg" do
       dashboard :dashy, visible: -> { true }
 

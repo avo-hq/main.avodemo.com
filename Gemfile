@@ -118,8 +118,11 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-reactive_fields"
   gem "avo-kanban"
   gem "avo-notifications"
+  gem "avo-intelligence"
   # gem "avo-licensing", path: "/Users/adrian/work/avocado/gems/avo-licensing"
 end
+
+gem "ruby_llm"
 
 # avo-nested is no longer bundled inside avo-advanced in Avo 4; this app uses
 # nested association forms (see app/views/avo/resource_tools/_nested_fish_reviews.html.erb).
