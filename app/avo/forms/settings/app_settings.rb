@@ -17,10 +17,14 @@ class Avo::Forms::Settings::AppSettings < Avo::Forms::Core::Form
     field :name,
       format_using: -> { Avo.configuration.app_name },
       help: "This is the name of the app. The value is stored in a cookie. Change it, hit save and verify the change on the top left corner of the page."
+
+    field :intelligence_access_key, as: :text,
+      help: "Psst 🤫 — whisper the correct key here and see what happens. Get it wrong and... nothing happens. No robots, no hard feelings. 🤖"
   end
 
   def handle
     cookies[:app_name] = params[:name]
+    cookies[:intelligence_access] = params[:intelligence_access_key]
     flash[:success] = "App settings updated successfully. 😊"
     default_response
   end

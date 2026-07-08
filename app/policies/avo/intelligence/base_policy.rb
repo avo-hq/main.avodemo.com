@@ -1,24 +1,30 @@
 # Shared base for the avo-intelligence resource policies (Chat, Message, Model, ToolCall).
-# The AI chat admin resources are restricted to a single internal account, so every
-# action -- including the Scope backing index/search -- is denied unless the signed-in
-# user matches AUTHORIZED_EMAIL. The "Intelligence" menu section in avo.rb authorizes
-# against ChatPolicy's index? to keep the sidebar entries hidden for everyone else too.
+# Access isn't tied to a user account -- it's a shared-secret unlock: every action
+# (including the Scope backing index/search) is denied unless the ENV["INTELLIGENCE_ACCESS"]
+# key matches the "intelligence_access" cookie, which visitors set for themselves on the
+# General settings page (Avo::Forms::Settings::AppSettings). The "Intelligence" menu section
+# in avo.rb authorizes against ChatPolicy's index? to keep the sidebar entries hidden until
+# the right key is entered.
 class Avo::Intelligence::BasePolicy < ApplicationPolicy
-  AUTHORIZED_EMAIL = "avo-chat@cado.com"
+  def self.access_granted?
+    key = ENV["INTELLIGENCE_ACCESS"]
 
-  def index? = authorized_user?
-  def show? = authorized_user?
-  def create? = authorized_user?
+    key.present? && key == Avo::Current.request.cookies["intelligence_access"]
+  end
+
+  def index? = access_granted?
+  def show? = access_granted?
+  def create? = access_granted?
   def new? = create?
-  def update? = authorized_user?
+  def update? = access_granted?
   def edit? = update?
-  def destroy? = authorized_user?
-  def act_on? = authorized_user?
-  def search? = authorized_user?
+  def destroy? = access_granted?
+  def act_on? = access_granted?
+  def search? = access_granted?
 
   class Scope < ApplicationPolicy::Scope
     def resolve
-      return scope.all if user&.email == AUTHORIZED_EMAIL
+      return scope.all if Avo::Intelligence::BasePolicy.access_granted?
 
       scope.none
     end
@@ -26,7 +32,7 @@ class Avo::Intelligence::BasePolicy < ApplicationPolicy
 
   private
 
-  def authorized_user?
-    user&.email == AUTHORIZED_EMAIL
+  def access_granted?
+    self.class.access_granted?
   end
 end
