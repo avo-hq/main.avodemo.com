@@ -36,7 +36,26 @@ class Avo::Resources::Project < Avo::BaseResource
       include_blank: false,
       filterable: true
     field :stage, as: :badge, options: {info: ["Discovery", "Idea"], success: "Done", warning: "On hold", danger: "Cancelled"}, summarizable: true
-    field :status, as: :status, failed_when: [:closed, :rejected, :failed], loading_when: [:loading, :running, :waiting], nullable: true, filterable: true, summarizable: true
+    # String-column multi-select via tags (where status IN (...))
+    field :status,
+      as: :status,
+      failed_when: [:closed, :rejected, :failed],
+      loading_when: [:loading, :running, :waiting],
+      nullable: true,
+      summarizable: true,
+      filterable: {
+        type: :tags,
+        label: "Status",
+        icon: "heroicons/outline/signal",
+        conditions: {},
+        suggestions: %w[closed rejected failed loading running waiting done finalized archived finished],
+        humanized_condition: -> {
+          (filter.value.to_s.split(",").count > 1) ? "are any of" : "is"
+        },
+        query: -> {
+          query.where(status: filter_param.value.to_s.split(",").map(&:strip))
+        }
+      }
     field :country,
       as: :country,
       filterable: true,
