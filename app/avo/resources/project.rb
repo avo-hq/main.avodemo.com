@@ -36,7 +36,9 @@ class Avo::Resources::Project < Avo::BaseResource
       include_blank: false,
       filterable: true
     field :stage, as: :badge, options: {info: ["Discovery", "Idea"], success: "Done", warning: "On hold", danger: "Cancelled"}, summarizable: true
-    # String-column multi-select via tags (where status IN (...))
+    # String-column multi-select via tags (where status IN (...)).
+    # Suggestions carry a display label and a technical value, like a select
+    # field: the UI shows the label, the query receives the value.
     field :status,
       as: :status,
       failed_when: [:closed, :rejected, :failed],
@@ -48,7 +50,18 @@ class Avo::Resources::Project < Avo::BaseResource
         label: "Status",
         icon: "heroicons/outline/signal",
         conditions: {},
-        suggestions: %w[closed rejected failed loading running waiting done finalized archived finished],
+        suggestions: [
+          {value: "closed", label: "🔒 Closed"},
+          {value: "rejected", label: "🚫 Rejected"},
+          {value: "failed", label: "❌ Failed"},
+          {value: "loading", label: "🔄 Loading"},
+          {value: "running", label: "🏃 Running"},
+          {value: "waiting", label: "⏳ Waiting"},
+          {value: "done", label: "✅ Done"},
+          {value: "finalized", label: "✍️ Finalized"},
+          {value: "archived", label: "🗄️ Archived"},
+          {value: "finished", label: "🏁 Finished"}
+        ],
         humanized_condition: -> {
           (filter.value.to_s.split(",").count > 1) ? "are any of" : "is"
         },
