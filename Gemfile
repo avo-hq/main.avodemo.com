@@ -143,6 +143,7 @@ gem "db_config", "0.1.10"
 gem "view_component"
 
 gem "avo-rhino_field"
+gem "avo-lexxy_field"
 
 # gem "avo", path: "/Users/adrian/work/avocado/gems/avo"
 # gem "avo", path: "../gems/avo"

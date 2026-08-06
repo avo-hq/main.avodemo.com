@@ -21,6 +21,8 @@ module Avodemo7
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.active_storage.variant_processor = :mini_magick
+    # Keep Lexxy inside Avo only; the app's `rich_text_area` helpers stay on Trix.
+    config.lexxy.override_action_text_defaults = false
     config.middleware.use AccountMiddleware
   end
 end
