@@ -18,6 +18,10 @@ class Post < ApplicationRecord
 
   validates :name, presence: true
 
+  # Action Text backing for the `:lexxy` field — attachments (and the media
+  # library picker) need a rich text attribute, not a plain column.
+  has_rich_text :lexxy_body
+
   has_one_attached :cover_photo
   has_one_attached :audio
   has_many_attached :trix_attachments

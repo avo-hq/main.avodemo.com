@@ -54,6 +54,7 @@ class Avo::Resources::Post < Avo::BaseResource
     field :name, as: :text, required: true, sortable: true
     field :body,
       as: :rhino
+    field :lexxy_body, as: :lexxy, name: "Lexxy body", always_show: true
     field :tags,
       as: :tags,
       # readonly: true,
