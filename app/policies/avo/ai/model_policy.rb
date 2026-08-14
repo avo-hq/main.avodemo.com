@@ -1,2 +1,2 @@
-class Avo::AI::ModelPolicy < Avo::AI::BasePolicy
+class Avo::Ai::ModelPolicy < Avo::Ai::BasePolicy
 end

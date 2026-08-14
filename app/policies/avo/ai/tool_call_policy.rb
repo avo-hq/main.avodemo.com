@@ -1,2 +1,2 @@
-class Avo::AI::ToolCallPolicy < Avo::AI::BasePolicy
+class Avo::Ai::ToolCallPolicy < Avo::Ai::BasePolicy
 end

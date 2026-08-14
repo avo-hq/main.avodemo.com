@@ -14,8 +14,3 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym "RESTful"
 # end
-
-# app/policies/avo/ai/* must define Avo::AI::* (avo-ai model class names) so the
-# gem's policy lookup finds them. Segment-scoped on purpose: a global
-# `inflect.acronym "AI"` would rewrite every "ai" path segment app-wide.
-Rails.autoloaders.each { |autoloader| autoloader.inflector.inflect("ai" => "AI") }

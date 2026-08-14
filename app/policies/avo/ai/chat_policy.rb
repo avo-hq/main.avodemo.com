@@ -1,2 +1,2 @@
-class Avo::AI::ChatPolicy < Avo::AI::BasePolicy
+class Avo::Ai::ChatPolicy < Avo::Ai::BasePolicy
 end

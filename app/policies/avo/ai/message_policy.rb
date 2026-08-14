@@ -1,2 +1,2 @@
-class Avo::AI::MessagePolicy < Avo::AI::BasePolicy
+class Avo::Ai::MessagePolicy < Avo::Ai::BasePolicy
 end

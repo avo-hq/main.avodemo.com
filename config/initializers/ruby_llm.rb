@@ -4,7 +4,7 @@ RubyLLM.configure do |config|
   config.openai_api_key = ENV["OPENAI_API_KEY"].presence
   config.anthropic_api_key = ENV["ANTHROPIC_API_KEY"].presence
   config.use_new_acts_as = true
-  config.model_registry_class = "Avo::AI::Model"
+  config.model_registry_class = "Avo::Ai::Model"
   config.logger = Rails.logger
 end
 

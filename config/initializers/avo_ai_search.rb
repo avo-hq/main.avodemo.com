@@ -4,7 +4,7 @@ Rails.application.config.to_prepare do
   # The gem's models don't inherit from this app's ApplicationRecord, so they
   # lack a ransack allowlist and ransack raises. Allow all columns, same as
   # app/models/application_record.rb does.
-  Avo::AI::ApplicationRecord.class_eval do
+  Avo::Ai::ApplicationRecord.class_eval do
     def self.ransackable_attributes(auth_object = nil)
       authorizable_ransackable_attributes
     end

@@ -6,7 +6,7 @@
 # old "intelligence" spelling on purpose -- they hold stored data. The "Intelligence" menu section
 # in avo.rb authorizes against ChatPolicy's index? to keep the sidebar entries hidden until
 # the right key is entered.
-class Avo::AI::BasePolicy < ApplicationPolicy
+class Avo::Ai::BasePolicy < ApplicationPolicy
   def self.access_granted?
     key = ENV["INTELLIGENCE_ACCESS"]
 
@@ -25,7 +25,7 @@ class Avo::AI::BasePolicy < ApplicationPolicy
 
   class Scope < ApplicationPolicy::Scope
     def resolve
-      return scope.all if Avo::AI::BasePolicy.access_granted?
+      return scope.all if Avo::Ai::BasePolicy.access_granted?
 
       scope.none
     end
