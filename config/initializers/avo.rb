@@ -42,12 +42,12 @@ Avo.configure do |config|
     link_to "Welcome", "#{Avo.configuration.root_path}/welcome", icon: "heroicons/outline/home"
 
     section "Intelligence", icon: "heroicons/outline/sparkles", visible: -> {
-      authorize current_user, Avo::Intelligence::Chat, "index?", raise_exception: false
+      authorize current_user, Avo::AI::Chat, "index?", raise_exception: false
     } do
-      resource "avo_intelligence/chats"
-      resource "avo_intelligence/messages"
-      resource "avo_intelligence/tool_calls"
-      resource "avo_intelligence/models"
+      resource "avo_ai/chats"
+      resource "avo_ai/messages"
+      resource "avo_ai/tool_calls"
+      resource "avo_ai/models"
     end
 
     section I18n.t("avo.dashboards"), icon: "app/assets/images/demo-adjustments.svg" do

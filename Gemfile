@@ -118,7 +118,7 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-reactive_fields"
   gem "avo-kanban"
   gem "avo-notifications"
-  gem "avo-intelligence"
+  gem "avo-ai"
   # gem "avo-licensing", path: "/Users/adrian/work/avocado/gems/avo-licensing"
 end
 

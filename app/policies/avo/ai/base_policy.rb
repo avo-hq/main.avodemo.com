@@ -1,11 +1,12 @@
-# Shared base for the avo-intelligence resource policies (Chat, Message, Model, ToolCall).
+# Shared base for the avo-ai resource policies (Chat, Message, Model, ToolCall).
 # Access isn't tied to a user account -- it's a shared-secret unlock: every action
 # (including the Scope backing index/search) is denied unless the ENV["INTELLIGENCE_ACCESS"]
 # key matches the "intelligence_access" cookie, which visitors set for themselves on the
-# General settings page (Avo::Forms::Settings::AppSettings). The "Intelligence" menu section
+# General settings page (Avo::Forms::Settings::AppSettings). The env/cookie keys keep the
+# old "intelligence" spelling on purpose -- they hold stored data. The "Intelligence" menu section
 # in avo.rb authorizes against ChatPolicy's index? to keep the sidebar entries hidden until
 # the right key is entered.
-class Avo::Intelligence::BasePolicy < ApplicationPolicy
+class Avo::AI::BasePolicy < ApplicationPolicy
   def self.access_granted?
     key = ENV["INTELLIGENCE_ACCESS"]
 
@@ -24,7 +25,7 @@ class Avo::Intelligence::BasePolicy < ApplicationPolicy
 
   class Scope < ApplicationPolicy::Scope
     def resolve
-      return scope.all if Avo::Intelligence::BasePolicy.access_granted?
+      return scope.all if Avo::AI::BasePolicy.access_granted?
 
       scope.none
     end
