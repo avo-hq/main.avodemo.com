@@ -179,7 +179,7 @@ GEM
     appsignal (4.8.6)
       logger
       rack (>= 2.0.0)
-    avo (4.1.9)
+    avo (4.1.10)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -196,12 +196,12 @@ GEM
       zeitwerk (>= 2.6.12)
     avo-icons (0.2.1)
       inline_svg
-    avo-lexxy_field (0.1.5)
+    avo-lexxy_field (0.2.0)
       avo (>= 4.0)
       lexxy (>= 0.9)
     avo-money_field (0.0.6)
       money-rails (~> 1.12)
-    avo-rhino_field (4.0.4)
+    avo-rhino_field (4.1.0)
     awesome_print (1.9.2)
     aws-eventstream (1.4.0)
     aws-partitions (1.1262.0)
@@ -352,7 +352,7 @@ GEM
       net-smtp
     mapkick-rb (0.3.0)
     marcel (1.2.1)
-    marksmith (0.5.2)
+    marksmith (0.6.0)
       activesupport
     matrix (0.4.3)
     meta-tags (2.23.0)
