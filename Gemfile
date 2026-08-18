@@ -119,6 +119,7 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-kanban"
   gem "avo-notifications"
   gem "avo-ai"
+  gem "avo-calendar_view"
   # gem "avo-licensing", path: "/Users/adrian/work/avocado/gems/avo-licensing"
 end
 

@@ -331,6 +331,7 @@ class SeedService
       event = Event.create!(
         name: name,
         event_time: event_time,
+        ends_at: event_time + 2.days + 8.hours,
         body: "#{location} — #{event_time.strftime("%B %-d, %Y")}\n\n#{description}"
       )
       event.profile_photo.attach(
@@ -341,6 +342,81 @@ class SeedService
         io: File.open(Rails.root.join("db", "seed_files", "events", "#{key}_cover.webp")),
         filename: "#{key}_cover.webp"
       )
+    end
+
+    seed_calendar_events
+  end
+
+  # The conferences above carry fixed real-world dates, so they rarely land in
+  # the calendar's current month. Everything here is relative to the day the
+  # seed runs, mirroring the avo-calendar_view dummy seed's variety: overlap
+  # clusters, a "+N more" pile-up, a long-running event, pinned extremes, and
+  # a randomized two-month spread centered on today.
+  def self.seed_calendar_events
+    today = Date.current
+
+    Event.create!(name: "Standup", event_time: today.beginning_of_month + 2.days + 9.hours)
+    Event.create!(name: "Design review", event_time: today.beginning_of_month + 2.days + 14.hours)
+    Event.create!(
+      name: "Offsite",
+      event_time: today.beginning_of_month + 9.days + 10.hours,
+      ends_at: today.beginning_of_month + 12.days + 17.hours
+    )
+    Event.create!(name: "Release", event_time: today.beginning_of_month + 20.days + 16.hours)
+
+    # Overlap cluster: three events at the same time plus two right after,
+    # for exercising how the week view stacks concurrent events.
+    wednesday = today.beginning_of_week + 2.days
+    Event.create!(name: "Interview — Dana", event_time: wednesday + 10.hours, ends_at: wednesday + 11.hours)
+    Event.create!(name: "1:1 Paul", event_time: wednesday + 10.hours, ends_at: wednesday + 10.hours + 30.minutes)
+    Event.create!(name: "Marketing sync", event_time: wednesday + 10.hours, ends_at: wednesday + 11.hours)
+    Event.create!(name: "Sprint planning", event_time: wednesday + 10.hours + 30.minutes, ends_at: wednesday + 11.hours + 30.minutes)
+    Event.create!(name: "Budget review", event_time: wednesday + 11.hours, ends_at: wednesday + 12.hours)
+
+    # Afternoon pile-up on the same Wednesday: pushes the day past what a month
+    # cell can show, so "+N more" and the row expansion have something to reveal.
+    Event.create!(name: "Lunch & learn", event_time: wednesday + 12.hours + 30.minutes, ends_at: wednesday + 13.hours)
+    Event.create!(name: "Support triage", event_time: wednesday + 13.hours, ends_at: wednesday + 13.hours + 30.minutes)
+    Event.create!(name: "Demo call — Acme", event_time: wednesday + 14.hours, ends_at: wednesday + 15.hours)
+    Event.create!(name: "Docs pairing", event_time: wednesday + 15.hours, ends_at: wednesday + 16.hours)
+    Event.create!(name: "Retro", event_time: wednesday + 16.hours, ends_at: wednesday + 17.hours)
+    Event.create!(name: "Release checklist", event_time: wednesday + 17.hours, ends_at: wednesday + 17.hours + 30.minutes)
+
+    # Long-running event: 8 weeks, crossing month boundaries in both directions,
+    # for exercising multi-week/multi-month continuation rendering.
+    Event.create!(
+      name: "Migration project",
+      event_time: today.beginning_of_week - 3.weeks + 9.hours,
+      ends_at: today.beginning_of_week + 5.weeks - 2.days + 17.hours
+    )
+
+    # Fifty more events blanketing a ~two-month window centered on today, so a
+    # fresh seed always lands with the current day surrounded on both sides,
+    # whenever it runs. Fixed RNG seed: reseeding produces the same spread.
+    rng = Random.new(20_260_817)
+
+    # The window's extremes, pinned: its first event (two days), its last (twelve
+    # days), the shortest duration (15 minutes, today), and the longest (35 days,
+    # crossing today and ending mid-day).
+    Event.create!(name: "Kickoff retreat", event_time: today - 29.days + 9.hours, ends_at: today - 27.days + 17.hours)
+    Event.create!(name: "Platform migration", event_time: today - 20.days + 8.hours, ends_at: today + 15.days + 13.hours)
+    Event.create!(name: "Deploy check", event_time: today + 10.hours + 15.minutes, ends_at: today + 10.hours + 30.minutes)
+    Event.create!(name: "Beta program", event_time: today + 17.days + 9.hours, ends_at: today + 29.days + 12.hours)
+
+    hourly_names = ["Standup", "1:1", "Code review", "Customer call", "Roadmap sync", "Bug triage", "Pairing session", "Demo prep", "All hands", "Onboarding call"]
+    30.times do |i|
+      starts = today + rng.rand(-29..29).days + rng.rand(8..17).hours + [0, 15, 30, 45].sample(random: rng).minutes
+      # Every seventh is open-ended; the calendar renders those as one-hour blocks.
+      ends = starts + [15, 30, 45, 60, 90, 120, 180, 240].sample(random: rng).minutes unless i % 7 == 3
+      Event.create!(name: hourly_names[i % hourly_names.size], event_time: starts, ends_at: ends)
+    end
+
+    multi_day_names = ["Conference", "Sprint", "Audit", "Campaign", "Workshop", "Trade show", "QA pass", "Docs sprint"]
+    16.times do |i|
+      starts = today + rng.rand(-29..20).days + 9.hours
+      # Ends mid-day (noon/13:00/17:00), not at a day boundary.
+      ends = starts + rng.rand(1..14).days + [3, 4, 8].sample(random: rng).hours
+      Event.create!(name: multi_day_names[i % multi_day_names.size], event_time: starts, ends_at: ends)
     end
   end
 

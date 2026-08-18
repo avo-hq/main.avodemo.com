@@ -20,6 +20,9 @@ GEM
     avo-authorization (4.1.1)
       avo (>= 4.1.1)
       avo-licensing (>= 4.1.0)
+    avo-calendar_view (4.0.8)
+      avo (>= 4.1.11)
+      avo-licensing (>= 4.1.1)
     avo-collaboration (4.1.1)
       avo (>= 4.1.1)
       avo-licensing (>= 4.1.0)
@@ -53,8 +56,8 @@ GEM
       avo (>= 4.1.1)
       avo-licensing (>= 4.1.0)
       hotwire_combobox (~> 0.4.0)
-    avo-licensing (4.1.0)
-      avo (>= 4.0.26)
+    avo-licensing (4.1.1)
+      avo (>= 4.1.10)
       zeitwerk (>= 2.6.12)
     avo-menu (4.1.1)
       avo (>= 4.1.1)
@@ -179,7 +182,7 @@ GEM
     appsignal (4.8.6)
       logger
       rack (>= 2.0.0)
-    avo (4.1.10)
+    avo (4.1.11)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -578,6 +581,7 @@ DEPENDENCIES
   avo-ai!
   avo-api!
   avo-authorization!
+  avo-calendar_view!
   avo-collaboration!
   avo-custom_controls!
   avo-dashboards!

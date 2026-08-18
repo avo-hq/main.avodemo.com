@@ -25,6 +25,14 @@ class Avo::Resources::Event < Avo::BaseResource
   }
   self.discreet_information = :timestamps
 
+  self.default_view_type = :calendar
+  self.view_types = [:table, :calendar]
+  self.calendar_view = {
+    starts_at: :event_time,
+    ends_at: :ends_at,
+    color: -> { record.ends_at.present? ? :purple : :blue }
+  }
+
   self.row_controls_config = {
     float: true,
     show_on_hover: true,
@@ -33,8 +41,9 @@ class Avo::Resources::Event < Avo::BaseResource
 
   def fields
     field :profile_photo, as: :avatar
-    field :name, as: :text, link_to_record: true, sortable: true, stacked: true
-    field :event_time, as: :date_time, sortable: true
+    field :name, as: :text, link_to_record: true, sortable: true, stacked: true, show_on: :preview
+    field :event_time, as: :date_time, sortable: true, show_on: :preview
+    field :ends_at, as: :date_time, sortable: true, show_on: :preview
 
     with_options as: :file, is_image: true, only_on: :forms do
       field :profile_photo
