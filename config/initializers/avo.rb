@@ -46,7 +46,6 @@ Avo.configure do |config|
     } do
       resource "avo_ai/chats"
       resource "avo_ai/messages"
-      resource "avo_ai/tool_calls"
       resource "avo_ai/models"
     end
 
@@ -159,4 +158,45 @@ if defined?(Avo::MediaLibrary)
   Avo::MediaLibrary.configure do |config|
     config.enabled = true
   end
+end
+
+# Safe to merge these settings into your main Avo.configure block above.
+Avo.configure do |config|
+  ## == Avo AI ==
+
+  # Extended thinking, sent only to reasoning-capable models. A model takes ONE of these
+  # two knobs and its provider rejects the other, so the one the model declares is the
+  # one that gets sent — set BOTH to cover a mixed picker, or half of it silently
+  # answers without thinking. Budget wins wherever a model accepts it.
+  #
+  #   thinking_effort — "low", "medium", "high" everywhere effort applies. OpenAI also
+  #                     takes "minimal"; Gemini 3 takes only "low" and "high"; "none"
+  #                     turns thinking off on Anthropic. Passed to the provider as
+  #                     written, so an unknown value fails at request time, not at boot.
+  #   thinking_budget — thinking tokens, minimum 1024 on Anthropic. Zero or negative is
+  #                     read as unset.
+  #
+  # Not Anthropic-only: this reaches every provider RubyLLM supports thinking for
+  # (OpenAI, Gemini, VertexAI, Bedrock, Azure, Mistral, Perplexity, OpenRouter, Ollama,
+  # GPUStack). See https://rubyllm.com/thinking/ for the current per-provider picture.
+  #
+  # Leave both unset and no thinking parameters are sent at all. They fall back to
+  # AVO_AI_THINKING_EFFORT / AVO_AI_THINKING_BUDGET when unset here.
+  # config.ai.thinking_effort = "medium"
+  # config.ai.thinking_budget = 2048
+
+  # Clock format for chat timestamps. :auto follows each reader's own browser locale;
+  # :h12 and :h24 pin it for everyone. The timezone is always the reader's either way.
+  # config.ai.time_format = :auto # :h12, :h24
+
+  # What one attach-from-URL download may cost. Merged over the defaults, so set only
+  # the keys you want to change. Seconds, except max_size (bytes). An unknown key raises
+  # at boot rather than being ignored.
+  # config.ai.remote_file = {
+  #   max_size: 25.megabytes, # ceiling on the downloaded file
+  #   open_timeout: 5,        # seconds to connect
+  #   read_timeout: 10,       # seconds per read
+  #   deadline: 30,           # seconds for the whole download
+  #   max_redirects: 3
+  # }
 end
