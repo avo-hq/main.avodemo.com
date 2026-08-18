@@ -16,10 +16,5 @@ Rails.application.config.to_prepare do
   Avo::Resources::AvoAi::Message.search = {
     query: -> { query.ransack(id_eq: params[:q], content_cont: params[:q], m: "or").result(distinct: false) }
   }
-  Avo::Resources::AvoAi::Model.search = {
-    query: -> { query.ransack(id_eq: params[:q], name_cont: params[:q], model_id_cont: params[:q], provider_cont: params[:q], m: "or").result(distinct: false) }
-  }
-  Avo::Resources::AvoAi::ToolCall.search = {
-    query: -> { query.ransack(id_eq: params[:q], name_cont: params[:q], m: "or").result(distinct: false) }
-  }
+  # Model ships its own self.search in alpha.19; ToolCall's resource is gone.
 end

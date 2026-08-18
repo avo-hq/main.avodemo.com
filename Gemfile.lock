@@ -1,3 +1,19 @@
+GIT
+  remote: https://github.com/crmne/ruby_llm.git
+  revision: b44504a992c967711e45f623ac50df49e16101f3
+  branch: main
+  specs:
+    ruby_llm (1.16.0)
+      base64
+      event_stream_parser (~> 1)
+      faraday (>= 1.10.0)
+      faraday-multipart (>= 1)
+      faraday-net_http (>= 1)
+      faraday-retry (>= 1)
+      marcel (~> 1)
+      schematist (~> 1.1)
+      zeitwerk (~> 2)
+
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
@@ -7,11 +23,11 @@ GEM
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-ai (4.0.0.alpha.18)
-      avo (>= 4.1.9)
-      avo-licensing (>= 4.1.0)
+    avo-ai (4.0.0.alpha.19)
+      avo (>= 4.1.12)
+      avo-licensing (>= 4.1.1)
       commonmarker
-      ruby_llm (~> 1.16)
+      ruby_llm (>= 1.16)
       ssrf_filter (~> 1.2)
       zeitwerk (>= 2.6.12)
     avo-api (4.1.1)
@@ -182,7 +198,7 @@ GEM
     appsignal (4.8.6)
       logger
       rack (>= 2.0.0)
-    avo (4.1.11)
+    avo (4.1.12)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -492,18 +508,8 @@ GEM
     ruby-vips (2.3.0)
       ffi (~> 1.12)
       logger
-    ruby_llm (1.16.0)
-      base64
-      event_stream_parser (~> 1)
-      faraday (>= 1.10.0)
-      faraday-multipart (>= 1)
-      faraday-net_http (>= 1)
-      faraday-retry (>= 1)
-      marcel (~> 1)
-      ruby_llm-schema (~> 0)
-      zeitwerk (~> 2)
-    ruby_llm-schema (0.4.0)
     rubyzip (3.4.0)
+    schematist (1.1.0)
     securerandom (0.4.1)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
@@ -634,7 +640,7 @@ DEPENDENCIES
   ransack
   redcarpet
   redis (~> 4.0)
-  ruby_llm
+  ruby_llm!
   selenium-webdriver
   solid_cable
   sqlite3 (>= 2.1)
