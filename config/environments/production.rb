@@ -59,7 +59,11 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter     = :resque
+  # Solid Queue runs on the primary database (see the CreateSolidQueueTables
+  # migration), so no connects_to. Jobs are processed by the separate `worker`
+  # process in the Procfile — NOT the Puma plugin — so the worker dyno/container
+  # must be running or nothing drains the queue.
+  config.active_job.queue_adapter = :solid_queue
   # config.active_job.queue_name_prefix = "avodemo_7_production"
 
   config.action_mailer.perform_caching = false

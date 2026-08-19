@@ -38,6 +38,13 @@ gem "redis", "~> 4.0"
 gem "solid_cable"
 gem "sqlite3", ">= 2.1"
 
+# Database-backed Active Job backend. Unlike solid_cable this runs on the
+# primary Postgres database: the worker is a separate process (bin/jobs) from
+# web, and two containers cannot share a SQLite file.
+gem "solid_queue"
+# Operational dashboard for Solid Queue, mounted at /jobs in routes.rb.
+gem "solid_queue-flightdeck"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

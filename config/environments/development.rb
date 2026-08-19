@@ -67,4 +67,9 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # Same backend as production so the Flightdeck dashboard has real data locally.
+  # Jobs only run while the `worker` process from Procfile.dev is up — with
+  # `bin/rails server` alone they queue and sit there.
+  config.active_job.queue_adapter = :solid_queue
 end

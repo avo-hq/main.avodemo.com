@@ -20,6 +20,11 @@ Rails.application.routes.draw do
         get "courses/cities", to: "courses#cities"
       end
     end
+
+    # Solid Queue dashboard. Gated twice on purpose: this Devise constraint, and
+    # FlightdeckBaseController's own before_actions. The constraint alone is not
+    # enough — Flightdeck answers 401 until it is told how to authenticate.
+    mount Flightdeck::Engine, at: "/jobs"
   end
   # scope ":course", constraints: {course: /\w+(-\w+)*/} do
   #   scope ":locale", constraints: {locale: /\w[-\w]*/} do
