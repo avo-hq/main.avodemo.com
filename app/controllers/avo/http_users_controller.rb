@@ -36,6 +36,8 @@ class Avo::HttpUsersController < Avo::Core::Controllers::Http
   # It must request the resource's own (absolute) endpoint: a relative path has no
   # host to connect to, and Net::HTTP fails on the nil address well after the form
   # was submitted (AVO-1745).
+  # `timeout` because HTTParty has no default one and the endpoint is this same
+  # app -- an unbounded request would hold the web worker for as long as it hangs.
   def api_response
     endpoint = resource.endpoint
     headers = Avo::ExecutionContext.new(target: resource.headers).handle
@@ -43,9 +45,9 @@ class Avo::HttpUsersController < Avo::Core::Controllers::Http
     if action_name == "create"
       body = {user: @record.as_json.merge(password: SecureRandom.hex(10))}
 
-      HTTParty.post(endpoint, body: body, headers: headers)
+      HTTParty.post(endpoint, body: body, headers: headers, timeout: 10)
     else
-      HTTParty.patch("#{endpoint}/#{@record.id}", body: {user: @record.as_json}, headers: headers)
+      HTTParty.patch("#{endpoint}/#{@record.id}", body: {user: @record.as_json}, headers: headers, timeout: 10)
     end
   end
 end
