@@ -44,6 +44,7 @@ Avo.configure do |config|
     section "Intelligence", icon: "heroicons/outline/sparkles", visible: -> {
       authorize current_user, Avo::Ai::Chat, "index?", raise_exception: false
     } do
+      link_to "Chats", "/avo/chats", icon: "heroicons/outline/chat-bubble-left-right"
       resource "avo_ai/chats"
       resource "avo_ai/messages"
       resource "avo_ai/models"
