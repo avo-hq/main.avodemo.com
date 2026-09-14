@@ -75,7 +75,7 @@ GEM
     avo-licensing (4.2.0)
       avo (>= 4.2.0)
       zeitwerk (>= 2.6.12)
-    avo-mcp_server (4.2.0.dev.12)
+    avo-mcp_server (4.2.0.dev.13)
       avo (>= 4.2.3)
       avo-authorization (>= 4.0.0)
       avo-licensing (>= 4.2.0)
@@ -628,7 +628,7 @@ DEPENDENCIES
   avo-http_resource!
   avo-kanban!
   avo-lexxy_field
-  avo-mcp_server (= 4.2.0.dev.12)!
+  avo-mcp_server (= 4.2.0.dev.13)!
   avo-menu!
   avo-money_field
   avo-nested!
