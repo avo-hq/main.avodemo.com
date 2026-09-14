@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_03_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_14_125836) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -183,6 +183,82 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_03_120000) do
     t.index ["board_id"], name: "index_avo_kanban_items_on_board_id"
     t.index ["column_id"], name: "index_avo_kanban_items_on_column_id"
     t.index ["record_type", "record_id"], name: "index_avo_kanban_items_on_record"
+  end
+
+  create_table "avo_mcp_server_access_grants", force: :cascade do |t|
+    t.json "capabilities", default: [], null: false
+    t.string "client_id", null: false
+    t.string "code_challenge", null: false
+    t.string "code_challenge_method", default: "S256", null: false
+    t.string "code_digest", null: false
+    t.bigint "connection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.datetime "redeemed_at"
+    t.string "redirect_uri", null: false
+    t.datetime "revoked_at"
+    t.datetime "updated_at", null: false
+    t.index ["code_digest"], name: "index_avo_mcp_server_access_grants_on_code_digest", unique: true
+    t.index ["connection_id"], name: "index_avo_mcp_server_access_grants_on_connection_id"
+    t.index ["expires_at"], name: "index_avo_mcp_server_access_grants_on_expires_at"
+  end
+
+  create_table "avo_mcp_server_access_tokens", force: :cascade do |t|
+    t.string "access_token_digest", null: false
+    t.bigint "connection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.string "family_id", null: false
+    t.datetime "refresh_expires_at", null: false
+    t.string "refresh_token_digest", null: false
+    t.datetime "revoked_at"
+    t.datetime "rotated_at"
+    t.datetime "updated_at", null: false
+    t.index ["access_token_digest"], name: "index_avo_mcp_server_access_tokens_on_access_token_digest", unique: true
+    t.index ["connection_id"], name: "index_avo_mcp_server_access_tokens_on_connection_id"
+    t.index ["family_id"], name: "index_avo_mcp_server_access_tokens_on_family_id"
+    t.index ["refresh_token_digest"], name: "index_avo_mcp_server_access_tokens_on_refresh_token_digest", unique: true
+  end
+
+  create_table "avo_mcp_server_clients", force: :cascade do |t|
+    t.string "application_type"
+    t.string "client_id", null: false
+    t.string "client_name"
+    t.string "client_secret_digest"
+    t.datetime "created_at", null: false
+    t.string "issuer", null: false
+    t.json "redirect_uris", default: [], null: false
+    t.datetime "updated_at", null: false
+    t.index ["issuer", "client_id"], name: "index_avo_mcp_server_clients_on_issuer_and_client_id", unique: true
+  end
+
+  create_table "avo_mcp_server_connections", force: :cascade do |t|
+    t.json "capabilities", default: [], null: false
+    t.string "client_id", null: false
+    t.string "client_name"
+    t.datetime "created_at", null: false
+    t.datetime "last_used_at"
+    t.datetime "revoked_at"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.string "user_type", null: false
+    t.index ["client_id"], name: "index_avo_mcp_server_connections_on_client_id"
+    t.index ["revoked_at"], name: "index_avo_mcp_server_connections_on_revoked_at"
+    t.index ["user_type", "user_id"], name: "index_avo_mcp_server_connections_on_user"
+  end
+
+  create_table "avo_mcp_server_events", force: :cascade do |t|
+    t.json "arguments"
+    t.bigint "connection_id", null: false
+    t.datetime "created_at", null: false
+    t.integer "duration_ms"
+    t.integer "error_code"
+    t.text "error_message"
+    t.string "outcome", null: false
+    t.string "resource_name"
+    t.string "rpc_method", null: false
+    t.string "tool_name"
+    t.index ["connection_id", "id"], name: "index_avo_mcp_server_events_on_connection_id_and_id"
   end
 
   create_table "avo_notifications_notifications", force: :cascade do |t|
@@ -681,6 +757,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_03_120000) do
   add_foreign_key "avo_ai_messages", "avo_ai_chats", column: "chat_id"
   add_foreign_key "avo_ai_pending_writes", "avo_ai_chats", column: "chat_id"
   add_foreign_key "avo_ai_write_logs", "avo_ai_chats", column: "chat_id"
+  add_foreign_key "avo_mcp_server_access_grants", "avo_mcp_server_connections", column: "connection_id"
+  add_foreign_key "avo_mcp_server_access_tokens", "avo_mcp_server_connections", column: "connection_id"
+  add_foreign_key "avo_mcp_server_events", "avo_mcp_server_connections", column: "connection_id"
   add_foreign_key "comments", "users"
   add_foreign_key "fish", "users"
   add_foreign_key "people", "people"
