@@ -72,6 +72,8 @@ Avo.configure do |config|
     section "API", icon: "heroicons/outline/key" do
       resource :http_user
       resource :author
+      # avo-mcp_server: the clients admins have connected, with Revoke as an action.
+      resource :mcp_connection
     end
 
     section "Resources", icon: "tabler/outline/school", collapsable: true, collapsed: false do
@@ -200,4 +202,31 @@ Avo.configure do |config|
   #   deadline: 30,           # seconds for the whole download
   #   max_redirects: 3
   # }
+end
+
+## == Avo MCP Server ==
+#
+# Turns the panel into a remote MCP server for AI clients (Claude, ChatGPT,
+# Cursor, ...). Its address is the URL the panel is served at plus the mount
+# path in routes.rb — the URL an admin pastes into their client.
+#
+# https://docs.avohq.io/4.0/mcp.html
+Avo.configure do |config|
+  config.mcp_server.enabled = true
+
+  # Pinned in production so every surface — the discovery documents, the
+  # audience stamped on issued tokens, the audience checked on incoming ones —
+  # reads the one public origin, whatever host Fly forwards the request under.
+  # Left derived elsewhere so a local server keeps answering at localhost.
+  config.mcp_server.resource_identifier = "https://main.avodemo.com/avo/mcp" if Rails.env.production?
+
+  # How many requests one connection may make per minute before the JSON-RPC endpoint
+  # answers 429. Bounds anything only where Rails.cache is a shared, incrementing store.
+  # config.mcp_server.tool_calls_per_minute = 300
+
+  # Every request a connection makes is kept on it, for the live log on its page in
+  # the panel. Off, nothing is recorded. The size is how many rows each connection
+  # keeps before the oldest are dropped; nil keeps them all.
+  # config.mcp_server.connection_log = true
+  # config.mcp_server.connection_log_size = 500
 end

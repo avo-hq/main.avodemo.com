@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   # and is consumed by the Avo::Resources::HttpUser HTTP resource.
   mount_avo_api
 
+  # MCP server (avo-mcp_server). Also OUTSIDE the `authenticate` block, and before
+  # `mount_avo`: AI clients call the token and JSON-RPC endpoints with a bearer
+  # token and no browser session, and the two OAuth discovery documents live at
+  # the origin root. Both misplacements are refused at boot. The consent screen
+  # and the MCP connections resource are part of the panel and use Devise as usual.
+  mount_avo_mcp_server
+
   authenticate :user, ->(user) { user.admin? } do
     mount_avo do
       get "welcome", to: "tools#welcome"
