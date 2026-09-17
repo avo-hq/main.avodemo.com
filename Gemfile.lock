@@ -23,15 +23,15 @@ GEM
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-ai (4.0.0.alpha.21)
-      avo (>= 4.1.15)
-      avo-licensing (>= 4.1.1)
+    avo-ai (4.0.0.alpha.22)
+      avo (>= 4.2.0)
+      avo-licensing (>= 4.2.0)
       commonmarker
       ruby_llm (>= 1.16)
       ssrf_filter (~> 1.2)
       zeitwerk (>= 2.6.12)
-    avo-api (4.2.0)
-      avo (>= 4.2.0)
+    avo-api (4.2.3)
+      avo (>= 4.2.3)
       avo-licensing (>= 4.2.0)
     avo-authorization (4.2.0)
       avo (>= 4.2.0)
@@ -72,13 +72,13 @@ GEM
       avo (>= 4.2.0)
       avo-licensing (>= 4.2.0)
       hotwire_combobox (~> 0.4.0)
-    avo-licensing (4.2.0)
-      avo (>= 4.2.0)
-      zeitwerk (>= 2.6.12)
-    avo-mcp_server (4.2.0.dev.13)
+    avo-licensing (4.2.1)
       avo (>= 4.2.3)
+      zeitwerk (>= 2.6.12)
+    avo-mcp_server (4.2.0.beta.2)
+      avo (>= 4.2.4)
       avo-authorization (>= 4.0.0)
-      avo-licensing (>= 4.2.0)
+      avo-licensing (>= 4.2.1)
       mcp (~> 1.1)
       ssrf_filter (~> 1.2)
       zeitwerk (>= 2.6.12)
@@ -205,7 +205,7 @@ GEM
     appsignal (4.8.6)
       logger
       rack (>= 2.0.0)
-    avo (4.2.3)
+    avo (4.2.4)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -628,7 +628,7 @@ DEPENDENCIES
   avo-http_resource!
   avo-kanban!
   avo-lexxy_field
-  avo-mcp_server (= 4.2.0.dev.13)!
+  avo-mcp_server (= 4.2.0.beta.2)!
   avo-menu!
   avo-money_field
   avo-nested!
