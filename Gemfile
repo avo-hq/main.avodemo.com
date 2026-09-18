@@ -125,7 +125,7 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-reactive_fields"
   gem "avo-kanban"
   gem "avo-notifications"
-  gem "avo-ai"
+  gem "avo-ai", ">= 4.2.0.beta.2"
   gem "avo-calendar_view"
   # Remote MCP server for AI clients (Claude, ChatGPT, Cursor). Only `.dev`
   # builds exist so far, and bundler never picks a prerelease on its own —
@@ -134,9 +134,7 @@ source "https://packager.dev/avo-hq/" do
   # gem "avo-licensing", path: "/Users/adrian/work/avocado/gems/avo-licensing"
 end
 
-# TODO(AVO-1706): switch back to "~> 2.0" once ruby_llm 2.0 ships — 2.0 code is
-# on main, which still self-identifies as 1.16.0.
-gem "ruby_llm", github: "crmne/ruby_llm", branch: "main"
+gem "ruby_llm", "~> 2.0"
 
 # avo-nested is no longer bundled inside avo-advanced in Avo 4; this app uses
 # nested association forms (see app/views/avo/resource_tools/_nested_fish_reviews.html.erb).

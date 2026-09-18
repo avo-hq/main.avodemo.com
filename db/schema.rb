@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_14_125836) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_18_060954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -73,6 +73,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_125836) do
     t.text "content"
     t.datetime "created_at", null: false
     t.string "finish_reason"
+    t.json "meta"
     t.json "raw_content"
     t.string "role", null: false
     t.json "server_tool_calls"
@@ -98,6 +99,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_125836) do
     t.index ["chat_id", "status"], name: "index_avo_ai_pending_writes_on_chat_id_and_status"
     t.index ["chat_id"], name: "index_avo_ai_pending_writes_on_chat_id"
     t.index ["user_type", "user_id"], name: "index_avo_ai_pending_writes_on_user"
+  end
+
+  create_table "avo_ai_skills", force: :cascade do |t|
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.string "description"
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_avo_ai_skills_on_title", unique: true
   end
 
   create_table "avo_ai_write_logs", force: :cascade do |t|

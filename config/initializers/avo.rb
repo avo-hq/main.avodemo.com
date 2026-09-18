@@ -47,6 +47,7 @@ Avo.configure do |config|
       link_to "Chats", "/avo/chats", icon: "heroicons/outline/chat-bubble-left-right"
       resource "avo_ai/chats"
       resource "avo_ai/messages"
+      resource "avo_ai/skills"
       resource "avo_ai/models"
     end
 
