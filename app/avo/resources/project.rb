@@ -88,4 +88,13 @@ class Avo::Resources::Project < Avo::BaseResource
   def actions
     action Avo::Actions::ExportCsv
   end
+
+  STAGE_TONES = {"Discovery" => :info, "Idea" => :info, "Done" => :success, "On hold" => :warning, "Cancelled" => :danger}.freeze
+
+  # What the chip carries when the assistant names one of these in the chat.
+  def chip
+    part resource.avatar
+    part resource.record_title
+    part record.stage, tone: STAGE_TONES[record.stage.to_s]
+  end
 end

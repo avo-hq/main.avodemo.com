@@ -93,4 +93,13 @@ class Avo::Resources::Post < Avo::BaseResource
   def actions
     action Avo::Actions::TogglePublished
   end
+
+  STATUS_TONES = {"draft" => :muted, "published" => :success, "archived" => :danger}.freeze
+
+  # What the chip carries when the assistant names one of these in the chat.
+  def chip
+    part resource.avatar
+    part resource.record_title
+    part record.status, tone: STATUS_TONES[record.status.to_s]
+  end
 end

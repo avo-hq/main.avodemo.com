@@ -4,6 +4,8 @@ class Issue < ApplicationRecord
   # `value`.
   STATUSES = ["Backlog", "Todo", "In Progress", "In Review", "Done"].freeze
   PRIORITIES = ["Low", "Medium", "High", "Urgent"].freeze
+  # Chip tones for the shared status set, read by the Issue, PullRequest and Task resources.
+  STATUS_TONES = {"Backlog" => :muted, "Todo" => :neutral, "In Progress" => :info, "In Review" => :warning, "Done" => :success}.freeze
 
   # Badge colors for each priority, shown on the kanban card.
   PRIORITY_COLORS = {

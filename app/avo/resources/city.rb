@@ -91,4 +91,13 @@ class Avo::Resources::City < Avo::BaseResource
     action Avo::Actions::PreUpdate
     action Avo::Actions::Update
   end
+
+  STATUS_TONES = {"Open" => :success, "Closed" => :muted, "Quarantine" => :warning}.freeze
+
+  # What the chip carries when the assistant names one of these in the chat.
+  def chip
+    part resource.avatar
+    part resource.record_title
+    part record.status, tone: STATUS_TONES[record.status.to_s]
+  end
 end

@@ -50,4 +50,11 @@ class Avo::Resources::Issue < Avo::BaseResource
     field :author, as: :text
     field :body, as: :textarea, hide_on: :index
   end
+
+  # What the chip carries when the assistant names one of these in the chat.
+  def chip
+    part resource.avatar
+    part resource.record_title
+    part record.status, tone: Issue::STATUS_TONES[record.status.to_s]
+  end
 end
