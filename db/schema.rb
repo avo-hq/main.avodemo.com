@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_18_060954) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_18_070000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -502,6 +502,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_18_060954) do
     t.string "name", null: false
     t.jsonb "pricing", default: {}
     t.string "provider", null: false
+    t.datetime "unlisted_at"
     t.datetime "updated_at", null: false
     t.index ["capabilities"], name: "index_ruby_llm_models_on_capabilities", using: :gin
     t.index ["family"], name: "index_ruby_llm_models_on_family"
