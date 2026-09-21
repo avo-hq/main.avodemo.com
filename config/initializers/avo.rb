@@ -71,6 +71,14 @@ Avo.configure do |config|
     end
 
     section "API", icon: "heroicons/outline/key" do
+      # avo-api: the REST API's bearer credentials. Quoted symbol because the
+      # resource's path carries a slash — `:token` and `:avo_api_token` don't
+      # resolve, and a name that doesn't resolve is dropped without a word.
+      # A hand-listed item isn't policy-filtered the way the generated sidebar
+      # is, so `visible:` puts Avo::Api::TokenPolicy back in front of it.
+      resource :"avo_api/token", visible: -> {
+        authorize current_user, Avo::Api::Token, "index?", raise_exception: false
+      }
       resource :http_user
       resource :author
       # avo-mcp_server: the clients admins have connected, with Revoke as an action.
