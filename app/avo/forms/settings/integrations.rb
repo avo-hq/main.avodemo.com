@@ -5,8 +5,8 @@ class Avo::Forms::Settings::Integrations < Avo::Forms::Core::Form
   def fields
     card do
       field :email_and_password, as: :text, format_using: -> {
-        request.cookies["email_password"] || "avo@avohq.io:secret"
-      }, help: "This is the email and password that the Http Users resource uses to access the Avo API. Use avo@avohq.io:secret for authorized access."
+        request.cookies["email_password"] || "avo@avohq.io:secreto"
+      }, help: "This is the email and password that the Http Users resource uses to access the Avo API. Use avo@avohq.io:secreto for authorized access."
     end
 
     # USE CASE FOR THIS PANEL:

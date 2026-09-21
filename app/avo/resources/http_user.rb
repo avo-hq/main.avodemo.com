@@ -3,10 +3,10 @@ class Avo::Resources::HttpUser < Avo::Core::Resources::Http
   self.http_adapter = {
     endpoint: Rails.env.production? ? "https://main.avodemo.com/api/resources/v1/users" : "http://localhost:3020/api/resources/v1/users",
     # Basic auth example. The credential is read from a cookie set by the
-    # Settings → Integrations form (defaults to avo@avohq.io:secret).
+    # Settings → Integrations form (defaults to avo@avohq.io:secreto).
     headers: -> {
       {
-        "Authorization" => "Basic #{Base64.encode64(request.cookies["email_password"] || "avo@avohq.io:secret")}".gsub("\n", "")
+        "Authorization" => "Basic #{Base64.encode64(request.cookies["email_password"] || "avo@avohq.io:secreto")}".gsub("\n", "")
       }
     },
     parse_collection: -> {

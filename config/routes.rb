@@ -7,8 +7,13 @@ Rails.application.routes.draw do
   post "/reset", to: "home#reset"
 
   # REST API (avo-api). Mounted OUTSIDE the `authenticate` block on purpose — it
-  # carries its own HTTP Basic auth (see Avo::Api::Resources::V1::BaseResourcesController)
-  # and is consumed by the Avo::Resources::HttpUser HTTP resource.
+  # carries its own auth, accepting either a bearer token or HTTP Basic (see
+  # Avo::Api::Resources::V1::BaseResourcesController), and is consumed by the
+  # Avo::Resources::HttpUser HTTP resource, which sends the Basic pair.
+  #
+  # That controller is the ONLY thing between these endpoints and the open
+  # internet. It is covered by test/integration/avo_api_authentication_test.rb;
+  # keep it that way.
   mount_avo_api
 
   # MCP server (avo-mcp_server). Also OUTSIDE the `authenticate` block, and before
