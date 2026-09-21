@@ -90,6 +90,7 @@ class Avo::Resources::City < Avo::BaseResource
   def actions
     action Avo::Actions::PreUpdate
     action Avo::Actions::Update
+    action Avo::Actions::UnauthorizedAction
   end
 
   STATUS_TONES = {"Open" => :success, "Closed" => :muted, "Quarantine" => :warning}.freeze

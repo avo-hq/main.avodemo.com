@@ -50,4 +50,8 @@ class Avo::Resources::Event < Avo::BaseResource
       field :cover_photo
     end
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end

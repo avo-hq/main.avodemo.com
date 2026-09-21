@@ -182,6 +182,7 @@ class Avo::Resources::User < Avo::BaseResource
 
   def actions
     action Avo::Actions::Dummy
+    action Avo::Actions::UnauthorizedAction
   end
 
   def filters

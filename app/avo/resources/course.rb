@@ -111,4 +111,8 @@ class Avo::Resources::Course < Avo::BaseResource
     filter Avo::Filters::CourseCountry
     filter Avo::Filters::CourseCity
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end

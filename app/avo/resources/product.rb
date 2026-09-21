@@ -54,4 +54,8 @@ class Avo::Resources::Product < Avo::BaseResource
     field :image, as: :file, is_image: true
     field :category, as: :select, enum: ::Product.categories
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end
