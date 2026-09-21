@@ -15,9 +15,9 @@ GEM
       ruby_llm (>= 2.0.0.rc2, < 2.1)
       ssrf_filter (~> 1.2)
       zeitwerk (>= 2.6.12)
-    avo-api (4.2.3)
-      avo (>= 4.2.3)
-      avo-licensing (>= 4.2.0)
+    avo-api (4.2.4.dev.1)
+      avo (>= 4.2.5)
+      avo-licensing (>= 4.2.1)
     avo-authorization (4.2.0)
       avo (>= 4.2.0)
       avo-licensing (>= 4.2.0)
@@ -190,13 +190,14 @@ GEM
     appsignal (4.8.6)
       logger
       rack (>= 2.0.0)
-    avo (4.2.4)
+    avo (4.2.5)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
       activesupport (>= 6.1)
       addressable
       avo-icons (>= 0.1.2)
+      csv
       docile
       meta-tags
       pagy (>= 43.0)
@@ -613,7 +614,7 @@ DEPENDENCIES
   avo
   avo-advanced_search!
   avo-ai (>= 4.2.0.beta.2)!
-  avo-api!
+  avo-api (= 4.2.4.dev.1)!
   avo-authorization!
   avo-calendar_view!
   avo-collaboration!
