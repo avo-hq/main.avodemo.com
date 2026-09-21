@@ -35,4 +35,8 @@ class Avo::Resources::HttpUser < Avo::Core::Resources::Http
     field :created_at
     field :updated_at
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end

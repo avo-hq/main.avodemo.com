@@ -22,4 +22,8 @@ class Avo::Resources::Person < Avo::BaseResource
     end
     field :spouses, as: :has_many
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end

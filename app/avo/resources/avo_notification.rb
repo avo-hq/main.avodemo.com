@@ -40,5 +40,6 @@ class Avo::Resources::AvoNotification < Avo::BaseResource
     action Avo::Actions::UnsaveNotifications
     action Avo::Actions::MarkNotificationsAsDone
     action Avo::Actions::MarkNotificationsAsUndone
+    action Avo::Actions::UnauthorizedAction
   end
 end

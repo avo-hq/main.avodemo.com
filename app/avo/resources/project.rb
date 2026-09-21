@@ -87,6 +87,7 @@ class Avo::Resources::Project < Avo::BaseResource
 
   def actions
     action Avo::Actions::ExportCsv
+    action Avo::Actions::UnauthorizedAction
   end
 
   STAGE_TONES = {"Discovery" => :info, "Idea" => :info, "Done" => :success, "On hold" => :warning, "Cancelled" => :danger}.freeze

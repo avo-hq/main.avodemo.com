@@ -42,4 +42,8 @@ class Avo::Resources::Movie < Avo::Resources::ArrayResource
       end
     end
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end

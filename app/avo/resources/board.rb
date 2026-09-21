@@ -36,4 +36,8 @@ class Avo::Resources::Board < Avo::BaseResource
 
     field :columns, as: :has_many
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end

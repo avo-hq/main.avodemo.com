@@ -81,4 +81,8 @@ class Avo::Resources::Author < Avo::Core::Resources::Http
       end
     end
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end

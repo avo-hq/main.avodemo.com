@@ -103,5 +103,6 @@ class Avo::Resources::Team < Avo::BaseResource
   def actions
     action Avo::Actions::Dummy
     action Avo::Actions::ExportCsv
+    action Avo::Actions::UnauthorizedAction
   end
 end
