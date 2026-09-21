@@ -22,4 +22,8 @@ class Avo::Resources::Comment < Avo::BaseResource
     field :user, as: :belongs_to
     field :commentable, as: :belongs_to, polymorphic_as: :commentable, types: [::Post, ::Project]
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end

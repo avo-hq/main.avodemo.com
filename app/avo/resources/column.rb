@@ -22,4 +22,8 @@ class Avo::Resources::Column < Avo::BaseResource
     field :board, as: :belongs_to
     field :items, as: :has_many
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end

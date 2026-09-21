@@ -92,6 +92,7 @@ class Avo::Resources::Post < Avo::BaseResource
 
   def actions
     action Avo::Actions::TogglePublished
+    action Avo::Actions::UnauthorizedAction
   end
 
   STATUS_TONES = {"draft" => :muted, "published" => :success, "archived" => :danger}.freeze

@@ -41,4 +41,8 @@ class Avo::Resources::CourseLink < Avo::BaseResource
       query_attributes: [:course_name]
     }
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end

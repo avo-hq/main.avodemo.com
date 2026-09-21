@@ -27,4 +27,8 @@ class Avo::Resources::Membership < Avo::BaseResource
     }
     field :team, as: :belongs_to
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end

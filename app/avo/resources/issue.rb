@@ -57,4 +57,8 @@ class Avo::Resources::Issue < Avo::BaseResource
     part resource.record_title
     part record.status, tone: Issue::STATUS_TONES[record.status.to_s]
   end
+
+  def actions
+    action Avo::Actions::UnauthorizedAction
+  end
 end

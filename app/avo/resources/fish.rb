@@ -123,5 +123,6 @@ class Avo::Resources::Fish < Avo::BaseResource
   def actions
     action Avo::Actions::ReleaseFish
     action Avo::Actions::Dummy
+    action Avo::Actions::UnauthorizedAction
   end
 end
