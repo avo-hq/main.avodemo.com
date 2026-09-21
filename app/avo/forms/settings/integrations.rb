@@ -4,9 +4,9 @@ class Avo::Forms::Settings::Integrations < Avo::Forms::Core::Form
 
   def fields
     card do
-      field :email_and_password, as: :text, format_using: -> {
-        request.cookies["email_password"] || "avo@avohq.io:secreto"
-      }, help: "This is the email and password that the Http Users resource uses to access the Avo API. Use avo@avohq.io:secreto for authorized access."
+      field :api_token, as: :text, format_using: -> {
+        request.cookies["avo_api_token"]
+      }, help: "Bearer token the Http Users resource sends to the Avo API. Mint one under Avo API Tokens and paste it here — the secret is only shown once, at creation, so there is no default to fall back to."
     end
 
     # USE CASE FOR THIS PANEL:
@@ -24,7 +24,7 @@ class Avo::Forms::Settings::Integrations < Avo::Forms::Core::Form
 
   def handle
     flash[:success] = "Awesome!"
-    cookies["email_password"] = params[:email_and_password]
+    cookies["avo_api_token"] = params[:api_token]
     eager_load = ActiveModel::Type::Boolean.new.cast(params[:eager_load])
 
     # Params here are all strings, so we need to convert them to the correct type when updating the DBConfig

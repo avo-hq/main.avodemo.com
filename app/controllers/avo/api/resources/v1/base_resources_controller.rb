@@ -8,44 +8,26 @@ module Avo
           # exist inside the API engine. Skip Avo authorization for API requests.
           skip_before_action :authorize_base_action, raise: false
 
-          # Two credentials reach this API, and both are real traffic:
+          # There is deliberately no `setup_authentication` here.
           #
-          #   * a **bearer token** -- avo-api's own scheme, and what any API
-          #     client sends (avo-cli among them). `super` accepts it.
-          #   * **HTTP Basic** -- what the Http Users resource on this very app
-          #     sends (see Avo::Resources::HttpUser), demoing avo-http_resource
-          #     against these endpoints. Its credential is the one the Settings
-          #     → Integrations form shows.
+          # avo-api's own implementation is the whole gate: a bearer token, or a
+          # 401. Every override this app has ever had made it weaker -- it opened
+          # with `return true` ("disable authentication for now") above a block of
+          # HTTP Basic code that therefore never ran, which left every endpoint on
+          # a public host answering anyone, DELETE included. A later version
+          # accepted HTTP Basic beside the token, which meant this app maintained
+          # a second credential path in front of an API mounted outside the Devise
+          # `authenticate` block.
           #
-          # Anything else is refused with a 401.
+          # Inheriting means there is nothing here to get wrong, and the demo
+          # exercises exactly what a customer's app gets out of the box. It also
+          # means every request now carries a token, so `Avo::Api::Current.token`
+          # is set and the schema endpoint's entitlements describe that token
+          # rather than falling through its no-token branch.
           #
-          # This used to `return true` ahead of both -- "disable authentication
-          # for now" -- which left every endpoint on a public host open to the
-          # internet, DELETE included. The dead HTTP Basic block underneath it
-          # never ran, while the mount comment in `config/routes.rb` went on
-          # saying the API carried its own auth.
-          #
-          # The header is read directly rather than through avo-api's own
-          # `bearer_credential`, which is private to the gem's controller: this
-          # app tracks a `.dev` build of avo-api, and a private helper is not
-          # something to pin a public endpoint's auth to.
-          def setup_authentication
-            return super if request.authorization.to_s.start_with?("Bearer ")
-
-            raise Avo::Api::AuthenticationError unless authenticate_with_http_basic do |email, password|
-              user = User.find_by(email: email)
-
-              if user&.valid_password?(password)
-                sign_in(user, store: false)
-
-                # Explicit, rather than leaning on whatever `sign_in` returns:
-                # this block's value is the whole verdict.
-                true
-              else
-                false
-              end
-            end
-          end
+          # Anything pointed at this API needs a token minted in **Avo API
+          # Tokens** -- the Http Users resource included, which reads one from the
+          # cookie the Settings → Integrations form sets.
         end
       end
     end

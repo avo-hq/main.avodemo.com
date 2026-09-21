@@ -1,18 +1,24 @@
 require "test_helper"
 
 # The REST API is mounted OUTSIDE the Devise `authenticate` block that guards the
-# panel, so `setup_authentication` on Avo::Api::Resources::V1::BaseResourcesController
-# is the only thing standing between these endpoints and the open internet.
+# panel, so whatever answers `setup_authentication` on
+# Avo::Api::Resources::V1::BaseResourcesController is the only thing standing
+# between these endpoints and the open internet.
 #
-# It once opened with `return true` -- "disable authentication for now" -- above a
-# block of HTTP Basic code that therefore never ran. Every endpoint on a public host
-# answered anyone, DELETE included, while the mount comment in `config/routes.rb` went
-# on saying the API carried its own auth. These hold the door shut.
+# That controller now overrides nothing: avo-api's own implementation runs, and it
+# accepts one credential -- a bearer token -- or answers 401. Both overrides this
+# app has had were weaker than that. The first opened with `return true`
+# ("disable authentication for now") above a block of HTTP Basic code that
+# therefore never ran, and every endpoint on a public host answered anyone, DELETE
+# included. The second accepted HTTP Basic beside the token, a second credential
+# path maintained here rather than in the gem.
 #
-# Deliberately credential-free: refusal is the regression worth guarding, and asserting
-# it needs no user, no fixture and no licence. The accepting paths (a valid bearer
-# token, and the HTTP Basic pair the Http Users resource sends) are exercised by
-# avo-api's own suite and by the panel itself.
+# These hold the door shut, and the Basic case below is what keeps the removed
+# path from drifting back in.
+#
+# Deliberately credential-free: refusal is the regression worth guarding, and
+# asserting it needs no user, no fixture and no licence. The accepting path -- a
+# valid bearer token -- is exercised by avo-api's own suite.
 class AvoApiAuthenticationTest < ActionDispatch::IntegrationTest
   # https on purpose, matching McpServerRoutesTest: plain http is refused outside
   # localhost.
@@ -32,9 +38,13 @@ class AvoApiAuthenticationTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
   end
 
-  test "refuses an HTTP Basic pair that matches nothing" do
+  # HTTP Basic is no longer a credential this API knows, whether or not the pair
+  # would have matched a user. Asserted with a pair that *does* match the seeded
+  # demo account precisely because the old override would have accepted it: a
+  # wrong pair would pass this test even if Basic came back.
+  test "refuses HTTP Basic, even a pair that matches a real user" do
     get USERS, headers: {
-      "Authorization" => ActionController::HttpAuthentication::Basic.encode_credentials("nobody@example.com", "wrong")
+      "Authorization" => ActionController::HttpAuthentication::Basic.encode_credentials("avo@avohq.io", "secreto")
     }
 
     assert_response :unauthorized

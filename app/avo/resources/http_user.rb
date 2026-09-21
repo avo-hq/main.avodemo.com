@@ -2,11 +2,15 @@ class Avo::Resources::HttpUser < Avo::Core::Resources::Http
   self.icon = "heroicons/outline/cloud"
   self.http_adapter = {
     endpoint: Rails.env.production? ? "https://main.avodemo.com/api/resources/v1/users" : "http://localhost:3020/api/resources/v1/users",
-    # Basic auth example. The credential is read from a cookie set by the
-    # Settings → Integrations form (defaults to avo@avohq.io:secreto).
+    # Bearer token example -- the only credential this API accepts, now that
+    # BaseResourcesController inherits avo-api's own `setup_authentication`.
+    # Read from the cookie the Settings → Integrations form sets; mint the token
+    # itself in Avo API Tokens. No default: a token secret is shown once, at
+    # creation, so there is nothing to fall back to. Without one the API answers
+    # 401 and `parse_collection` below turns that into a clean "Unauthorized".
     headers: -> {
       {
-        "Authorization" => "Basic #{Base64.encode64(request.cookies["email_password"] || "avo@avohq.io:secreto")}".gsub("\n", "")
+        "Authorization" => "Bearer #{request.cookies["avo_api_token"]}"
       }
     },
     parse_collection: -> {
