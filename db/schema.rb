@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_18_070000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_21_110719) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -126,6 +126,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_18_070000) do
     t.index ["chat_id", "created_at"], name: "index_avo_ai_write_logs_on_chat_id_and_created_at"
     t.index ["chat_id"], name: "index_avo_ai_write_logs_on_chat_id"
     t.index ["user_type", "user_id"], name: "index_avo_ai_write_logs_on_user"
+  end
+
+  create_table "avo_api_tokens", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "display_prefix", null: false
+    t.json "entitlements"
+    t.datetime "expires_at"
+    t.datetime "last_used_at"
+    t.string "name", null: false
+    t.bigint "owner_id", null: false
+    t.string "owner_type", null: false
+    t.datetime "revoked_at"
+    t.string "token_digest", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_type", "owner_id"], name: "index_avo_api_tokens_on_owner_type_and_owner_id"
+    t.index ["token_digest"], name: "index_avo_api_tokens_on_token_digest", unique: true
   end
 
   create_table "avo_collaboration_actions", force: :cascade do |t|
