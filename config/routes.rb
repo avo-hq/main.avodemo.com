@@ -7,8 +7,15 @@ Rails.application.routes.draw do
   post "/reset", to: "home#reset"
 
   # REST API (avo-api). Mounted OUTSIDE the `authenticate` block on purpose — it
-  # carries its own HTTP Basic auth (see Avo::Api::Resources::V1::BaseResourcesController)
-  # and is consumed by the Avo::Resources::HttpUser HTTP resource.
+  # carries avo-api's own auth: a bearer token, or a 401. Consumed by the
+  # Avo::Resources::HttpUser HTTP resource, which sends a token from the cookie
+  # the Settings → Integrations form sets.
+  #
+  # Avo::Api::Resources::V1::BaseResourcesController deliberately does NOT
+  # override `setup_authentication` — the gem's implementation is the ONLY thing
+  # between these endpoints and the open internet, and every override this app
+  # has had made it weaker. It is covered by
+  # test/integration/avo_api_authentication_test.rb; keep it that way.
   mount_avo_api
 
   # MCP server (avo-mcp_server). Also OUTSIDE the `authenticate` block, and before
