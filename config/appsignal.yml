@@ -1,0 +1,10 @@
+# Push API key, app name (from the Rails module) and env come from the
+# environment. This file only trims bot noise from the error inbox.
+production:
+  ignore_errors:
+    - ActionController::InvalidAuthenticityToken
+    - ActionController::BadRequest
+    - ActionDispatch::Http::MimeNegotiation::InvalidType
+    - ActionDispatch::RemoteIp::IpSpoofAttackError
+    - ActiveStorage::FileNotFoundError
+    - Encoding::CompatibilityError

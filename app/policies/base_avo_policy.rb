@@ -29,9 +29,10 @@ class BaseAvoPolicy < ApplicationPolicy
 
   class Scope < ApplicationPolicy::Scope
     def resolve
-      # Defensive: AR-backed resources scope with `.all`; non-AR resources (HTTP
-      # resources, POROs) may not respond to `.all`, so fall back to the scope.
-      scope.respond_to?(:all) ? scope.all : scope
+      # Only ActiveRecord scopes get `.all`. ArrayResource models respond to
+      # `.all` but it raises (avo array_resource.rb:26), and HTTP/PORO models
+      # have no such method, so everything else is returned as-is.
+      scope.is_a?(Class) && scope < ActiveRecord::Base ? scope.all : scope
     end
   end
 end

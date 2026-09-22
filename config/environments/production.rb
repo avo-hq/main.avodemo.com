@@ -55,6 +55,11 @@ Rails.application.configure do
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
+  # Bots send HTTP_CLIENT_IP=127.0.0.1 alongside X-Forwarded-For, which trips
+  # ActionDispatch::RemoteIp::IpSpoofAttackError on every request. We don't use
+  # the client IP for anything security-sensitive, so skip the check.
+  config.action_dispatch.ip_spoofing_check = false
+
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
