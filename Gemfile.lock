@@ -15,7 +15,7 @@ GEM
       ruby_llm (>= 2.0.0.rc2, < 2.1)
       ssrf_filter (~> 1.2)
       zeitwerk (>= 2.6.12)
-    avo-api (4.2.4.dev.1)
+    avo-api (4.2.4.dev.2)
       avo (>= 4.2.5)
       avo-licensing (>= 4.2.1)
     avo-authorization (4.2.0)
@@ -614,7 +614,7 @@ DEPENDENCIES
   avo
   avo-advanced_search!
   avo-ai (>= 4.2.0.beta.2)!
-  avo-api (= 4.2.4.dev.1)!
+  avo-api (= 4.2.4.dev.2)!
   avo-authorization!
   avo-calendar_view!
   avo-collaboration!
