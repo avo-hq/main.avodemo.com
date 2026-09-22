@@ -7,12 +7,12 @@ GEM
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-ai (4.2.0.beta.2)
-      avo (>= 4.2.4)
+    avo-ai (4.2.0.beta.3)
+      avo (>= 4.2.5)
       avo-licensing (>= 4.2.1)
       commonmarker
       csv
-      ruby_llm (>= 2.0.0.rc2, < 2.1)
+      ruby_llm (>= 2.0.0.rc4, < 2.1)
       ssrf_filter (~> 1.2)
       zeitwerk (>= 2.6.12)
     avo-api (4.2.4.dev.1)
@@ -33,9 +33,9 @@ GEM
     avo-custom_controls (4.2.0)
       avo (>= 4.2.0)
       avo-licensing (>= 4.2.0)
-    avo-dashboards (4.2.0)
-      avo (>= 4.2.0)
-      avo-licensing (>= 4.2.0)
+    avo-dashboards (4.2.1)
+      avo (>= 4.2.5)
+      avo-licensing (>= 4.2.1)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
