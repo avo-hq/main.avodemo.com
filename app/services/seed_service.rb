@@ -263,6 +263,7 @@ class SeedService
         category: "Music players",
         price_cents: 19900,
         price_currency: "USD",
+        sales_channels: ["online", "retail"],
         image: File.open(Rails.root.join('db', 'seed_files', 'ipod.jpg'))
       },
       {
@@ -271,6 +272,7 @@ class SeedService
         category: "Phones",
         price_cents: 99900,
         price_currency: "USD",
+        sales_channels: ["online", "retail", "marketplace"],
         image: File.open(Rails.root.join('db', 'seed_files', 'iphone.jpg'))
       },
       {
@@ -279,6 +281,7 @@ class SeedService
         category: "Computers",
         price_cents: 239900,
         price_currency: "USD",
+        sales_channels: ["online", "wholesale"],
         image: File.open(Rails.root.join('db', 'seed_files', 'macbook.jpg'))
       },
       {
@@ -287,6 +290,7 @@ class SeedService
         category: "Wearables",
         price_cents: 39900,
         price_currency: "USD",
+        sales_channels: ["online"],
         image: File.open(Rails.root.join('db', 'seed_files', 'watch.jpg'))
       }
     ]

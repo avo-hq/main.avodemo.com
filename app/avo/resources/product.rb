@@ -1,7 +1,7 @@
 class Avo::Resources::Product < Avo::BaseResource
   self.hotkey = "r d"
   self.icon = "heroicons/outline/shopping-bag"
-  self.description = "Demo resource showcasing grid view cards, a money field with multiple currencies, and the Tiptap editor."
+  self.description = "Demo resource showcasing grid view cards, a money field with multiple currencies, a multiple select, and the Tiptap editor."
  self.title = :title
   self.includes = [image_attachment: :blob]
   self.default_view_type = :grid
@@ -53,6 +53,7 @@ class Avo::Resources::Product < Avo::BaseResource
     field :description, as: :tiptap, placeholder: "Enter text", always_show: false
     field :image, as: :file, is_image: true
     field :category, as: :select, enum: ::Product.categories
+    field :sales_channels, as: :select, multiple: true, options: ::Product::SALES_CHANNELS
   end
 
   def actions
