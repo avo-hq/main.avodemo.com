@@ -118,7 +118,7 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-custom_controls"
   gem "avo-dynamic_filters"
   gem "avo-nested"
-  gem "avo-api", "4.2.4.dev.2"
+  gem "avo-api"
   gem "avo-http_resource"
   gem "avo-collaboration"
   gem "avo-forms"

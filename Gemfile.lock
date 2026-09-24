@@ -7,16 +7,16 @@ GEM
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-ai (4.2.0.beta.2)
-      avo (>= 4.2.4)
+    avo-ai (4.2.0.beta.3)
+      avo (>= 4.2.5)
       avo-licensing (>= 4.2.1)
       commonmarker
       csv
-      ruby_llm (>= 2.0.0.rc2, < 2.1)
+      ruby_llm (>= 2.0.0.rc4, < 2.1)
       ssrf_filter (~> 1.2)
       zeitwerk (>= 2.6.12)
-    avo-api (4.2.4.dev.2)
-      avo (>= 4.2.5)
+    avo-api (4.2.5)
+      avo (>= 4.2.6)
       avo-licensing (>= 4.2.1)
     avo-authorization (4.2.0)
       avo (>= 4.2.0)
@@ -33,9 +33,9 @@ GEM
     avo-custom_controls (4.2.0)
       avo (>= 4.2.0)
       avo-licensing (>= 4.2.0)
-    avo-dashboards (4.2.0)
-      avo (>= 4.2.0)
-      avo-licensing (>= 4.2.0)
+    avo-dashboards (4.2.1)
+      avo (>= 4.2.5)
+      avo-licensing (>= 4.2.1)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
@@ -190,7 +190,7 @@ GEM
     appsignal (4.8.6)
       logger
       rack (>= 2.0.0)
-    avo (4.2.5)
+    avo (4.2.6)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -614,7 +614,7 @@ DEPENDENCIES
   avo
   avo-advanced_search!
   avo-ai (>= 4.2.0.beta.2)!
-  avo-api (= 4.2.4.dev.2)!
+  avo-api!
   avo-authorization!
   avo-calendar_view!
   avo-collaboration!
