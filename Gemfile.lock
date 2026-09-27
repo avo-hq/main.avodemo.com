@@ -19,7 +19,7 @@ GEM
     avo-api (4.2.7)
       avo (>= 4.2.8)
       avo-licensing (>= 4.2.1)
-    avo-authorization (4.2.1)
+    avo-authorization (4.2.2)
       avo (>= 4.2.8)
       avo-licensing (>= 4.2.1)
     avo-calendar_view (4.2.1)
