@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_24_090000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_27_143000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -66,6 +66,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_090000) do
     t.index ["user_type", "user_id"], name: "index_avo_ai_chats_on_user"
   end
 
+  create_table "avo_ai_feedbacks", force: :cascade do |t|
+    t.text "admin_note"
+    t.bigint "chat_id", null: false
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.bigint "message_id", null: false
+    t.datetime "notified_at"
+    t.string "reason"
+    t.string "status", default: "open", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.string "user_type", null: false
+    t.string "vote", null: false
+    t.index ["chat_id"], name: "index_avo_ai_feedbacks_on_chat_id"
+    t.index ["message_id"], name: "index_avo_ai_feedbacks_on_message_id"
+    t.index ["status"], name: "index_avo_ai_feedbacks_on_status"
+    t.index ["user_type", "user_id"], name: "index_avo_ai_feedbacks_on_user"
+    t.index ["vote"], name: "index_avo_ai_feedbacks_on_vote"
+  end
+
   create_table "avo_ai_messages", force: :cascade do |t|
     t.boolean "cache_until_here", default: false, null: false
     t.bigint "chat_id", null: false
@@ -116,6 +136,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_090000) do
     t.jsonb "before_snapshot"
     t.bigint "chat_id", null: false
     t.datetime "created_at", null: false
+    t.bigint "pending_write_id"
     t.string "record_id", null: false
     t.string "record_type", null: false
     t.string "resource", null: false
@@ -125,6 +146,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_090000) do
     t.string "user_type", null: false
     t.index ["chat_id", "created_at"], name: "index_avo_ai_write_logs_on_chat_id_and_created_at"
     t.index ["chat_id"], name: "index_avo_ai_write_logs_on_chat_id"
+    t.index ["pending_write_id"], name: "index_avo_ai_write_logs_on_pending_write_id"
     t.index ["user_type", "user_id"], name: "index_avo_ai_write_logs_on_user"
   end
 
@@ -367,6 +389,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_090000) do
     t.string "value_type", default: "String", null: false
     t.index ["eager_load"], name: "index_db_config_records_on_eager_load"
     t.index ["key"], name: "index_db_config_records_on_key", unique: true
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "department"
+    t.string "email"
+    t.date "hired_on"
+    t.string "name"
+    t.text "notes"
+    t.integer "performance_rating"
+    t.integer "salary"
+    t.string "ssn"
+    t.datetime "updated_at", null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -788,6 +823,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_24_090000) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "avo_ai_chats", "ruby_llm_models"
+  add_foreign_key "avo_ai_feedbacks", "avo_ai_chats", column: "chat_id", on_delete: :cascade
+  add_foreign_key "avo_ai_feedbacks", "avo_ai_messages", column: "message_id", on_delete: :cascade
   add_foreign_key "avo_ai_messages", "avo_ai_chats", column: "chat_id"
   add_foreign_key "avo_ai_pending_writes", "avo_ai_chats", column: "chat_id"
   add_foreign_key "avo_ai_write_logs", "avo_ai_chats", column: "chat_id"

@@ -105,6 +105,7 @@ Avo.configure do |config|
         resource "User"
         resource :people
         resource :spouses
+        resource :employees
       end
 
       group "Education", collapsable: true do
