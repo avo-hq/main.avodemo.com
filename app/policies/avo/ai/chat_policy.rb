@@ -5,7 +5,7 @@ class Avo::Ai::ChatPolicy < Avo::Ai::BasePolicy
 
   def available_models
     models = [
-      {model: "gpt-4o-mini", provider: :openai},
+      {model: "gpt-5.6-luna", provider: :openai},
       {model: "gemini-2.5-flash-lite", provider: :gemini}
     ]
 
