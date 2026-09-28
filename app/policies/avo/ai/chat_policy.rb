@@ -8,10 +8,7 @@ class Avo::Ai::ChatPolicy < Avo::Ai::BasePolicy
       {model: "gpt-5.6-luna", provider: :openai},
       {model: "gpt-4o-mini", provider: :openai},
       {model: "claude-haiku-4-5", provider: :anthropic},
-      {model: "claude-sonnet-5", provider: :anthropic},
-      {model: "gpt-4o", provider: :openai},
-      {model: "claude-opus-4-8", provider: :anthropic},
-      {model: "gemini-3.1-pro-preview", provider: :gemini}
+      {model: "gemini-2.5-flash-lite", provider: :gemini}
     ]
   end
 end
