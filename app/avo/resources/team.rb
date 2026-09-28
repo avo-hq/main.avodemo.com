@@ -27,7 +27,7 @@ class Avo::Resources::Team < Avo::BaseResource
   def fields
     panel do
       card do
-      field :preview, as: :preview
+      field :preview, as: :preview, only_on: :new
       field :id, as: :id, filterable: true
       field :name, as: :text, sortable: true, show_on: :preview, filterable: true
       field :logo, as: :external_image, hide_on: :show, as_avatar: :rounded do

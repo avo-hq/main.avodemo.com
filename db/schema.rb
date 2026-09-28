@@ -166,6 +166,29 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_143000) do
     t.index ["token_digest"], name: "index_avo_api_tokens_on_token_digest", unique: true
   end
 
+  create_table "avo_audit_logging_activities", force: :cascade do |t|
+    t.string "action"
+    t.string "activity_class"
+    t.bigint "author_id"
+    t.string "author_type"
+    t.datetime "created_at", null: false
+    t.text "payload"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "avo_audit_logging_activity_pivots", force: :cascade do |t|
+    t.bigint "activity_id", null: false
+    t.bigint "activity_pivot_id"
+    t.string "activity_pivot_type"
+    t.datetime "created_at", null: false
+    t.bigint "record_id", null: false
+    t.string "record_type", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_avo_audit_logging_activity_pivots_on_activity_id"
+    t.index ["activity_pivot_type", "activity_pivot_id"], name: "index_avo_audit_logging_activity_pivots_on_activity_pivot"
+    t.index ["record_type", "record_id"], name: "index_avo_audit_logging_activity_pivots_on_record"
+  end
+
   create_table "avo_collaboration_actions", force: :cascade do |t|
     t.string "batch_id"
     t.text "body"
@@ -504,17 +527,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_143000) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "rails_comments_comments", force: :cascade do |t|
-    t.string "author_id"
-    t.string "author_type"
-    t.text "body"
-    t.string "commentable_id", null: false
-    t.string "commentable_type", null: false
-    t.datetime "created_at", null: false
-    t.string "parent_id"
-    t.datetime "updated_at", null: false
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -818,6 +830,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_143000) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
     t.index ["team_id"], name: "index_users_on_team_id"
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.datetime "created_at"
+    t.string "event", null: false
+    t.bigint "item_id", null: false
+    t.string "item_type", null: false
+    t.text "object"
+    t.text "object_changes"
+    t.string "whodunnit"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
