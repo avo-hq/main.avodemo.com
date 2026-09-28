@@ -204,3 +204,5 @@ gem "money-rails", "~> 1.12"
 gem "redcarpet"
 gem "marksmith"
 gem "commonmarker"
+
+gem "rack-attack", "~> 6.8"

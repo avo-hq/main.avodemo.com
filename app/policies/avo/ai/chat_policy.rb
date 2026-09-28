@@ -4,11 +4,14 @@ class Avo::Ai::ChatPolicy < Avo::Ai::BasePolicy
   end
 
   def available_models
-    [
+    models = [
       {model: "gpt-5.6-luna", provider: :openai},
       {model: "gpt-4o-mini", provider: :openai},
       {model: "claude-haiku-4-5", provider: :anthropic},
       {model: "gemini-2.5-flash-lite", provider: :gemini}
     ]
+
+    models.prepend({model: "deepseek-flash", provider: :deepseek}) if ENV["DEEPSEEK_API_KEY"].present?
+    models
   end
 end
