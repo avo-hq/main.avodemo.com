@@ -14,8 +14,8 @@ class Avo::Ai::ChatPolicyTest < ActiveSupport::TestCase
     models = Avo::Ai::ChatPolicy.new(nil, Avo::Ai::Chat).available_models
 
     assert_equal [
-      {model: "deepseek-flash", provider: :deepseek},
       {model: "gpt-5.6-luna", provider: :openai},
+      {model: "deepseek-flash", provider: :deepseek},
       {model: "gemini-2.5-flash-lite", provider: :gemini}
     ], models
 

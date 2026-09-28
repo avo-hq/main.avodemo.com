@@ -9,7 +9,7 @@ class Avo::Ai::ChatPolicy < Avo::Ai::BasePolicy
       {model: "gemini-2.5-flash-lite", provider: :gemini}
     ]
 
-    models.prepend({model: "deepseek-flash", provider: :deepseek}) if ENV["DEEPSEEK_API_KEY"].present?
+    models.insert(1, {model: "deepseek-flash", provider: :deepseek}) if ENV["DEEPSEEK_API_KEY"].present?
     models
   end
 end
