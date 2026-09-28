@@ -17,7 +17,6 @@ class Avo::Ai::ChatPolicyTest < ActiveSupport::TestCase
       {model: "deepseek-flash", provider: :deepseek},
       {model: "gpt-5.6-luna", provider: :openai},
       {model: "gpt-4o-mini", provider: :openai},
-      {model: "claude-haiku-4-5", provider: :anthropic},
       {model: "gemini-2.5-flash-lite", provider: :gemini}
     ], models
 
