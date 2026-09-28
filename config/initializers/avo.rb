@@ -130,6 +130,7 @@ Avo.configure do |config|
       group "Other", collapsable: true, collapsed: true do
         resource :fish, label: "Fishies"
         resource :movie
+        resource :bookmark
         resource :event
       end
     end
