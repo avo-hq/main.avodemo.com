@@ -56,6 +56,13 @@ class Avo::Resources::Product < Avo::BaseResource
     field :sales_channels, as: :select, multiple: true, options: ::Product::SALES_CHANNELS
   end
 
+  # What the chip carries when the assistant names a product in the chat.
+  def chip
+    part resource.avatar
+    part resource.record_title
+    part record.price.format
+  end
+
   def actions
     action Avo::Actions::UnauthorizedAction
   end

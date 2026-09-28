@@ -1,6 +1,6 @@
 class Avo::Ai::ChatPolicy < Avo::Ai::BasePolicy
   def debug_level
-    account_user&.is_admin? ? :tools : :off
+    user&.is_admin? ? :tools : :off
   end
 
   def available_models

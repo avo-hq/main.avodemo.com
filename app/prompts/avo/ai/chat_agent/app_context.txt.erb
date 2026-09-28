@@ -1,5 +1,5 @@
 <%# app/prompts/avo/ai/chat_agent/app_context.txt.erb
-    Written by the avo-ai onboarding flow on 2026-09-18. Re-run the onboarding
+    Written by the avo-ai onboarding flow on 2026-09-27. Re-run the onboarding
     (the `avo-ai-onboarding` skill) after the app changes; it proposes a diff.
     Structure only: no record values, no credentials. The rendered prompt is visible to
     every viewer with the :tools debug level, and this file is committed. %>
@@ -34,13 +34,15 @@ Vocabulary — what people say, and what they mean:
   record's `status`.
 - "city" — `City`, with `status` `Open | Closed | Quarantine`, a `population`, `is_capital`, and a
   map location.
-- "product" — `Product`, with a `category` enum (`Music players | Phones | Computers | Wearables`)
-  and a price stored as `price_cents` with its own `price_currency`.
+- "product" — `Product`, with a `category` enum (`Music players | Phones | Computers | Wearables`),
+  a price stored as `price_cents` with its own `price_currency`, and multiple `sales_channels`.
+  Sales-channel labels map to stored values: `Online store` → `online`, `Retail` → `retail`,
+  `Marketplace` → `marketplace`, and `Wholesale` → `wholesale`.
 - "course" — `Course`, which has many `Course::Link`s (the CourseLink resource). "person" and
   "spouse" — `Person` and `Spouse`, single-table inheritance on the `people` table. "fish" —
   `Fish`, an uncountable model.
-- "chat", "message", "skill", "model" in the Intelligence section — your own `AvoAi::Chat`,
-  `AvoAi::Message`, `AvoAi::Skill` and `AvoAi::Model` records.
+- "chat", "message", "skill", "model", "AI feedback" in the Intelligence section — your own
+  `AvoAi::Chat`, `AvoAi::Message`, `AvoAi::Skill`, `AvoAi::Model` and `AvoAi::Feedback` records.
 
 How things connect:
 - A `User` has many `Post`s, `Comment`s, `Person` records and `TeamMembership`s, and belongs to
@@ -56,6 +58,10 @@ Questions people ask, and how to answer them:
 - "What is in review?" — `Issue`, `PullRequest` and `Task` with `status` `In Review`; answer per
   resource.
 - "Which pull requests are drafts?" — `PullRequest` where `draft` is true.
+- "Which products are sold through retail?" — `Product` where `sales_channels` includes `retail`;
+  use the stored channel value corresponding to the label the user names.
+- "Show negative AI feedback that still needs attention" — `AvoAi::Feedback` using its vote,
+  reason and status filters.
 - "Move issue 42 to Done" — update the `Issue` with `number` 42, setting `status` to `Done`; this
   moves its card on the board.
 - "Toggle this post published" — the `Toggle post published` action on `Post`.
