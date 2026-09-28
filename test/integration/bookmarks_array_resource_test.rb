@@ -26,6 +26,7 @@ class BookmarksArrayResourceTest < ActionDispatch::IntegrationTest
     get "#{ORIGIN}/avo/resources/bookmarks"
     assert_response :success
     assert_includes response.body, "Avo docs"
+    assert_select "a[href='/avo/resources/bookmarks/new']"
 
     get "#{ORIGIN}/avo/resources/bookmarks/new"
     assert_response :success
