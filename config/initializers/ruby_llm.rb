@@ -6,4 +6,5 @@ RubyLLM.configure do |config|
   config.anthropic_api_key = ENV["ANTHROPIC_API_KEY"].presence
   config.gemini_api_key = ENV["GEMINI_API_KEY"].presence
   config.logger = Rails.logger
+  config.tool_concurrency = true
 end
