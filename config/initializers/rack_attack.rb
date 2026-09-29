@@ -20,10 +20,5 @@ end
 
 Rack::Attack.throttled_response_retry_after_header = true
 
-Rack::Attack.cache.store = if Rails.env.production? && ENV["REDIS_URL"].present?
-  ActiveSupport::Cache::RedisCacheStore.new(url: ENV["REDIS_URL"], namespace: "rack-attack")
-elsif Rails.env.test?
-  ActiveSupport::Cache::MemoryStore.new
-else
-  Rails.cache
-end
+# ponytail: Rails.cache counts per machine; fine for one server, use solid_cache if we scale out.
+Rack::Attack.cache.store = Rails.env.test? ? ActiveSupport::Cache::MemoryStore.new : Rails.cache

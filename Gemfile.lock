@@ -507,7 +507,6 @@ GEM
       rbs (>= 4.0.0)
       tsort
     redcarpet (3.6.1)
-    redis (4.8.1)
     regexp_parser (2.12.0)
     reline (0.7.0)
       io-console (~> 0.5)
@@ -673,7 +672,6 @@ DEPENDENCIES
   rails (>= 8.1)
   ransack
   redcarpet
-  redis (~> 4.0)
   ruby_llm (~> 2.0)
   selenium-webdriver
   solid_cable

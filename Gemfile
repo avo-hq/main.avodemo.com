@@ -30,9 +30,6 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-# Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
-
 # Database-backed Action Cable adapter — runs on its own SQLite database
 # (see config/database.yml `cable`), so no Redis needed for pub/sub.
 gem "solid_cable"
@@ -44,9 +41,6 @@ gem "sqlite3", ">= 2.1"
 gem "solid_queue"
 # Operational dashboard for Solid Queue, mounted at /jobs in routes.rb.
 gem "solid_queue-flightdeck"
-
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
