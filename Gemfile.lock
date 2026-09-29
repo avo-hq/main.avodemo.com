@@ -16,8 +16,8 @@ GEM
       ruby_llm (>= 2.0.0.rc4, < 2.1)
       ssrf_filter (~> 1.2)
       zeitwerk (>= 2.6.12)
-    avo-api (4.2.8)
-      avo (>= 4.2.9)
+    avo-api (4.2.9)
+      avo (>= 4.2.11)
       avo-licensing (>= 4.2.1)
     avo-authorization (4.2.2)
       avo (>= 4.2.8)
@@ -49,8 +49,8 @@ GEM
     avo-forms (4.2.0)
       avo (>= 4.2.0)
       avo-licensing (>= 4.2.0)
-    avo-http_resource (4.2.1)
-      avo (>= 4.2.10)
+    avo-http_resource (4.2.2)
+      avo (>= 4.2.11)
       avo-licensing (>= 4.2.1)
       httparty
     avo-kanban (4.2.1)
@@ -191,7 +191,7 @@ GEM
     appsignal (4.8.6)
       logger
       rack (>= 2.0.0)
-    avo (4.2.10)
+    avo (4.2.11)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
