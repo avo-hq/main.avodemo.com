@@ -125,7 +125,7 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-reactive_fields"
   gem "avo-kanban"
   gem "avo-notifications"
-  gem "avo-ai", ">= 4.2.0.beta.2"
+  gem "avo-ai"
   gem "avo-calendar_view"
   # Remote MCP server for AI clients (Claude, ChatGPT, Cursor). Only `.dev`
   # builds exist so far, and bundler never picks a prerelease on its own —

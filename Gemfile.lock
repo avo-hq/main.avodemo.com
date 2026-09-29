@@ -7,23 +7,24 @@ GEM
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-ai (4.2.0.beta.3)
-      avo (>= 4.2.5)
+    avo-ai (4.2.0.beta.6)
+      avo (>= 4.2.8)
+      avo-authorization (>= 4.2.1)
       avo-licensing (>= 4.2.1)
       commonmarker
       csv
       ruby_llm (>= 2.0.0.rc4, < 2.1)
       ssrf_filter (~> 1.2)
       zeitwerk (>= 2.6.12)
-    avo-api (4.2.4.dev.2)
-      avo (>= 4.2.5)
+    avo-api (4.2.8)
+      avo (>= 4.2.9)
       avo-licensing (>= 4.2.1)
     avo-authorization (4.2.2)
       avo (>= 4.2.8)
       avo-licensing (>= 4.2.1)
-    avo-calendar_view (4.2.0)
-      avo (>= 4.2.0)
-      avo-licensing (>= 4.2.0)
+    avo-calendar_view (4.2.1)
+      avo (>= 4.2.8)
+      avo-licensing (>= 4.2.1)
     avo-collaboration (4.2.0)
       avo (>= 4.2.0)
       avo-licensing (>= 4.2.0)
@@ -52,10 +53,10 @@ GEM
       avo (>= 4.2.0)
       avo-licensing (>= 4.2.0)
       httparty
-    avo-kanban (4.2.0)
+    avo-kanban (4.2.1)
       acts_as_list (~> 1.1)
-      avo (>= 4.2.0)
-      avo-licensing (>= 4.2.0)
+      avo (>= 4.2.8)
+      avo-licensing (>= 4.2.1)
       hotwire_combobox (~> 0.4.0)
     avo-licensing (4.2.1)
       avo (>= 4.2.3)
@@ -76,9 +77,9 @@ GEM
       avo (>= 4.2.0)
       avo-licensing (>= 4.2.0)
       zeitwerk (>= 2.6.12)
-    avo-notifications (4.2.0)
-      avo (>= 4.2.0)
-      avo-licensing (>= 4.2.0)
+    avo-notifications (4.2.1)
+      avo (>= 4.2.8)
+      avo-licensing (>= 4.2.1)
     avo-reactive_fields (4.2.0)
       avo (>= 4.2.0)
       avo-licensing (>= 4.2.0)
@@ -213,7 +214,7 @@ GEM
       lexxy (>= 0.9)
     avo-money_field (0.0.6)
       money-rails (~> 1.12)
-    avo-rhino_field (4.1.0)
+    avo-rhino_field (4.1.1)
     awesome_print (1.9.2)
     aws-eventstream (1.4.0)
     aws-partitions (1.1262.0)
@@ -615,7 +616,7 @@ DEPENDENCIES
   appsignal
   avo
   avo-advanced_search!
-  avo-ai (>= 4.2.0.beta.2)!
+  avo-ai!
   avo-api!
   avo-authorization!
   avo-calendar_view!
