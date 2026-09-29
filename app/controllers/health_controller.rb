@@ -7,10 +7,6 @@ class HealthController < ActionController::Base
     # check db connection
     # User.count
 
-    # check redis connection
-    # r = Redis.new
-    # r.ping
-
     render_up
   end
 

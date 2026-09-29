@@ -41,8 +41,6 @@ env:
     - RAILS_LOG_TO_STDOUT
     - RAILS_MASTER_KEY
     - RAILS_SERVE_STATIC_FILES
-    - REDIS_TLS_URL
-    - REDIS_URL
     - SECRET_KEY_BASE
 
 # Call a broadcast command on deploys.
@@ -80,12 +78,6 @@ builder:
 #       - db/production.sql.erb:/docker-entrypoint-initdb.d/setup.sql
 #     directories:
 #       - data:/var/lib/mysql
-#   redis:
-#     image: redis:7.0
-#     host: 192.168.0.2
-#     port: 6379
-#     directories:
-#       - data:/data
 
 # Configure custom arguments for Traefik
 # traefik:

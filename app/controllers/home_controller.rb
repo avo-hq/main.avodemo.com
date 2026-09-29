@@ -15,10 +15,6 @@ class HomeController < ApplicationController
     # check db connection
     User.count
 
-    # check redis connection
-    # r = Redis.new
-    # r.ping
-
     # respond ok
     render plain: 'okokok'
   end
