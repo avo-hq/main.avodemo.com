@@ -1,6 +1,6 @@
 require "test_helper"
 
-# Bookmark is an ArrayResource with writes: the controller saves to
+# Bookmark is an ArrayResource with writes: the resource saves to
 # BookmarkStore, a JSON file. One test on purpose, since parallel workers
 # would share that file.
 class BookmarksArrayResourceTest < ActionDispatch::IntegrationTest
@@ -11,13 +11,14 @@ class BookmarksArrayResourceTest < ActionDispatch::IntegrationTest
   setup do
     BookmarkStore::PATH.delete if BookmarkStore::PATH.exist?
 
-    sign_in User.create!(
+    @admin = User.create!(
       first_name: "Demo",
       last_name: "Admin",
       email: "bookmarks-#{SecureRandom.hex(4)}@example.com",
       password: "secreto123",
       roles: {"admin" => true}
     )
+    sign_in @admin
   end
 
   teardown { BookmarkStore::PATH.delete if BookmarkStore::PATH.exist? }
@@ -49,6 +50,17 @@ class BookmarksArrayResourceTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "Hotwire!"
 
     delete "#{ORIGIN}/avo/resources/bookmarks/4"
+    assert_equal [1, 2, 3], BookmarkStore.all.map { _1[:id] }
+
+    token, secret = Avo::Api::Token.generate(name: "CLI", owner: @admin)
+    token.save!
+    api = {"Authorization" => "Bearer #{secret}", "Content-Type" => "application/json"}
+
+    post "#{ORIGIN}/api/resources/v1/bookmarks", params: {bookmark: {title: "Stimulus", url: "https://stimulus.hotwired.dev"}}.to_json, headers: api
+    assert_response :created
+    assert_equal({id: 4, title: "Stimulus", url: "https://stimulus.hotwired.dev"}, BookmarkStore.all.last)
+
+    delete "#{ORIGIN}/api/resources/v1/bookmarks/4", headers: api
     assert_equal [1, 2, 3], BookmarkStore.all.map { _1[:id] }
   end
 end
