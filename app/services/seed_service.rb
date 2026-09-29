@@ -263,6 +263,7 @@ class SeedService
         category: "Music players",
         price_cents: 19900,
         price_currency: "USD",
+        sales_channels: ["online", "retail"],
         image: File.open(Rails.root.join('db', 'seed_files', 'ipod.jpg'))
       },
       {
@@ -271,6 +272,7 @@ class SeedService
         category: "Phones",
         price_cents: 99900,
         price_currency: "USD",
+        sales_channels: ["online", "retail", "marketplace"],
         image: File.open(Rails.root.join('db', 'seed_files', 'iphone.jpg'))
       },
       {
@@ -279,6 +281,7 @@ class SeedService
         category: "Computers",
         price_cents: 239900,
         price_currency: "USD",
+        sales_channels: ["online", "wholesale"],
         image: File.open(Rails.root.join('db', 'seed_files', 'macbook.jpg'))
       },
       {
@@ -287,6 +290,7 @@ class SeedService
         category: "Wearables",
         price_cents: 39900,
         price_currency: "USD",
+        sales_channels: ["online"],
         image: File.open(Rails.root.join('db', 'seed_files', 'watch.jpg'))
       }
     ]
@@ -297,6 +301,33 @@ class SeedService
     seed_events
 
     seed_kanban
+
+    seed_employees
+  end
+
+  # Field authorization demo (AVO-622): every row carries values for the fields EmployeePolicy
+  # withholds, so a leak shows up as a real value rather than a blank.
+  # Can be run on its own with `SeedService.seed_employees`.
+  def self.seed_employees
+    Employee.delete_all
+    [
+      ["Ada Lovelace", "Engineering", 185_000, "078-05-1120", 5, "2019-03-04"],
+      ["Grace Hopper", "Engineering", 172_000, "219-09-9999", 5, "2020-07-13"],
+      ["Linus Pauling", "Finance", 98_000, "457-55-5462", 3, "2021-11-01"],
+      ["Mae Jemison", "Sales", 121_000, "123-45-6789", 4, "2022-02-21"],
+      ["Alan Turing", "Support", 87_000, "987-65-4320", 2, "2023-09-18"]
+    ].each do |name, department, salary, ssn, rating, hired_on|
+      Employee.create!(
+        name: name,
+        email: "#{name.split.first.downcase}@example.com",
+        department: department,
+        salary: salary,
+        ssn: ssn,
+        performance_rating: rating,
+        hired_on: hired_on,
+        notes: "Seeded for the field authorization demo."
+      )
+    end
   end
 
   # Popular Ruby conferences pulled from https://www.rubyevents.org/.

@@ -118,7 +118,7 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-custom_controls"
   gem "avo-dynamic_filters"
   gem "avo-nested"
-  gem "avo-api", "4.2.4.dev.2"
+  gem "avo-api"
   gem "avo-http_resource"
   gem "avo-collaboration"
   gem "avo-forms"
@@ -130,7 +130,7 @@ source "https://packager.dev/avo-hq/" do
   # Remote MCP server for AI clients (Claude, ChatGPT, Cursor). Only `.dev`
   # builds exist so far, and bundler never picks a prerelease on its own —
   # keep the exact pin until 4.2.0 ships, then drop it like the gems above.
-  gem "avo-mcp_server", "4.2.0.beta.2"
+  gem "avo-mcp_server", "4.2.0.beta.10"
   # gem "avo-licensing", path: "/Users/adrian/work/avocado/gems/avo-licensing"
 end
 
@@ -204,3 +204,5 @@ gem "money-rails", "~> 1.12"
 gem "redcarpet"
 gem "marksmith"
 gem "commonmarker"
+
+gem "rack-attack", "~> 6.8"

@@ -41,14 +41,13 @@ Avo.configure do |config|
   config.main_menu = -> {
     link_to "Welcome", "#{Avo.configuration.root_path}/welcome", icon: "heroicons/outline/home"
 
-    section "Intelligence", icon: "heroicons/outline/sparkles", visible: -> {
-      authorize current_user, Avo::Ai::Chat, "index?", raise_exception: false
-    } do
+    section "Intelligence", icon: "heroicons/outline/sparkles" do
       link_to "Chats", "/avo/chats", icon: "heroicons/outline/chat-bubble-left-right"
       resource "avo_ai/chats"
       resource "avo_ai/messages"
       resource "avo_ai/skills"
       resource "avo_ai/models"
+      resource "avo_ai/feedbacks"
     end
 
     section I18n.t("avo.dashboards"), icon: "app/assets/images/demo-adjustments.svg" do
@@ -105,6 +104,7 @@ Avo.configure do |config|
         resource "User"
         resource :people
         resource :spouses
+        resource :employees
       end
 
       group "Education", collapsable: true do
@@ -130,6 +130,7 @@ Avo.configure do |config|
       group "Other", collapsable: true, collapsed: true do
         resource :fish, label: "Fishies"
         resource :movie
+        resource :bookmark
         resource :event
       end
     end
@@ -200,6 +201,10 @@ Avo.configure do |config|
   # Clock format for chat timestamps. :auto follows each reader's own browser locale;
   # :h12 and :h24 pin it for everyone. The timezone is always the reader's either way.
   # config.ai.time_format = :auto # :h12, :h24
+
+  # Thumbs up/down under each assistant reply. Existing feedback remains available
+  # in the Feedback resource if this is disabled.
+  config.ai.feedback_enabled = true
 
   # What one attach-from-URL download may cost. Merged over the defaults, so set only
   # the keys you want to change. Seconds, except max_size (bytes). An unknown key raises
