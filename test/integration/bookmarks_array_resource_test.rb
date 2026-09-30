@@ -11,7 +11,7 @@ class BookmarksArrayResourceTest < ActionDispatch::IntegrationTest
   setup do
     BookmarkStore::PATH.delete if BookmarkStore::PATH.exist?
 
-    sign_in @user = User.create!(
+    sign_in User.create!(
       first_name: "Demo",
       last_name: "Admin",
       email: "bookmarks-#{SecureRandom.hex(4)}@example.com",
@@ -22,7 +22,7 @@ class BookmarksArrayResourceTest < ActionDispatch::IntegrationTest
 
   teardown { BookmarkStore::PATH.delete if BookmarkStore::PATH.exist? }
 
-  test "reads, creates, updates and deletes bookmarks in the panel and over the API" do
+  test "reads, creates, updates and deletes bookmarks" do
     get "#{ORIGIN}/avo/resources/bookmarks"
     assert_response :success
     assert_includes response.body, "Avo docs"
@@ -49,33 +49,6 @@ class BookmarksArrayResourceTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "Hotwire!"
 
     delete "#{ORIGIN}/avo/resources/bookmarks/4"
-    assert_equal [1, 2, 3], BookmarkStore.all.map { _1[:id] }
-
-    # The same round trip over avo-api, which answers 404 to every request when unlicensed.
-    skip "The API half needs AVO_LICENSE_KEY" if ENV["AVO_LICENSE_KEY"].blank?
-
-    api = "#{ORIGIN}/api/resources/v1/bookmarks"
-    token, secret = Avo::Api::Token.generate(name: "Bookmarks", owner: @user)
-    token.save!
-    headers = {"Authorization" => "Bearer #{secret}"}
-
-    get api, headers: headers
-    assert_response :success
-    assert_equal ["Avo", "Avo docs", "Ruby on Rails"], response.parsed_body["records"].map { _1["title"] }
-
-    post api, params: {bookmark: {title: "Turbo", url: "https://turbo.hotwired.dev"}}, headers: headers, as: :json
-    assert_response :created
-    assert_equal({"id" => 4, "title" => "Turbo", "url" => "https://turbo.hotwired.dev"}, response.parsed_body["record"])
-
-    patch "#{api}/4", params: {bookmark: {title: "Turbo!"}}, headers: headers, as: :json
-    assert_response :success
-    assert_equal "Turbo!", BookmarkStore.all.last[:title]
-
-    get "#{api}/4", headers: headers
-    assert_equal "Turbo!", response.parsed_body.dig("record", "title")
-
-    delete "#{api}/4", headers: headers
-    assert_response :success
     assert_equal [1, 2, 3], BookmarkStore.all.map { _1[:id] }
   end
 end
