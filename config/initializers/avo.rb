@@ -79,6 +79,7 @@ Avo.configure do |config|
         authorize current_user, Avo::Api::Token, "index?", raise_exception: false
       }
       resource :http_user
+      resource :http_team
       resource :author
       # avo-mcp_server: the clients admins have connected, with Revoke as an action.
       resource :mcp_connection
