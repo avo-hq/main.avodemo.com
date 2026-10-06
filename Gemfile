@@ -128,9 +128,7 @@ source "https://packager.dev/avo-hq/" do
   # gem "avo-licensing", path: "/Users/adrian/work/avocado/gems/avo-licensing"
 end
 
-# avo-ai 4.3 uses RubyLLM's `mcp` agent DSL, which is on ruby_llm main but not
-# in 2.0.0. Pin the commit avo-ai's own CI runs against until a release ships it.
-gem "ruby_llm", github: "crmne/ruby_llm", ref: "8e598e172728900dc1efdf8ea8ca9b3f735b4f1d"
+gem "ruby_llm", "~> 2.0"
 
 # avo-nested is no longer bundled inside avo-advanced in Avo 4; this app uses
 # nested association forms (see app/views/avo/resource_tools/_nested_fish_reviews.html.erb).
