@@ -121,10 +121,10 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-notifications"
   gem "avo-ai"
   gem "avo-calendar_view"
-  # Remote MCP server for AI clients (Claude, ChatGPT, Cursor). Only `.dev`
-  # builds exist so far, and bundler never picks a prerelease on its own —
-  # keep the exact pin until 4.2.0 ships, then drop it like the gems above.
-  gem "avo-mcp_server", "4.2.0.beta.10"
+  # Remote MCP server for AI clients (Claude, ChatGPT, Cursor). Only betas
+  # exist so far, and bundler never picks a prerelease on its own — keep the
+  # exact pin until a stable release ships, then drop it like the gems above.
+  gem "avo-mcp_server", "4.3.0.beta.1"
   # gem "avo-licensing", path: "/Users/adrian/work/avocado/gems/avo-licensing"
 end
 
