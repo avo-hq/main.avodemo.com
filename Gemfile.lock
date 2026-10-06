@@ -1,3 +1,20 @@
+GIT
+  remote: https://github.com/crmne/ruby_llm.git
+  revision: 8e598e172728900dc1efdf8ea8ca9b3f735b4f1d
+  ref: 8e598e172728900dc1efdf8ea8ca9b3f735b4f1d
+  specs:
+    ruby_llm (2.0.0)
+      base64
+      event_stream_parser (~> 1)
+      faraday (>= 1.10.0)
+      faraday-multipart (>= 1)
+      faraday-net_http (>= 1)
+      faraday-retry (>= 1)
+      json (< 4)
+      marcel (>= 1.0, < 3)
+      schematist (~> 1.1)
+      zeitwerk (~> 2)
+
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
@@ -517,17 +534,6 @@ GEM
     ruby-vips (2.3.0)
       ffi (~> 1.12)
       logger
-    ruby_llm (2.0.0)
-      base64
-      event_stream_parser (~> 1)
-      faraday (>= 1.10.0)
-      faraday-multipart (>= 1)
-      faraday-net_http (>= 1)
-      faraday-retry (>= 1)
-      json (< 3)
-      marcel (>= 1.0, < 3)
-      schematist (~> 1.1)
-      zeitwerk (~> 2)
     rubyzip (3.4.0)
     schematist (1.1.0)
     securerandom (0.4.1)
@@ -672,7 +678,7 @@ DEPENDENCIES
   rails (>= 8.1)
   ransack
   redcarpet
-  ruby_llm (~> 2.0)
+  ruby_llm!
   selenium-webdriver
   solid_cable
   solid_queue
