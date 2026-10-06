@@ -10,7 +10,8 @@ class Avo::Resources::HttpUser < Avo::Core::Resources::Http
     # 401 and `parse_collection` below turns that into a clean "Unauthorized".
     headers: -> {
       {
-        "Authorization" => "Bearer #{request.cookies["avo_api_token"]}"
+        # An API caller's own bearer token is passed on; the panel has none, so it sends the cookie's.
+        "Authorization" => request.authorization.presence || "Bearer #{request.cookies["avo_api_token"]}"
       }
     },
     parse_collection: -> {
