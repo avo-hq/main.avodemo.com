@@ -207,8 +207,10 @@ Avo.configure do |config|
   # in the Feedback resource if this is disabled.
   config.ai.feedback_enabled = true
 
-  # Send new feedback to the same admins who can review it in the Feedback resource.
+  # Send new feedback to Avo admins: the users whose is_admin? (Avo's admin role) is true.
+  # User.admins is the same roles['admin'] check as User#is_admin?, done in SQL.
   config.ai.feedback_notification_recipients = -> { User.admins }
+  config.ai.feedback_notification_events = :all
 
   # What one attach-from-URL download may cost. Merged over the defaults, so set only
   # the keys you want to change. Seconds, except max_size (bytes). An unknown key raises
