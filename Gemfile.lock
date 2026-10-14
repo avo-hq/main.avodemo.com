@@ -1,29 +1,29 @@
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced (3.32.0)
-      avo (= 3.32.0)
-      avo-dynamic_filters (= 3.32.0)
-      avo-pro (= 3.32.0)
+    avo-advanced (3.33.0)
+      avo (= 3.33.0)
+      avo-dynamic_filters (= 3.33.0)
+      avo-pro (= 3.33.0)
       zeitwerk (>= 2.6.12)
-    avo-dashboards (3.32.0)
-      avo (= 3.32.0)
+    avo-dashboards (3.33.0)
+      avo (= 3.33.0)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-dynamic_filters (3.32.0)
-      avo (= 3.32.0)
+    avo-dynamic_filters (3.33.0)
+      avo (= 3.33.0)
       ransack (>= 4.2.0)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-menu (3.32.0)
-      avo (= 3.32.0)
+    avo-menu (3.33.0)
+      avo (= 3.33.0)
       docile
       zeitwerk (>= 2.6.12)
-    avo-pro (3.32.0)
-      avo (= 3.32.0)
-      avo-dashboards (= 3.32.0)
-      avo-menu (= 3.32.0)
+    avo-pro (3.33.0)
+      avo (= 3.33.0)
+      avo-dashboards (= 3.33.0)
+      avo-menu (= 3.33.0)
       zeitwerk (>= 2.6.12)
 
 GEM
@@ -116,7 +116,7 @@ GEM
     appsignal (4.7.5)
       logger
       rack (>= 2.0.0)
-    avo (3.32.0)
+    avo (3.33.0)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -131,7 +131,7 @@ GEM
       turbo_power (>= 0.6.0)
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-icons (0.1.5)
+    avo-icons (0.2.3)
       inline_svg
     avo-money_field (0.0.5)
       money-rails (~> 1.12)
@@ -259,7 +259,7 @@ GEM
     marksmith (0.4.6)
       activesupport
     matrix (0.4.2)
-    meta-tags (2.23.0)
+    meta-tags (2.24.0)
       actionpack (>= 6.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
@@ -410,7 +410,7 @@ GEM
     turbo-rails (2.0.23)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
-    turbo_power (0.7.0)
+    turbo_power (0.8.0)
       turbo-rails (>= 1.3.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -456,8 +456,8 @@ DEPENDENCIES
   acts_as_list
   annotate
   appsignal
-  avo (= 3.32.0)
-  avo-advanced (= 3.32.0)!
+  avo (= 3.33.0)
+  avo-advanced (= 3.33.0)!
   avo-money_field
   avo-rhino_field (= 0.0.16)
   awesome_print
