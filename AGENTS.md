@@ -6,6 +6,7 @@
 
 - `Gemfile`: the `packager.dev` block sits inside `group :private_gems, optional: true`. Laravel Cloud's gem install step gets no env vars, so it can't authenticate to packager.dev.
 - `config/application.rb`: `Bundler.require(*Rails.groups, :private_gems)`. Optional groups are not auto-required.
+- `config/puma.rb`: binds `tcp://[::]:$PORT` instead of `port`. Laravel Cloud is IPv6-only and can't reach `0.0.0.0`.
 - This file.
 
 Laravel Cloud setup (in the dashboard, not the repo):
@@ -35,6 +36,7 @@ Conflicts:
 
 - `Gemfile`: keep `main`'s gem list. Make sure every `packager.dev` gem stays inside the `private_gems` group, including gems `main` just added.
 - `config/application.rb`: keep `main`'s changes. Keep `:private_gems` in the `Bundler.require` call.
+- `config/puma.rb`: keep the `bind "tcp://[::]:..."` line.
 - `Gemfile.lock`: take `main`'s version, then run `bundle install`.
 
 Check after merging:
