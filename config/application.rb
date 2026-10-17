@@ -5,7 +5,7 @@ require_relative "../lib/middleware/account_middleware.rb"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
+Bundler.require(*Rails.groups, :private_gems)
 
 module Avodemo7
   class Application < Rails::Application

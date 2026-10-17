@@ -102,6 +102,11 @@ gem "awesome_print"
 # dev build that fails to boot. Bump these explicitly when upgrading betas.
 gem "avo"
 
+# Laravel Cloud's gem install step only gets BUNDLE_WITH/BUNDLE_WITHOUT, so the
+# packager.dev token can't reach it. The private gems sit in an optional group
+# that the build commands install (`bundle config set --local with private_gems`)
+# once env vars are available. config/application.rb requires the group.
+group :private_gems, optional: true do
 source "https://packager.dev/avo-hq/" do
   gem "avo-dashboards"
   gem "avo-menu"
@@ -126,6 +131,7 @@ source "https://packager.dev/avo-hq/" do
   # exact pin until a stable release ships, then drop it like the gems above.
   gem "avo-mcp_server", "4.3.0.beta.1"
   # gem "avo-licensing", path: "/Users/adrian/work/avocado/gems/avo-licensing"
+end
 end
 
 gem "ruby_llm", "~> 2.0"
