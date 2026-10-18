@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+ENV["RAILS_LOG_TO_STDOUT"] ||= "1"
+
 require_relative "../config/environment"
 require "solid_queue/cli"
 
