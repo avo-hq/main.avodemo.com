@@ -8,7 +8,6 @@
 - `config/application.rb`: `Bundler.require(*Rails.groups, :private_gems)`. Optional groups are not auto-required.
 - `config/puma.rb`: binds `tcp://[::]:$PORT` instead of `port`. Laravel Cloud is IPv6-only and can't reach `0.0.0.0`.
 - `bin/jobs`: defaults `RAILS_LOG_TO_STDOUT` to `1`, so job logs show up in Laravel Cloud.
-- `config/initializers/avo.rb`: `exclude_from_status = []`, so the Avo debug page shows the license key.
 - This file.
 
 Laravel Cloud setup (in the dashboard, not the repo):

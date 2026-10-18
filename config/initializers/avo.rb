@@ -22,8 +22,7 @@ Avo.configure do |config|
   #     foreground: "#FFFFFF"
   #   }
   }
-  # lc: show the license key on the Avo debug page to check what Laravel Cloud loads.
-  config.exclude_from_status = []
+  config.exclude_from_status = ["license_key"]
   config.set_context do
     {
       foo: 'bar',
