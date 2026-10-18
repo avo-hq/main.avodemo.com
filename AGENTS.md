@@ -7,12 +7,11 @@
 - `Gemfile`: the `packager.dev` block sits inside `group :private_gems, optional: true`. Laravel Cloud's gem install step gets no env vars, so it can't authenticate to packager.dev.
 - `config/application.rb`: `Bundler.require(*Rails.groups, :private_gems)`. Optional groups are not auto-required.
 - `config/puma.rb`: binds `tcp://[::]:$PORT` instead of `port`. Laravel Cloud is IPv6-only and can't reach `0.0.0.0`.
-- `config/puma.rb`: `plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]`, so jobs run inside the web process on Laravel Cloud.
 - This file.
 
 Laravel Cloud setup (in the dashboard, not the repo):
 
-- Env vars `BUNDLE_PACKAGER__DEV=<token>` and `SOLID_QUEUE_IN_PUMA=1`. No separate `bin/jobs` process. Do not set `BUNDLE_WITH`.
+- Env var `BUNDLE_PACKAGER__DEV=<token>`. Do not set `BUNDLE_WITH`.
 - Build commands start with:
 
   ```sh
