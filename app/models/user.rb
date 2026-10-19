@@ -41,6 +41,16 @@ class User < ApplicationRecord
 
   has_one_attached :cv
 
+  # Everyone signs in to the public demo as this account: the sign-in form
+  # pre-fills it. So nobody can lock the rest out until the nightly reset,
+  # its sign-in details are frozen and it can't be deleted. The reset itself
+  # uses delete_all/TRUNCATE, which skips both guards.
+  DEMO_EMAIL = "avo@cado.com"
+  DEMO_LOCKED_ATTRIBUTES = %w[email encrypted_password active roles].freeze
+
+  validate :demo_account_sign_in_unchanged, on: :update
+  before_destroy :keep_demo_account
+
   friendly_id :name, use: :slugged
 
   scope :active, -> { where active: true }
@@ -52,6 +62,10 @@ class User < ApplicationRecord
   end
 
   def is_admin? = admin?
+
+  def demo_account?
+    attribute_in_database(:email) == DEMO_EMAIL
+  end
 
   def name
     "#{first_name} #{last_name}"
@@ -79,6 +93,19 @@ class User < ApplicationRecord
 
   def avo_title
     "Admin"
+  end
+
+  private def demo_account_sign_in_unchanged
+    return unless demo_account? && changed.intersect?(DEMO_LOCKED_ATTRIBUTES)
+
+    errors.add(:base, "The shared demo account's email, password, status and roles can't be changed.")
+  end
+
+  private def keep_demo_account
+    return unless demo_account?
+
+    errors.add(:base, "The shared demo account can't be deleted.")
+    throw :abort
   end
 
   def self.ransackable_attributes(auth_object = nil)
