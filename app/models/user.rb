@@ -41,6 +41,9 @@ class User < ApplicationRecord
 
   has_one_attached :cv
 
+  include AttachmentLimits
+  limit_attachment :cv, content_types: AttachmentLimits::DOCUMENTS, max_size: 5.megabytes
+
   friendly_id :name, use: :slugged
 
   scope :active, -> { where active: true }

@@ -26,6 +26,11 @@ class Post < ApplicationRecord
   has_one_attached :audio
   has_many_attached :trix_attachments
 
+  include AttachmentLimits
+  limit_attachment :cover_photo, content_types: AttachmentLimits::IMAGES, max_size: 5.megabytes
+  limit_attachment :audio, content_types: AttachmentLimits::AUDIO, max_size: 20.megabytes
+  limit_attachment :trix_attachments, content_types: AttachmentLimits::IMAGES + %w[application/pdf], max_size: 5.megabytes
+
   belongs_to :user, optional: true
   has_many :comments, as: :commentable
   has_many :reviews, as: :reviewable
