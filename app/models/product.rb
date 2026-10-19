@@ -19,4 +19,8 @@ class Product < ApplicationRecord
 
   has_one_attached :image
   has_many_attached :images
+
+  include AttachmentLimits
+  limit_attachment :image, content_types: AttachmentLimits::IMAGES, max_size: 5.megabytes
+  limit_attachment :images, content_types: AttachmentLimits::IMAGES, max_size: 5.megabytes
 end

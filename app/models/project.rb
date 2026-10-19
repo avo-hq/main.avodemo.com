@@ -25,6 +25,9 @@ class Project < ApplicationRecord
 
   has_many_attached :files
 
+  include AttachmentLimits
+  limit_attachment :files, content_types: AttachmentLimits::IMAGES + AttachmentLimits::DOCUMENTS, max_size: 10.megabytes
+
   has_many :comments, as: :commentable
   has_many :reviews, as: :reviewable
   has_and_belongs_to_many :users
