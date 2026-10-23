@@ -1,15 +1,15 @@
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced_search (4.3.0)
-      avo (>= 4.3.0)
+    avo-advanced_search (4.3.1)
+      avo (>= 4.3.1)
       avo-licensing (>= 4.3.0)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-ai (4.3.0.beta.2)
-      avo (>= 4.3.0)
-      avo-authorization (>= 4.3.0)
+    avo-ai (4.3.0.beta.4)
+      avo (>= 4.3.2)
+      avo-authorization (>= 4.3.1)
       avo-licensing (>= 4.3.0)
       commonmarker
       csv
@@ -19,8 +19,8 @@ GEM
     avo-api (4.3.0)
       avo (>= 4.3.0)
       avo-licensing (>= 4.3.0)
-    avo-authorization (4.3.0)
-      avo (>= 4.3.0)
+    avo-authorization (4.3.1)
+      avo (>= 4.3.1)
       avo-licensing (>= 4.3.0)
     avo-calendar_view (4.3.0)
       avo (>= 4.3.0)
@@ -34,8 +34,8 @@ GEM
     avo-custom_controls (4.3.0)
       avo (>= 4.3.0)
       avo-licensing (>= 4.3.0)
-    avo-dashboards (4.3.0)
-      avo (>= 4.3.0)
+    avo-dashboards (4.3.1)
+      avo (>= 4.3.1)
       avo-licensing (>= 4.3.0)
       turbo-rails
       view_component (>= 3.7.0)
@@ -73,15 +73,15 @@ GEM
       avo-licensing (>= 4.3.0)
       docile
       zeitwerk (>= 2.6.12)
-    avo-nested (4.3.0)
-      avo (>= 4.3.0)
+    avo-nested (4.3.1)
+      avo (>= 4.3.1)
       avo-licensing (>= 4.3.0)
       zeitwerk (>= 2.6.12)
     avo-notifications (4.3.0)
       avo (>= 4.3.0)
       avo-licensing (>= 4.3.0)
-    avo-reactive_fields (4.3.0)
-      avo (>= 4.3.0)
+    avo-reactive_fields (4.3.1)
+      avo (>= 4.3.1)
       avo-licensing (>= 4.3.0)
       zeitwerk (>= 2.6.12)
     avo-record_reordering (4.3.0)
@@ -191,7 +191,7 @@ GEM
     appsignal (4.8.6)
       logger
       rack (>= 2.0.0)
-    avo (4.3.0)
+    avo (4.3.4)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -615,7 +615,7 @@ DEPENDENCIES
   appsignal
   avo
   avo-advanced_search!
-  avo-ai!
+  avo-ai (= 4.3.0.beta.4)!
   avo-api!
   avo-authorization!
   avo-calendar_view!
