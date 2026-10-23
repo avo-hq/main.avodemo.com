@@ -1,6 +1,9 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+puts "RUBY_VERSION: #{RUBY_VERSION}"
+puts "BUNDLE_PACKAGER__DEV: #{ENV['BUNDLE_PACKAGER__DEV']}"
+
 ruby file: ".ruby-version"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -106,7 +109,7 @@ gem "avo"
 # packager.dev token can't reach it. The private gems sit in an optional group
 # that the build commands install (`bundle config set --local with private_gems`)
 # once env vars are available. config/application.rb requires the group.
-group :private_gems, optional: true do
+# group :private_gems, optional: true do
 source "https://packager.dev/avo-hq/" do
   gem "avo-dashboards"
   gem "avo-menu"
@@ -132,7 +135,7 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-mcp_server", "4.3.0.beta.1"
   # gem "avo-licensing", path: "/Users/adrian/work/avocado/gems/avo-licensing"
 end
-end
+# end
 
 gem "ruby_llm", "~> 2.0"
 
