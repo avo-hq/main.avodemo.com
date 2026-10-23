@@ -119,7 +119,8 @@ source "https://packager.dev/avo-hq/" do
   gem "avo-reactive_fields"
   gem "avo-kanban"
   gem "avo-notifications"
-  gem "avo-ai"
+  # Exact pin: unpinned, bundler resolves to the 4.0.0.alpha.* builds (see note above).
+  gem "avo-ai", "4.3.0.beta.4"
   gem "avo-calendar_view"
   # Remote MCP server for AI clients (Claude, ChatGPT, Cursor). Only betas
   # exist so far, and bundler never picks a prerelease on its own — keep the
