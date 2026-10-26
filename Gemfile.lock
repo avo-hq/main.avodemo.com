@@ -7,13 +7,13 @@ GEM
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
-    avo-ai (4.3.0.beta.4)
-      avo (>= 4.3.2)
+    avo-ai (4.3.0.beta.5)
+      avo (>= 4.3.5)
       avo-authorization (>= 4.3.1)
       avo-licensing (>= 4.3.0)
       commonmarker
       csv
-      ruby_llm (>= 2.0.0.rc4, < 2.1)
+      ruby_llm (~> 2.1)
       ssrf_filter (~> 1.2)
       zeitwerk (>= 2.6.12)
     avo-api (4.3.0)
@@ -25,8 +25,8 @@ GEM
     avo-calendar_view (4.3.0)
       avo (>= 4.3.0)
       avo-licensing (>= 4.3.0)
-    avo-collaboration (4.3.0)
-      avo (>= 4.3.0)
+    avo-collaboration (4.3.1)
+      avo (>= 4.3.5)
       avo-licensing (>= 4.3.0)
       pagy (>= 43)
       rails (>= 7.2.0)
@@ -191,7 +191,7 @@ GEM
     appsignal (4.8.6)
       logger
       rack (>= 2.0.0)
-    avo (4.3.4)
+    avo (4.3.5)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
@@ -292,7 +292,6 @@ GEM
     erubi (1.13.1)
     et-orbi (1.4.1)
       tzinfo
-    event_stream_parser (1.0.0)
     factory_bot (6.6.0)
       activesupport (>= 6.1.0)
     factory_bot_rails (6.5.1)
@@ -517,14 +516,13 @@ GEM
     ruby-vips (2.3.0)
       ffi (~> 1.12)
       logger
-    ruby_llm (2.0.0)
+    ruby_llm (2.1.1)
       base64
-      event_stream_parser (~> 1)
-      faraday (>= 1.10.0)
+      faraday (>= 1.10.0, != 2.0.0)
       faraday-multipart (>= 1)
       faraday-net_http (>= 1)
       faraday-retry (>= 1)
-      json (< 3)
+      json (< 4)
       marcel (>= 1.0, < 3)
       schematist (~> 1.1)
       zeitwerk (~> 2)
@@ -615,7 +613,7 @@ DEPENDENCIES
   appsignal
   avo
   avo-advanced_search!
-  avo-ai (= 4.3.0.beta.4)!
+  avo-ai (= 4.3.0.beta.5)!
   avo-api!
   avo-authorization!
   avo-calendar_view!
