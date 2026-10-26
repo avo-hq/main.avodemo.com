@@ -59,7 +59,7 @@ class SeedService
     demo_user = User.create(
       first_name: 'Avo',
       last_name: 'Cado',
-      email: 'avo@cado.com',
+      email: User::DEMO_EMAIL,
       password: 'secreto',
       active: true,
       roles: {
