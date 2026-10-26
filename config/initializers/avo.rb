@@ -48,6 +48,7 @@ Avo.configure do |config|
       resource "avo_ai/skills"
       resource "avo_ai/models"
       resource "avo_ai/feedbacks"
+      resource "avo_ai/connectors"
     end
 
     section I18n.t("avo.dashboards"), icon: "app/assets/images/demo-adjustments.svg" do
@@ -211,6 +212,10 @@ Avo.configure do |config|
   # User.admins is the same roles['admin'] check as User#is_admin?, done in SQL.
   config.ai.feedback_notification_recipients = -> { User.admins }
   config.ai.feedback_notification_events = :all
+
+  # Lets users connect remote MCP servers from the chat with /mcp. Who may connect is decided by
+  # app/policies/avo/ai/connector_policy.rb.
+  config.ai.connectors_enabled = true
 
   # What one attach-from-URL download may cost. Merged over the defaults, so set only
   # the keys you want to change. Seconds, except max_size (bytes). An unknown key raises
