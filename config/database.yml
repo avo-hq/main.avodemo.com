@@ -101,7 +101,7 @@ test:
 production:
   primary:
     <<: *default
-    url: <%= ENV['RED_DATABASE_URL'] %>
+    url: <%= ENV['DATABASE_URL'] %>
   cable:
     <<: *cable
     database: storage/cable_production.sqlite3

@@ -13,6 +13,7 @@
 - `config/application.rb`: `Bundler.require(*Rails.groups, :private_gems)`. Optional groups are not auto-required.
 - `config/puma.rb`: binds `tcp://[::]:$PORT` instead of `port`. Laravel Cloud is IPv6-only and can't reach `0.0.0.0`.
 - `config/puma.rb`: `plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]`. Laravel Cloud has no worker process, so jobs run inside Puma.
+- `config/database.yml`: production `primary` reads `DATABASE_URL` instead of `main`'s `RED_DATABASE_URL`.
 - `bin/jobs`: defaults `RAILS_LOG_TO_STDOUT` to `1`, so job logs show up in Laravel Cloud.
 - This file.
 
@@ -45,6 +46,7 @@ Conflicts:
 - `Gemfile`: keep `main`'s gem list. Make sure every `packager.dev` gem stays inside the `private_gems` group, including gems `main` just added.
 - `config/application.rb`: keep `main`'s changes. Keep `:private_gems` in the `Bundler.require` call.
 - `config/puma.rb`: keep the `bind "tcp://[::]:..."` line and the `solid_queue` plugin line.
+- `config/database.yml`: keep `DATABASE_URL` in production `primary`.
 - `Gemfile.lock`: take `main`'s version, then run `bundle install`.
 
 Check after merging:
