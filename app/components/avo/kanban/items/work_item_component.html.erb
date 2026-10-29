@@ -4,7 +4,7 @@
     anchor drag would otherwise hijack it). The gem's delete dropdown stays
     clickable because it is absolutely positioned and paints above this in-flow link. %>
 <%= link_to record_show_path,
-    class: "item-card__content w-full block no-underline -mx-3 -my-2.5 py-2.5",
+    class: "item-card__content w-full block no-underline -mx-3 -my-2.5",
     draggable: "false" do %>
   <div class="item-card__head">
     <% if card_icon.present? %>
