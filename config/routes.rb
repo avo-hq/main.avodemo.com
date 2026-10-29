@@ -4,6 +4,17 @@ Rails.application.routes.draw do
 
   get "hey", to: "home#hey"
 
+  # Laravel Cloud debug: which database DATABASE_URL points at, password masked.
+  get "lc-database-url", to: ->(_env) {
+    url = ENV["DATABASE_URL"].presence
+    if url
+      uri = URI.parse(url)
+      uri.password = "***" if uri.password
+      url = uri.to_s
+    end
+    [200, {"content-type" => "text/plain"}, ["DATABASE_URL: #{url || "(not set)"}\n"]]
+  }
+
   post "/reset", to: "home#reset"
 
   # REST API (avo-api). Mounted OUTSIDE the `authenticate` block on purpose — it

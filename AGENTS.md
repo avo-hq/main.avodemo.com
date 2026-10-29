@@ -14,6 +14,7 @@
 - `config/puma.rb`: binds `tcp://[::]:$PORT` instead of `port`. Laravel Cloud is IPv6-only and can't reach `0.0.0.0`.
 - `config/puma.rb`: `plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]`. Laravel Cloud has no worker process, so jobs run inside Puma.
 - `config/database.yml`: production `primary` reads `DATABASE_URL` instead of `main`'s `RED_DATABASE_URL`.
+- `config/routes.rb`: public `/lc-database-url` shows `DATABASE_URL` with the password masked.
 - `bin/jobs`: defaults `RAILS_LOG_TO_STDOUT` to `1`, so job logs show up in Laravel Cloud.
 - This file.
 
