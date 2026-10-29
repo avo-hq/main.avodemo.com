@@ -42,3 +42,6 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
+
+# Run Solid Queue inside Puma on Laravel Cloud, where there is no separate worker process.
+plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]
