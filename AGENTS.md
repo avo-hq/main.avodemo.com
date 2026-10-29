@@ -1,3 +1,8 @@
+# Avo
+
+1. When working with Avo, use https://docs.avohq.io/4.0/docs-map.md to find and read the relevant documentation. Match examples to the versions in `Gemfile.lock`.
+2. Load `.agents/skills/avo/SKILL.md` for Avo work, including Rails model changes that may need matching admin changes. It resolves the official skills from this app's installed gems; do not copy the skill catalog into this repository.
+
 # `lc` branch: Laravel Cloud test deploy
 
 `lc` is `main` plus a few commits for deploying to Laravel Cloud. It lives on `origin` as `lc`. Laravel Cloud deploys from it. Don't mention it on `main`, issues or PRs.
