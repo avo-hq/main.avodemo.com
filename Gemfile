@@ -1,10 +1,6 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-puts "RUBY_VERSION: #{RUBY_VERSION}"
-puts "BUNDLE_PACKAGER__DEV: #{ENV['BUNDLE_PACKAGER__DEV']}"
-puts "SECRET_TEST: #{ENV['SECRET_TEST']}"
-
 ruby file: ".ruby-version"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
