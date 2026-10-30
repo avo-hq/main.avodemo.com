@@ -34,6 +34,9 @@ Avo.configure do |config|
   config.explicit_authorization = true
   config.current_user_method = :current_user
   config.click_row_to_view_record = true
+  # Keep association per-page picks and static filter selections for the visitor's session instead of
+  # resetting them on every request. Lives in the cookie session store, which caps at 4 KB.
+  config.persistence = { driver: :session }
   # Read the app name from a cookie so the Settings → App Settings form can change
   # it live (the form writes cookies[:app_name]). Falls back to the default name.
   config.app_name = -> { request.cookies["app_name"] || "Avo Demo" }
