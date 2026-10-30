@@ -9,8 +9,6 @@
 
 ## What differs from `main`
 
-- `Gemfile`: the `packager.dev` block sits inside `group :private_gems, optional: true`. Laravel Cloud's gem install step gets no env vars, so it can't authenticate to packager.dev.
-- `config/application.rb`: `Bundler.require(*Rails.groups, :private_gems)`. Optional groups are not auto-required.
 - `config/puma.rb`: binds `tcp://[::]:$PORT` instead of `port`. Laravel Cloud is IPv6-only and can't reach `0.0.0.0`.
 - `config/puma.rb`: `plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]`. Laravel Cloud has no worker process, so jobs run inside Puma.
 - `config/database.yml`: production `primary` reads `DATABASE_URL` instead of `main`'s `RED_DATABASE_URL`.
@@ -19,16 +17,8 @@
 
 Laravel Cloud setup (in the dashboard, not the repo):
 
-- Env var `BUNDLE_PACKAGER__DEV=<token>`. Do not set `BUNDLE_WITH`.
+- Env var `BUNDLE_PACKAGER__DEV=<token>`.
 - Env var `SOLID_QUEUE_IN_PUMA=1`.
-- Build commands start with:
-
-  ```sh
-  bundle config set --local with private_gems
-  bundle install
-  ```
-
-Locally, run `bundle config set --local with private_gems` once.
 
 ## Keeping `lc` in sync
 
@@ -43,8 +33,6 @@ git push origin lc
 
 Conflicts:
 
-- `Gemfile`: keep `main`'s gem list. Make sure every `packager.dev` gem stays inside the `private_gems` group, including gems `main` just added.
-- `config/application.rb`: keep `main`'s changes. Keep `:private_gems` in the `Bundler.require` call.
 - `config/puma.rb`: keep the `bind "tcp://[::]:..."` line and the `solid_queue` plugin line.
 - `config/database.yml`: keep `DATABASE_URL` in production `primary`.
 - `Gemfile.lock`: take `main`'s version, then run `bundle install`.
