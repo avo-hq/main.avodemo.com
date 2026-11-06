@@ -9,6 +9,9 @@
 # it, so the create/edit/destroy controls stay off.
 # https://docs.avohq.io/4.0/mcp.html#decide-who-sees-and-revokes-what
 class Avo::McpServer::ConnectionPolicy < ApplicationPolicy
+  # avo-mcp_server turns itself off for everyone when this policy doesn't answer it.
+  def use? = true
+
   def index? = true
   def show? = true
 
