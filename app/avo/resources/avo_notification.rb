@@ -11,6 +11,10 @@ class Avo::Resources::AvoNotification < Avo::BaseResource
     query.for_user(Avo::Current.user).newest_first
   }
 
+  self.find_record_method = -> {
+    query.for_user(Avo::Current.user).find(id)
+  }
+
   def fields
     field :id, as: :id
     field :level, as: :select, enum: ::Avo::Notifications::Notification.levels

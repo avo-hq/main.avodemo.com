@@ -165,11 +165,9 @@ Avo.configure do |config|
   }
 end
 
-if defined?(Avo::DynamicFilters)
-  Avo::DynamicFilters.configure do |config|
-    config.button_label = "Advanced filters"
-    config.always_expanded = true
-  end
+Avo.configure do |config|
+  config.dynamic_filters.button_label = "Advanced filters"
+  config.dynamic_filters.always_expanded = true
 end
 
 if defined?(Avo::MediaLibrary)
