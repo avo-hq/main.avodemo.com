@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_13_104747) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_09_194545) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -328,11 +328,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_13_104747) do
     t.datetime "created_at", null: false
     t.datetime "last_used_at"
     t.datetime "revoked_at"
+    t.string "slug"
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.string "user_type", null: false
     t.index ["client_id"], name: "index_avo_mcp_server_connections_on_client_id"
     t.index ["revoked_at"], name: "index_avo_mcp_server_connections_on_revoked_at"
+    t.index ["slug"], name: "index_avo_mcp_server_connections_on_slug", unique: true
     t.index ["user_type", "user_id"], name: "index_avo_mcp_server_connections_on_user"
   end
 
