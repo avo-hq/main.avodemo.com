@@ -1,6 +1,9 @@
 # Shadows the gem's owner-only policy, so it keeps its owner rules: a chat is readable by the user
 # who started it and nobody else, on the admin resources and through the query tool alike.
 class Avo::Ai::ChatPolicy < Avo::Ai::BasePolicy
+  # avo-ai turns the chat off for everyone when a policy of the app's own doesn't answer this.
+  def use? = user.present?
+
   def show? = owner?
   def update? = owner?
   def destroy? = owner?
