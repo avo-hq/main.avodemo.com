@@ -16,7 +16,7 @@ class Avo::Ai::ChatPolicyTest < ActiveSupport::TestCase
     assert_equal [
       {model: "gpt-5.6-luna", provider: :openai},
       {model: "deepseek-flash", provider: :deepseek},
-      {model: "gemini-2.5-flash-lite", provider: :gemini}
+      {model: "gemini-3.5-flash-lite", provider: :gemini}
     ], models
 
     models.each do |entry|
