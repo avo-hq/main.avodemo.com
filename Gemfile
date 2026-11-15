@@ -124,6 +124,9 @@ end
 
 gem "ruby_llm", "~> 2.0"
 
+# avo-nested is no longer bundled inside avo-advanced in Avo 4; this app uses
+# nested association forms (see app/views/avo/resource_tools/_nested_fish_reviews.html.erb).
+
 # Backs the Avo::Forms::Settings::Integrations demo form (DB-stored config values).
 gem "db_config", "0.1.10"
 
