@@ -1,9 +1,9 @@
 GEM
   remote: https://packager.dev/avo-hq/
   specs:
-    avo-advanced_search (4.4.0)
-      avo (>= 4.4.0)
-      avo-licensing (>= 4.4.0)
+    avo-advanced_search (4.4.1)
+      avo (>= 4.4.4)
+      avo-licensing (>= 4.4.1)
       turbo-rails
       view_component (>= 3.7.0)
       zeitwerk (>= 2.6.12)
@@ -58,8 +58,8 @@ GEM
       avo (>= 4.4.0)
       avo-licensing (>= 4.4.0)
       hotwire_combobox (~> 0.4.0)
-    avo-licensing (4.4.0)
-      avo (>= 4.4.0)
+    avo-licensing (4.4.1)
+      avo (>= 4.4.3)
       zeitwerk (>= 2.6.12)
     avo-mcp_server (4.4.0)
       avo (>= 4.4.0)
@@ -191,7 +191,7 @@ GEM
     appsignal (4.8.6)
       logger
       rack (>= 2.0.0)
-    avo (4.4.0)
+    avo (4.4.4)
       actionview (>= 6.1)
       active_link_to
       activerecord (>= 6.1)
