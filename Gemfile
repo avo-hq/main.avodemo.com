@@ -96,10 +96,6 @@ gem 'dotenv-rails', groups: [ :development, :test ]
 
 gem "awesome_print"
 
-# NOTE: pin Avo 4 beta gems to EXACT versions. `>=` is unsafe here because the
-# `4.0.0.pre.dev.*` dev builds sort HIGHER than `4.0.0.beta.*` in RubyGems
-# version ordering ("pre" > "beta"), so a `>=` constraint resolves to a broken
-# dev build that fails to boot. Bump these explicitly when upgrading betas.
 gem "avo"
 
 source "https://packager.dev/avo-hq/" do
@@ -131,19 +127,9 @@ gem "ruby_llm", "~> 2.0"
 # avo-nested is no longer bundled inside avo-advanced in Avo 4; this app uses
 # nested association forms (see app/views/avo/resource_tools/_nested_fish_reviews.html.erb).
 
-# Kanban boards for Avo. Pin to an EXACT version for the same reason as the
-# other Avo 4 beta gems above (pre.dev builds sort higher than beta).
-
-# Avo 4 suite gems for the new feature demos (REST API, HTTP resources,
-# collaboration, reactive fields, forms). EXACT pins (see note above) — these are
-# the versions that resolve against avo 4.0.0.beta.42. Bump explicitly on upgrade.
-
 # Backs the Avo::Forms::Settings::Integrations demo form (DB-stored config values).
 gem "db_config", "0.1.10"
 
-# view_component 4.0.0 caps activesupport < 8.1, conflicting with rails 8.1.3.
-# Bumped to 4.11.0 (no activesupport cap; the version avo-4.avodemo.com runs).
-# avo .42 only requires view_component >= 3.7.0.
 gem "view_component"
 
 gem "avo-rhino_field"
