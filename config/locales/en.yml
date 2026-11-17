@@ -30,7 +30,6 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
   avo:
     collaboration:
       country_changed_html: changed %{property} to %{new_value} <span class="font-bold">[Custom]</span>
