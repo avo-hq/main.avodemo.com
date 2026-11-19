@@ -52,8 +52,10 @@ class SeedService
     teams.push(FactoryBot.create(:team, name: 'Amazon', url: 'https://amazon.com'))
 
     users = []
+    # Spread these signups over the last three months so the "User signups"
+    # and "Users count" dashboard cards have something to show for each range.
     38.times do
-      users.push(FactoryBot.create(:user, team_id: teams.sample.id))
+      users.push(FactoryBot.create(:user, team_id: teams.sample.id, created_at: rand(1..90).days.ago))
     end
 
     demo_user = User.create(
