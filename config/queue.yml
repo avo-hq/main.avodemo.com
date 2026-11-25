@@ -2,11 +2,13 @@ default: &default
   dispatchers:
     - polling_interval: 1
       batch_size: 500
+  # Most jobs are Avo AI chat replies that wait on the LLM, so they run as fibers:
+  # many replies share one thread and a few DB connections instead of a slot each.
   workers:
     - queues: "*"
-      threads: 3
+      fibers: <%= ENV.fetch("JOB_FIBERS", 50) %>
       processes: <%= ENV.fetch("JOB_CONCURRENCY", 1) %>
-      polling_interval: 1
+      polling_interval: 0.1
 
 development:
   <<: *default

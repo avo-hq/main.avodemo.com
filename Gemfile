@@ -38,7 +38,9 @@ gem "sqlite3", ">= 2.1"
 # Database-backed Active Job backend. Unlike solid_cable this runs on the
 # primary Postgres database: the worker is a separate process (bin/jobs) from
 # web, and two containers cannot share a SQLite file.
-gem "solid_queue"
+gem "solid_queue", "~> 1.6"
+# Fiber workers in config/queue.yml run jobs on an Async reactor.
+gem "async"
 # Operational dashboard for Solid Queue, mounted at /jobs in routes.rb.
 gem "solid_queue-flightdeck"
 
