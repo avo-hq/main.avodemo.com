@@ -1,0 +1,30 @@
+[data-resource-name="Avo::Resources::Project"] {
+  --card-background: var(--color-blue-50);
+  --card-border: var(--color-blue-200);
+}
+
+.dark [data-resource-name="Avo::Resources::Project"] {
+  --card-background: var(--color-blue-950);
+  --card-border: var(--color-blue-800);
+}
+
+[data-resource-name="Avo::Resources::Team"] {
+  --card-background: var(--color-emerald-100);
+  --card-border: var(--color-emerald-300);
+}
+
+.dark [data-resource-name="Avo::Resources::Team"] {
+  --card-background: var(--color-emerald-950);
+  --card-border: var(--color-emerald-700);
+}
+
+:is([data-resource-name="Avo::Resources::Project"], [data-resource-name="Avo::Resources::Team"]) .card {
+  --card-inner-border: color-mix(in oklab, var(--card-background) 80%, var(--card-border));
+
+  background-color: var(--card-background);
+  border-color: var(--card-border);
+
+  & > .card__wrapper {
+    --color-tertiary: var(--card-inner-border);
+  }
+}
