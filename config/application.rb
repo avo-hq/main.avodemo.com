@@ -24,5 +24,8 @@ module Avodemo7
     # Keep Lexxy inside Avo only; the app's `rich_text_area` helpers stay on Trix.
     config.lexxy.override_action_text_defaults = false
     config.middleware.use AccountMiddleware
+    # Required by Solid Queue fiber workers (config/queue.yml): each job fiber keeps its own
+    # Current attributes and connection state.
+    config.active_support.isolation_level = :fiber
   end
 end
