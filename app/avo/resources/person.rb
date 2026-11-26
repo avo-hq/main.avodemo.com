@@ -18,7 +18,7 @@ class Avo::Resources::Person < Avo::BaseResource
     field :name, as: :text, link_to_record: true,sortable: true
     field :type, as: :select, name: "Type", options: { Spouse: "Spouse" }, include_blank: true, filterable: true
     field :link, as: :text, as_html: true do
-      "<a href='https://avohq.io'>#{record.name}</a>"
+      "<a href='https://avohq.io'>#{ERB::Util.html_escape(record.name)}</a>"
     end
     field :spouses, as: :has_many
   end
